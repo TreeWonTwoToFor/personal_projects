@@ -1,0 +1,23 @@
+Phonetics: how speech sounds are produced and perceived
+Phonology: sound patterns and changes
+Morphology: word structure
+Syntax: sentence structure
+Semantics: linguistic meaning
+Pragmatics: how language is used in context
+Historical Linguistics: how langauge changes
+Sociolinguistics: relation between language and society
+Computational Linguistics: computer langauge processing
+Psycholinguistics: how humans acquire and use language
+
+Phonetics
+    Interactive IPA chart
+        hear the sound
+        select it to save into your inventory
+    Create a table
+    Save it as
+        an image
+        a json file for import?
+
+Phonology
+	how do vowels/consonants change?
+

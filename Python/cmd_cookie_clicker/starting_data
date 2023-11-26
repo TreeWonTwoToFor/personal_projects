@@ -1,0 +1,19 @@
+{
+    "cookies": 0.0,
+    "cursor": {
+        "count": 0,
+        "cps": 0.1
+    },
+    "grandma": {
+        "count": 0,
+        "cps": 1
+    },
+    "farm": {
+        "count": 0,
+        "cps": 8
+    },
+    "mine": {
+        "count": 0,
+        "cps": 47
+    }
+}

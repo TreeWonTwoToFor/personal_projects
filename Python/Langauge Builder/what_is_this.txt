@@ -1,0 +1,33 @@
+Idea: a program that helps the user build parts of a language
+
+Main portions:  
+	helping build grammar
+	stores vocabulary
+	translator using a file
+	holds the orthography
+	helps builds the phonetic system of the langauge
+	tts function?
+
+TO-DO list:
+	UI
+	File write system
+		formating for the json file
+		reading from the json file
+	list of vocab/grammar
+		top 100/500 words in a language
+		main grammar points
+			word order, verb tenses, adjective placement, etc.
+	2 way translator
+		find an algorithm to 
+			take the info from the json file
+			replace the words with the other language [token system?]
+			change the word order
+		make it go to and from the language
+
+
+
+Color palette
+#22ee55: green
+#2255ee: blue
+#ee22bb: pink
+#22eebb: teal
