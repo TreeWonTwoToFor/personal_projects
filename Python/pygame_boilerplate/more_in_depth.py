@@ -1,12 +1,15 @@
 import pygame
+import time
 
 pygame.init()
 
 screenX = 1080
 screenY = 720
 bg_color = (34, 238, 85)
+FPS = 60
+clock = pygame.time.Clock()
 
-screen = pygame.display.set_mode((screenX, screenY))
+screen = pygame.display.set_mode((screenX, screenY), pygame.RESIZABLE)
 
 running = True
 while running:
@@ -21,3 +24,4 @@ while running:
             if event.key == pygame.K_SPACE:
                 print("pressed the space key")
     pygame.display.update()
+    clock.tick(FPS)
