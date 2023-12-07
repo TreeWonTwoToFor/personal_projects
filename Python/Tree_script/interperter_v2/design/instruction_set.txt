@@ -1,0 +1,25 @@
+PRINT - returns the value to the console
+    format - PRINT #
+INPUT = allows the user to input a number or string
+    format - INPUT #
+
+ADD - returns the value of two inputs added together to the global answer variable
+    format - ADD # #
+SUB - returns the value of two inputs subtracted together to the global answer variable
+    format - SUB # #
+MUL - returns the value of two inputs multiplied together to the global answer variable
+    format - MUL # #
+DIV - returns the value of two inputs divided together to the global answer variable
+    format - DIV # #
+POW - takes the power of the first value by the second, then returns the value to the global answer variable
+    format - POW # #
+
+JUMP - moves the program's reader to the line given
+    format - JUMP #
+JNZ (Jump if Not Zero) - will conditionally jump if the input given is not 0
+    format - JNZ # #, where the first value is compared and the second is the line that should be jumped to 
+
+VAR - adds a variable object to the global variable list. 
+    format - VAR # #, where the first value is the name of the variable, and the second value is the information held by the variable
+UPDATE - sets the value of the variable given to what is held in the global variable answer
+    format - UPDATE #
