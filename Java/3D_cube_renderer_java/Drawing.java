@@ -20,6 +20,7 @@ public class Drawing extends Canvas {
     }
 
     static Point projectedPoint = new Point(100, 100, 100);
+    static Point prevProjected = projectedPoint;
     static Point[] wantArray = new Point[8];
     Point camera = new Point(0, 0, -100);
     Point origin = new Point(640, 360, 0);
@@ -44,12 +45,12 @@ public class Drawing extends Canvas {
         //Point myPoint = new Point(0, 0, 100);
         for (int i = 0; i < 8; i++) {
             int[] projected = project(camera, wantArray[i]);
+            prevProjected = projectedPoint;
             projectedPoint.x = originArray[0]+projected[0]; 
             projectedPoint.y = originArray[1]+projected[1]; 
             projectedPoint.z = 0;
-            System.out.println(projectedPoint.x); System.out.println(projectedPoint.y);
             g.fillOval(projectedPoint.x, projectedPoint.y, 10, 10);
-        }  
+        } 
     }
 
     public static void main(String[] a) {

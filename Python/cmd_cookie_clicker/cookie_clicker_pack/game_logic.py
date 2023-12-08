@@ -1,8 +1,13 @@
 import os
 import time
-import file_system
+from cookie_clicker_pack import file_system
 
 upgrade_price = 100
+cookies = 0
+click_power = 1
+current_time = time.time()
+current_cps = 0.0
+os.system('cls')
 
 class building:
 	def __init__(self, count, cps, base_cost, name):
@@ -28,6 +33,15 @@ class building:
 	def click(self):
 		global cookies
 		cookies += (self.cps * self.count)
+
+cursor = building(0, 0.1, 15, 'cursor')
+grandma = building(0, 1, 100, 'grandma')
+farm = building(0, 8, 1100, 'farm')
+mine = building(0, 47, 12000, 'mine')
+building_list 		= [cursor, grandma, farm, mine]
+building_name_list 	= []
+for buildings in building_list:
+	building_name_list.append(buildings.name)
 	
 class terminal:
 	def display():
@@ -91,7 +105,7 @@ class terminal:
 			elif text_list[0] == "password":
 				click_power = 10000
 
-def game_run():
+def run_game():
 	terminal.display()
 	running = True
 	while running:
@@ -108,19 +122,3 @@ def game_run():
 		terminal.read_text(text_input)	
 	file_system.file_update(cookies, building_list)
 	file_system.data_dump()
-
-
-os.system('cls')
-cursor = building(0, 0.1, 15, 'cursor')
-grandma = building(0, 1, 100, 'grandma')
-farm = building(0, 8, 1100, 'farm')
-mine = building(0, 47, 12000, 'mine')
-building_list 		= [cursor, grandma, farm, mine]
-building_name_list 	= []
-for buildings in building_list:
-	building_name_list.append(buildings.name)
-
-cookies = 0
-click_power = 1
-current_time = time.time()
-current_cps = 0.0
