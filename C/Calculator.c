@@ -1,18 +1,23 @@
 #include <stdio.h>
+#include <string.h>
 
-int main()
+char group(tokens) 
 {
-    int num1 = 1;
-    int num2 = 2;
-    int sum = num1 + num2;
-    printf("%d\n", num1);
-    printf("%d\n", num2);
-    printf("%d\n", sum);
+    printf("group called: %d\n", tokens);
+    return 0;
+}
 
-    int* pvar;
-    int var;
-    var = 5;
-    pvar = &var;
-
-    printf("%d, %d", var, pvar);
+int main() 
+{
+    int tokens[50];
+    char usr_input[30];
+    fgets(usr_input, sizeof(usr_input), stdin);
+    char *token = strtok(usr_input, " ");
+    while (token != NULL) 
+    {
+        printf("strtok(): %s\n", token);
+        token = strtok(NULL, " ");
+    }
+    group(tokens);
+    return 0;
 }
