@@ -17,6 +17,7 @@ class hand:
 		self.y = y
 		self.width = width
 		self.select = select
+		self.rect = pygame.Rect(self.x, self.y, self.x+self.width, self.y+self.width)
 
 	def draw(self):
 		if self.select:

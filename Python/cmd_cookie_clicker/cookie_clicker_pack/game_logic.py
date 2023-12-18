@@ -5,7 +5,6 @@ from cookie_clicker_pack import file_system
 upgrade_price = 100
 cookies = 0
 click_power = 1
-current_time = time.time()
 current_cps = 0.0
 os.system('cls')
 
@@ -106,6 +105,7 @@ class terminal:
 				click_power = 10000
 
 def run_game():
+	current_time = time.time()
 	terminal.display()
 	running = True
 	while running:
