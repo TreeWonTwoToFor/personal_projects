@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Drawing extends Canvas {
     public static class Point {
@@ -22,6 +23,7 @@ public class Drawing extends Canvas {
     static Point projectedPoint = new Point(100, 100, 100);
     static Point prevProjected = projectedPoint;
     static Point[] wantArray = new Point[8];
+    static ArrayList<Point> lineArray = new ArrayList<>();
     Point camera = new Point(0, 0, -100);
     Point origin = new Point(640, 360, 0);
     int[] originArray = origin.getPoint();
@@ -62,7 +64,7 @@ public class Drawing extends Canvas {
         wantArray[5] = new Point(-100, 100, 200);
         wantArray[6] = new Point(100, -100, 200);
         wantArray[7] = new Point(-100, -100, 200);
-        JFrame frame = new JFrame("Simple GUI");
+        JFrame frame = new JFrame("3D Renderer");
         Canvas canvas = new Drawing();
         canvas.setSize(1280, 720);
         frame.add(canvas);
