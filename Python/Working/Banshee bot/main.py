@@ -532,9 +532,9 @@ async def on_message(message):
             await message.channel.send("https://phasmo.karotte.org/")
         if command_list[1] == "willow":
             # !map willow
-            await channel.send(help_list(command_list[1]))
+            await message.channel.send(help_list(command_list[1]))
             with open('assets/my_file.png', 'rb') as fp:
-                await channel.send(file=discord.File(fp, 'new_filename.png'))
+                await message.channel.send(file=discord.File(fp, 'new_filename.png'))
         else:
             # !map something
             await message.channel.send("https://phasmo.karotte.org/")
