@@ -1,138 +1,117 @@
-import pygame
+import time
+import os
 
-screen_x = 1280
-screen_y = 720
-FPS = 60
-clock = pygame.time.Clock()
+car_position = "intersectionA"
+start_time = time.time()
 
-screen = pygame.display.set_mode((screen_x, screen_y))
-pygame.display.set_caption("Stoplight sim")
+# basic functions to handle simulation space
+def create_array(x, y, filler):
+    cols, rows = (x, y)
+    return([[filler for i in range(cols)] for j in range(rows)])
 
-grass_color = (0, 255, 100)
-road_color = (70, 70, 70)
-line_color = (255, 255, 255)
-headlight_on_color = (255, 255, 0)
-headlight_off_color = (100, 100, 100)
+def print_space(space):
+    for row in space:
+        printed_row = ""
+        for square in row:
+            printed_row = printed_row + square
+        print(printed_row)
 
-red = (255, 0, 0)
-blue = (0, 0, 255)
-purple = (255, 0, 255)
+def place_item(space, x, y, item):
+    space[y][x] = item
 
-class intersection:
-    def __init__(self, x, y, width, height, line_thickness):
-        self.color = road_color
-        self.rect = pygame.Rect(x, y, width, height)
-        self.line_thickness = line_thickness
-
-    def draw(self):
-        pygame.draw.rect(screen, self.color, self.rect)
-
-    def draw_lines(self):
-        pygame.draw.rect(screen, line_color, 
-                         pygame.Rect(self.rect.topleft[0], self.rect.topleft[1], self.line_thickness, self.rect.height))
-        pygame.draw.rect(screen, line_color, 
-                         pygame.Rect(self.rect.topright[0], self.rect.topright[1], self.line_thickness, self.rect.height))
-        pygame.draw.rect(screen, line_color, 
-                         pygame.Rect(self.rect.topleft[0], self.rect.topleft[1], self.rect.width, self.line_thickness))
-        pygame.draw.rect(screen, line_color, 
-                         pygame.Rect(self.rect.bottomleft[0], self.rect.bottomleft[1]-self.line_thickness, self.rect.width, self.line_thickness))
-
-class road:
-    def __init__(self, x, y, width, height):
+# classes 
+class intersection():
+    def __init__(self, space, x, y, id):
+        self.space = space
         self.x = x
         self.y = y
-        self.width = width
-        self.height = height
-        self.rect = pygame.Rect(x, y, width, height)
+        self.id = id
+        self.centerx = x + 2
+        self.centery = y + 2
+    
+    def place(self):
+        for i in range(0, 5):
+            place_item(self.space, self.x+i, self.y, "#")
+            place_item(self.space, self.x+i, self.y+4, "#")
+        for i in range(1, 4):
+            place_item(self.space, self.x, self.y+i, "#")
+            place_item(self.space, self.x+4, self.y+i, "#")
+        place_item(self.space, self.centerx, self.centery, self.id)
 
-    def draw(self):
-        pygame.draw.rect(screen, road_color, self.rect)
-
-class car:
-    def __init__(self, color, car_id, x, y, width, height):
-        self.color = color
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
-        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        self.car_id = car_id
-        self.animation_tick = 0
-        self.facing_direction = "right"
-        self.turning_direction = "none"
-        self.speed = 2
-
-    def drive(self):
-        if self.facing_direction == "right":
-            self.x += self.speed
-        elif self.facing_direction == "left":
-            self.x -= self.speed
-        elif self.facing_direction == "up":
-            self.y -= self.speed
-        elif self.facing_direction == "down":
-            self.y += self.speed
-        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
-        
-
-def draw_stoplights(light_list):
-    for light in light_list:
-        light.draw()
-        light.draw_lines()
-
-def update_cars(car_list):
-    for car in car_list:
-        pygame.draw.rect(screen, car.color, car.rect)
-
-        car.animation_tick += 1
-        headlight_color = 0
-        if car.animation_tick < 30: #headlight should be off
-            headlight_color = headlight_off_color
-        elif car.animation_tick < 60: #headlight should be on
-            headlight_color = headlight_on_color
-
-        if car.animation_tick >= 60:
-            car.animation_tick = 0
-
-        pygame.draw.rect(screen, headlight_off_color, pygame.Rect(car.x+car.width - 10, car.y, 10, 15))
-        pygame.draw.rect(screen, headlight_off_color, pygame.Rect(car.x+car.width - 10, car.y+car.height - 15, 10, 15))
-
-        if car.turning_direction == "left":
-            pygame.draw.rect(screen, headlight_color, pygame.Rect(car.x+car.width - 10, car.y, 10, 15))
-        elif car.turning_direction == "right":
-            pygame.draw.rect(screen, headlight_color, pygame.Rect(car.x+car.width - 10, car.y+car.height - 15, 10, 15))
-            
-
-light_list = [intersection(25, 25, 200, 200, 2), 
-              intersection(325, 25, 200, 200, 5), 
-              intersection(625, 25, 200, 200, 7),
-              intersection(925, 25, 200, 200, 10)]
-car_list = [car((255, 40, 40), 0, 50, 50, 80, 40),
-            car((0, 100, 255), 1, 50, 150, 80, 40)]
-
-running = True
-while running:
-    screen.fill(grass_color)
-    draw_stoplights(light_list)
-    update_cars(car_list)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                car_list[0].turning_direction = "none"
-                car_list[0].facing_direction = "left"
-            elif event.key == pygame.K_RIGHT:
-                car_list[0].turning_direction = "none"
-                car_list[0].facing_direction = "right"
-            elif event.key == pygame.K_UP:
-                car_list[0].turning_direction = "left"
-                car_list[0].facing_direction = "up"
-            elif event.key == pygame.K_DOWN:
-                car_list[0].turning_direction = "right"
-                car_list[0].facing_direction = "down"
+# functions using classes
+def connect_intersections(space, intersection1, intersection2, cross_point):
+    if (intersection1.centerx == intersection2.centerx):
+        # vertical line
+        road_length = abs(intersection1.centery-intersection2.centery)-5
+        for i in range(road_length):
+            if intersection1.y < intersection2.y:
+                place_item(space, intersection1.centerx, intersection1.centery+3+i, "r")
             else:
-                car_list[0].turning_direction = "none"
-                car_list[0].facing_direction = "none"
-    car_list[0].drive()
-    pygame.display.update()
-    clock.tick(FPS)
+                place_item(space, intersection1.centerx, intersection1.centery-3-i, "r")
+    elif (intersection1.centery == intersection2.centery):
+        # horizontal line
+        road_length = abs(intersection1.centerx-intersection2.centerx)-5
+        for i in range(road_length):
+            if intersection1.x < intersection2.x:
+                place_item(space, intersection1.centerx+3+i, intersection1.centery, "r")
+            else:
+                place_item(space, intersection1.centerx-3-i, intersection1.centery, "r")
+    else:
+        global horizontal_length, vertical_length, directionx, directiony
+        horizontal_length = 0
+        vertical_length = 0
+        directionx = 0
+        directiony = 0
+        # need to move in the X and Y directions using the cross_point
+        if intersection1.centerx == cross_point[0]:
+            # cross_point is above/below intersection1
+            horizontal_length = abs(intersection2.centerx-cross_point[0])-2
+        elif intersection2.centerx == cross_point[0]:
+            # cross_point is above/below intersection2
+            horizontal_length = abs(intersection1.centerx-cross_point[0])-2
+        if intersection1.centery == cross_point[1]:
+            # cross_point is left/right intersection1
+            vertical_length = abs(intersection2.centery-cross_point[1])-2
+        elif intersection2.centery == cross_point[1]:
+            # cross_point is left/right intersection2
+            vertical_length = abs(intersection1.centery-cross_point[1])-2
+        if intersection1.centery < intersection2.centery:
+            directiony = -1
+        elif intersection1.centery > intersection2.centery:
+            directiony = 1
+        if intersection1.centerx < intersection2.centerx:
+            directionx = 1
+        elif intersection1.centerx > intersection2.centerx:
+            directionx = -1
+        for i in range(vertical_length):
+            place_item(space, intersection1.centerx, cross_point[1]+directiony*i, "r")
+        for i in range(horizontal_length):
+            place_item(space, cross_point[0]+directionx*i, intersection2.centery, "r")
+
+os.system('cls')
+mySpace = create_array(50, 15, " ")
+intersectionA = intersection(mySpace, 0, 0, "a")
+intersectionB = intersection(mySpace, 7, 7, "b")
+intersectionC = intersection(mySpace, 20, 0, "c")
+intersectionA.place()
+intersectionB.place()
+intersectionC.place()
+connect_intersections(mySpace, intersectionA, intersectionB, (intersectionA.centerx, intersectionB.centery))
+connect_intersections(mySpace, intersectionA, intersectionC, (intersectionA.centerx, intersectionC.centery))
+connect_intersections(mySpace, intersectionC, intersectionB, (intersectionC.centerx, intersectionB.centery))
+print_space(mySpace)
+
+""" running = False
+while running:
+    run_time = time.time() - start_time
+    if run_time > 1 and car_position == "intersectionA":
+        car_position = "roadAB"
+    elif run_time > 2 and car_position == "roadAB":
+        car_position = "intersectionB"
+    elif run_time > 3 and car_position == "intersectionB":
+        car_position = "roadBC"
+    elif run_time > 4 and car_position == "roadBC":
+        car_position = "intersectionC"
+    elif run_time > 5:
+        running = False
+    print_screen(car_position, run_time) """
