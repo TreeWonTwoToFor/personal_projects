@@ -38,8 +38,30 @@ class intersection():
             place_item(self.space, self.x+4, self.y+i, "#")
         place_item(self.space, self.centerx, self.centery, self.id)
 
+class road():
+    def __init__(self, id1, id2, r_len, h_len, v_len):
+        self.id = id1 + id2
+        # total_length = road_length + horiztonal + vertical lengths
+        self.length = r_len + h_len + v_len - 1
+
+    def report(self):
+        print(f"road ID: {self.id}\nroad length: {self.length}")
+
+class car():
+    def __init__(self, place, direction, car_id):
+        self.place = place
+        self.direction = direction
+        self.car_id = car_id
+
+    def report(self):
+        print(f"place: {self.place}, direction: {self.direction}, id: {self.car_id}")
+
 # functions using classes
-def connect_intersections(space, intersection1, intersection2, cross_point):
+def connect_intersections(space, intersection1, intersection2):
+    cross_point = (intersection1.centerx, intersection2.centery)
+    road_length = 0
+    vertical_length = 0
+    horizontal_length = 0
     if (intersection1.centerx == intersection2.centerx):
         # vertical line
         road_length = abs(intersection1.centery-intersection2.centery)-5
@@ -57,9 +79,6 @@ def connect_intersections(space, intersection1, intersection2, cross_point):
             else:
                 place_item(space, intersection1.centerx-3-i, intersection1.centery, "r")
     else:
-        global horizontal_length, vertical_length, directionx, directiony
-        horizontal_length = 0
-        vertical_length = 0
         directionx = 0
         directiony = 0
         # need to move in the X and Y directions using the cross_point
@@ -87,31 +106,26 @@ def connect_intersections(space, intersection1, intersection2, cross_point):
             place_item(space, intersection1.centerx, cross_point[1]+directiony*i, "r")
         for i in range(horizontal_length):
             place_item(space, cross_point[0]+directionx*i, intersection2.centery, "r")
+    return road(intersection1.id, intersection2.id, road_length, horizontal_length, vertical_length)
+    
 
-os.system('cls')
-mySpace = create_array(50, 15, " ")
+mySpace = create_array(25, 25, " ")
 intersectionA = intersection(mySpace, 0, 0, "a")
-intersectionB = intersection(mySpace, 7, 7, "b")
+intersectionB = intersection(mySpace, 7, 18, "b")
 intersectionC = intersection(mySpace, 20, 0, "c")
+intersectionD = intersection(mySpace, 11, 10, "d")
 intersectionA.place()
 intersectionB.place()
 intersectionC.place()
-connect_intersections(mySpace, intersectionA, intersectionB, (intersectionA.centerx, intersectionB.centery))
-connect_intersections(mySpace, intersectionA, intersectionC, (intersectionA.centerx, intersectionC.centery))
-connect_intersections(mySpace, intersectionC, intersectionB, (intersectionC.centerx, intersectionB.centery))
-print_space(mySpace)
+intersectionD.place()
+roadAB = connect_intersections(mySpace, intersectionA, intersectionB)
+roadAC = connect_intersections(mySpace, intersectionA, intersectionC)
+roadCB = connect_intersections(mySpace, intersectionC, intersectionB)
+roadAD = connect_intersections(mySpace, intersectionA, intersectionD)
+roadBD = connect_intersections(mySpace, intersectionB, intersectionD)
 
-""" running = False
-while running:
-    run_time = time.time() - start_time
-    if run_time > 1 and car_position == "intersectionA":
-        car_position = "roadAB"
-    elif run_time > 2 and car_position == "roadAB":
-        car_position = "intersectionB"
-    elif run_time > 3 and car_position == "intersectionB":
-        car_position = "roadBC"
-    elif run_time > 4 and car_position == "roadBC":
-        car_position = "intersectionC"
-    elif run_time > 5:
-        running = False
-    print_screen(car_position, run_time) """
+carA = car(intersectionA, "South", "a")
+
+os.system('cls')
+print_space(mySpace)
+carA.report()
