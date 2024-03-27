@@ -83,21 +83,36 @@ def create_deck(deck):
         for j in range(13):
             deck.append(card(suit_list[i], value_list[j]))
 
-def start_game(deck, p_hand, d_hand):
+def new_shoe(deck):
+    p_hand = []
+    d_hand = []
     create_deck(deck)
     random.shuffle(deck)
     deal(p_hand, deck)
     deal(d_hand, deck)
     return (deck, hand(p_hand), hand(d_hand))
 
-def print_all_fancy(d_hand, p_hand, d_up):
+def deal_hands(deck):
+    p_hand = []
+    d_hand = []
+    deal(p_hand, deck)
+    deal(d_hand, deck)
+    return (hand(p_hand), hand(d_hand))
+
+def print_all_fancy(d_hand, p_hand, d_up, cash, bet):
     os.system("cls")
     print_hand_fancy(d_hand.card_array, d_up)
-    print("\n\n")
+    print(f"""
+    {bet}
+    """)
     print_hand_fancy(p_hand.card_array, False)
+    print(f"${cash}")
 
-card_deck, player_hand, dealer_hand = start_game([], [], [])
-print_all_fancy(dealer_hand, player_hand, True)
+input("enter last 4 digits of credit card number: ")
+user_bankroll = int(input("Please enter a bankroll: "))
+user_bet = int(input("How much do you want to bet? "))
+card_deck, player_hand, dealer_hand = new_shoe([])
+print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
 
 running = True
 while running:
@@ -106,35 +121,55 @@ while running:
     if user_input.lower() == "h":
         os.system("cls")
         player_hand.card_array.append(card_deck.pop())
-        print_all_fancy(dealer_hand, player_hand, True)
+        print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
         player_hand.update_hand_value()
         if player_hand.value > 21:
             game_over = True
     elif user_input.lower() == "s":
         os.system("cls")
         game_over = True
-        print_all_fancy(dealer_hand, player_hand, False)
+        print_all_fancy(dealer_hand, player_hand, False, user_bankroll, user_bet)
         while dealer_hand.value < 17:
             time.sleep(1)
             dealer_hand.card_array.append(card_deck.pop())
-            print_all_fancy(dealer_hand, player_hand, False)
+            print_all_fancy(dealer_hand, player_hand, False, user_bankroll, user_bet)
             dealer_hand.update_hand_value()
     elif user_input.lower() == "exit":
         running = False
     if game_over:
+        winning = True
         dealer_hand.update_hand_value()
         player_hand.update_hand_value()
-        if player_hand.value > 21:
-            print("You lose! Do you want to play again?")
-        elif dealer_hand.value > 21 or dealer_hand.value < player_hand.value:
-            print("You win! Do you want to play again?")
-        elif dealer_hand.value == player_hand.value:
+        if player_hand.value > 21 or (player_hand.value < dealer_hand.value and dealer_hand.value <= 21):
+            winning = False
+        if player_hand.value == dealer_hand.value:
             print("It's a tie! Do you want to play again?")
-        play_again = input("Y/N> ")
-        if play_again.lower() == "y":
-            card_deck, player_hand, dealer_hand = start_game([], [], [])
-            print_all_fancy(dealer_hand, player_hand, True)
-        elif play_again.lower() == "n":
-            running = False
+        else:
+            if winning:
+                print("You win! Do you want to play again?")
+                user_bankroll += user_bet
+            else:
+                print("You lose. Do you want to play again?")
+                user_bankroll -= user_bet
+        while True:
+            play_again = input("(Y)es/(N)o/(C)hange bet> ")
+            if play_again.lower() == "y":
+                if (len(card_deck) > 10):
+                    player_hand, dealer_hand = deal_hands(card_deck)
+                else:
+                    card_deck, player_hand, dealer_hand = new_shoe([])
+                print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
+                break
+            elif play_again.lower() == "n" or play_again.lower() == "exit":
+                running = False
+                break
+            elif play_again.lower() == "c":
+                user_bet = int(input("How much do you want to bet? "))
+                if (len(card_deck) > 10):
+                    player_hand, dealer_hand = deal_hands(card_deck)
+                else:
+                    card_deck, player_hand, dealer_hand = new_shoe([])
+                print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
+                break
 
 os.system('cls')
