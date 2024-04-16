@@ -1,0 +1,40 @@
+Does user want to hit, stay, or leave?
+    if hit
+        pop the card deck onto the player hand
+        print hand
+        if the hand is greater than 21
+            end the  game
+    if stand
+        print hand
+        while the dealer hand is less than 17
+            pop the card deck onto the dealer 
+            print hand
+            update the dealers hand value
+
+if the game is over 
+    (either becuase dealer > 17, or player bust)
+    update hand values 
+    if the player lost (dealer better / player bust)
+        set winning to false
+    if they are equal
+        print out a tie
+    otherwise (defined result)
+        if player won
+            print they won
+            update bankroll
+        if lost
+            print they lost
+            update bankroll
+
+after the hand
+    ask if the want to play again
+        if they do
+            deal hand/create new shoe
+        print hand
+        if they do not
+            exit the loop
+        if they want to change their bet
+            update the bet
+            deal/new shoe
+        print fancy
+        

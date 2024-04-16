@@ -1,0 +1,45 @@
+Player decision
+    if hit
+        pop from top of deck
+    if stand
+        break out of this loop
+    if double down
+        double the user_bet
+        run this hit code
+        break out of this loop
+    if dealer can have blackjack
+        let the player bet on insurance
+         - should only be half of the main bet max
+         - isn't tied to the main bet
+        allow the dealer to tell if there was BJ
+            pay out/steal money
+    if they can split and want to
+        need to make two hands (objects)
+        recycle this loop but with each hand individually
+         - remember to not let them split again
+
+when the player is done
+    show the other dealer card
+    while winner is undetermined
+        check to see if the player lost
+            if they have more than 21
+        check to see if the dealer has less than 17
+            give another card
+    We know who the winner is!
+        win 
+            if they got a natural 21 -> pay 3:2
+            if they won normally -> pay normally
+        tie
+            push the bet
+        loss
+            take away the money they put in
+    
+after the bet has been handled
+    ask what the player wants
+        they want to play again
+            do they keep the same bet?
+                if yes, don't do anything
+                if no, ask them for the new bet
+            deal/create new shoe
+        they don't want to play again
+            exit out of the game
