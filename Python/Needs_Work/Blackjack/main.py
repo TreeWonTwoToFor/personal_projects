@@ -14,6 +14,7 @@ if not testing:
 else:
     user_bankroll = 1000
     user_bet = 25
+old_bet = user_bet
 card_deck, player_hand, dealer_hand = new_shoe([])
 print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
 ###########################################################################
@@ -42,6 +43,7 @@ while running:
                 player_hand.card_array.append(card_deck.pop())
                 player_hand.update_hand_value()
             elif user_input.lower() == "d":
+                old_bet = user_bet
                 user_bet = user_bet * 2
                 player_hand.card_array.append(card_deck.pop())
                 player_hand.update_hand_value()
@@ -101,6 +103,7 @@ while running:
         else: # player must have lost
             user_bankroll -= user_bet
             print("You lost $" + str(user_bet) + ". Better luck next time.")
+        user_bet = old_bet
 
         # Post hand 
         post_game = True
