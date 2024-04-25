@@ -11,8 +11,10 @@ screen = pygame.display.set_mode((screen_x, screen_y), pygame.RESIZABLE)
 pygame.display.set_caption("UI Builder")
 pygame.display.set_icon(icon)
 
+testing = True
 green = (0, 255, 150)
 red = (255, 0, 0)
+blue = (0, 0, 255)
 white = (255, 255, 255)
 grey = (150, 150, 150)
 black = (0,0,0)
@@ -32,6 +34,20 @@ class button:
             pygame.draw.rect(screen, white, pygame.Rect(self.x+5, self.y+5, self.width-10, self.height-10))
         else:
             pygame.draw.rect(screen, grey, pygame.Rect(self.x+5, self.y+5, self.width-10, self.height-10))
+        if testing:
+            range_of_error = 10
+            top_left = (self.x, self.y)
+            top_right = (self.x+self.width, self.y)
+            bottom_left = (self.x, self.y+self.height)
+            bottom_right = (self.x+self.width, self.y+self.height)
+            top_edge = pygame.Rect(self.x-range_of_error, self.y-range_of_error, self.width, 2*range_of_error)
+            corner_array = [top_left, top_right, bottom_left, bottom_right]
+            for corner in corner_array:
+                cx = corner[0]
+                cy = corner[1]
+                corner_rect = pygame.Rect(cx-range_of_error, cy-range_of_error, 2*range_of_error, 2*range_of_error)
+                pygame.draw.rect(screen, red, corner_rect)
+            pygame.draw.rect(screen, blue, top_edge)
 
     def correct(self):
         screen_x = screen.get_size()[0]
