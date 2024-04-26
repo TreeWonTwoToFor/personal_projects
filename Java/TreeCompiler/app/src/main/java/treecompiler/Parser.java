@@ -31,6 +31,7 @@ public class Parser {
         }
     }
 
+    @SuppressWarnings("unused")
     private void stringArrayToFile(String arrayType) throws IOException {
         FileOutputStream fos = new FileOutputStream(filePath);
         String data = arrayListToString(arrayType);
@@ -56,6 +57,7 @@ public class Parser {
         return data;
     }
 
+    @SuppressWarnings("unused")
     private String testParsing() {
         String output = "";
         if (tokenList.get(0).getName().equals("add")) {

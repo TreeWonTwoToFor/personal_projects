@@ -14,9 +14,9 @@ CompLing word frequency: This program actually does everything that I wanted it 
     You can give it a text file, and It'll graph the word frequency
 fun_isometric: Fun basic concept, but it doesn't have mouse movement for some reason (from what I remember implementing)
 punchcard: successfully is able to convert binary to strings, and vise versa. Would be fun to connect this to an actual machine
-pygame_boilerplate: This is a good base, but it might be nice to build out more of a library of game like commands
+pygame_boilerplate: This is a good base, but it might be nice to build out more of a library of game-like commands
 senior quote: fully functional game of RPS in the word limit, so I'd count that as a win.
-Tree_script: It can read great from text files, but it needs some way to hold variable data for it to work as a terminal application
+Tree_script: It can read great from text files, but a terminal version would be cool
 UI Builder: This works for moving around windows by the corners, but it 
     - doesn't work by grabbing the edges of windows
     - windows don't hold any information (img or text)
