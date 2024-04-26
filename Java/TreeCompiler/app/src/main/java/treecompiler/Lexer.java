@@ -42,12 +42,22 @@ public class Lexer {
 
     private void makeTokens() {
         for (String word : wordList) {
-            if (word.equals("ADD")) {
-                newTokenToList("add", "operator");
-            } else if (isNumeric(word)) {
-                newTokenToList(word, "number");
+            String wordToCheck = word;
+            boolean semiEnd = false;
+            if (wordToCheck.contains(";")) {
+                semiEnd = true;
+                wordToCheck = wordToCheck.replace(";", "");
+            }
+            if (wordToCheck.equals("ADD")) {
+                newTokenToList("add", "math operator");
+            } else if (isNumeric(wordToCheck)) {
+                newTokenToList(wordToCheck, "number");
             } else {
                 newTokenToList();
+            }
+
+            if (semiEnd) {
+                newTokenToList("semi", "command end");
             }
         }
     }

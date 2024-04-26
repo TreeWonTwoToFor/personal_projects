@@ -1,1 +1,4 @@
-<add, operator> <3, number> <5, number> 
+<add, math operator>
+<3, number>
+<5, number>
+<semi, command end>

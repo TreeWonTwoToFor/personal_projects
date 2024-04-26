@@ -33,10 +33,9 @@ public class Parser {
         String data = "";
         if (listType.equals("token")) {
             for (Token token : this.tokenList) {
-                data = data + "<" + token.getName() + ", " + token.getValue() + "> ";
+                data = data + "<" + token.getName() + ", " + token.getValue() + ">\n";
             }
         }
-        
         return data;
     }
 }
