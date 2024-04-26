@@ -4,26 +4,26 @@
 package treecompiler;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        FileInputStream fis = new FileInputStream("C:\\Tree's Stuff\\tree_compiler\\input.txt");
+        FileInputStream fis = new FileInputStream("C:\\Users\\Jonathan\\Programming\\random_stuff\\Java\\TreeCompiler\\input.txt");
         Scanner scnr = new Scanner(fis);
-        outputToFile(scnr);
+        Lexer mLexer = new Lexer(outputArrayList(scnr));
+        mLexer.runLexer();
+        Parser mParser = new Parser(mLexer.getTokenList());
+        mParser.runParser();
     }
 
-    public static void outputToFile(Scanner scanner) throws IOException {
-        FileOutputStream fos = new FileOutputStream("C:\\Tree's Stuff\\tree_compiler\\output.txt");
-        String data = "";
-        while (scanner.hasNextLine()) {
-            data = data + scanner.nextLine();
+    public static ArrayList<String> outputArrayList(Scanner scanner) {
+        ArrayList<String> outArray = new ArrayList<>();
+        while (scanner.hasNext()) {
+            String word = scanner.next();
+            outArray.add(word);
         }
-        byte[] array = data.getBytes();
-        fos.write(array);
-        fos.flush();
-        fos.close();
+        return outArray;
     }
 }
