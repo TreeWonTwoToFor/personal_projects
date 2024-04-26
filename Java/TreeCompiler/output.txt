@@ -1,4 +1,3 @@
-<add, math operator>
-<3, number>
-<5, number>
-<semi, command end>
+registers = [("ra", "0"), ("rb", "0"), ("rc", "0"), ("rd", "0")]
+for i in range(len(registers)):
+	print(registers[i])
