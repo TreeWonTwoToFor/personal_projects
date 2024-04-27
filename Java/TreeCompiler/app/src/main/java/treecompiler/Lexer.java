@@ -50,6 +50,10 @@ public class Lexer {
             }
             if (wordToCheck.equals("ADD")) {
                 newTokenToList("add", "math operator");
+            } else if (wordToCheck.equals("OUT")) {
+                newTokenToList("output", "language function");
+            } else if (wordToCheck.equals("RAX")||wordToCheck.equals("RBX")||wordToCheck.equals("RCX")) {
+                newTokenToList(wordToCheck.toLowerCase(), "System register");
             } else if (isNumeric(wordToCheck)) {
                 newTokenToList(wordToCheck, "number");
             } else {

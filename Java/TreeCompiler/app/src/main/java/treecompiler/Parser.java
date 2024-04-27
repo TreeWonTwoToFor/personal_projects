@@ -14,11 +14,73 @@ public class Parser {
     }
 
     public void runParser() throws IOException {
-        printArrayList("token");
         generateCode();
         stringToFile(code);
     }
 
+    private void stringToFile(String string) throws IOException {
+        FileOutputStream fos = new FileOutputStream(filePath);
+        fos.write(string.getBytes());
+        fos.flush();
+        fos.close();
+    }
+
+    private String tokenLIstString() {
+        String data = "";
+        for (Token token : this.tokenList) {
+            data = data + "<" + token.getName() + ", " + token.getValue() + ">\n";
+        }
+        return data;
+    }
+
+    private boolean checkTokenIndex(String tokenName, int index) {
+        return (tokenList.get(index).getName().equals(tokenName));
+    }
+
+    private void generateCode() {
+        // generate a list of registers that the user can use
+        ArrayList<Register> registers = new ArrayList<>();
+        registers.add(new Register("rax", "0"));
+        registers.add(new Register("rbx", "0"));
+        registers.add(new Register("rcx", "0"));
+        code += "registers = [";
+        for (int i = 0; i < registers.size(); i++) {
+            String registerPair = "(\"";
+            Register register = registers.get(i);
+            registerPair += register.getName() + "\", \"" + register.getStingValue() + "\")";
+            if (!(i == registers.size()-1)) {
+                registerPair +=  ", ";
+            }
+            code += registerPair;
+        }
+        code += "]\n";
+        code += "memory = []";
+
+        System.out.println(tokenLIstString());
+
+        int currentToken = 0;
+        while (currentToken < tokenList.size()) {
+            code += "\n";
+            if (checkTokenIndex("add", currentToken)) {
+                if (tokenList.get(1).getValue().equals("number")) {
+                    if (tokenList.get(2).getValue().equals("number")) {
+                        if (checkTokenIndex("semi", currentToken+3)) {
+                            code += "rax = " + tokenList.get(1).getName().toString();
+                            code += "+" + tokenList.get(2).getName().toString();
+                            currentToken += 4;
+                        }
+                    }
+                }
+            } else if (checkTokenIndex("output", currentToken)) {
+                if (checkTokenIndex("semi", currentToken+2)) {
+                    code += "print(" + tokenList.get(currentToken+1).getName().toString() + ")";
+                    currentToken += 3;
+                }
+            } 
+        }
+    }
+
+    /*@SuppressWarnings("unused")
     private void printArrayList(String arrayType) {
         if (arrayType.equals("token")) {
             for (int i = 0; i < tokenList.size(); i++) {
@@ -29,22 +91,6 @@ public class Parser {
                 System.out.print(output);
             }
         }
-    }
-
-    @SuppressWarnings("unused")
-    private void stringArrayToFile(String arrayType) throws IOException {
-        FileOutputStream fos = new FileOutputStream(filePath);
-        String data = arrayListToString(arrayType);
-        fos.write(data.getBytes());
-        fos.flush();
-        fos.close();
-    }
-
-    private void stringToFile(String string) throws IOException {
-        FileOutputStream fos = new FileOutputStream(filePath);
-        fos.write(string.getBytes());
-        fos.flush();
-        fos.close();
     }
 
     private String arrayListToString(String listType) {
@@ -58,39 +104,11 @@ public class Parser {
     }
 
     @SuppressWarnings("unused")
-    private String testParsing() {
-        String output = "";
-        if (tokenList.get(0).getName().equals("add")) {
-            if (tokenList.get(1).getValue().equals("number")) {
-                if (tokenList.get(2).getValue().equals("number")) {
-                    if (tokenList.get(3).getName().equals("semi")) {
-                        output += "print(";
-                        output += tokenList.get(1).getName().toString();
-                        output += "+";
-                        output += tokenList.get(2).getName().toString();
-                        output += ")";
-                    }
-                }
-            }
-        }
-        return output;
-    }
-
-    private void generateCode() {
-        // generate a list of registers that the user can use
-        ArrayList<Register> registers = new ArrayList<>();
-        registers.add(new Register("ra", "0"));
-        registers.add(new Register("rb", "0"));
-        registers.add(new Register("rc", "0"));
-        registers.add(new Register("rd", "0"));
-        code += "registers = [";
-        for (int i = 0; i < registers.size(); i++) {
-            Register register = registers.get(i);
-            code += "(\"" + register.getName() + "\", \"" + register.getStingValue() + "\")";
-            if (!(i == registers.size()-1)) {
-                code +=  ", ";
-            }
-        }
-        code += "]\nfor i in range(len(registers)):\n\tprint(registers[i])";
-    }
+    private void stringArrayToFile(String arrayType) throws IOException {
+        FileOutputStream fos = new FileOutputStream(filePath);
+        String data = arrayListToString(arrayType);
+        fos.write(data.getBytes());
+        fos.flush();
+        fos.close();
+    }*/
 }

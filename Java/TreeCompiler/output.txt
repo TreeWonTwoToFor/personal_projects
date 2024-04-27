@@ -1,3 +1,4 @@
-registers = [("ra", "0"), ("rb", "0"), ("rc", "0"), ("rd", "0")]
-for i in range(len(registers)):
-	print(registers[i])
+registers = [("rax", "0"), ("rbx", "0"), ("rcx", "0")]
+memory = []
+rax = 3+5
+print(rax)
