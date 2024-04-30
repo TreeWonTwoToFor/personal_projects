@@ -1,0 +1,4 @@
+registers = [("rax", "0"), ("rbx", "0"), ("rcx", "0")]
+memory = []
+rax = 3+5
+print(rax)

@@ -1,13 +1,114 @@
 package treecompiler;
 
+import java.util.ArrayList;
+import java.io.IOException;
+
 public class Lexer {
-    private int value = 0;
+    private ArrayList<String> wordList;
+    private ArrayList<Token> tokenList;
 
     public Lexer() {
-        this.value = 10;
+        this.wordList = new ArrayList<>();
+        this.tokenList = new ArrayList<>();
     }
 
-    public int returnValue() {
-        return this.value;
+    public Lexer(ArrayList<String> inputArrayList) {
+        this.wordList = inputArrayList;
+        this.tokenList = new ArrayList<>();
     }
+
+    public void runLexer() throws IOException {
+        makeTokens();
+        /*printArrayList("word");
+        printArrayList("token");
+        stringArrayToFile("token");*/
+    }
+
+    public ArrayList<String> getWordList() {
+        return this.wordList;
+    }
+
+    public ArrayList<Token> getTokenList() {
+        return this.tokenList;
+    }
+
+    private void newTokenToList() {
+        tokenList.add(new Token());
+    }
+
+    private void newTokenToList(String name, String value) {
+        tokenList.add(new Token(name, value));
+    }
+
+    private void makeTokens() {
+        for (String word : wordList) {
+            String wordToCheck = word;
+            boolean semiEnd = false;
+            if (wordToCheck.contains(";")) {
+                semiEnd = true;
+                wordToCheck = wordToCheck.replace(";", "");
+            }
+            if (wordToCheck.equals("ADD")) {
+                newTokenToList("add", "math operator");
+            } else if (wordToCheck.equals("OUT")) {
+                newTokenToList("output", "language function");
+            } else if (wordToCheck.equals("RAX")||wordToCheck.equals("RBX")||wordToCheck.equals("RCX")) {
+                newTokenToList(wordToCheck.toLowerCase(), "System register");
+            } else if (isNumeric(wordToCheck)) {
+                newTokenToList(wordToCheck, "number");
+            } else {
+                newTokenToList();
+            }
+
+            if (semiEnd) {
+                newTokenToList("semi", "command end");
+            }
+        }
+    }
+
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            @SuppressWarnings("unused")
+            int i = Integer.parseInt(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    /* OLD FUNCTIONS THAT ARE NO LONGER NEEDED
+    
+    private void stringArrayToFile(String arrayType) throws IOException {
+        FileOutputStream fos = new FileOutputStream(filePath);
+        String data = arrayListToString(arrayType);
+        fos.write(data.getBytes());
+        fos.flush();
+        fos.close();
+    }
+
+    private String arrayListToString(String listType) {
+        String data = "";
+        if (listType.equals("word")) {
+            for (String string : this.wordList) {
+                data = data + string + " ";
+            }
+        } else if (listType.equals("token")) {
+            for (Token token : this.tokenList) {
+                data = data + "<" + token.getName() + ", " + token.getValue() + "> ";
+            }
+        }
+        
+        return data;
+    }
+
+    private void printArrayList(String arrayType) {
+        if (arrayType.equals("word")) {System.out.println(wordList);}
+        else if (arrayType.equals("token")) {System.out.println(tokenList);}
+    }
+    
+    */
 }

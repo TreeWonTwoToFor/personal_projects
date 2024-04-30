@@ -1,0 +1,2 @@
+ADD 3 5;
+OUT RAX;
