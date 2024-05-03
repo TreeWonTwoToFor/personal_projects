@@ -28,3 +28,4 @@ def make_map(map_size):
         for j in range(map_size[1]):
             zone_row.append(zone(j, i, [], f"You are currently at {j, i}"))
         zone_array.append(zone_row)
+    zone_array[1][1] = zone(1,1,[], "blocked")
