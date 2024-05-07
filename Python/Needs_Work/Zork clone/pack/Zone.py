@@ -13,6 +13,7 @@ class zone:
 
     def print_desc(self):
         print(self.description)  
+        print(f"You can see a {self.object_list[0].name}.")
 
 zone_array = []
 
@@ -28,4 +29,4 @@ def make_map(map_size):
         for j in range(map_size[1]):
             zone_row.append(zone(j, i, [], f"You are currently at {j, i}"))
         zone_array.append(zone_row)
-    zone_array[1][1] = zone(1,1,[], "blocked")
+    zone_array[0][0] = zone(0,0,[], "blocked")

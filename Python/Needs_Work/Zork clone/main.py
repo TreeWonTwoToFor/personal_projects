@@ -5,8 +5,8 @@ import os
 
 os.system('cls')
 
-player_x = 0
-player_y = 0
+player_x = 1
+player_y = 1
 map_size = (3,3)
 
 Zone.make_map(map_size)
@@ -28,10 +28,23 @@ def move_player(player_input):
         if x >= 0 and x <= map_size[0]-1 and y >= 0 and y <= map_size[1]-1 and not Zone.get_zone(x,y).description == "blocked":
             player_x, player_y = x, y
 
-possible_moves = ["north", "n", "south", "s", "east", "e", "west", "w"]
-possible_actions = ["grab", "break"]
+rock = Entity.entity("rock", 1, 0, [("move", "You pushed the rock. I'm not sure why, because it didn't do anything.")])
+pizza = Entity.entity("pizza", 2, 0, [("eat", "You take a bite of the pizza. It tastes quite greasy")])
+person = Entity.entity("guy", 0, 1, [("talk", "'Hello! My name is Ramoth. I'm just here.'")])
+lake = Entity.entity("lake", 1, 1, [("swim", "You take a dive into the lake. It's quite chilly, but also refreshing.")])
+stick = Entity.entity("stick", 2, 1, [("break", "You broke the stick")])
+tree = Entity.entity("tree", 0, 2, [("climb", "You climbed up the tree and can see around. However, you can't see that much.")])
+house = Entity.entity("house", 1, 2, [("enter", "You try to enter the house, but the door is locked")])
+chest = Entity.entity("chest", 2, 2, [("open", "You open the chest to see - well nothing. Better luck next time!")])
 
-stick = Entity.entity("stick", 2, 2, [("grab", "You picked up the stick"), ("break", "You broke the stick")])
+possible_moves = ["north", "n", "south", "s", "east", "e", "west", "w"]
+possible_actions = ["grab", "break", "move", "eat", "talk", "swim", "climb", "enter", "open"]
+entity_list = [rock, pizza, person, lake, stick, tree, house, chest]
+
+for i in range(len(entity_list)):
+    current_entity = entity_list[i]
+    x,y = current_entity.x, current_entity.y
+    Zone.get_zone(x,y).object_list.append(current_entity)
 
 outcome = ""
 running = True
@@ -45,8 +58,25 @@ while running:
     player_input_list = player_input.split()
     move_player(player_input)
     if player_input_list[0] in possible_actions:
-        if player_input_list[1] == "stick":
-            outcome = stick.do_action(player_input_list[0], player_x, player_y)
+        match player_input_list[1]:
+            case "rock":
+                outcome = rock.do_action(player_input_list[0], player_x, player_y)
+            case "pizza":
+                outcome = pizza.do_action(player_input_list[0], player_x, player_y)
+            case "person":
+                outcome = person.do_action(player_input_list[0], player_x, player_y)
+            case "lake":
+                outcome = lake.do_action(player_input_list[0], player_x, player_y)
+            case "stick":
+                outcome = stick.do_action(player_input_list[0], player_x, player_y)
+            case "tree":
+                outcome = tree.do_action(player_input_list[0], player_x, player_y)
+            case "house":
+                outcome = house.do_action(player_input_list[0], player_x, player_y)
+            case "chest":
+                outcome = chest.do_action(player_input_list[0], player_x, player_y)
+    elif player_input_list[0] == "look":
+        Zone.get_zone(player_x, player_y).print_desc()
     if player_input == "exit":
         os.system('cls')
         running = False

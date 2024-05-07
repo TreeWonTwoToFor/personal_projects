@@ -4,6 +4,7 @@ class entity:
         self.x = x
         self.y = y
         self.action_list = action_list
+        action_list.append(("grab", "You picked up the " + name))
 
     def do_action(self, player_input, player_x, player_y):
         if player_x == self.x and player_y == self.y:
