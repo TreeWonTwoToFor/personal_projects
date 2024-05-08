@@ -23,10 +23,13 @@ def get_zone(x,y):
 def give_scene(zone):
     zone.print_desc()
 
+def block_zone(zone):
+    zone.object_list = []
+    zone.description = "blocked"
+
 def make_map(map_size):
     for i in range(map_size[0]):
         zone_row = []
         for j in range(map_size[1]):
             zone_row.append(zone(j, i, [], f"You are currently at {j, i}"))
         zone_array.append(zone_row)
-    zone_array[0][0] = zone(0,0,[], "blocked")
