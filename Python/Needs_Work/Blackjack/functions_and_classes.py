@@ -39,6 +39,12 @@ class hand:
             for aces in range(num_aces):
                 sum -= 10
         self.value = sum
+
+    def has_ace(self):
+        for card in self.card_array:
+            if card.return_card_value() == 11:
+                return True
+        return False
 ###########################################################################
 
 ###########################################################################
@@ -111,3 +117,22 @@ def print_all_fancy(d_hand, p_hand, d_up, cash, bet):
     """)
     print_hand_fancy(p_hand.card_array, False)
     print(f"${cash}")
+
+def hands_to_basic_strategy(player_hand, dealer_hand):
+    output = ""
+    if dealer_hand.card_array[1].return_card_value() == 11:
+        output += "A: "
+    else:
+        output += str(dealer_hand.card_array[1].return_card_value()) + ": "
+    if player_hand.has_ace():
+        if player_hand.card_array[0].return_card_value() == 11:
+            output += "A, " + str(player_hand.card_array[1].return_card_value())
+        else:
+            output += "A, " + str(player_hand.card_array[0].return_card_value())
+    elif player_hand.card_array[0].return_card_value() == player_hand.card_array[1].return_card_value():
+        output += str(player_hand.card_array[0].return_card_value()) + ", " + str(player_hand.card_array[0].return_card_value())
+    else:
+        output += str(int(player_hand.card_array[0].return_card_value()) + int(player_hand.card_array[1].return_card_value()))
+    print(output)
+
+    

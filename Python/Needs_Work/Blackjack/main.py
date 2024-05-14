@@ -1,6 +1,6 @@
 import os
 import time
-from functions_and_classes import print_all_fancy, new_shoe, deal_hands
+from functions_and_classes import print_all_fancy, new_shoe, deal_hands, hands_to_basic_strategy
 
 ###########################################################################
 #                           Initial setup                                 #
@@ -27,8 +27,38 @@ while running:
         # Basic setup
         dealer_hand.update_hand_value()
         dealer_upcard = dealer_hand.card_array[1].return_card_value()
-        need_player_decision = not (dealer_hand.value == 21)
         is_insurance_possible = (dealer_upcard == 11)
+        need_player_decision = True
+        insurance_status = ""
+
+        os.system('cls')
+        print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
+
+        if not is_insurance_possible and dealer_hand.value == 21:
+            need_player_decision = False
+
+        # Handing the possible insurance
+        if is_insurance_possible:
+            need_insurance_decision = True
+            while need_insurance_decision:
+                want_insurance = input("Do you want to bet on insurance (Y/N)?")
+                if want_insurance.lower() == "y":
+                    need_player_decision, need_insurance_decision = False, False
+                    insurance_bet = int(input("How much do you want to bet on insurance? "))
+                    print(f'insurance: {insurance_bet}')
+                    # FIXME: double check that insuarnce bet is below half of main bet + that it is a valid number
+                    if dealer_hand.value == 21:
+                        insurance_status = "player won"
+                    else:
+                        insurance_status = "player lost"
+                    input()
+                elif want_insurance.lower() == "n":
+                    need_insurance_decision = False
+                    insurance_status = "no insurance bet"
+                    insurance_bet = 0
+                else:
+                    print("Need a valid input (Y/N).")
+        
         # Player's turn
         while need_player_decision:
             os.system('cls')
@@ -36,8 +66,7 @@ while running:
             if player_hand.value >= 21:
                 need_player_decision = False
                 break
-            if is_insurance_possible:
-                print("Insurance is possible! Press 'I' to bet.")
+            hands_to_basic_strategy(player_hand, dealer_hand)
             user_input = input("Hit, Stay, or Double (H/S/D)? ")
             if user_input.lower() == "h":
                 player_hand.card_array.append(card_deck.pop())
@@ -50,25 +79,15 @@ while running:
                 need_player_decision = False
                 # make sure this bet and only one card rule works
             elif user_input.lower() == "s":
-                print("something")
                 need_player_decision = False
                 break
-            elif user_input.lower() == "i" and is_insurance_possible:
-                insurance_bet = int(input("How much do you want to bet on insurance? "))
-                print(f'insurance: {insurance_bet}')
-                # double check that insuarnce bet is below half of main bet + that it is a valid number
-                if dealer_hand.value == 21:
-                    print("player wins insurance")
-                else:
-                    print("player loses insurance")
-                need_player_decision = False
-                input()
+                
         # Dealer's turn
         dealer_playing = True
         while dealer_playing:
             os.system('cls')
             print_all_fancy(dealer_hand, player_hand, False, user_bankroll, user_bet)
-            if player_hand.value > 21:
+            if player_hand.value >= 21:
                 dealer_playing = False
                 break
             if dealer_hand.value >= 17:
@@ -83,6 +102,14 @@ while running:
         player_won = False
         three_two_pay = False
         is_tie = False
+        if insurance_status is not "":
+            match insurance_status:
+                case "player won":
+                    print("yippee")
+                    user_bankroll += insurance_bet
+                case "player lost" | "no insurance bet":
+                    print("waaaahhhh")
+                    user_bankroll -= insurance_bet
         if dealer_hand.value > 21 or (player_hand.value > dealer_hand.value and player_hand.value <= 21):
             player_won = True
         if player_hand.value == 21 and len(player_hand.card_array) == 2:
