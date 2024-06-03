@@ -1,0 +1,14 @@
+JP Lyric Parser:
+    A program that takes data from my spotify playlist, goes through Musixmatch, then a Japanese Parser, 
+    and outputs files that allow me to see hirigana, romaji, the parsed text, and then an english translation
+
+3D Renderer/Builder:
+    A program that allows you to manipulate 3D space using a custom 3D view
+
+Rollercoaster/Planet Orbit SIM:
+    Simulations for a rollercaoster that calculate the physics, and maybe there's a game around it, and a 
+    Planet sim that calculates the orbits of planets with gravity. You could maybe add planets, and mess around.
+
+Nertz:
+    The card game, where I could be able to setup like speedrun modes, and maybe connect to other people online. Chat system?
+
