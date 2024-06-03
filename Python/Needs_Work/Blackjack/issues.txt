@@ -1,0 +1,4 @@
+No splitting
+basic strategy printout doesn't work after the initial deal
+When you lose insurance, it doesn't tell you in a meaningful way.
+when you say no to insurance, it will let you play even if it's BJ.

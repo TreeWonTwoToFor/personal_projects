@@ -35,9 +35,9 @@ class hand:
             sum += card.return_card_value()
             if (card.value == "A"):
                 num_aces += 1
-        if (sum > 21 and num_aces >= 1):
-            for aces in range(num_aces):
-                sum -= 10
+        while (sum > 21 and num_aces >= 1):
+            sum -= 10
+            num_aces -= 1
         self.value = sum
 
     def has_ace(self):
@@ -116,7 +116,13 @@ def print_all_fancy(d_hand, p_hand, d_up, cash, bet):
     {bet}
     """)
     print_hand_fancy(p_hand.card_array, False)
-    print(f"${cash}")
+    cent = cash % 1
+    if cent == 0:
+        cent = ".00"
+    else:
+        cent = "0"
+    print(f"${cash}{cent}")
+    print(p_hand.value)
 
 def hands_to_basic_strategy(player_hand, dealer_hand):
     output = ""
