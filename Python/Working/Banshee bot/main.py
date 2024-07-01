@@ -549,5 +549,5 @@ async def on_message(message):
         await message.channel.send("no u")
 
 os.system("cls")
-f = open('token.json', "r")
+f = open("C:\\Tree's Stuff\\discord_tokens\\banshee.json", "r")
 client.run(json.loads(f.read()).get("token"))

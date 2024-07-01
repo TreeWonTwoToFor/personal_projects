@@ -12,3 +12,5 @@ Rollercoaster/Planet Orbit SIM:
 Nertz:
     The card game, where I could be able to setup like speedrun modes, and maybe connect to other people online. Chat system?
 
+Golf/Sushi Go analasis:
+    a program that simulates games, and can help users learn more about strategy
