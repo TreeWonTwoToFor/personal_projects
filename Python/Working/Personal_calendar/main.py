@@ -5,28 +5,21 @@ import datetime
 
 intents = discord.Intents.default()
 intents.message_content = True
-
 client = discord.Client(intents=intents)
-
-seconds_in_a_day = 24 * 60 * 60
-day_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+seconds_in_day = 24*60*60
 
 @client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-    
-    if message.content.startswith(".start"):
-        running = True
-        while running:
-            day = datetime.date.today()
-            day_of_week = day.weekday()
-            if day_of_week != 6:
-                msg = await message.channel.send(day_list[day_of_week] + ", " + str(day))
-                emoji_list = ['🏋️‍♂️', '🚿', '🥞', '🍔', '💻', '㊗️', '⬜', '🟦']
-                for emoji in emoji_list:
-                    await msg.add_reaction(emoji)
-                time.sleep(2.0)
+async def on_ready():
+    running = True
+    while running:
+        day = datetime.date.today()
+        channel = client.get_channel(1258561761024675860)
+        msg = await channel.send(str(day))
+        emoji_list = ["\U0001F4AA", "\U0001F6BF", "\U0001F95E", "\U0001F354", "\U0001F4BB", "\U00003297", "\U00002B1C", "\U0001F7E6"]
+        for emoji in emoji_list:
+            await msg.add_reaction(emoji)
+        time.sleep(seconds_in_day)
 
-f = open("C:\\Tree's Stuff\\discord_tokens\\calendar.json", "r")
+
+f = open("calendar.json", "r")
 client.run(json.loads(f.read()).get("token"))
