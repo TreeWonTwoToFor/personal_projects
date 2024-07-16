@@ -66,7 +66,7 @@ def connect_points(poly_list):
 # Data Reading Functionality
 def points_from_model(file_name):
     # json_file = open("C:\\Tree's Stuff\\Programming\\Python\\Needs_Work\\TreeOS\\World\\world_package\\models\\box.json")
-    json_file = open("models//box.json") # change to file_name after testing
+    json_file = open(file_name) # change to file_name after testing
     json_data = json.load(json_file)
     json_index = 1
     mega_point_list = []
@@ -85,14 +85,16 @@ def move_points(direction, amount, poly_list):
 
 game_camera = camera(200)
 w_held, s_held, a_held, d_held = False, False, False, False
-point_list = points_from_model("hi")
+model_list = ["models//xyz_marker.json", "models//box.json", "models//arcade_machine.json"]
+model_index = 0
+point_list = points_from_model(model_list[model_index])
 
 running = True
 while running:
     mouseX, mouseY = pygame.mouse.get_rel()
     screen.fill(bg_color)
     connect_points(point_list)
-    os.system('cls')
+    os.system('clear')
     print(mouseX, mouseY)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -102,6 +104,10 @@ while running:
             print(mouse_pos)
         if event.type == pygame.KEYDOWN:
             match event.key:
+                case pygame.K_TAB: 
+                    if model_index is not len(model_list)-1: model_index += 1
+                    else: model_index = 0
+                    point_list = points_from_model(model_list[model_index])
                 case pygame.K_w: w_held = True 
                 case pygame.K_s: s_held = True 
                 case pygame.K_a: a_held = True 
