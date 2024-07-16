@@ -13,7 +13,7 @@ Banshee bot: This works, but there isn't a lot of functionallity in terms of mor
 CompLing word frequency: This program actually does everything that I wanted it to do when I started. 
     You can give it a text file, and It'll graph the word frequency
 fun_isometric: Fun basic concept, but it doesn't have mouse movement for some reason (from what I remember implementing)
-Personal_calendar: A discord bot that allows the user to get messages every day that helps keep track of todo lists by reacting to messages
+Personal_calendar: A discord bot daily to-do list that automatically posts the list every 24 hours for the user to react to
 punchcard: successfully is able to convert binary to strings, and vise versa. Would be fun to connect this to an actual machine
 pygame_boilerplate: This is a good base, but it might be nice to build out more of a library of game-like commands
 senior quote: fully functional game of RPS in the word limit, so I'd count that as a win.
