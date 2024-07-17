@@ -9,7 +9,7 @@ pygame.init()
 screenX = 1080
 screenY = 720
 bg_color = (34, 238, 85)
-FPS = 60
+FPS = 144
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((screenX, screenY), pygame.RESIZABLE)
@@ -98,20 +98,15 @@ w_held, s_held, a_held, d_held = False, False, False, False
 model_list = ["models//xyz_marker.json", "models//box.json", "models//arcade_machine.json", "models//room.json"]
 model_index = 1
 poly_list = points_from_model(model_list[model_index])
-movement_speed = 5
+movement_speed = 240/FPS
 is_jumping = False
 jump_time = 0
 
 running = True
 while running:
-    mouseX, mouseY = pygame.mouse.get_rel()
     screen.fill(bg_color)
     connect_points(poly_list)
-    os.system('clear')
-    print(mouseX, mouseY)
-    for poly in poly_list:
-        for point_obj in poly:
-            point_obj.info()
+    os.system('cls')
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -144,8 +139,8 @@ while running:
     if a_held: move_points("x", movement_speed, poly_list)
     if d_held: move_points("x", -movement_speed, poly_list)
     if is_jumping or jump_time != 0:
-        if jump_time <= 20:
-            game_camera.y = (math.pow((jump_time-10), 2)*(-1/4)+25)
+        if jump_time <= FPS/3:
+            game_camera.y = math.pow((jump_time-(FPS/6)), 2) * (-1/((1/900)*math.pow(FPS,2)))+25
             jump_time += 1
         else:
             is_jumping = False
