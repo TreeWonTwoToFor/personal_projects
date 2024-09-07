@@ -13,14 +13,22 @@ font = pygame.font.SysFont("Comfortaa", 32)
 angle = 0
 camera_pos = [0, 0, 400]
 point_matrix = [
-    [10, 10, 10],
-    [10, 10, -10],
-    [10, -10, -10],
-    [10, -10, 10],
-    [-10, -10, 10],
-    [-10, -10, -10],
-    [-10, 10, -10],
-    [-10, 10, 10]
+    [10, 10, 0],
+    [10, 10, -20],
+    [10, -10, -20],
+    [10, -10, 0],
+    [-10, -10, 0],
+    [-10, -10, -20],
+    [-10, 10, -20],
+    [-10, 10, 0]
+]
+
+cross_matrix = [
+    [2,0,1],
+    [0,0,1],
+    [0,2,1],
+    [0,0,1],
+    [0,0,3]
 ]
 
 def matrix_m(a, b):
@@ -60,6 +68,11 @@ def draw_cube(projected_point_list):
             draw_segment(projected_point_list[i], projected_point_list[0])
             draw_segment(projected_point_list[i+4], projected_point_list[4])
 
+def draw_attached_segments(point_list):
+    for i in range(len(point_list)):
+        if i+1 != len(point_list):
+            draw_segment(point_list[i], point_list[i+1])
+
 def camera_transform(matrix, camera_position):
     out_matrix = []
     for point in matrix: out_matrix.append([0, 0, point[2]])
@@ -67,6 +80,13 @@ def camera_transform(matrix, camera_position):
         for i in range(len(point)-1):
             out_matrix[p][i] = matrix[p][i]-camera_position[i]
     return out_matrix
+
+def revolve_point(point, camera, amount):
+    distance = sqrt(pow((camera[0]-point[0]), 2) + pow((camera[2]-point[2]), 2))
+    difference = (camera[0]-point[0],camera[1]-point[1],camera[2]-point[2])
+    scaled_difference = (difference[0]/distance, difference[2]/distance)
+    print(scaled_difference) # we now have a point that we can compare to sin+cos in order to revolve the point
+
 
 holding_w, holding_a, holding_s, holding_d = False, False, False, False
 holding_left, holding_right, holding_up, holding_down = False, False, False, False
@@ -93,20 +113,22 @@ while running:
         [sin(angle_z), cos(angle_z), 0],
         [0, 0, 1]
     ]
-    #my_matrix = matrix_m(rotation_z, matrix_m(rotation_y, matrix_m(rotation_x, camera_transform(point_matrix, camera_pos))))
-    my_matrix = camera_transform(matrix_m(rotation_z, matrix_m(rotation_y, matrix_m(rotation_x, point_matrix))), camera_pos)
+    #cube_matrix = matrix_m(rotation_z, matrix_m(rotation_y, matrix_m(rotation_x, camera_transform(point_matrix, camera_pos))))
+    cube_matrix = camera_transform(matrix_m(rotation_z, matrix_m(rotation_y, matrix_m(rotation_x, point_matrix))), camera_pos)
+    origin_matrix = camera_transform([[0,0,0]], camera_pos)
     print(point_matrix)
     print(camera_pos)
     os.system('cls')
-    projected_point_list = []
-    #for point in my_matrix: print(point)
-    for point in my_matrix:
+    projected_cube_list = []
+    #for point in cube_matrix: print(point)
+    for point in cube_matrix:
         for i in range(len(point)):
             point[i] = (point[i] * 10)
         projected_point = (project(point[0], point[2], camera_pos[2])+400, project(point[1], point[2], camera_pos[2])+400)
-        projected_point_list.append(projected_point)
+        projected_cube_list.append(projected_point)
         pygame.draw.circle(screen, (0, 200, 50), projected_point, 5)
-    draw_cube(projected_point_list)
+    pygame.draw.circle(screen, (0, 255, 0), (project(origin_matrix[0][0], origin_matrix[0][2], camera_pos[2]+400), project(origin_matrix[0][1], origin_matrix[0][2], camera_pos[2]+400)), 2)
+    draw_cube(projected_cube_list)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
