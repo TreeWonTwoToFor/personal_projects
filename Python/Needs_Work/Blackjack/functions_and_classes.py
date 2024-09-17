@@ -45,7 +45,6 @@ class hand:
             if card.return_card_value() == 11:
                 return True
         return False
-###########################################################################
 
 ###########################################################################
 #                             Functions                                   #
@@ -119,8 +118,10 @@ def print_all_fancy(d_hand, p_hand, d_up, cash, bet):
     cent = cash % 1
     if cent == 0:
         cent = ".00"
+        cash = int(cash)
     else:
         cent = "0"
+    print(cash, cent)
     print(f"${cash}{cent}")
     print(p_hand.value)
 

@@ -1,4 +1,10 @@
 No splitting
+    should be done after polishing
 basic strategy printout doesn't work after the initial deal
+    low on the importance list
 When you lose insurance, it doesn't tell you in a meaningful way.
+
 when you say no to insurance, it will let you play even if it's BJ.
+
+if you hit for your first decision, you can't double, but the input text says you can
+    pretty simple
