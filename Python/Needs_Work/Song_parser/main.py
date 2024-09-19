@@ -3,16 +3,17 @@ from spotipy.oauth2 import SpotifyOAuth
 from musixmatch import Musixmatch
 import time
 import json
+import os
 import JapaneseTokenizer
 
+# this is the ID of the spotify playlist that is being parsed
+playlist_id = '6LuKH3zTSJrivrBzZDFB9E'
 scope = "user-library-read"
-single_song_test = True
+single_song_test = False
 
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
-musixmatch = Musixmatch('f3a32cf530b7a0f2c522f7e7f5ddef8a')
-
-playlist_id = '6LuKH3zTSJrivrBzZDFB9E'
-
+f = open("/mnt/c/Tree's Stuff/discord_tokens/musixmatch.json", "r")
+musixmatch = Musixmatch(json.loads(f.read()).get("token"))
 mecab_wrapper = JapaneseTokenizer.MecabWrapper(dictType='ipadic')
 
 def tokenize(text):
@@ -54,6 +55,7 @@ def get_track_musixmatch(track_name, track_artist):
     except:
         print("No lyrics found for: " + track_name + " | "+ track_artist)
 
+os.system("clear")
 start = time.time()
 track_list = get_tracks_spotify()
 info_list = get_track_info(track_list)
@@ -65,19 +67,30 @@ if single_song_test:
 if not single_song_test:
     for track in info_list:
         lyric_list.append(get_track_musixmatch(track[0], track[1]))
-end = time.time() - start
-print(f"time elapsed: {end}")
-print(lyric_list)
 file = open('items.txt','w')
 index = 0
 for song in lyric_list:
-    file.write(info_list[index][0] + " | " + info_list[index][1] + "\n")
-    print(song)
     if song is not None:
-        song_tokens = tokenize(song)
-        print(song_tokens)
-        file.write("//".join(song_tokens) + "\n")
+        file.write(str(index+1) + ": " + info_list[index][0] + " | " + info_list[index][1] + "\n")
+        song_lines = song.split("\n")
+        out_lines = []
+        for i in range(len(song_lines)):
+            if not song_lines[i] == "":
+                out_lines.append(song_lines[i])
+        if len(out_lines) > 2:
+            out_lines.pop()
+            out_lines.pop()
+        for line in out_lines:
+            line_tokens = tokenize(line)
+            out_tokens = []
+            for token in line_tokens:
+                if token != " ":
+                    out_tokens.append(token.strip())
+            file.write(f"{line} | {out_tokens}\n")
+        file.write("\n")
     else:
         file.write("None type\n")
     index += 1
 file.close()
+end = time.time() - start
+print(f"time elapsed: {end}")
