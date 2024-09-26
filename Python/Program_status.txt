@@ -13,10 +13,13 @@ Banshee bot: This works, but there isn't a lot of functionallity in terms of mor
 CompLing word frequency: This program actually does everything that I wanted it to do when I started. 
     You can give it a text file, and It'll graph the word frequency
 fun_isometric: Fun basic concept, but it doesn't have mouse movement for some reason (from what I remember implementing)
+Music_player: a VERY basic mp3 player using pygame
 Personal_calendar: A discord bot daily to-do list that automatically posts the list every 24 hours for the user to react to
 punchcard: successfully is able to convert binary to strings, and vise versa. Would be fun to connect this to an actual machine
 pygame_boilerplate: This is a good base, but it might be nice to build out more of a library of game-like commands
 senior quote: fully functional game of RPS in the word limit, so I'd count that as a win.
+Song_parser: a program that creates a file that holds the lyrics to my japanese song playlist, as well as the parsed version.
+table_top_drawing: a tool that lets you draw on the screen - super simple
 Tree_script: It can read great from text files, but a terminal version would be cool
 UI Builder: This works for moving around windows by the corners, but it 
     - doesn't work by grabbing the edges of windows

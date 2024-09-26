@@ -1,7 +1,3 @@
-JP Lyric Parser:
-    A program that takes data from my spotify playlist, goes through Musixmatch, then a Japanese Parser, 
-    and outputs files that allow me to see hirigana, romaji, the parsed text, and then an english translation
-
 3D Renderer/Builder:
     A program that allows you to manipulate 3D space using a custom 3D view
 
