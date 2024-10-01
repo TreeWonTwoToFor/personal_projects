@@ -109,7 +109,7 @@ def deal_hands(deck):
     return (hand(p_hand), hand(d_hand))
 
 def print_all_fancy(d_hand, p_hand, d_up, cash, bet):
-    os.system("cls")
+    os.system("clear")
     print_hand_fancy(d_hand.card_array, d_up)
     print(f"""
     {bet}
@@ -121,7 +121,6 @@ def print_all_fancy(d_hand, p_hand, d_up, cash, bet):
         cash = int(cash)
     else:
         cent = "0"
-    print(cash, cent)
     print(f"${cash}{cent}")
     print(p_hand.value)
 

@@ -1,14 +1,14 @@
 import os
 import time
-from functions_and_classes import print_all_fancy, new_shoe, deal_hands, hands_to_basic_strategy
+from functions_and_classes import *
 
 ###########################################################################
 #                           Initial setup                                 #
 ###########################################################################
-os.system('cls')
+clear_type = "clear"
+os.system(clear_type)
 testing = True
 if not testing:
-    input("enter last 4 digits of credit card number: ")
     user_bankroll = int(input("Please enter a bankroll: "))
     user_bet = int(input("How much do you want to bet? "))
 else:
@@ -29,7 +29,7 @@ while running:
     can_double = True
     insurance_status = ""
 
-    os.system('cls')
+    os.system(clear_type)
     print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
 
     if not is_insurance_possible and dealer_hand.value == 21:
@@ -38,34 +38,46 @@ while running:
     # Handing the possible insurance
     if is_insurance_possible:
         need_insurance_decision = True
+        want_insurance = input("Do you want to bet on insurance (Y/N)?")
         while need_insurance_decision:
-            want_insurance = input("Do you want to bet on insurance (Y/N)?")
             if want_insurance.lower() == "y":
-                need_player_decision, need_insurance_decision = False, False
+                need_insurance_decision = False
                 insurance_bet = int(input("How much do you want to bet on insurance? "))
-                print(f'insurance: {insurance_bet}')
-                # FIXME: double check that insuarnce bet is below half of main bet + that it is a valid number
-                if dealer_hand.value == 21:
-                    insurance_status = "player won"
+                if insurance_bet <= user_bet/2:
+                    print(f'insurance: {insurance_bet}')
+                    if dealer_hand.value == 21:
+                        insurance_status = "player won"
+                        need_player_decision = False
+                    else:
+                        insurance_status = "player lost"
+                    input()
                 else:
-                    insurance_status = "player lost"
-                input()
+                    print("Please place a valid bet (0 if you don't want insurance)")
+                    need_player_decision, need_insurance_decision = True, True
             elif want_insurance.lower() == "n":
                 need_insurance_decision = False
                 insurance_status = "no insurance bet"
                 insurance_bet = 0
+                if dealer_hand.value == 21:
+                    need_player_decision = False
             else:
-                print("Need a valid input (Y/N).")
-        
+                print("Need a valid input.")
+                want_insurance = input("Do you want to bet on insurance (Y/N)?")
+
     # Player's turn
     while need_player_decision:
-        os.system('cls')
+        os.system(clear_type)
         print_all_fancy(dealer_hand, player_hand, True, user_bankroll, user_bet)
+        if insurance_status == "player lost":
+             print("You lost the insurance bet. You lost $" + str(insurance_bet))
         if player_hand.value >= 21:
             need_player_decision = False
             break
         hands_to_basic_strategy(player_hand, dealer_hand)
-        user_input = input("Hit, Stay, or Double (H/S/D)? ")
+        if can_double:
+            user_input = input("Hit, Stay, or Double (H/S/D)? ")
+        else:
+            user_input = input("Hit, or Stay (H/S)?")
         if user_input.lower() == "h":
             can_double = False
             player_hand.card_array.append(card_deck.pop())
@@ -80,11 +92,11 @@ while running:
         elif user_input.lower() == "s":
             need_player_decision = False
             break
-                
+
     # Dealer's turn
     dealer_playing = True
     while dealer_playing:
-        os.system('cls')
+        os.system(clear_type)
         print_all_fancy(dealer_hand, player_hand, False, user_bankroll, user_bet)
         if player_hand.value >= 21:
             dealer_playing = False
@@ -108,7 +120,7 @@ while running:
             match insurance_status:
                 case "player won":
                     print("You won the insurance bet!")
-                    user_bankroll += insurance_bet
+                    user_bankroll += insurance_bet * 2
                 case "player lost":
                     print("You lost the insurance bet. You lost $" + str(insurance_bet))
                     user_bankroll -= insurance_bet
@@ -128,7 +140,7 @@ while running:
     elif is_tie:
         print("Due to a tie, your bet has been pushed.")
     elif insurance_status == "player won":
-        print()
+        print("You have protected your main bet with insurance!")
     else: # player must have lost
         user_bankroll -= user_bet
         print("You lost the hand ($" + str(user_bet) + "). Better luck next time.")
@@ -138,21 +150,27 @@ while running:
     post_game = True
     while post_game:
         user_input = input("Do you want to play again, or change the bet (Y/N/C)? ").lower()
-        if user_input == "y" or user_input == "c":
+        if user_input == "y" or user_input == "c" or user_input == "":
             if (len(card_deck) > 10):
                 player_hand, dealer_hand = deal_hands(card_deck)
             else:
                 card_deck, player_hand, dealer_hand = new_shoe([])
-        if user_input == "y":
+        if user_input == "y" or user_input == "":
             post_game = False
         elif user_input == "n" or user_input == "exit":
             post_game = False
             running = False
             break
         elif user_input == "c":
-            user_bet = int(input("How much do you want to bet? "))
+            user_bet_wish = input("How much do you want to bet? ")
+            while False:
+                try:
+                    user_bet = int(user_bet_wish)
+                    break
+                except:
+                    print("Please enter a valid input")
             post_game = False
         else:
             print("Please enter a valid input")
 
-os.system('cls')
+os.system(clear_type)
