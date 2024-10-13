@@ -8,7 +8,10 @@ class Hand:
         
     def print(self): 
         for card in self.card_list:
-            print(f"[{card.output()}] ", end="")
+            if card.face_up:
+                print(f"[{card.output()}] ", end="")
+            else:
+                print("[  ]", end="")
         print()
 
     def return_list(self):

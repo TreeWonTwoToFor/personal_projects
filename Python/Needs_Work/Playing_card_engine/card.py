@@ -5,6 +5,7 @@ class Card:
         self.face_up = False
         self.get_rank()
         self.get_symbol()
+        self.get_color()
 
     def get_rank(self) -> None:
         if self.value < 1 or self.value > 13:
@@ -12,6 +13,8 @@ class Card:
         match self.value:
             case 1:
                 self.rank = "A"
+            case 10:
+                self.rank = "T"
             case 11:
                 self.rank = "J"
             case 12:
@@ -34,10 +37,22 @@ class Card:
             case _:
                 raise ValueError(f"{self.suit} is not a valid suit")
 
+    def get_color(self) -> None:
+        match self.suit:
+            case "heart" | "diamond":
+                self.color = "red"
+            case "spade" | "club":
+                self.color = "black"
+
     def output(self, o_type: int=1) -> str:
         match o_type:
             case 1:
                 return f"{self.rank}{self.symbol}"
+            case 2:
+                if self.face_up:
+                    return f"{self.rank}{self.symbol}"
+                else:
+                    return "  "
 
 if __name__ == "__main__":
     card_list = []
