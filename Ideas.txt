@@ -10,3 +10,6 @@ Nertz:
 
 Golf/Sushi Go analasis:
     a program that simulates games, and can help users learn more about strategy
+
+GreedScape:
+    a mixture of the card system from Hunter x Hunter's Greed Island, as well as OSRS' RPG system to create a Card Based magic system in a RPG world.

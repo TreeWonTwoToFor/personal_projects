@@ -5,14 +5,20 @@ chopsticks: basic visuals with no gameplay
 cmd_cookie_clicker: console worked at one point, but I think seperating the files broke it.
 jisho_testing: SUPER simple test. Probably not worth keeping
 Language builder: I have a basic window that you can resize - but no actual functionallity for building a Language
+Smash bros: A basic platforming system like in smash bros with the floor. Doesn't have attacks or anything
 Stoplight_sim: can generate stoplights, and roads to connect them. No car/stoplight timing functionallity.
 text_editor: Chat GPT made something very basic, and it doesn't accept keyboard input
+TreeOS: 3d rendering system. Has two partially working systems in place
+Typing_game: a basic game that checks to see if you typed the text one the line.
+Zork Clone: Trying to make a text-based RPG. Doesn't have much substance, but a basic system is in place.
+
 
 WORKING
 Banshee bot: This works, but there isn't a lot of functionallity in terms of more complex functions like posting map images
 CompLing word frequency: This program actually does everything that I wanted it to do when I started. 
     You can give it a text file, and It'll graph the word frequency
 fun_isometric: Fun basic concept, but it doesn't have mouse movement for some reason (from what I remember implementing)
+Dollars_per_meal: computes how much money per meal should be spent to make it to the end of the quarter (only works for fall 2024)
 Music_player: a VERY basic mp3 player using pygame
 Personal_calendar: A discord bot daily to-do list that automatically posts the list every 24 hours for the user to react to
 punchcard: successfully is able to convert binary to strings, and vise versa. Would be fun to connect this to an actual machine
