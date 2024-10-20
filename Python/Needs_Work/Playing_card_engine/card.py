@@ -53,6 +53,11 @@ class Card:
                     return f"{self.rank}{self.symbol}"
                 else:
                     return "  "
+            case 3:
+                if self.face_up:
+                    return f"[{self.rank}{self.symbol}]"
+                else:
+                    return "[  ]"
 
 if __name__ == "__main__":
     card_list = []
