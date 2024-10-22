@@ -1,6 +1,7 @@
 from card import Card
 from deck import Deck
 from hand import Hand
+import os
 
 deck = Deck()
 deck.shuffle()
@@ -16,6 +17,7 @@ for i in range(7):
     column_list[i] = column
 
 def print_board():
+    os.system('cls')
     # ace stacks
     print(' '*12, end='')
     stack_list = [heart_stack, club_stack, diamond_stack, spade_stack]
@@ -45,6 +47,23 @@ def print_board():
         if current_row > 6:
             printing = False
 
-print_board()
+def move_cards(point_a: str, point_b: str):
+    # left-most column is 0, right-most is 6, ace stacks are 7-10
+    point_a, point_b = int(point_a), int(point_b) #FIXME this should be checked for other inputs
+    cards_start = Hand([])
+    if point_a > 0 and point_a < 7:
+        cards_start = column_list[point_a]
+    if point_b > 0 and point_b < 11:
+        column_list[point_b].add_cards(cards_start)
 
-
+running = True
+while running:
+    print_board()
+    print('-'*20)
+    for column in column_list:
+        for card in column.return_list():
+            print(card.output(), end=", ")
+        print()
+    player_input = input('> ')
+    player_input_list = player_input.split()
+    move_cards(player_input_list[0], player_input_list[1])

@@ -33,6 +33,10 @@ class Hand:
                     out_list[i] = self.card_list[value_list[i][1]]
                 self.card_list = out_list
 
+    def add_cards(self, second_hand):
+        print(type(self.card_list), type(second_hand.card_list))
+        self.card_list = self.card_list + second_hand.card_list
+
 
 if __name__ == "__main__":
     card_deck = Deck()

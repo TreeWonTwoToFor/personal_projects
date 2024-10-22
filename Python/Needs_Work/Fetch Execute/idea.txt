@@ -1,0 +1,24 @@
+A program that runs a fetch execute cycle 
+    (basically a high level implementation of a CPU)
+To-Do list
+    1. make a CPU class that has
+        a. A fetch command that takes in some text
+        b. A decode command that text input
+        c. a execute command that does what that input states
+    2. make some Memory
+        a. RAM for data
+        b. ROM for code (could be as simple as a text file that holds the program)
+    3. make some type of interface
+        a. Text interface for input/output
+        b. visual interface/diagram for current system state
+
+CPU instruction options
+LOAD = puts a value into the accumulator
+ADD/SUB/MUL/DIV = does basic math, where the command value + accumulator computes something
+    Accumulator is the first value, and command value is the second value. for Exmaple:
+        Accumulator: 6, command: "DIV 3" -> Accumulator: 2 (not 0.5)
+STR = put the Accumulator value into RAM
+JMP = sets the Program counter to a different value
+OUT = outputs the accumulator to the console
+IN = takes in a value from the user, and puts it into RAM
+HALT = stops execution
