@@ -24,7 +24,7 @@ class variables:
     'map - link to the game maps', 'wiki - link to the game wiki',
     "version - gives the version number", 'level - tells the level of an item',
     'ghost - allows for a lookup for ghosts']
-    version = "v0.4 (live)"
+    version = "v0.4"
     ghost_dictonary = {
         "Banshee": {
             "Evidence": {"DOTS": True,
