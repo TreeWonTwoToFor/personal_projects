@@ -30,9 +30,19 @@ class Ghost:
         output += f"\nStength: {self.strength}"
         output += f"\nWeakness: {self.weakness}"
         output += f"\nTells: {self.tells}```"
-        output += f"\nWiki link: {self.wiki}"
+        output += f"Wiki link: {self.wiki}"
         return output
 
+class Item:
+    def __init__(self, name, item_type, desc, tier=0, max_limit=1, level=0):
+        self.name = name
+        self.desc = desc
+        self.item_type = item_type
+        self.tier = tier
+        self.level = level
+
+    def simple_output(self):
+        return f"Tier {self.tier} {self.name}:```{self.desc}```"
 
 ghost_dict = {
     "Spirit":  Ghost("Spirit", 1.7, ["EMF", "Spirit Box", "Writing"], 
@@ -76,7 +86,7 @@ ghost_dict = {
             "https://phasmophobia.fandom.com/wiki/Revenant"),
     "Shade": Ghost("Shade", 1.7, ["EMF", "Writing", "Freezing"],
             35, "Shades are much harder to find.", 
-            "The ghost will not enter a hunt if there are people nearby."
+            "The ghost will not enter a hunt if there are people nearby.",
             "It's weakness, and it's very low activity.",
             "https://phasmophobia.fandom.com/wiki/Shade"),
     "Demon": Ghost("Demon", 1.7, ["UV", "Writing", "Freezing"],
@@ -97,7 +107,7 @@ ghost_dict = {
     "Yokai": Ghost("Yokai", 1.7, ["Spirit Box", "Ghost Orbs", "DOTs"],
             "50/80", "Talking near a Yokai will anger it, increasing the chance of an attack.", 
             "When hunting, a Yokai can only hear voices clost to it.",
-            "The ability to detect players is lowered, but if it can it becomes stronger. Try talking around it to see it's responce.",
+            "The ability to detect players is lowered, but if it can it becomes stronger. Try talking around it to see it's response.",
             "https://phasmophobia.fandom.com/wiki/Yokai"),
     "Hantu": Ghost("Hantu", "1.4-2.7", ["UV", "Ghost Orbs", "Freezing"],
             50, "Lower temperatures allow the Hantu to move at faster speeds.", 
@@ -117,10 +127,10 @@ ghost_dict = {
     "Onryo": Ghost("Onryo", 1.7, ["Spirit Box", "Ghost Orbs", "Freezing"],
             "60/100", "Every thrid firelight causes an Onryo to attack.", 
             "When threatened, this ghost will be less likely to hunt.",
-            "Onryo's are averted to flames, so using those are not only important for safety, but also for identification."
+            "Onryo's are averted to flames, so using those are not only important for safety, but also for identification.",
             "https://phasmophobia.fandom.com/wiki/Onryo"),
     "The Twins": Ghost("The Twins", "1.53-1.87", ["EMF", "Spirit Box", "Freezing"],
-            50, "Either twin can be angred, and attack it's prey.", "They will often interact at the same time."
+            50, "Either twin can be angred, and attack it's prey.", "They will often interact at the same time.",
             "'Twinteractions' are a strong identifier. Also having multiple interactions in different places may help.",
             "https://phasmophobia.fandom.com/wiki/The_Twins"),
     "Raiju": Ghost("Raiju", "1.7-2.5", ["EMF", "Ghost Orbs", "DOTs"],
@@ -155,12 +165,94 @@ ghost_dict = {
             "https://phasmophobia.fandom.com/wiki/Thaye")
 }
 
+item_dict = {
+    "list": ["DOTs Projector", "EMF Reader", "Ghost Writing Book", "Spirit Box", "Thermometer", "UV Light", "Video Camera", "Flashlight",
+            "Head Gear", "Igniter", "Incense", "Motion Sensor", "Parabolic Microphone", "Photo Camera", "Salt", "Sanity Medication", "Sound Sensor",
+            "Tripod", "Objective Board", "Site Map", "Sanity Monitor", "Site Activity Monitor", "Computer", "Sound Monitor", "Clipboards",
+            "Bones", "Haunted Mirror", "Monkey Paw", "Music Box", "Ouija Board", "Summoning Circle", "Tarot Cards", "Voodoo Doll"],
+    "DOTs Projector":  [Item("DOTs Projector", "Starter Equipment", 
+                        "The DOTs Pen projects green dots from it's position on the floor or in the player's hand in a 5 meter narrow cone. When the ghost is in DOTs mode, and in the cone's range, the ghost's model will appear.", 1, 2, 0),
+                        Item("DOTs Projector", "Starter Equipment", 
+                        "This DOTs Projector must be placed onto the floor, wall, or ceiling. It has a smaller range of 2.5 meters, however it's circular area makes it much easier to cover a full hallway, or section of the room.", 2, 2, 29),
+                        Item("DOTs Projector", "Sterter Equipment",
+                        "A motorized projector which can cover entire rooms. It's range of 7 meters, wide spotlight, and it's scanning capabilities make this DOTs projecter very strong.", 3, 2, 60)],
+    "EMF Reader":  [Item("EMF Reader", "Starter Equipment",
+                    "This starter EMF Reader can show the Electro-magnetic Frequencies that ghosts emit by interacting with the lights, objects in the room, and by causing events. This EMF Reader isn't very accurate, and only has a range of 1.7 meters.",1,2),
+                    Item("EMF Reader", "Starter Equipment", 
+                    "This tier of EMF Reader has multiple upgrades over the previous tier of reader. First, it now has an audio indicator, which gives you a good idea of which EMF level the ghost emitted. Second, the 2 meter range makes it easier to set down, and check when you hear it blaring. Finally, it's increased accuracy makes it more consistent during gameplay.", 2, 2, 20),
+                    Item("EMF Reader", "Starter Equipment", 
+                    "A custom-made device with the special purpose of identifying and locating ghosts. It's display shows up to three interactions with high accuracy, and a pointer towards it's origin. It's increased range of 3.5 meters significantly boosts it's effectiveness.", 3, 2, 52)],
+    "Ghost Writing Book":  [Item("Ghost Writing Book", "Starter Equipment", 
+                            "A simple notebook and pencil which get the job done, even if it doesn't look too special. It's range of 3 meters, along with it's low interaction rate leave much to be desired.", 1, 2),
+                            Item("Ghost Writing Book", "Starter Equipment", 
+                            "A leather case covering these parchment pages are more appealing to write on, making the ghost more interested in writing in this book to share it's message. With an increased range of 4 meters, and a medium interaction rate, this book is a significant upgrade.", 2, 2, 23),
+                            Item("Ghost Writing Book", "Starter Equipment", 
+                            "This grimoire has a lot of history, with metalic accents that the ghost cannot resist. It's range of 5 meters, and highest interaction rate make it by far the strongest of the three options.d", 3, 2, 63)],
+    "Spirit Box":  [Item("Spirit Box", "Starter Equipment", 
+                    "This old FM/AM radio with a tinny speaker makes it hard to hear what the ghost wants to say. It's range of 3 meters, and low response leave much to wish for.", 1, 2, 0),
+                    Item("Spirit Box", "Starter Equipment", 
+                    "This Spirit Box is solely built for conversations with the unknown. It's modern design make it much easier for the ghost to hear you, and for you to hear it. It's 4 meter range is also a nice upgrade.", 2, 2, 27),
+                    Item("Spirit Box", "Starter Equipment", 
+                    "It's ability to scan two frequency channels at the same time make it the best option. It's high response rate, and audio quality at an increased range of 5 meters make it the expert's choice.", 3, 2, 54),],
+    "Thermometer": [Item("Thermometer", "Starter Equipment", 
+                    "This vintage wall thermometer is quite slow, and can be inaccurate. However, it works perfectly fine for just carrying it around and measuring the temperature.", 1, 2),
+                    Item("Thermometer", "Starter Equipment", 
+                    "A medical grade thermometer, which can quickly identify the temperature to a higher accuracy. It's electronic readings do seem to sometimes be a little off.", 2, 2, 36),
+                    Item("Thermometer", "Starter Equipment", 
+                    "More modern, more technical, and more accurate. You just can’t beat it.", 3, 2, 64)],
+    "UV Light":[Item("UV Light", "Starter Equipment", 
+                "A small flashlight that after a few seconds can show fingerprints and footsteps from the ghost. It's narrow spotlight can cause issues.", 1, 2, 0),
+                Item("UV Light", "Starter Equipment", 
+                "This glowstick can light up a significant area around it, making it easier to set down and have it do it's job. It does need to be shaken every minute to keep emitting light, and it doubles the charge time of nearby tracks, but some like it better than the flashlights.", 2, 2, 21),
+                Item("UV Light", "Starter Equipment", 
+                "This Pro UV Light can illuminate massive areas with light. It's short charge time, and wide spotlight make it a great option.", 3, 2, 56)],
+    "Video Camera":[Item("Video Camera", "Starter Equipment", 
+                    "A camera that was laying around in the old office, which hopefully should get the job done. It does have some cool nightvision, but the screen is quite small, and it seems to be glitchy around ghosts.", 1, 4),
+                    Item("Video Camera", "Starter Equipment", 
+                    "This new Parasonic camera is a bit nicer than the old Bony camcorder, with better image quality, and doesn't glitch out as much.", 2, 4, 33),
+                    Item("Video Camera", "Starter Equipment", 
+                    "Bony's new state-of-the-art camera created solely for ghost hunters. It's image quality, and lack of almost any glitches make it a strong contender for best camera.", 3, 4, 61)],
+    "Flashlight":  [Item("Flashlight", "Starter Equipment", 
+                    "It's surprising that this flashlight still works, with it's low intensity and narrow beam. Still, it works.", 1, 4, 0),
+                    Item("Flashlight", "Starter Equipment", 
+                    "A real, modern flashlight. It still has a narrow beam, but it's much brighter than the old ones we used to use.", 2, 4, 19),
+                    Item("Flashlight", "Starter Equipment", 
+                    "This light is a beast, with a huge spotlight and high intensity, it feels like I can see everything!", 3, 4, 35),],
+    "Crucifix": Item("Crucifix", "", ""),
+    "Firelight": Item("Firelight", "", ""),
+    "Head Gear": Item("Head Gear", "", ""),
+    "Igniter": Item("Igniter", "", ""),
+    "Incense": Item("Incense", "", ""),
+    "Motion Sensor": Item("Motion Sensor", "", ""),
+    "Parabolic Microphone": Item("Parabolic Microphone", "", ""),
+    "Photo Camera": Item("Photo Camera", "", ""),
+    "Salt": Item("Salt", "", ""),
+    "Sanity Medication": Item("Sanity Medication", "", ""),
+    "Sound Sensor": Item("Sound Sensor", "", ""),
+    "Tripod": Item("Tripod", "", ""),
+    "Objective Board": Item("Objective Board", "", ""),
+    "Site Map": Item("Site Map", "", ""),
+    "Sanity Monitor": Item("Sanity Monitor", "", ""),
+    "Site Activity Monitor": Item("Site Activity Monitor", "", ""),
+    "Computer": Item("Computer", "", ""),
+    "Sound Monitor": Item("Sound Monitor", "", ""),
+    "Clipboards": Item("Clipboards", "", ""),
+    "Bones": Item("Bones", "", ""),
+    "Haunted Mirror": Item("Haunted Mirror", "", ""),
+    "Monkey Paw": Item("Monkey Paw", "", ""),
+    "Music Box": Item("Music Box", "", ""),
+    "Ouija Board": Item("Ouija Board", "", ""),
+    "Summoning Circle": Item("Summoning Circle", "", ""),
+    "Tarot Cards": Item("Tarot Cards", "", ""),
+    "Voodoo Doll": Item("Voodoo Doll", "", "")
+}
+
 class variables:
     ghost_list = ["Banshee", "Demon", "Deogen", "Goryo", "Hantu", "Jinn", "Mare", "Moroi", "Myling", "Obake", "Oni", "Onryo", "Phantom", "Poltergeist",
     "Raiju", "Revenant", "Shade", "Spirit", "Thaye", "The Mimic", "The Twins", "Wraith", "Yokai", "Yurei"]
-    to_do_list = ["• Special ghost identifiers", "• Cursed object information",
-    "• show level requirements per item", "• Sound Clips for parabolic microphone + walking speed",
-    "• lore command to talk about ghost history"]
+    to_do_list = ["• Cursed object information", "• Make level command more robust",
+    "• Show level requirements per item", "• Sound Clips for parabolic microphone + walking speed",
+    "• Lore command to talk about ghost history", "• Add tiers to the items in the level list"]
     to_do_list.sort()
     list_list = ['COMMAND LIST', 'help - gives more info on the command',
     'list - shows all commands', 'wave - says hello',
@@ -196,25 +288,15 @@ class variables:
             "dots", "microphone", "sound", "video", "tripod", "thermometer", "crucifix",
             "meds", "igniter", "incense", "salt", "motion", "firelight", "headgear"]
     }
-    cursed_object_dictonary = {
-        "tarot": {"desc": "Provokes various ghost activities", "actions": ""},
-        #"cards": variables.cursed_object_dictonary.get("tarot"),
-        "paw": {"desc": "", "actions": ""},
-        #"hand": variables.cursed_object_dictonary.get("paw"),
-        "voodoo": {"desc": "Forces the ghost to perform interactions", "actions": ""},
-        #"doll": variables.cursed_object_dictonary.get("voodoo"),
-        "summoning": {"desc": "Teleports the ghost to the circle", "actions": ""},
-        #"circle": variables.cursed_object_dictonary.get("summoning"),
-        "mirror": {"desc": "Provides a view into the Ghost Room", "actions": "Right click to raise the mirror to see into the ghost room"},
-        "ouija": {"desc": "Permits players to ask the ghost various questions", "actions": ""},
-        "music": {"desc": "Causes the ghost to sing, broadcasting its current location", "actions": "Right click to play the music box"}
-    }
     map_list = ["Ridgeview Court", "Willow Street", "Edgeview Road", "Tanglewood Drive", 
                 "Bleasedale Farmhouse", "Brownstone High School", "Camp Woodwind", "Grafton Farmhouse", 
                 "Maple Lodge Campsite", "Point Hope", "Prison", "Sunny Meadowns Mental Institution"]
 
-def join_list(list, spacer):
-    return spacer.join(map(str, list))
+def join_list(list, spacer, is_multiline=False):
+    if is_multiline:
+        return '```'+spacer.join(map(str, list))+'```'
+    else:
+        return spacer.join(map(str, list))
 
 def level_lookup(rank):
     lb_list = []
@@ -283,7 +365,15 @@ async def on_message(message):
         case "!version":
             await message.channel.send(variables.version)
         case "!list":
-            await message.channel.send('```'+join_list(variables.list_list, "\n")+'```')
+            await message.channel.send(join_list(variables.list_list, "\n", True))
+        case "!help":
+            if len(command_list) == 1:
+                await message.channel.send(join_list(variables.list_list, "\n", True))
+            else:
+                try:
+                    await message.channel.send(help_list(command_list[1]))
+                except:
+                    await message.channel.send(help_list("Please make sure to enter a valid command"))
         case "!wave":
             await message.channel.send(":wave: Hello, I'm Banshee Bot! You can start using this bot with the commands !list or !help")
         case "!to-do" | "!todo":
@@ -303,35 +393,27 @@ async def on_message(message):
                     await message.channel.send(ghost.simple_output())
             except:
                 await message.channel.send("Please make sure you inputted the correct ghost name, or sub-commmand.")
-        case "!help":
-            try:
-                await message.channel.send(help_list(command_list[1]))
-            except:
-                await message.channel.send("Please enter a valid command to ask for help on.")
         case "!level":
             output = ""
             if len(command_list) == 1:
                 # !level
-                output = "Please enter the name of the item. Check !help for details."
-            if len(command_list) >= 2:
-                if command_list[1] == "list":
-                    # !level list 40
-                    if len(command_list) > 2:
-                        rank = int(command_list[2])
-                    else:
-                        rank = 1
+                output = "Please enter the name of the item, or your current level. Check !help for details."
+            elif len(command_list) > 1:
+                try:
+                    rank = int(command_list[1])
                     output = join_list(level_lookup(rank), "\n")
-                elif command_list[1] == "item":
-                    # !level item
-                    output = join_list(variables.level_dictonary.get("level_list"), ", ")
-                else:
-                    # !level flashlight
-                    item = command_list[1]
-                    output = join_list(variables.level_dictonary.get(command_list[1]), ", ")
+                except:
+                    if command_list[1] == "item":
+                        # !level item
+                        output = join_list(variables.level_dictonary.get("level_list"), ", ")
+                    else:
+                        # !level flashlight
+                        item = command_list[1]
+                        output = join_list(variables.level_dictonary.get(command_list[1]), ", ")
             await message.channel.send(output)
         case "!evidence":
             if len(command_list) == 1:
-                await message.channel.send('```' + join_list(variables.evidence_list, "\n") + '```')
+                await message.channel.send(join_list(variables.evidence_list, "\n", True))
             else:
                 ghost_keys = ghost_dict.keys()
                 ghost_list = []
@@ -426,5 +508,6 @@ async def on_message(message):
                 
 
 os.system("cls")
-f = open("C:\\JSGames\\discord_tokens\\banshee.json", "r")
+# f = open("C:\\JSGames\\discord_tokens\\banshee.json", "r")
+f = open("C:\\Tree's Stuff\\discord_tokens\\banshee.json", "r")
 client.run(json.loads(f.read()).get("token"))
