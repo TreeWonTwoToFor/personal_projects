@@ -42,11 +42,14 @@ class Item:
         self.level = level
 
     def simple_output(self):
-        return f"Tier {self.tier} {self.name}:```{self.desc}```"
+        if self.tier:
+            return f"Tier {self.tier} {self.name}:```{self.desc}```"
+        else:
+            return f"{self.name}:```{self.desc}```"
 
 ghost_dict = {
     "Spirit":  Ghost("Spirit", 1.7, ["EMF", "Spirit Box", "Writing"], 
-            50, None, "A Spirit can be temporarily stopped by burning INcense near them.",
+            50, None, "A Spirit can be temporarily stopped by burning Incense near them.",
             "Incense will stop it from hunting for double the time (180s compared to 90s).",
             "https://phasmophobia.fandom.com/wiki/Spirit"),
     "Wraith": Ghost("Wraith", 1.7, ["EMF", "Spirit Box", "DOTs"],
@@ -166,140 +169,152 @@ ghost_dict = {
 }
 
 item_dict = {
-    "list": ["DOTs Projector", "EMF Reader", "Ghost Writing Book", "Spirit Box", "Thermometer", "UV Light", "Video Camera", "Flashlight",
-            "Head Gear", "Igniter", "Incense", "Motion Sensor", "Parabolic Microphone", "Photo Camera", "Salt", "Sanity Medication", "Sound Sensor",
-            "Tripod", "Objective Board", "Site Map", "Sanity Monitor", "Site Activity Monitor", "Computer", "Sound Monitor", "Clipboards",
-            "Bones", "Haunted Mirror", "Monkey Paw", "Music Box", "Ouija Board", "Summoning Circle", "Tarot Cards", "Voodoo Doll"],
-    "DOTs Projector":  [Item("DOTs Projector", "Starter Equipment", 
+    "list": ["DOTs", "EMF", "Book", "Spirit", "Thermometer", "UV", "Video", "Flashlight",
+            "Head", "Igniter", "Incense", "Motion", "Parabolic", "Photo", "Salt", "Medication", "Sound-Sensor",
+            "Tripod", "Objective-Board", "Site-Map", "Sanity-Monitor", "Site-Activity-Monitor", "Computer", "Sound-Monitor", "Clipboards",
+            "Bones", "Mirror", "Monke", "Music", "Ouija", "Summoning", "Tarot", "Voodoo"],
+    "dots":  [Item("DOTs Projector", "Starter Equipment", 
                             "The DOTs Pen projects green dots from it's position on the floor or in the player's hand in a 5 meter narrow cone. When the ghost is in DOTs mode, and in the cone's range, the ghost's model will appear.", 1, 2, 0),
                         Item("DOTs Projector", "Starter Equipment", 
                             "This DOTs Projector must be placed onto the floor, wall, or ceiling. It has a smaller range of 2.5 meters, however it's circular area makes it much easier to cover a full hallway, or section of the room.", 2, 2, 29),
                         Item("DOTs Projector", "Sterter Equipment",
                             "A motorized projector which can cover entire rooms. It's range of 7 meters, wide spotlight, and it's scanning capabilities make this DOTs projecter very strong.", 3, 2, 60)],
-    "EMF Reader":  [Item("EMF Reader", "Starter Equipment",
+    "emf":  [Item("EMF Reader", "Starter Equipment",
                         "This starter EMF Reader can show the Electro-magnetic Frequencies that ghosts emit by interacting with the lights, objects in the room, and by causing events. This EMF Reader isn't very accurate, and only has a range of 1.7 meters.",1,2),
                     Item("EMF Reader", "Starter Equipment", 
                         "This tier of EMF Reader has multiple upgrades over the previous tier of reader. First, it now has an audio indicator, which gives you a good idea of which EMF level the ghost emitted. Second, the 2 meter range makes it easier to set down, and check when you hear it blaring. Finally, it's increased accuracy makes it more consistent during gameplay.", 2, 2, 20),
                     Item("EMF Reader", "Starter Equipment", 
                         "A custom-made device with the special purpose of identifying and locating ghosts. It's display shows up to three interactions with high accuracy, and a pointer towards it's origin. It's increased range of 3.5 meters significantly boosts it's effectiveness.", 3, 2, 52)],
-    "Ghost Writing Book":  [Item("Ghost Writing Book", "Starter Equipment", 
+    "book":  [Item("Ghost Writing Book", "Starter Equipment", 
                                 "A simple notebook and pencil which get the job done, even if it doesn't look too special. It's range of 3 meters, along with it's low interaction rate leave much to be desired.", 1, 2),
                             Item("Ghost Writing Book", "Starter Equipment", 
                                 "A leather case covering these parchment pages are more appealing to write on, making the ghost more interested in writing in this book to share it's message. With an increased range of 4 meters, and a medium interaction rate, this book is a significant upgrade.", 2, 2, 23),
                             Item("Ghost Writing Book", "Starter Equipment", 
                                 "This grimoire has a lot of history, with metalic accents that the ghost cannot resist. It's range of 5 meters, and highest interaction rate make it by far the strongest of the three options.d", 3, 2, 63)],
-    "Spirit Box":  [Item("Spirit Box", "Starter Equipment", 
+    "spirit":  [Item("Spirit Box", "Starter Equipment", 
                         "This old FM/AM radio with a tinny speaker makes it hard to hear what the ghost wants to say. It's range of 3 meters, and low response leave much to wish for.", 1, 2, 0),
                     Item("Spirit Box", "Starter Equipment", 
                         "This Spirit Box is solely built for conversations with the unknown. It's modern design make it much easier for the ghost to hear you, and for you to hear it. It's 4 meter range is also a nice upgrade.", 2, 2, 27),
                     Item("Spirit Box", "Starter Equipment", 
                         "It's ability to scan two frequency channels at the same time make it the best option. It's high response rate, and audio quality at an increased range of 5 meters make it the expert's choice.", 3, 2, 54),],
-    "Thermometer": [Item("Thermometer", "Starter Equipment", 
+    "thermometer": [Item("Thermometer", "Starter Equipment", 
                         "This vintage wall thermometer is quite slow, and can be inaccurate. However, it works perfectly fine for just carrying it around and measuring the temperature.", 1, 2),
                     Item("Thermometer", "Starter Equipment", 
                         "A medical grade thermometer, which can quickly identify the temperature to a higher accuracy. It's electronic readings do seem to sometimes be a little off.", 2, 2, 36),
                     Item("Thermometer", "Starter Equipment", 
                         "More modern, more technical, and more accurate. You just can’t beat it.", 3, 2, 64)],
-    "UV Light":[Item("UV Light", "Starter Equipment", 
+    "uv":[Item("UV Light", "Starter Equipment", 
                     "A small flashlight that after a few seconds can show fingerprints and footsteps from the ghost. It's narrow spotlight can cause issues.", 1, 2, 0),
                 Item("UV Light", "Starter Equipment", 
                     "This glowstick can light up a significant area around it, making it easier to set down and have it do it's job. It does need to be shaken every minute to keep emitting light, and it doubles the charge time of nearby tracks, but some like it better than the flashlights.", 2, 2, 21),
                 Item("UV Light", "Starter Equipment", 
                     "This Pro UV Light can illuminate massive areas with light. It's short charge time, and wide spotlight make it a great option.", 3, 2, 56)],
-    "Video Camera":[Item("Video Camera", "Starter Equipment", 
+    "video":[Item("Video Camera", "Starter Equipment", 
                         "A camera that was laying around in the old office, which hopefully should get the job done. It does have some cool nightvision, but the screen is quite small, and it seems to be glitchy around ghosts.", 1, 4),
                     Item("Video Camera", "Starter Equipment", 
                         "This new Parasonic camera is a bit nicer than the old Bony camcorder, with better image quality, and doesn't glitch out as much.", 2, 4, 33),
                     Item("Video Camera", "Starter Equipment", 
                         "Bony's new state-of-the-art camera created solely for ghost hunters. It's image quality, and lack of almost any glitches make it a strong contender for best camera.", 3, 4, 61)],
-    "Flashlight":  [Item("Flashlight", "Starter Equipment", 
+    "flashlight":  [Item("Flashlight", "Starter Equipment", 
                         "It's surprising that this flashlight still works, with it's low intensity and narrow beam. Still, it works.", 1, 4, 0),
                     Item("Flashlight", "Starter Equipment", 
                         "A real, modern flashlight. It still has a narrow beam, but it's much brighter than the old ones we used to use.", 2, 4, 19),
                     Item("Flashlight", "Starter Equipment", 
                         "This light is a beast, with a huge spotlight and high intensity, it feels like I can see everything!", 3, 4, 35)],
-    "Crucifix":[Item("Crucifix", "Optional Equipment", 
+    "crucifix":[Item("Crucifix", "Optional Equipment", 
                     "Just two twigs tied together. It's shape alone stops the paranormal. It's range of 3 meters, and single use does mean it isn't very effective.", 1, 2, 8),
                 Item("Crucifix", "Optional Equipment", 
                     "A cast iron cross, which has a stronger influence over the ghost. It's increased range of 4 meters and 2 uses make it a significant improvement.", 2, 2, 37),
                 Item("Crucifix", "Optional Equipment", 
                     "An ornate cross made with gold and silver has proven to be a strong defence against other wordly beings. It's range of 5 meters, and it's ability to prevent a cursed hunt makes it the expert chioce.", 3, 2, 90)],
-    "Firelight":   [Item("Firelight", "Optional Equipment", 
+    "firelight":   [Item("Firelight", "Optional Equipment", 
                         "A small little candle in a rusting candleholder. It's range of 2 meters, duration of 5 minutes, and it's 33% reduced sanity drain make it a useful, albeit mediocre, defense.", 1, 4, 12),
                     Item("Firelight", "Optional Equipment", 
                         "This candelabra with three tall candles attached. The higher quality candle wax adds several benfits, like double the duration (10 minutes), as well as a higher Sanity Conservation (33% -> 50%).", 2, 4, 47),
                     Item("Firelight", "Optional Equipment", 
                         "A gasoline fuelled lantern, which has been found to be one of the most reliable sources. Due to it being waterproof, and it's increased Sanity Drain protection (50% -> 66%) make it the best option for a natural light source.", 3, 4, 79)],
-    "Head Gear": [Item("Head Gear", "Optional Equipment", 
+    "head": [Item("Head Gear", "Optional Equipment", 
                       "A GhostPro camera mounted to some head straps. It has a medium image quality, and it's paranormal activity being relatively low make it a fine option.", 1, 4, 13),
                   Item("Head Gear", "Optional Equipment", 
                       "A small flashlight attached to the player's head. It is basically the equivalent of the Tier 2 flashlight, but on your head!", 2, 4, 49),
                   Item("Head Gear", "Optional Equipment", 
                       "Military grade night vision goggles. While it has high paranormal interference, it's night vision capabilities make it the best visibility option in the game.", 3, 4, 82)],
-    "Igniter": [Item("Igniter", "Optional Equipment", 
+    "igniter": [Item("Igniter", "Optional Equipment", 
                     "A small little matchbox with a ghost as it's mascot. Each match lasts 10 seconds, and there are 10 matches in the box.", 1, 4, 12),
                 Item("Igniter", "Optional Equipment", 
                     "A small, compact gas lighter. With a duration of 5 minutes, it's much more convenient than the matchbox.", 2, 4, 41),
                 Item("Igniter", "Optional Equipment", 
                     "A high quality Zippy Lighter, which has double the duration of the previous lighter (5m -> 10m), and it's waterproof!", 3, 4, 57)],
-    "Incense": [Item("Incense", "Optional Equipment", 
+    "incense": [Item("Incense", "Optional Equipment", 
                      "A small bundle of black sage. It has a range of 3 meters, duration of 5 seconds, and blinds the ghost during the hunt for 5 seconds.", 1, 4, 14),
                 Item("Incense", "Optional Equipment", 
                      "A large bundle of white sage, with a nice string to tie it together. It has an increased range of 4 meters, a 6 second duration, and slows the ghost during hunts for 5 seconds.", 2, 4, 42),
                 Item("Incense", "Optional Equipment", 
                      "A holy incense burner which does a great job warding off paranormal entities. With a range of 5 meters, 7 second duration, an the ability to blind and stop the ghost, it's a very strong option.", 3, 4, 85)],
-    "Motion Sensor": [Item("Motion Sensor", "Optional Equipment", 
+    "motion": [Item("Motion Sensor", "Optional Equipment", 
                            "A wildlife camera that's been modified to track the paranormal. It's sensor shape is a line, and has a light indicator for when the sensor is tripped.", 1, 4, 5),
                       Item("Motion Sensor", "Optional Equipment", 
                            "A modified version of the previous motion sensor, which has new shapes, as well as an audio indicator.", 2, 4, 45),
                       Item("Motion Sensor", "Optional Equipment", 
                            "A security camera with a range of 1.5 meters, which can track anything in the space around it.", 3, 4, 74)],
-    "Parabolic Microphone": [Item("Parabolic Microphone", "Optional Equipment", 
+    "parabolic": [Item("Parabolic Microphone", "Optional Equipment", 
                                   "Allows the user to hear sounds up to 20 meters way, and with a better clarity than the naked ear.", 1, 2, 7),
                              Item("Parabolic Microphone", "Optional Equipment", 
                                   "An upgraded and improved version of the previous parabolic microphone! It's range of 30 meters, as well as a small screen, makes it a nice quality of live upgrade.", 2, 2, 31),
                              Item("Parabolic Microphone", "Optional Equipment", 
                                   "A high quality microphone that not only gives you the sound the ghosts makes, but also tells you where it comes from.", 3, 2, 72)],
-    "Photo Camera": [Item("Photo Camera", "Optional Equipment", 
+    "photo": [Item("Photo Camera", "Optional Equipment", 
                           "An old polteroid camera, which takes a few seconds to print the picture (3 seconds between images).", 1, 3, 3),
                      Item("Photo Camera", "Optional Equipment", 
                           "A Bony digital camera, which speeds up the picurre taking process. It takes 2 seconds to process the image, and gives you a nice digital screen to see what the photo looks like. However, it does get glitchy around ghosts.", 2, 3, 25),
                      Item("Photo Camera", "Optional Equipment", 
                           "The new flagship Bony camera, which not only resists the paranormal better, but also cuts the time between photos in half (1 second instead of 2).", 3, 3, 70)],
-    "Salt": [Item("Salt", "Optional Equipment", 
+    "salt": [Item("Salt", "Optional Equipment", 
                   "A two use container of Ghost Huntin' Distribution's very own brand of Salt.", 1, 3, 9),
              Item("Salt", "Optional Equipment", 
                   "A three use container of pink Himalayan salt that is great for revealing footprints. It's long lines make it eaiser to block wider passages.", 2, 3, 43),
              Item("Salt", "Optional Equipment", 
                   "A glass bottle of blessed black salt, which not only has 3 salt uses per bottle, but also slows the ghost down during hunts.", 3, 3, 68)],
-    "Sanity Medication": [Item("Sanity Medication", "Optional Equipment", 
+    "medication": [Item("Sanity Medication", "Optional Equipment", 
                                "A bottle of Insane Away, which holds vintage snake oil, can be drunk to restore a portion of your sanity. It gives you 20 seconds of sanity restoration (the % depneds on the difficulty).", 1, 4, 16),
                           Item("Sanity Medication", "Optional Equipment", 
                                "A more regulated pill bottle that restores your sanity faster. It cuts the restoration speed in half (20s -> 10s).", 2, 4, 39),
                           Item("Sanity Medication", "Optional Equipment", 
                                "A new formula which must be injected, which gives you an adrenaline dump, causing the player to get a 10 second sprint boost.", 3, 4, 77)],
-    "Sound Sensor": [Item("Sound Sensor", "Optional Equipment", 
-                          "", 1, 4, 11),
+    "sound-sensor": [Item("Sound Sensor", "Optional Equipment", 
+                          "A small microphone attached to a mini tripod, cheap, and efficient. It's range is 5/10 meters, with a full sensor shape.", 1, 4, 11),
                      Item("Sound Sensor", "Optional Equipment", 
-                          "", 2, 4, 32),
+                          "Two higher quality microphones help increase the quality of this setup. It's ranges now extend from 5 to 15 meters, while retaining the full sensor shape.", 2, 4, 32),
                      Item("Sound Sensor", "Optional Equipment", 
-                          "", 3, 4, 58),],
-    "Tripod": Item("Tripod", "Optional Equipment", ""),
-    "Objective Board": Item("Objective Board", "Truck Equipment", ""),
-    "Site Map": Item("Site Map", "Truck Equipment", ""),
-    "Sanity Monitor": Item("Sanity Monitor", "Truck Equipment", ""),
-    "Site Activity Monitor": Item("Site Activity Monitor", "Truck Equipment", ""),
-    "Computer": Item("Computer", "Truck Equipment", ""),
-    "Sound Monitor": Item("Sound Monitor", "Truck Equipment", ""),
-    "Clipboards": Item("Clipboards", "Truck Equipment", ""),
-    "Bones": Item("Bones", "House Item", ""),
-    "Haunted Mirror": Item("Haunted Mirror", "House Item", ""),
-    "Monkey Paw": Item("Monkey Paw", "House Item", ""),
-    "Music Box": Item("Music Box", "House Item", ""),
-    "Ouija Board": Item("Ouija Board", "House Item", ""),
-    "Summoning Circle": Item("Summoning Circle", "House Item", ""),
-    "Tarot Cards": Item("Tarot Cards", "House Item", ""),
-    "Voodoo Doll": Item("Voodoo Doll", "House Item", "")
+                          "Multiple shotgun microphones can stream high quality audio back into the Truck. It also gets more sensor shapes, like Full, Wide, and Sides, while retaining the 5 to 15 meter range.", 3, 4, 58),],
+    "tripod": [Item("Tripod", "Optional Equipment", 
+                    "Cheap and cheerful, it's just about standing on it's own. Better watch it doesn't fall over.", 1, 4, 10),
+               Item("Tripod", "Optional Equipment", 
+                    "A much more sturdy tripod, with the ability to remotely rotate it from the truck. Neat!", 2, 4, 34),
+               Item("Tripod", "Optional Equipment", 
+                    "With reinforced metal legs, this one isn't falling over.", 3, 4, 62),],
+    "objective-board": Item("Objective Board", "Truck Equipment", "Displays all mandatory and optional objectives"),
+    "site-map": Item("Site Map", "Truck Equipment", "Provides a detailed map of the case location."),
+    "sanity-monitor": Item("Sanity Monitor", "Truck Equipment", "Provides a real time summary of all players' sanity levels."),
+    "site-activity-monitor": Item("Site Activity Monitor", "Truck Equipment", "Displays ghost activity any time a ghost performs an action. High levels indicate ghost events or hunts."),
+    "computer": Item("Computer", "Truck Equipment", "Used to view onsite cameras, including active video cameras."),
+    "sound-monitor": Item("Sound Monitor", "Truck Equipment", "Connects to Sound Sensors placed onsite. If sound is detected, it will be displayed on the monitor."),
+    "clipboards": Item("Clipboards", "Truck Equipment", "Shows the current Daily and Weekly Tasks."),
+    "bones": Item("Bones", "House Item", "Provides a bonus for picking it up, or taking a photo of it. There are a total of 21 different types of bones in the game."),
+    "mirror": Item("Haunted Mirror", "House Item", 
+                   "The Mirror will show the ghost's favorite room from a sweeping panoramic view. Each ussage of the Mirror drains sanity at a rate of 7.5%/s, or 20% total per use, whichever one is higher. The Mirror will crack if the user's sanity reaches 0%, either by sanity drain, or if the player has less than 20% sanity."),
+    "monkey": Item("Monkey Paw", "House Item", 
+                   "The Monkey Paw will give the players a certain number of wishes based on the difficulty reward multiplier.\n0x - 1.99x: 5 wishes\n2x-2.99x: 4 wishes\n3x or higher: 3 wishes\nEach wish that the paw grants will have a negative side effect. Please check the wiki if you want to see more information about what your wish options are."),
+    "music": Item("Music Box", "House Item", 
+                  "When activated, the Music Box will start playing it's song. If the ghost is within 20 meters, it will start to sing along. If you are withtin 5 meters of the ghost, it will trigger a ghost even where it appears, and walks towards the box. If you place the box on the floor, then once the song ends, it will not cause a hunt. Be careful when holding onto the music box. Check the possible conditions for a cursed hunt on the wiki page."),
+    "ouija": Item("Ouija Board", "House Item", 
+                  "It can be activated on the floor by interacting with it, or by toggling it while held. The player can then ask questions of the ghost, and it will respond with specific answers. There are 13 types of questions, ranging from location, age, and bone location. The ouija board when broken will cause a cursed hunt. Please check the wiki for more information."),
+    "summoning": Item("Summoning Circle", "House Item", 
+                      "There are 5 candles around the summoning circle, which all have to be lit in order to summon and trap the ghost in the circle. Each candle causes a 16% sanity drain of nearby players. Once all candles are lit, the ghost will materialize in the circle (except for the Shade, which will be a shadowy figure). The ghost will be motionless in the circle for 5 seconds, then will start a cursed hunt."),
+    "tarot": Item("Tarot Cards", "House Item", 
+                  "The Tarot Cards are a very useful, but dangerous tool. There are 10 randomly generated cards, which are created from a list of 10 possible card options. Each one has a different effect, and a different draw chance. If you are currently in a hunt, the only cards you can draw from there will be 'The Fool'. Please read the wiki for more information."),
+    "voodoo": Item("Voodoo Doll", "House Item", 
+                   "The Voodoo Doll is a strong tool that can cause interactions, as well as a cursed hunt. There are 10 pins, and every time you interact with the doll, you randomly push a pin. Each normal pin will subtract 5% from the player's sanity, and cause an interaction. That interaction can include EMF 5 and UV, but not Writing or DOTs. The heart pin when pushed will drain sanity by 10%, and start a cursed hunt. If the player has 0% sanity, all pins will be pushed in, and a cursed hunt will start.")
 }
 
 class variables:
@@ -450,7 +465,18 @@ async def on_message(message):
                 await message.channel.send("Please make sure you inputted the correct ghost name, or sub-commmand.")
         case "!item":
             try:
-                await message.channel.send(item_dict[command_list[1].capitalize()][0].simple_output())
+                tier = 1
+                for value in command_list:
+                    if value.isdigit():
+                        tier = int(value)
+                item_name = join_list(command_list[1:], '-')
+                print(item_name)
+                item = item_dict[item_name]
+                if type(item) == Item:
+                    output = item.simple_output()
+                elif type(item) == list:
+                    output = item[tier-1].simple_output()
+                await message.channel.send(output)
             except:
                 await message.channel.send("Please enter a valid name")
         case "!level":
@@ -556,18 +582,22 @@ async def on_message(message):
                     await message.channel.send('https://phasmo.karotte.org/maps/prison/')
                 elif "sunny" in command_list or "meadows" in command_list:
                     await message.channel.send('https://phasmo.karotte.org/maps/sunny-meadows-mental-institution/')
+                elif "bleasedale" in command_list:
+                    await message.channel.send('https://phasmo.karotte.org/maps/bleasdale-farmhouse/')
+                elif "grafton" in command_list:
+                    await message.channel.send('https://phasmo.karotte.org/maps/grafton-farmhouse/')
                 elif "farmhouse" in command_list:
                     if "bleasedale" in command_list:
                         await message.channel.send('https://phasmo.karotte.org/maps/bleasdale-farmhouse/')
                     elif "grafton" in command_list:
                         await message.channel.send('https://phasmo.karotte.org/maps/grafton-farmhouse/')
                     else:
-                        await message.channel.send("I'm unsure which farmhouse you are talking about. Use 'bleasedale', or 'grafton'.")
+                        await message.channel.send("I'm unsure which farmhouse you are talking about. Use 'farmhouse bleasedale', or 'farmhouse grafton'.")
                 else:
                     await message.channel.send("I'm unsure which house you are talking about. Use '!map list' if you want the names of the maps.")
                 
 
 os.system("cls")
-f = open("C:\\JSGames\\discord_tokens\\banshee.json", "r")
-# f = open("C:\\Tree's Stuff\\discord_tokens\\banshee.json", "r")
+# f = open("C:\\JSGames\\discord_tokens\\banshee.json", "r")
+f = open("C:\\Tree's Stuff\\discord_tokens\\banshee.json", "r")
 client.run(json.loads(f.read()).get("token"))
