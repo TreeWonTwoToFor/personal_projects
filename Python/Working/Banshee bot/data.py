@@ -26,7 +26,7 @@ class Ghost:
         return output
 
 class Item:
-    def __init__(self, name, item_type, desc, tier=0, max_limit=1, level=0):
+    def __init__(self, name, item_type, desc, tier=0, max_limit=1, level=1):
         self.name = name
         self.desc = desc
         self.item_type = item_type
@@ -35,7 +35,7 @@ class Item:
 
     def simple_output(self):
         if self.tier:
-            return f"Tier {self.tier} {self.name}:```{self.desc}```"
+            return f"Tier {self.tier} {self.name}:```{self.desc}\nUnlocked at level {self.level}.```"
         else:
             return f"{self.name}:```{self.desc}```"
 
@@ -68,7 +68,7 @@ ghost_dict = {
             50, "A Jinn will travel at a faster speed if its victim is far away.", 
             "Turning off the location's power source will prevent the Jinn from using its ability.",
             "It cannot turn off the breaker, and the speed changes depending on LOS, breaker state, and distance from player.",
-            "https://tybayn.github.io/phasmo-cheat-sheet/"),
+            "https://phasmophobia.fandom.com/wiki/Jinn"),
     "Mare": Ghost("Mare", 1.7, ["Spirit Box", "Ghost Orbs", "Writing"],
             "40/60", "A Mare will have an increased chance to attack in the dark.", 
             "Turning the lights on around the Mare will lower its chance to attack.",
@@ -166,7 +166,7 @@ item_dict = {
             "Tripod", "Objective-Board", "Site-Map", "Sanity-Monitor", "Site-Activity-Monitor", "Computer", "Sound-Monitor", "Clipboards",
             "Bones", "Mirror", "Monke", "Music", "Ouija", "Summoning", "Tarot", "Voodoo"],
     "dots":  [Item("DOTs Projector", "Starter Equipment", 
-                            "The DOTs Pen projects green dots from it's position on the floor or in the player's hand in a 5 meter narrow cone. When the ghost is in DOTs mode, and in the cone's range, the ghost's model will appear.", 1, 2, 0),
+                            "The DOTs Pen projects green dots from it's position on the floor or in the player's hand in a 5 meter narrow cone. When the ghost is in DOTs mode, and in the cone's range, the ghost's model will appear.", 1, 2),
                         Item("DOTs Projector", "Starter Equipment", 
                             "This DOTs Projector must be placed onto the floor, wall, or ceiling. It has a smaller range of 2.5 meters, however it's circular area makes it much easier to cover a full hallway, or section of the room.", 2, 2, 29),
                         Item("DOTs Projector", "Sterter Equipment",
@@ -184,7 +184,7 @@ item_dict = {
                             Item("Ghost Writing Book", "Starter Equipment", 
                                 "This grimoire has a lot of history, with metalic accents that the ghost cannot resist. It's range of 5 meters, and highest interaction rate make it by far the strongest of the three options.d", 3, 2, 63)],
     "spirit":  [Item("Spirit Box", "Starter Equipment", 
-                        "This old FM/AM radio with a tinny speaker makes it hard to hear what the ghost wants to say. It's range of 3 meters, and low response leave much to wish for.", 1, 2, 0),
+                        "This old FM/AM radio with a tinny speaker makes it hard to hear what the ghost wants to say. It's range of 3 meters, and low response leave much to wish for.", 1, 2),
                     Item("Spirit Box", "Starter Equipment", 
                         "This Spirit Box is solely built for conversations with the unknown. It's modern design make it much easier for the ghost to hear you, and for you to hear it. It's 4 meter range is also a nice upgrade.", 2, 2, 27),
                     Item("Spirit Box", "Starter Equipment", 
@@ -196,7 +196,7 @@ item_dict = {
                     Item("Thermometer", "Starter Equipment", 
                         "More modern, more technical, and more accurate. You just can’t beat it.", 3, 2, 64)],
     "uv":[Item("UV Light", "Starter Equipment", 
-                    "A small flashlight that after a few seconds can show fingerprints and footsteps from the ghost. It's narrow spotlight can cause issues.", 1, 2, 0),
+                    "A small flashlight that after a few seconds can show fingerprints and footsteps from the ghost. It's narrow spotlight can cause issues.", 1, 2),
                 Item("UV Light", "Starter Equipment", 
                     "This glowstick can light up a significant area around it, making it easier to set down and have it do it's job. It does need to be shaken every minute to keep emitting light, and it doubles the charge time of nearby tracks, but some like it better than the flashlights.", 2, 2, 21),
                 Item("UV Light", "Starter Equipment", 
@@ -208,7 +208,7 @@ item_dict = {
                     Item("Video Camera", "Starter Equipment", 
                         "Bony's new state-of-the-art camera created solely for ghost hunters. It's image quality, and lack of almost any glitches make it a strong contender for best camera.", 3, 4, 61)],
     "flashlight":  [Item("Flashlight", "Starter Equipment", 
-                        "It's surprising that this flashlight still works, with it's low intensity and narrow beam. Still, it works.", 1, 4, 0),
+                        "It's surprising that this flashlight still works, with it's low intensity and narrow beam. Still, it works.", 1, 4),
                     Item("Flashlight", "Starter Equipment", 
                         "A real, modern flashlight. It still has a narrow beam, but it's much brighter than the old ones we used to use.", 2, 4, 19),
                     Item("Flashlight", "Starter Equipment", 
@@ -258,7 +258,7 @@ item_dict = {
     "photo": [Item("Photo Camera", "Optional Equipment", 
                           "An old polteroid camera, which takes a few seconds to print the picture (3 seconds between images).", 1, 3, 3),
                      Item("Photo Camera", "Optional Equipment", 
-                          "A Bony digital camera, which speeds up the picurre taking process. It takes 2 seconds to process the image, and gives you a nice digital screen to see what the photo looks like. However, it does get glitchy around ghosts.", 2, 3, 25),
+                          "A Bony digital camera, which speeds up the picture taking process. It takes 2 seconds to process the image, and gives you a nice digital screen to see what the photo looks like. However, it does get glitchy around ghosts.", 2, 3, 25),
                      Item("Photo Camera", "Optional Equipment", 
                           "The new flagship Bony camera, which not only resists the paranormal better, but also cuts the time between photos in half (1 second instead of 2).", 3, 3, 70)],
     "salt": [Item("Salt", "Optional Equipment", 
@@ -284,7 +284,7 @@ item_dict = {
                Item("Tripod", "Optional Equipment", 
                     "A much more sturdy tripod, with the ability to remotely rotate it from the truck. Neat!", 2, 4, 34),
                Item("Tripod", "Optional Equipment", 
-                    "With reinforced metal legs, this one isn't falling over.", 3, 4, 62),],
+                    "With reinforced metal legs, this one isn't falling over.", 3, 4, 62)],
     "objective-board": Item("Objective Board", "Truck Equipment", "Displays all mandatory and optional objectives"),
     "site-map": Item("Site Map", "Truck Equipment", "Provides a detailed map of the case location."),
     "sanity-monitor": Item("Sanity Monitor", "Truck Equipment", "Provides a real time summary of all players' sanity levels."),

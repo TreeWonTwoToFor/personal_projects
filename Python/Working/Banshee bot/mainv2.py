@@ -249,9 +249,8 @@ async def on_message(message):
                         await message.channel.send("I'm unsure which farmhouse you are talking about. Use 'farmhouse bleasedale', or 'farmhouse grafton'.")
                 else:
                     await message.channel.send("I'm unsure which house you are talking about. Use '!map list' if you want the names of the maps.")
-                
 
 os.system("cls")
-f = open("C:\\JSGames\\discord_tokens\\banshee.json", "r")
-# f = open("C:\\Tree's Stuff\\discord_tokens\\banshee.json", "r")
+# f = open("C:\\JSGames\\discord_tokens\\banshee.json", "r")
+f = open("C:\\Tree's Stuff\\discord_tokens\\banshee.json", "r")
 client.run(json.loads(f.read()).get("token"))
