@@ -321,7 +321,8 @@ class variables:
     'evidence - lists what ghost has which evidence', 'to-do - lists the current to-do list',
     'map - link to the game maps', 'wiki - link to the game wiki',
     "version - gives the version number", 'level - tells the level of an item',
-    'ghost - allows for a lookup for ghosts', 'item - allows you to get information about different items']
+    'ghost - allows for a lookup for ghosts', 'item - allows you to get information about different items',
+    'xp - tells how much xp you need to get to a specific level']
     list_list.sort()
     version = "v0.5 (live)"
     evidence_list = ["EMF", "UV", "DOTs", "Ghost Orbs", "Ghost Writing", "Freezing", "Spirit Box"]

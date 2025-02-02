@@ -69,6 +69,8 @@ def help_list(help):
             return """Returns the level needed to get a specific tier for an item. The format is ```!level flashlight```You can also use this command to list the item options ```!level item```You can also list the items based on your level ```!level list 25```"""
         case "ghost":
             return """Gives a basic description of the ghost you want to learn about. The format is  ```!ghost Banshee```"""
+        case "xp":
+            return """Tells you how much XP it takes to reach a specific level. If you enter one number, it will give the total amount. If you enter two numbers (current, goal) it will give the amount you need to earn to gain that level."""
 
 @client.event
 async def on_ready():
@@ -98,6 +100,19 @@ async def on_message(message):
             await message.channel.send(":wave: Hello, I'm Banshee Bot! You can start using this bot with the commands !list or !help")
         case "!to-do" | "!todo":
             await message.channel.send(join_list(variables.to_do_list, "\n"))
+        case "!xp":
+            match len(command_list):
+                case 1:
+                    await message.channel.send("Please enter which level you wish to reach.")
+                case 2:
+                    level = int(command_list[1])
+                    xp = int(100*(level-1)**1.73)
+                    await message.channel.send(f"Total XP to reach level {level} is {xp}xp")
+                case 3:
+                    level_start = int(command_list[1])
+                    level_end = int(command_list[2])
+                    xp = int(100*(level_end-1)**1.73 - 100*(level_start-1)**1.73)
+                    await message.channel.send(f"XP needed to reach level {level_end} from level {level_start} is {xp}xp")
         case "!ghost":
             try:
                 if command_list[1] == "list":
