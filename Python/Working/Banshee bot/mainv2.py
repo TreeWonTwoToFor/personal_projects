@@ -1,6 +1,7 @@
 import discord
 import os
 import json
+import math
 
 from data import variables
 from data import ghost_dict
@@ -88,6 +89,10 @@ async def on_message(message):
             await message.channel.send(variables.version)
         case "!list":
             await message.channel.send(join_list(variables.list_list, "\n", True))
+        case "!wave":
+            await message.channel.send(":wave: Hello, I'm Banshee Bot! You can start using this bot with the commands !list or !help")
+        case "!to-do" | "!todo":
+            await message.channel.send(join_list(variables.to_do_list, "\n"))
         case "!help":
             if len(command_list) == 1:
                 await message.channel.send(join_list(variables.list_list, "\n", True))
@@ -96,10 +101,6 @@ async def on_message(message):
                     await message.channel.send(help_list(command_list[1]))
                 except:
                     await message.channel.send(help_list("Please make sure to enter a valid command"))
-        case "!wave":
-            await message.channel.send(":wave: Hello, I'm Banshee Bot! You can start using this bot with the commands !list or !help")
-        case "!to-do" | "!todo":
-            await message.channel.send(join_list(variables.to_do_list, "\n"))
         case "!xp":
             match len(command_list):
                 case 1:
@@ -111,7 +112,7 @@ async def on_message(message):
                 case 3:
                     level_start = int(command_list[1])
                     level_end = int(command_list[2])
-                    xp = int(100*(level_end-1)**1.73 - 100*(level_start-1)**1.73)
+                    xp = int(math.fabs(100*(level_end-1)**1.73 - 100*(level_start-1)**1.73))
                     await message.channel.send(f"XP needed to reach level {level_end} from level {level_start} is {xp}xp")
         case "!ghost":
             try:
