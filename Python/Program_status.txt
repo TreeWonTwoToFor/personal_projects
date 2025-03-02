@@ -3,12 +3,21 @@ Alexa Nissan Leaf: basic calculations, but no true functionallity
 Blackjack: basic gameplay, still needs splitting + insurance, and there is no Visual version
 chopsticks: basic visuals with no gameplay
 cmd_cookie_clicker: console worked at one point, but I think seperating the files broke it.
+DND: I have some basic stuff for adding data to json files, but I want a world map added.
+Fetch Execute: Simply a written down idea, no serious work done on it.
+Golf_sim: can do some simple single player hand simulations, and graph results.
 jisho_testing: SUPER simple test. Probably not worth keeping
 Language builder: I have a basic window that you can resize - but no actual functionallity for building a Language
+language_combinations: a tool to help find syllable counts for number of phonems in a language.
+Playing_card_engine: A pretty solid base for the workings of handling cards, but needs a lot of work to make graphics / better interactions.
 Smash bros: A basic platforming system like in smash bros with the floor. Doesn't have attacks or anything
+Sockets: server client connection that allows data transfer.
 Stoplight_sim: can generate stoplights, and roads to connect them. No car/stoplight timing functionallity.
+Sushi_go: has the basics of the cards in the game, but no actual scoring/gameplay is implemented
 text_editor: Chat GPT made something very basic, and it doesn't accept keyboard input
 TreeOS: 3d rendering system. Has two partially working systems in place
+    The first system has good translations, but no rotation
+    The second system can rotate objects in space, but movement is really poorly done.
 Typing_game: a basic game that checks to see if you typed the text one the line.
 Zork Clone: Trying to make a text-based RPG. Doesn't have much substance, but a basic system is in place.
 
