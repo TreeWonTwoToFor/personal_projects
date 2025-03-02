@@ -11,7 +11,7 @@ tile_boundary_thickness = 2
 grid_outline = True
 grid_color = (0, 0, 0)
 world_size = (10, 10)
-visual_size = (5, 5)
+visual_size = world_size #(5, 5)
 
 # extra grid calculations
 grid_boundaries = ((45, 45), (450, 315))
@@ -24,7 +24,7 @@ bg_color = (255, 255, 255)
 FPS = 60
 clock = pygame.time.Clock()
 pygame.display.set_caption("Grid example")
-file_path = r"C:\Users\Jonathan\Programming\random_stuff\Python\Working\pygame_boilerplate\\"
+file_path = r"C:\Tree's Stuff\Programming\Python\Working\pygame_boilerplate\\"
 font = pygame.font.Font(file_path + "Comfortaa.ttf", 30)
 screen = pygame.display.set_mode((screenX, screenY))
 
@@ -91,19 +91,34 @@ class Grid:
         return (out_tile, x_pos, y_pos)
 
 class Entity:
-    def __init__(self, name,width, height, image):
+    def __init__(self, name, width, height, image, grid):
         self.name = name
         self.width = width
         self.height = height
         self.image = image
+        self.grid = grid
+        self.position = (3,3)
 
     def display(self, grid, visual_x, visual_y):
         screen.blit(self.image, (visual_x, visual_y))
 
+    def move(self, x, y):
+        if x != 0:
+            if self.position[0]+x >= 0 and self.position[0]+x < world_size[0]:
+                self.move_helper(x, y)
+        if y != 0:
+            if self.position[1]-y >= 0 and self.position[1]-y < world_size[1]:
+                self.move_helper(x, y)
+
+    def move_helper(self, x, y):
+        self.grid.place_value(" ", self.position[0], self.position[1])
+        self.grid.place_value(self, self.position[0]+x, self.position[1]-y)
+        self.position = (self.position[0]+x, self.position[1]-y)
+
 
 world_grid = Grid(world_size[0], world_size[1], 0, 0, [])
-dude = Entity("Dude", 1, 1, pygame.image.load(file_path + r"images\dude.png"))
-tree = Entity("tree", 1, 1, pygame.image.load(file_path + r"images\tree.png"))
+dude = Entity("Dude", 1, 1, pygame.image.load(file_path + r"images\dude.png"), world_grid)
+tree = Entity("tree", 1, 1, pygame.image.load(file_path + r"images\tree.png"), world_grid)
 for i in range(world_size[0]):
     world_grid.place_value(tree, i, 0)
     world_grid.place_value(tree, i, world_size[1]-1)
@@ -129,13 +144,6 @@ while running:
             mouse_pos = pygame.mouse.get_pos()
             print(mouse_pos)
         if event.type == pygame.KEYDOWN:
-            # BUG -> if you are at the edge of the grid and try to expand, it goes out of range
-            # if event.key == pygame.K_f:
-            #     if (visual_grid.height < world_grid.height):
-            #         size += 1
-            # elif event.key == pygame.K_v:
-            #     if (visual_grid.height > 2):
-            #         size -= 1
             match event.key:
                 case pygame.K_UP: 
                     if current_position[1] > 0:
@@ -149,5 +157,9 @@ while running:
                 case pygame.K_RIGHT: 
                     if current_position[0]+visual_size[0] < world_grid.width:
                         current_position[0] += 1
+                case pygame.K_w: dude.move(0, 1)
+                case pygame.K_s: dude.move(0, -1)
+                case pygame.K_a: dude.move(-1, 0)
+                case pygame.K_d: dude.move(1, 0)
     pygame.display.update()
     clock.tick(FPS)
