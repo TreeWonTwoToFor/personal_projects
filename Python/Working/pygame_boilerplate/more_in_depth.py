@@ -9,6 +9,7 @@ bg_color = (34, 238, 85)
 FPS = 60
 clock = pygame.time.Clock()
 
+pygame.display.set_caption("More in Depth example")
 screen = pygame.display.set_mode((screenX, screenY), pygame.RESIZABLE)
 
 running = True

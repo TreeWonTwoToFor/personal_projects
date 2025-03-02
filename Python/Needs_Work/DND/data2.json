@@ -1,0 +1,16 @@
+{
+    "City": {},
+    "NPC": {
+        "Mortphoros": {
+            "Name": "Mortphoros",
+            "Race": "Human",
+            "Age": 44,
+            "Occupation": "Necromancer",
+            "Location": "Varrock",
+            "Voice": "Slow and articulate",
+            "Appearence": "Haggered beard, with red/pink robes and well worn boots.",
+            "Personality": "Acts quite desperate and impulsive",
+            "Goals": "to raise his wife back from the dead to reconnect his family"
+        }
+    }
+}
