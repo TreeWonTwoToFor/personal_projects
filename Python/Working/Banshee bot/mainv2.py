@@ -1,3 +1,4 @@
+import random
 import discord
 import os
 import json
@@ -73,6 +74,29 @@ def help_list(help):
         case "xp":
             return """Tells you how much XP it takes to reach a specific level. If you enter one number, it will give the total amount. If you enter two numbers (current, goal) it will give the amount you need to earn to gain that level."""
 
+def random_game_mode():
+    map_index = random.randint(0, 26)
+    if map_index <= 17:
+        map_index = map_index//3
+    elif map_index > 17 and map_index < 23:
+        match map_index:
+            case 18 | 19: map_index = 6
+            case 20 | 21: map_index = 7
+            case 22 | 23: map_index = 8
+    else:
+        map_index = map_index - 15
+    map = variables.map_list[map_index]
+    difficulty_list = ["Professional", "Nightmare", "3 Evidence Insanity", "Challenge"] 
+    difficulty_index = random.randint(0, 5)
+    if difficulty_index == 0 or difficulty_index == 1:
+        difficulty_index = 0
+    elif difficulty_index == 2 or difficulty_index == 3:
+        difficulty_index = 1
+    else:
+        difficulty_index = difficulty_index - 2
+    difficulty = difficulty_list[difficulty_index]
+    return f"{difficulty} at {map}"
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
@@ -93,6 +117,8 @@ async def on_message(message):
             await message.channel.send(":wave: Hello, I'm Banshee Bot! You can start using this bot with the commands !list or !help")
         case "!to-do" | "!todo":
             await message.channel.send(join_list(variables.to_do_list, "\n"))
+        case "!random":
+            await message.channel.send(random_game_mode())
         case "!help":
             if len(command_list) == 1:
                 await message.channel.send(join_list(variables.list_list, "\n", True))

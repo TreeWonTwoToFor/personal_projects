@@ -352,5 +352,5 @@ class variables:
             "meds", "igniter", "incense", "salt", "motion", "firelight", "headgear"]
     }
     map_list = ["Ridgeview Court", "Willow Street", "Edgeview Road", "Tanglewood Drive", 
-                "Bleasedale Farmhouse", "Brownstone High School", "Camp Woodwind", "Grafton Farmhouse", 
-                "Maple Lodge Campsite", "Point Hope", "Prison", "Sunny Meadowns Mental Institution"]
+                "Camp Woodwind", "Grafton Farmhouse", "Maple Lodge Campsite", "Point Hope", 
+                "Bleasedale Farmhouse", "Brownstone High School", "Prison", "Sunny Meadows Mental Institution"]
