@@ -1,0 +1,4 @@
+1. make a json reader to get grid configurations out of
+2. make some types of UI options for outside of the grid area
+    a. buttons
+    b. visual indicators of values

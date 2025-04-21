@@ -1,5 +1,13 @@
 import pygame
 import time
+import json
+
+# json testing
+json_path = r"C:\Users\Jonathan\OneDrive\Desktop\Transfer\Programming\random_stuff\Python\Working\pygame_boilerplate\test.json"
+file = open(json_path)
+data = json.load(file)
+print(data.get("str"))
+file.close()
 
 pygame.init()
 
@@ -24,7 +32,14 @@ bg_color = (255, 255, 255)
 FPS = 60
 clock = pygame.time.Clock()
 pygame.display.set_caption("Grid example")
+<<<<<<< HEAD
 file_path = r"C:\Tree's Stuff\Programming\Python\Working\pygame_boilerplate\\"
+||||||| parent of 2c0acc3 (made a strong perspectice projection version of TreeOS, as well as updating some other stuff)
+file_path = r"C:\Users\Jonathan\Programming\random_stuff\Python\Working\pygame_boilerplate\\"
+=======
+file_path = r"C:\Users\Jonathan\OneDrive\Desktop\Transfer\Programming\random_stuff\Python\Working\pygame_boilerplate\\"
+
+>>>>>>> 2c0acc3 (made a strong perspectice projection version of TreeOS, as well as updating some other stuff)
 font = pygame.font.Font(file_path + "Comfortaa.ttf", 30)
 screen = pygame.display.set_mode((screenX, screenY))
 

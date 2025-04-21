@@ -13,3 +13,12 @@ Golf/Sushi Go analasis:
 
 GreedScape:
     a mixture of the card system from Hunter x Hunter's Greed Island, as well as OSRS' RPG system to create a Card Based magic system in a RPG world.
+
+Mathmatical document editor:
+    A markdown langauge and viewer whose main job is to
+        write and calculate mathmatical equations
+        graph points, functions, vectors, etc.
+        make taking notes in a math class as easy as possbile.
+
+Virtual Computer w/ programming langauge:
+    A set of memory space to simulate memory of a computer, and a programming language to interface with the computer.
