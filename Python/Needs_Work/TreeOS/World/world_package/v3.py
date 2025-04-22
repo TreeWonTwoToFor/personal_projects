@@ -1,11 +1,14 @@
 import math
 import pygame
 
-screen = pygame.display.set_mode((600, 600))
+debug = True
 FPS = 60
-clock = pygame.time.Clock()
+resolution = (600, 600)
+
 pygame.font.init()
 font = pygame.font.Font("Comfortaa.ttf", 15)
+screen = pygame.display.set_mode(resolution)
+clock = pygame.time.Clock()
 
 class Point:
     def __init__(self, x, y, z):
@@ -118,7 +121,7 @@ running = True
 while running:
     screen.fill((0,0,0))
     draw_cube(camera)
-    camera.show_pos()
+    if debug: camera.show_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
