@@ -3,7 +3,7 @@ import pygame
 
 debug = True
 FPS = 60
-resolution = (600, 600)
+resolution = (800, 600)
 
 pygame.font.init()
 font = pygame.font.Font("Comfortaa.ttf", 15)
@@ -32,7 +32,9 @@ class Camera:
         textRect = text.get_rect()
         textRect.center = (20, 10)
         screen.blit(text, textRect.center)
-        text = font.render(f"Ang: x: {camera.angle.x:.2f}, y: {camera.angle.y:.2f}, z: {camera.angle.z:.2f}", True, (255, 255, 255))
+        text = font.render(
+            f"Ang: x: {(camera.angle.x*180/math.pi):.2f}, y: {(camera.angle.y*180/math.pi):.2f}, z: {(camera.angle.z*180/math.pi):.2f}", 
+            True, (255, 255, 255))
         textRect = text.get_rect()
         textRect.center = (20, 30)
         screen.blit(text, textRect.center)
@@ -45,6 +47,16 @@ class Camera:
         # change the position based on that change times the length of our difference
         self.point.x += dx * amount
         self.point.z += dz * amount
+
+    def fix_angles(self):
+        if camera.angle.x > math.pi/2:
+            camera.angle.x = math.pi/2-0.001
+        elif camera.angle.x < -math.pi/2:
+            camera.angle.x = -math.pi/2+0.001
+        if camera.angle.y > math.pi:
+            camera.angle.y -= math.pi*2
+        if camera.angle.y < -math.pi:
+            camera.angle.y += math.pi*2
 
 # Functions for 3d manipulations
 
@@ -93,34 +105,38 @@ def draw_pt(coords, color):
     # this is imply to help make it easier to quickly draw a point
     pygame.draw.circle(screen, color, coords, 2)
 
-def draw_cube(camera):
-    # draws a specific cube out using the global "camera" variable
-    points_list = [
-        perspective_projection((0,0,0), camera.point, camera.angle),
-        perspective_projection((0,0,1), camera.point, camera.angle),
-        perspective_projection((0,1,0), camera.point, camera.angle),
-        perspective_projection((0,1,1), camera.point, camera.angle),
-        perspective_projection((1,0,0), camera.point, camera.angle),
-        perspective_projection((1,0,1), camera.point, camera.angle),
-        perspective_projection((1,1,0), camera.point, camera.angle),
-        perspective_projection((1,1,1), camera.point, camera.angle)
-    ]
-    for point in points_list:
-        draw_pt(point, (255, 255, 255))
-    for i in range(len(points_list)):
-        for j in range(len(points_list)):
-            if not i <= j:
-                pygame.draw.line(screen, (255, 255, 255), points_list[i], points_list[j])
+def draw_from_lines(camera, line_list):
+    # line_list is just a list of pairs of 3d points
+    for line in line_list:
+        point_a = perspective_projection(line[0], camera.point, camera.angle)
+        point_b = perspective_projection(line[1], camera.point, camera.angle)
+        pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
+
+cube_model = [
+    ((0,1,0), (1,1,0)),
+    ((1,1,0), (1,1,1)),
+    ((1,1,1), (0,1,1)),
+    ((0,1,1), (0,1,0)),
+    ((0,2,0), (1,2,0)),
+    ((1,2,0), (1,2,1)),
+    ((1,2,1), (0,2,1)),
+    ((0,2,1), (0,2,0)),
+    ((0,1,0), (0,2,0)),
+    ((1,1,0), (1,2,0)),
+    ((0,1,1), (0,2,1)),
+    ((1,1,1), (1,2,1))
+]
 
 # general global camera
-camera = Camera((0.5,0,-1), (0,0,0))
+camera = Camera((0.5,0,0.5), (0,0,0))
 w_held, a_held, s_held, d_held = False, False, False, False
 left_held, right_held, up_held, down_held = False, False, False, False
 
 running = True
 while running:
     screen.fill((0,0,0))
-    draw_cube(camera)
+    draw_from_lines(camera, cube_model)
+    camera.fix_angles()
     if debug: camera.show_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
