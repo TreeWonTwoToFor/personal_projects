@@ -1,11 +1,11 @@
 import math
 import pygame
 
-screen = pygame.display.set_mode((500, 500))
+screen = pygame.display.set_mode((600, 600))
 FPS = 60
 clock = pygame.time.Clock()
-
-print(screen.get_size())
+pygame.font.init()
+font = pygame.font.Font("Comfortaa.ttf", 15)
 
 class Point:
     def __init__(self, x, y, z):
@@ -18,14 +18,30 @@ class Point:
 
 class Camera:
     def __init__(self, xyz, theta):
-        self.x = xyz[0]
-        self.y = xyz[1]
-        self.z = xyz[2]
-        self.point = Point(self.x, self.y, self.z)
+        self.point = Point(xyz[0], xyz[1], xyz[2])
         self.angle = Point(theta[0], theta[1], theta[2])
 
     def __str__(self):
         return f"Camera Info\n\tPos: {self.point}\n\tAngle: {self.angle}"
+    
+    def show_pos(self):
+        text = font.render(f"Pos: x: {camera.point.x:.2f}, y: {camera.point.y:.2f}, z: {camera.point.z:.2f}", True, (255, 255, 255))
+        textRect = text.get_rect()
+        textRect.center = (20, 10)
+        screen.blit(text, textRect.center)
+        text = font.render(f"Ang: x: {camera.angle.x:.2f}, y: {camera.angle.y:.2f}, z: {camera.angle.z:.2f}", True, (255, 255, 255))
+        textRect = text.get_rect()
+        textRect.center = (20, 30)
+        screen.blit(text, textRect.center)
+
+    def move(self, theta, amount=0.02):
+        direction = math.pi/2 - self.angle.y + theta
+        # calculate the triangle of movement based on our angle theta in radians
+        dx = math.cos(direction)
+        dz = math.sin(direction)
+        # change the position based on that change times the length of our difference
+        self.point.x += dx * amount
+        self.point.z += dz * amount
 
 # Functions for 3d manipulations
 
@@ -60,13 +76,15 @@ def perspective_projection(projected_point, camera_point, camera_orientation):
     dx = cy*(sz*y + cz*x) - sy*z
     dy = sx*(cy*z + sy*(sz*y + cz*x)) + cx*(cz*y - sz*x)
     dz = cx*(cy*z + sy*(sz*y + cz*x)) - sx*(cz*y - sz*x)
+    if dz <= 0:
+        dz = 0.001
     # now we need to find our 'b' values, which are the points projected to the screen.
     # size is the screen size, r is the 'recording surface'
     size_x, size_y = screen.get_width()//2, screen.get_height()//2
-    recording_x, recording_y, recording_z = 3, 3, 10
+    recording_x, recording_y, recording_z = screen.get_width()//100, screen.get_height()//100, 10
     bx = (dx*size_x)/(dz*recording_x)*recording_z
     by = (dy*size_y)/(dz*recording_y)*recording_z
-    return (bx+screen.get_width()//2,by+screen.get_height()//2)
+    return (bx+size_x,by+size_y)
 
 def draw_pt(coords, color):
     # this is imply to help make it easier to quickly draw a point
@@ -92,24 +110,46 @@ def draw_cube(camera):
                 pygame.draw.line(screen, (255, 255, 255), points_list[i], points_list[j])
 
 # general global camera
-camera = Camera((0,0,-5), (0,0,0))
+camera = Camera((0.5,0,-1), (0,0,0))
+w_held, a_held, s_held, d_held = False, False, False, False
+left_held, right_held, up_held, down_held = False, False, False, False
 
 running = True
 while running:
     screen.fill((0,0,0))
     draw_cube(camera)
+    camera.show_pos()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:
             match event.key:
-                case pygame.K_a: camera.point.x -= 0.5
-                case pygame.K_d: camera.point.x += 0.5
-                case pygame.K_w: camera.point.z += 0.5
-                case pygame.K_s: camera.point.z -= 0.5
-                case pygame.K_LEFT: camera.angle.y -= 0.05
-                case pygame.K_RIGHT: camera.angle.y += 0.05
-                case pygame.K_UP: camera.angle.x += 0.05
-                case pygame.K_DOWN: camera.angle.x -= 0.05
+                case pygame.K_w: w_held = True 
+                case pygame.K_s: s_held = True 
+                case pygame.K_a: a_held = True  
+                case pygame.K_d: d_held = True 
+                case pygame.K_LEFT: left_held = True 
+                case pygame.K_RIGHT: right_held = True 
+                case pygame.K_UP: up_held = True  
+                case pygame.K_DOWN: down_held = True 
+                case pygame.K_ESCAPE: running = False
+        if event.type == pygame.KEYUP:
+            match event.key:
+                case pygame.K_w: w_held = False
+                case pygame.K_s: s_held = False 
+                case pygame.K_a: a_held = False
+                case pygame.K_d: d_held = False
+                case pygame.K_LEFT: left_held = False
+                case pygame.K_RIGHT: right_held = False 
+                case pygame.K_UP: up_held = False
+                case pygame.K_DOWN: down_held = False 
+    if w_held: camera.move(0)
+    if s_held: camera.move(math.pi)
+    if a_held: camera.move(math.pi/2)
+    if d_held: camera.move(-math.pi/2)
+    if up_held: camera.angle.x += 0.02
+    if down_held: camera.angle.x -= 0.02
+    if left_held: camera.angle.y -= 0.02
+    if right_held: camera.angle.y += 0.02
     pygame.display.update()
     clock.tick(FPS)
