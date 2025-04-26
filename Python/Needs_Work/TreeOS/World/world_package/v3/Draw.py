@@ -58,18 +58,29 @@ def draw_from_lines(screen, camera, line_list, offset=(0,0,0)):
         pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
 
 def draw_polygons(screen, camera, p_list, offset=(0,0,0)):
-    p_counter = 0
-    while p_counter < len(p_list)-2:
-        first = (p_list[p_counter][0]+offset[0], p_list[p_counter][1]+offset[1], p_list[p_counter][2]+offset[2]) 
-        second = (p_list[p_counter+1][0]+offset[0], p_list[p_counter+1][1]+offset[1], p_list[p_counter+1][2]+offset[2]) 
-        third = (p_list[p_counter+2][0]+offset[0], p_list[p_counter+2][1]+offset[1], p_list[p_counter+2][2]+offset[2]) 
+    for poly in range(len(p_list)//3):
+        first = p_list[poly*3]
+        second = p_list[poly*3+1]
+        third = p_list[poly*3+2]
         point_a = perspective_projection(screen, first, camera.point, camera.angle)
         point_b = perspective_projection(screen, second, camera.point, camera.angle)
         point_c = perspective_projection(screen, third, camera.point, camera.angle)
         pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
         pygame.draw.line(screen, (255, 255, 255), point_b, point_c)
         pygame.draw.line(screen, (255, 255, 255), point_c, point_a)
-        p_counter += 1
+
+    # p_counter = 0
+    # while p_counter < len(p_list)-2:
+    #     first = (p_list[p_counter][0]+offset[0], p_list[p_counter][1]+offset[1], p_list[p_counter][2]+offset[2]) 
+    #     second = (p_list[p_counter+1][0]+offset[0], p_list[p_counter+1][1]+offset[1], p_list[p_counter+1][2]+offset[2]) 
+    #     third = (p_list[p_counter+2][0]+offset[0], p_list[p_counter+2][1]+offset[1], p_list[p_counter+2][2]+offset[2]) 
+    #     point_a = perspective_projection(screen, first, camera.point, camera.angle)
+    #     point_b = perspective_projection(screen, second, camera.point, camera.angle)
+    #     point_c = perspective_projection(screen, third, camera.point, camera.angle)
+    #     pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
+    #     pygame.draw.line(screen, (255, 255, 255), point_b, point_c)
+    #     pygame.draw.line(screen, (255, 255, 255), point_c, point_a)
+    #     p_counter += 1
 
 # Specific implementations for other shapes.
 
@@ -101,7 +112,7 @@ def draw_sphere(screen, camera):
 
 def draw_frame(screen, camera, point_list, debug):
     screen.fill((0,0,0))
-    draw_sphere(screen, camera)
+    #draw_sphere(screen, camera)
     draw_polygons(screen, camera, point_list, (2,0,-0.5)) # in this case, it draws a cube
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen)
