@@ -3,7 +3,7 @@ import pygame
 
 debug = True
 FPS = 60
-resolution = (800, 600)
+resolution = (600, 600)
 
 pygame.font.init()
 font = pygame.font.Font("Comfortaa.ttf", 15)
@@ -105,26 +105,78 @@ def draw_pt(coords, color):
     # this is imply to help make it easier to quickly draw a point
     pygame.draw.circle(screen, color, coords, 2)
 
-def draw_from_lines(camera, line_list):
+def draw_from_lines(camera, line_list, offset=(0,0,0)):
     # line_list is just a list of pairs of 3d points
     for line in line_list:
-        point_a = perspective_projection(line[0], camera.point, camera.angle)
-        point_b = perspective_projection(line[1], camera.point, camera.angle)
+        point_a = perspective_projection((line[0][0]+offset[0],line[0][1]+offset[1],line[0][2]+offset[2]), camera.point, camera.angle)
+        point_b = perspective_projection((line[1][0]+offset[0],line[1][1]+offset[1],line[1][2]+offset[2]), camera.point, camera.angle)
         pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
 
-cube_model = [
+def draw_polygons(camera, p_list, offset=(0,0,0)):
+    p_counter = 0
+    while p_counter < len(p_list)-2:
+        first = (p_list[p_counter][0]+offset[0], p_list[p_counter][1]+offset[1], p_list[p_counter][2]+offset[2]) 
+        second = (p_list[p_counter+1][0]+offset[0], p_list[p_counter+1][1]+offset[1], p_list[p_counter+1][2]+offset[2]) 
+        third = (p_list[p_counter+2][0]+offset[0], p_list[p_counter+2][1]+offset[1], p_list[p_counter+2][2]+offset[2]) 
+        point_a = perspective_projection(first, camera.point, camera.angle)
+        point_b = perspective_projection(second, camera.point, camera.angle)
+        point_c = perspective_projection(third, camera.point, camera.angle)
+        pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
+        pygame.draw.line(screen, (255, 255, 255), point_b, point_c)
+        pygame.draw.line(screen, (255, 255, 255), point_c, point_a)
+        p_counter += 1
+
+def draw_circle(camera):
+    angle_change = 10
+    angle_conversion = math.pi/(180//angle_change)
+    for i in range((360//angle_change)):
+        point_a = perspective_projection((math.cos(i*angle_conversion), 1, math.sin((i)*angle_conversion)), camera.point, camera.angle)
+        point_b = perspective_projection((math.cos((i+1)*angle_conversion), 1, math.sin((i+1)*angle_conversion)), camera.point, camera.angle)
+        pygame.draw.line(screen, (255,255,255), point_a, point_b)
+
+def draw_sphere(camera):
+    angle_change = 10
+    angle_conversion = math.pi/(180//angle_change)
+    for i in range((360//angle_change)):
+        point_a = perspective_projection((math.cos(i*angle_conversion), 1, math.sin((i)*angle_conversion)), camera.point, camera.angle)
+        point_b = perspective_projection((math.cos((i+1)*angle_conversion), 1, math.sin((i+1)*angle_conversion)), camera.point, camera.angle)
+        pygame.draw.line(screen, (255,255,255), point_a, point_b)
+    for i in range((360//angle_change)):
+        point_a = perspective_projection((0, math.cos(i*angle_conversion)+1, math.sin((i)*angle_conversion)), camera.point, camera.angle)
+        point_b = perspective_projection((0, math.cos((i+1)*angle_conversion)+1, math.sin((i+1)*angle_conversion)), camera.point, camera.angle)
+        pygame.draw.line(screen, (255,255,255), point_a, point_b)
+    for i in range((360//angle_change)):
+        point_a = perspective_projection((math.cos(i*angle_conversion), math.sin((i)*angle_conversion)+1, 0), camera.point, camera.angle)
+        point_b = perspective_projection((math.cos((i+1)*angle_conversion), math.sin((i+1)*angle_conversion)+1, 0), camera.point, camera.angle)
+        pygame.draw.line(screen, (255,255,255), point_a, point_b)
+
+
+cube_lines = [
+    ((0,0,0), (1,0,0)),
+    ((1,0,0), (1,0,1)),
+    ((1,0,1), (0,0,1)),
+    ((0,0,1), (0,0,0)),
     ((0,1,0), (1,1,0)),
     ((1,1,0), (1,1,1)),
     ((1,1,1), (0,1,1)),
     ((0,1,1), (0,1,0)),
-    ((0,2,0), (1,2,0)),
-    ((1,2,0), (1,2,1)),
-    ((1,2,1), (0,2,1)),
-    ((0,2,1), (0,2,0)),
-    ((0,1,0), (0,2,0)),
-    ((1,1,0), (1,2,0)),
-    ((0,1,1), (0,2,1)),
-    ((1,1,1), (1,2,1))
+    ((0,0,0), (0,1,0)),
+    ((1,0,0), (1,1,0)),
+    ((0,0,1), (0,1,1)),
+    ((1,0,1), (1,1,1))
+]
+
+cube_points = [
+    (0,0,0),
+    (0,1,0),
+    (1,0,0),
+    (1,1,0),
+    (1,0,1),
+    (1,1,1),
+    (0,0,1),
+    (0,1,1),
+    (0,0,0),
+    (0,1,0)
 ]
 
 # general global camera
@@ -135,7 +187,9 @@ left_held, right_held, up_held, down_held = False, False, False, False
 running = True
 while running:
     screen.fill((0,0,0))
-    draw_from_lines(camera, cube_model)
+    #draw_polygons(camera, cube_points, (0, 1, 0))
+    #draw_from_lines(camera, sphere_lines, (0, 1, 0))
+    draw_sphere(camera)
     camera.fix_angles()
     if debug: camera.show_pos()
     for event in pygame.event.get():
