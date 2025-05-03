@@ -9,7 +9,7 @@ import PlayerMovement
 FPS = 60
 resolution = (600,600)
 debug = True
-mouse_control = True
+mouse_control = False
 mouse_sensitivity = 1
 
 screen = pygame.display.set_mode(resolution)
