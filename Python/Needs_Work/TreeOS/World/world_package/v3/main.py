@@ -46,12 +46,19 @@ cube_points = [
     (1,0,0), (0,0,1), (0,0,0)
 ]
 
+race_track = [
+    (0,0,0), (0,0,3), (3,0,0),
+    (3,0,3), (0,0,3), (3,0,0),
+    (0,0,3), (3,0,3), (2.5,0,5.5),
+    (0,0,3), (0,0,6), (2.5,0,5.5)
+]
+
 # pos + angle is simply to highlight the current drawing setup.
-game_camera = Camera.Camera((1.25,-0.5,-5), (Camera.degrees_to_radians(-10), 0, 0))
+game_camera = Camera.Camera((1.5,-1,-2), (Camera.degrees_to_radians(-10), 0, 0))
 
 running = True
 while running:
-    Draw.draw_frame(screen, game_camera, cube_points, debug)
+    Draw.draw_frame(screen, game_camera, race_track, debug)
     for event in pygame.event.get():
         if event.type == pygame.QUIT or PlayerMovement.player_movement(event, mouse_control):
             # this is a little unintuitive, but since PlayerMovment

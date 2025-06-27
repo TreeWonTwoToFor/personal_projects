@@ -115,8 +115,7 @@ def draw_frame(screen, camera, point_list, debug):
     screen.fill((0,0,0))
     #draw_sphere(screen, camera)
     poly_list = Polygon.points_to_polygons(point_list)
-    print(poly_list)
-    draw_polygons(screen, camera, point_list, (2,0,-0.5)) # in this case, it draws a cube
+    draw_polygons(screen, camera, point_list) # in this case, it draws a cube
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen)
     pygame.display.update()

@@ -1,0 +1,16 @@
+1. Folders should hold references to other types of data in the system (folders, other files).
+2. Files is just text, but also could be something like a list of movies/songs.
+
+I want to have a set of files on the computer that should help keep everything organized. 
+This system isn't going to be perfect, but it should be a fun project to work on in C.
+
+What should this system do?
+	1. create files
+	2. open and edit files (something like exec into vim)
+	3. Have a non-linear graph structure
+		a. Folders are closer to tags
+		b. You can search through 'layers' of tabs. Tabs can be on folders or files.
+
+How will this program handle this?
+	1. Needs to be able to open, read, write, and save files.
+	2.  

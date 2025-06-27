@@ -1,0 +1,13 @@
+1. Mechanics
+    a. Combat items
+    b. More Enemies
+    c. better movement/gameplay? ✓
+    d. walls/obstacles
+    e. torches to open doors ✓
+2.  Objective
+    a. Quest items ✓
+    b. Escape Door ✓
+3. Flavor
+    a. music ✓
+    b. pixel art ✓
+    c. story?
