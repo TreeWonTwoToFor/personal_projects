@@ -20,7 +20,10 @@ def print_board(game_board, lines_cleared, score):
     special_values = [f"Score: {score}", f"Lines Cleared: {lines_cleared}", "", ""]
     for i in range(20):
         for column in game_board:
-            print(column[i], end = " ")
+            if column[i] == "_": 
+                print(".", end = " ")
+            else:
+                print("□", end = " ")
         if i in special_rows:
             print(special_values[i])
         else:
@@ -342,9 +345,12 @@ if __name__ == '__main__':
             right_counter += 1
         elif keyboard.is_pressed('f'):
             rotate_counter += 1
+        elif keyboard.is_pressed('ESC'):
+            running = False
+            break
+
         if counter >= counter_max:
             counter = 0
-
             if right_counter >= counter_max//3:
                 move(game_board, 'right')
                 right_counter = 0
@@ -354,7 +360,6 @@ if __name__ == '__main__':
             if rotate_counter >= counter_max//3:
                 rotate(game_board, current_piece)
                 rotate_counter = 0
-
             board_update(game_board, lines_cleared, score)
             need_piece = drop(game_board)
             if need_piece:
