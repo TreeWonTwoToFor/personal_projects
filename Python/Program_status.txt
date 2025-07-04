@@ -35,6 +35,7 @@ pygame_boilerplate: This is a good base, but it might be nice to build out more 
 senior quote: fully functional game of RPS in the word limit, so I'd count that as a win.
 Song_parser: a program that creates a file that holds the lyrics to my japanese song playlist, as well as the parsed version.
 table_top_drawing: a tool that lets you draw on the screen - super simple
+Tetris: A straight up tetris clone that works in the terminal
 Tree_script: It can read great from text files, but a terminal version would be cool
 UI Builder: This works for moving around windows by the corners, but it 
     - doesn't work by grabbing the edges of windows
