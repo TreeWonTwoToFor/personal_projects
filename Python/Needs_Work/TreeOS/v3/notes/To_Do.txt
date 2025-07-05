@@ -1,7 +1,7 @@
 Listed in no particular order
 
 1. Mouse movement for camera control ✔
-2. system for creating models
+2. system for creating models ✔
 3. Textures
 4. optimizations
 5. fun demos

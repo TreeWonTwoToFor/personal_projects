@@ -1,0 +1,7 @@
+1. Next box
+2. screen/input cleanup
+3. rotate both ways
+4. Speed changes
+5. Levels
+6. Title screen?
+7. spins + slide pieces

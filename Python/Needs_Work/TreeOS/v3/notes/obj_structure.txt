@@ -1,0 +1,14 @@
+1-2:  holds info about blender
+3: points to the material (.mtl) file
+4: 'o Cube,' which I guess means that there is a cube object in the scene?
+
+5-12:  v - has individual vertecies
+13-18: vn - maybe holds the range of how far any vertex goes?
+19-32: vt - holds a pair of numbers. I have no clue what that means
+33:    s - just the number 0. also have no clue what that means
+34-39: f - likely which vertecies create a face. 
+
+
+IDEAS:
+
+for this program, simply getting the v and f values will be enough.
