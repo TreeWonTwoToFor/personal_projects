@@ -1,0 +1,1 @@
+This repository is a collection of projects that I've made to practice coding. It's primarily organized by coding language, then by what the project is. Python is the language that I practice the most, so it's the most extensive. There is a text file in the Python folder that explains all of the projects current states, and gives a general idea of what they do.
