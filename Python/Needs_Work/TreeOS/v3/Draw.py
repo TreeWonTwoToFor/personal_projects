@@ -1,11 +1,12 @@
 import pygame
 import math
+import numpy
+import random
 
 import Point
 import Polygon
 
 # Functions for 3d manipulations
-
 def rotate_object(player_position, object_position, d_theta):
     # uses two 2d points and a change in rotation (radians) to return a point rotated about the player
     x = object_position[0] - player_position[0]
@@ -46,8 +47,13 @@ def perspective_projection(screen, projected_point, camera):
     # OG RETURN FUNCTION: return (bx+size_x,by+size_y)
     return (bx+size_x,size_y-by)
 
-# General drawing functions
+def array_dot_product(face_array, camera_array):
+    face_vector = numpy.array(face_array)
+    camera_vector = numpy.array(camera_array)
+    dp = numpy.dot(face_vector, camera_vector)
+    return dp
 
+# General drawing functions
 def draw_pt(screen, coords, color):
     # this is simply to help make it easier to quickly draw a point
     pygame.draw.circle(screen, color, coords, 2)
@@ -55,54 +61,27 @@ def draw_pt(screen, coords, color):
 def draw_from_lines(screen, camera, line_list, offset=(0,0,0)):
     # line_list is just a list of pairs of 3d points
     for line in line_list:
-        point_a = perspective_projection((line[0][0]+offset[0],line[0][1]+offset[1],line[0][2]+offset[2]), camera)
-        point_b = perspective_projection((line[1][0]+offset[0],line[1][1]+offset[1],line[1][2]+offset[2]), camera)
+        point_a = perspective_projection(
+            (line[0][0]+offset[0],line[0][1]+offset[1],line[0][2]+offset[2]), 
+            camera)
+        point_b = perspective_projection(
+            (line[1][0]+offset[0],line[1][1]+offset[1],line[1][2]+offset[2]), 
+            camera)
         pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
 
-def draw_polygons(screen, camera, p_list, offset=(0,0,0)):
-    for poly in p_list:
-        # 0-1, 1-2, 2-3, 3-0
-        poly_size = len(poly)
-        for i in range(poly_size):
-            index_a = i
-            index_b = i+1
-            if index_b == poly_size: index_b = 0
-            point_a = perspective_projection(screen, poly[index_a], camera)
-            point_b = perspective_projection(screen, poly[index_b], camera)
-            pygame.draw.line(screen, (255,255,255), point_a, point_b)
-
-
-# Specific implementations for other shapes.
-
-def draw_circle(screen, camera):
-    angle_change = 10
-    angle_conversion = math.pi/(180//angle_change)
-    for i in range((360//angle_change)):
-        point_a = perspective_projection(screen, (math.cos(i*angle_conversion), 1, math.sin((i)*angle_conversion)), camera)
-        point_b = perspective_projection(screen, (math.cos((i+1)*angle_conversion), 1, math.sin((i+1)*angle_conversion)), camera)
-        pygame.draw.line(screen, (255,255,255), point_a, point_b)
-
-def draw_sphere(screen, camera):
-    angle_change = 10
-    angle_conversion = math.pi/(180//angle_change)
-    for i in range((360//angle_change)):
-        point_a = perspective_projection(screen, (math.cos(i*angle_conversion), 1, math.sin((i)*angle_conversion)), camera)
-        point_b = perspective_projection(screen, (math.cos((i+1)*angle_conversion), 1, math.sin((i+1)*angle_conversion)), camera)
-        pygame.draw.line(screen, (255,255,255), point_a, point_b)
-    for i in range((360//angle_change)):
-        point_a = perspective_projection(screen, (0, math.cos(i*angle_conversion)+1, math.sin((i)*angle_conversion)), camera)
-        point_b = perspective_projection(screen, (0, math.cos((i+1)*angle_conversion)+1, math.sin((i+1)*angle_conversion)), camera)
-        pygame.draw.line(screen, (255,255,255), point_a, point_b)
-    for i in range((360//angle_change)):
-        point_a = perspective_projection(screen, (math.cos(i*angle_conversion), math.sin((i)*angle_conversion)+1, 0), camera)
-        point_b = perspective_projection(screen, (math.cos((i+1)*angle_conversion), math.sin((i+1)*angle_conversion)+1, 0), camera)
-        pygame.draw.line(screen, (255,255,255), point_a, point_b)
+def draw_polygons_wireframe(screen, camera, pair_list, offset=(0,0,0)):
+    for pair in pair_list:
+        point_a = perspective_projection(screen, pair[0], camera)
+        point_b = perspective_projection(screen, pair[1], camera)
+        pygame.draw.line(screen, (255,255,255), point_a, point_b)     
 
 # 'main' function of Draw
-
-def draw_frame(screen, camera, point_list, debug):
+def draw_frame(screen, camera, obj_list, debug, clock):
     screen.fill((0,0,0))
-    draw_polygons(screen, camera, point_list)
+    for obj in obj_list:
+        draw_polygons_wireframe(screen, camera, obj.model)
+        if debug:
+            draw_polygons_wireframe(screen, camera, obj.collision_box)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
-    if debug: camera.show_pos(screen)
+    if debug: camera.show_pos(screen, round(clock.get_fps(), 2))
     pygame.display.update()

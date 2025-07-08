@@ -15,12 +15,12 @@ def degrees_to_radians(degrees):
 class Camera:
     def __init__(self, xyz, theta):
         self.point = Point.Point(xyz[0], xyz[1], xyz[2])
-        self.angle = Point.Point(theta[0], theta[1], theta[2])
+        self.angle = Point.Point(theta[0], theta[1], theta[2]) # stored in rad
 
     def __str__(self):
         return f"Camera Info\n\tPos: {self.point}\n\tAngle: {self.angle}"
     
-    def show_pos(self, screen):
+    def show_pos(self, screen, fps):
         # like cl_showpos from portal.
         text = font.render(f"Pos: x: {self.point.x:.2f}, y: {self.point.y:.2f}, z: {self.point.z:.2f}", True, (255, 255, 255))
         textRect = text.get_rect()
@@ -31,6 +31,12 @@ class Camera:
             True, (255, 255, 255))
         textRect = text.get_rect()
         textRect.center = (20, 30)
+        screen.blit(text, textRect.center)
+        text = font.render(
+            f"FPS: {fps}",
+            True, (255, 255, 255))
+        textRect = text.get_rect()
+        textRect.center = (20, 50)
         screen.blit(text, textRect.center)
 
     def move(self, theta, amount=0.02):
