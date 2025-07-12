@@ -1,8 +1,6 @@
 import pygame
 import math
 
-# NOTE: This system presumes arrow keys for looking around. Mouse movement should also be considered.
-
 w_held, a_held, s_held, d_held = False, False, False, False
 left_held, right_held, up_held, down_held = False, False, False, False
 
@@ -47,10 +45,14 @@ def player_movement(event, using_mouse):
     return False
 
 def player_movement_update(camera, using_mouse, mouse_sensitivity):
-    if w_held: camera.move(0)
-    if s_held: camera.move(math.pi)
-    if a_held: camera.move(math.pi/2)
-    if d_held: camera.move(-math.pi/2)
+    if w_held: 
+        camera.move(0)
+    if s_held: 
+        camera.move(math.pi)
+    if a_held: 
+        camera.move(math.pi/2)
+    if d_held: 
+        camera.move(-math.pi/2)
     if not using_mouse:
         if up_held: camera.angle.x -= 0.02
         if down_held: camera.angle.x += 0.02

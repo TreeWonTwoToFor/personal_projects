@@ -29,7 +29,11 @@ arcade = Object.Object(
         (Parser.get_model_wireframe("./blender_files/arcade_blender.obj")))
 arcade.scale(0.2, 0.2, 0.2)
 arcade.translate(-2,0,1)
-object_list = [monkey, icosphere, arcade]
+player_hitbox = Object.Object(
+        (Parser.get_model_wireframe("./blender_files/cube.obj")))
+player_hitbox.scale(0.4,0.8,0.4)
+player_hitbox.translate(0,0,-2)
+object_list = [monkey, icosphere, arcade, player_hitbox]
 
 # pos + angle is simply to highlight the current drawing setup.
 # use Camera.degrees_to_radians() for angles

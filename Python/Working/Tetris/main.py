@@ -287,6 +287,7 @@ if __name__ == '__main__':
     counter_max = 15
     right_counter = 0
     left_counter = 0
+    up_counter = 0
     rotate_counter = 0
     # main loop
     running = True
@@ -295,9 +296,11 @@ if __name__ == '__main__':
             left_counter += 1
         elif keyboard.is_pressed('right'):
             right_counter += 1
-        elif keyboard.is_pressed('f'):
+        if keyboard.is_pressed('up'):
+            up_counter += 1
+        if keyboard.is_pressed('f'):
             rotate_counter += 1
-        elif keyboard.is_pressed('ESC'):
+        if keyboard.is_pressed('ESC'):
             running = False
             break
 
@@ -309,11 +312,19 @@ if __name__ == '__main__':
             elif left_counter >= counter_max//3:
                 move(game_board, 'left')
                 left_counter = 0
+            need_piece = False
+            if up_counter >= counter_max//4:
+                dropping = True
+                while dropping:
+                    dropping = not drop(game_board)
+                need_piece = True
+                up_counter = 0
             if rotate_counter >= counter_max//3:
                 rotate(game_board, current_piece)
                 rotate_counter = 0
             print_board(game_board, lines_cleared, score)
-            need_piece = drop(game_board)
+            if not need_piece:
+               need_piece = drop(game_board)
             if need_piece:
                 new_lines = clear_line(game_board)
                 lines_cleared += new_lines
