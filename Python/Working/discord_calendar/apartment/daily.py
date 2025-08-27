@@ -6,15 +6,30 @@ import sys
 
 import csv_parser as PARSER
 
+# setup for discord side
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
+
+# links for google sheets and forms
+google_sheet = open(
+    "/home/jonathan/discord_calendar_links/google_sheets.txt", 'r').read()
+google_form = open(
+    "/home/jonathan/discord_calendar_links/google_form.txt", 'r').read()
 
 def get_task_list():
     output = ""
     for i in range(int(len(todo_list))):
         output = output + f"{i+1}. " + todo_list[i] + '\n'
     return output
+
+def update_todo_list(todo_list):
+    list_dict = {}
+    for i in range(len(todo_list)):
+        list_dict[i+1] = todo_list[i]
+    with open("./list.json", "w") as json_file:
+        json.dump(list_dict, json_file, indent=2)
+
 
 @client.event
 async def on_ready():
@@ -37,19 +52,40 @@ async def on_message(message):
     match command_list[0]:
         case "!list":
             await message.channel.send(get_task_list())
+        case "!add":
+            if len(command_list) > 1:
+                task_input = ""
+                for word in (command_list[1:]):
+                    task_input = task_input + " " + word
+                todo_list.append(task_input)
+                update_todo_list(todo_list)
+                await message.channel.send(
+                    f"Task '{task_input.strip()}' has been added.")
+            else:
+                await message.channel.send("Invalid task input")
         case "!complete":
+            task_complete = False
             try:
                 todo_list.pop(int(command_list[1])-1)
+                task_complete = True
             except:
                 await message.channel.send("Invalid task input")
+            if task_complete:
+                try:
+                    update_todo_list(todo_list)
+                    await message.channel.send("Completed Task.")
+                except:
+                    await message.channel.send("File couldn't be updated")
         case "!ledger":
             if len(command_list) == 1:
                 await message.channel.send("Add 'form' 'sheet', or 'tally'.")
             else:
                 if command_list[1] == "form":
-                    await message.channel.send("https://docs.google.com/forms/d/e/1FAIpQLSfaBtMKh4bCJMJZmReW2cJXCuZs5F8ykFopeiyBRrC5EEKfCw/viewform?usp=sharing&ouid=118416168224866076667")
+                    # link to the google form
+                    await message.channel.send(google_form)
                 elif command_list[1] == "sheet":
-                    await message.channel.send("https://docs.google.com/spreadsheets/d/1i34QFwZm6M4C4QK3T2ftL7evNOpUBQH1KNSHYEA54tM/edit?usp=sharing")
+                    #link to the google sheet
+                    await message.channel.send(google_sheet)
                 elif command_list[1] == "tally":
                     tally_string = PARSER.tally_transactions()
                     print(tally_string)
@@ -57,7 +93,8 @@ async def on_message(message):
 
                 
 # init process
-f = open("C:\\Tree's Stuff\\discord_tokens\\calendar.json", "r")
+#f = open("C:\\Tree's Stuff\\discord_tokens\\calendar.json", "r") # WINDOWS
+f = open("/home/jonathan/token/calendar.json", "r") # LINUX
 token = json.loads(f.read()).get("token")
 
 # loading in the data for the to-do list

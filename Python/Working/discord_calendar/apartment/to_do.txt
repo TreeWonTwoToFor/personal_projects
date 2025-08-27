@@ -1,0 +1,7 @@
+1. to-do list
+    a. modify file [DONE]
+    b. add tasks [DONE]
+    c. undo (history feature?)
+2. calendar
+    a. optional daily post (maybe like the to-do list?)
+    b. daily schedule for people in the apartment?
