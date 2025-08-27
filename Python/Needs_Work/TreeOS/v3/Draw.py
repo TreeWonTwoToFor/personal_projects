@@ -78,7 +78,7 @@ def draw_polygons_wireframe(screen, camera, pair_list, offset=(0,0,0)):
 # 'main' function of Draw
 def draw_frame(screen, camera, obj_list, debug, clock):
     screen.fill((0,0,0))
-    for obj in obj_list:
+    for obj in obj_list[1:]: # don't draw the camera's hitbox
         draw_polygons_wireframe(screen, camera, obj.model)
         if debug:
             draw_polygons_wireframe(screen, camera, obj.collision_box)

@@ -1,0 +1,6 @@
+Timestamp,"Who is the Sender (Ex. ""Group,"" ""Jon"")","Who is the Receiver (Ex. ""Group,"" ""Jon"")",Transaction Amount (Number only),"Reason for transfer (Ex. ""Groceries"")"
+8/25/2025 12:54:38,Jon,Bee,$27.33,Peace for all Shirt
+8/25/2025 13:02:49,Jon,Grace,$59.65,Costco Groceries
+8/25/2025 13:03:06,Jon,Bee,$23.27,Costco Groceries
+8/25/2025 16:19:48,Bee,Jon,$14.54,Trader Joe's
+8/25/2025 16:20:00,Grace,Jon,$14.54,Trader Joe's

@@ -10,6 +10,6 @@ Listed in no particular order
     b. lock in place
     c. pre-determined movements
 7. more game engine-y stuff
-    a. objects
+    a. objects - kinda works. Should probably have more features tho
     b. player interactivity with the world
     c. scenes

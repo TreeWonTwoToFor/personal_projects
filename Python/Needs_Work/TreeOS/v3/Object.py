@@ -1,17 +1,22 @@
-import blender_parser as Parser
 import math
+
+import Parser
 
 class Object:
     def __init__(self, model):
         self.model = remove_reference(model)
-        self.collision_box = get_bounding_box_wireframe(model)
-        self.center_point = get_center_point_wireframe(model)
+        self.update()
         self.move_to_origin()
+
+    def update(self):
+        self.center_point = get_center_point_wireframe(self.model)
+        self.collision_box = get_bounding_box_wireframe(self.model)
+        self.collision_values = get_bounding_box_values(self.model)
 
     def move_to_origin(self):
         cp = self.center_point
         self.translate(-cp[0], -cp[1], -cp[2])
-        self.center_point = get_center_point_wireframe(self.model) # should be 0,0,0
+        self.update()
         
     def translate(self, x, y, z):
         scalar_list = [x,y,z]
@@ -19,8 +24,7 @@ class Object:
             for point in point_pair:
                 for i in range(3):
                     point[i] = point[i] + scalar_list[i]
-        self.center_point = get_center_point_wireframe(self.model)
-        self.collision_box = get_bounding_box_wireframe(self.model)
+        self.update()
     
     def scale(self, x, y, z):
         scalar_list = [x,y,z]
@@ -29,7 +33,15 @@ class Object:
                 for i in range(3):
                     point[i] = (point[i] - self.center_point[i]
                       ) * scalar_list[i] + self.center_point[i]
-        self.collision_box = get_bounding_box_wireframe(self.model)
+        self.update()
+
+    def rotate(self, x, y, z):
+        rotate_list = [x,y,z]
+        for point_pair in self.model:
+            for point in point_pair:
+                for i in range(3):
+                    point[i] = point[i] * math.cos(rotate_list[i])
+        self.update()
 
 
 def remove_reference(model):
@@ -77,6 +89,16 @@ def translate_wireframe(og_model, x, y, z):
                 point[i] = point[i] + scalar_list[i]
     return model
 
+# x y and z should be in radians
+def rotate_wireframe(og_model, x, y, z):
+    model = remove_reference(og_model)
+    rotate_list = [x,y,z]
+    for point_pair in model:
+        for point in point_pair:
+            for i in range(3):
+                point[i] = point[i] * math.cos(rotate_list[i])
+    return model
+
 def get_bounding_box_wireframe(model):
     max_x, max_y, max_z = model[0][0][0], model[0][0][1], model[0][0][2]
     low_x, low_y, low_z = model[0][0][0], model[0][0][1], model[0][0][2]
@@ -98,4 +120,15 @@ def get_bounding_box_wireframe(model):
     cp_full = get_center_point_wireframe(model)
     return translate_wireframe(box_model, cp_full[0], cp_full[1], cp_full[2])
 
-
+def get_bounding_box_values(model):
+    max_x, max_y, max_z = model[0][0][0], model[0][0][1], model[0][0][2]
+    low_x, low_y, low_z = model[0][0][0], model[0][0][1], model[0][0][2]
+    for point_pair in model:
+        for point in point_pair:
+            if point[0] > max_x: max_x = point[0]
+            if point[0] < low_x: low_x = point[0]
+            if point[1] > max_y: max_y = point[1]
+            if point[1] < low_y: low_y = point[1]
+            if point[2] > max_z: max_z = point[2]
+            if point[2] < low_z: low_z = point[2]
+    return (low_x, low_y,low_z, max_x, max_y, max_z)
