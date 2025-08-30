@@ -17,8 +17,11 @@ google_sheet = open(
 google_form = open(
     "/home/jonathan/discord_calendar_links/google_form.txt", 'r').read()
 
+# todo list functions
 def get_task_list():
     output = ""
+    if len(todo_list) == 0:
+        return "There's nothing on the To-Do list."
     for i in range(int(len(todo_list))):
         output = output + f"{i+1}. " + todo_list[i] + '\n'
     return output
@@ -30,7 +33,7 @@ def update_todo_list(todo_list):
     with open("./list.json", "w") as json_file:
         json.dump(list_dict, json_file, indent=2)
 
-
+# discord specific functions
 @client.event
 async def on_ready():
     message_string = ""
@@ -50,32 +53,41 @@ async def on_message(message):
         return
     command_list = message.content.lower().split(' ')
     match command_list[0]:
+        case "!help":
+            await message.channel.send("Use !list or !ledger to get started.")
         case "!list":
-            await message.channel.send(get_task_list())
-        case "!add":
-            if len(command_list) > 1:
-                task_input = ""
-                for word in (command_list[1:]):
-                    task_input = task_input + " " + word
-                todo_list.append(task_input)
-                update_todo_list(todo_list)
-                await message.channel.send(
-                    f"Task '{task_input.strip()}' has been added.")
-            else:
-                await message.channel.send("Invalid task input")
-        case "!complete":
-            task_complete = False
-            try:
-                todo_list.pop(int(command_list[1])-1)
-                task_complete = True
-            except:
-                await message.channel.send("Invalid task input")
-            if task_complete:
-                try:
+            if len(command_list) == 1:
+                await message.channel.send("Add 'show' 'add', or 'complete'.")
+            elif command_list[1] == "show":
+                await message.channel.send(get_task_list())
+            elif command_list[1] == "add":
+                if len(command_list) > 2:
+                    task_input = ""
+                    for word in (command_list[2:]):
+                        task_input = task_input + " " + word
+                    todo_list.append(task_input)
                     update_todo_list(todo_list)
-                    await message.channel.send("Completed Task.")
+                    await message.channel.send(
+                        f"Task '{task_input.strip()}' has been added.")
+                else:
+                    await message.channel.send(
+                        "Invalid task input")
+            elif command_list[1] == "complete":
+                task_complete = False
+                try:
+                    todo_list.pop(int(command_list[2])-1)
+                    task_complete = True
                 except:
-                    await message.channel.send("File couldn't be updated")
+                    await message.channel.send(
+                        "Invalid task input")
+                if task_complete:
+                    try:
+                        update_todo_list(todo_list)
+                        await message.channel.send(
+                            "Completed Task.")
+                    except:
+                        await message.channel.send(
+                            "File couldn't be updated")
         case "!ledger":
             if len(command_list) == 1:
                 await message.channel.send("Add 'form' 'sheet', or 'tally'.")
