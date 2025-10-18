@@ -1,0 +1,15 @@
+Listed in no particular order
+
+1. Mouse movement for camera control ✔
+2. system for creating models ✔
+3. Textures
+4. optimizations
+5. fun demos
+6. more camera options 
+    a. orbit
+    b. lock in place
+    c. pre-determined movements
+7. more game engine-y stuff
+    a. objects - kinda works. Should probably have more features tho
+    b. player interactivity with the world
+    c. scenes
