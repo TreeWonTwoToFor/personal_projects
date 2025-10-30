@@ -54,7 +54,11 @@ def array_dot_product(face_array, camera_array):
     return dp
 
 def vector_magnitude(vector):
-    return math.sqrt(vector[0]**2+vector[1]**2+vector[2]**2)
+    value = math.sqrt(vector[0]**2+vector[1]**2+vector[2]**2)
+    if value == 0:
+        return 0.001
+    else:
+        return value
 
 # General drawing functions
 def draw_pt(screen, coords, color):
@@ -72,15 +76,20 @@ def draw_from_lines(screen, camera, line_list, offset=(0,0,0)):
             camera)
         pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
 
-def draw_polygons_wireframe(screen, camera, pair_list, offset=(0,0,0)):
-    for pair in pair_list:
-        point_a = perspective_projection(screen, pair[0], camera)
-        point_b = perspective_projection(screen, pair[1], camera)
-        pygame.draw.line(screen, (255,255,255), point_a, point_b)     
+def draw_3d_point(screen, point, color, camera):
+    new_point = perspective_projection(screen, point, camera)
+    draw_pt(screen, new_point, color)
 
-def draw_polygons(screen, camera, poly_list, offset=(0,0,0)):
-    back_culling = True
-    sun = [100, 100, 100]
+def draw_3d_line(screen, point_a, point_b, color, camera):
+    new_point_a = perspective_projection(screen, point_a, camera)
+    new_point_b = perspective_projection(screen, point_b, camera)
+    draw_pt(screen, new_point_a, color)
+    draw_pt(screen, new_point_b, color)
+    pygame.draw.line(screen, color, new_point_a, new_point_b)
+
+def draw_polygons(screen, camera, poly_list, clock, offset=(0,0,0)):
+    back_culling = False
+    sun = [100, 80, 90]
     for poly in poly_list:
         perspective_poly = []
         direction_vector = [camera.point.x - poly[0][0][0]]
@@ -89,28 +98,33 @@ def draw_polygons(screen, camera, poly_list, offset=(0,0,0)):
         color = array_dot_product(sun, poly[1])/(
             vector_magnitude(sun)*vector_magnitude(poly[1]))
         color = color * 255
-        if color < 20: color = 20
+        if color >= 20:
+            poly_color = (color, color, color)
+        else:
+            poly_color = (25, 25, 25)
         if back_culling: 
             if array_dot_product(direction_vector, poly[1]) >= 0:
                 for point in poly[0]:
                     perspective_poly.append(
                         perspective_projection(screen, point, camera))
-                pygame.draw.polygon(screen, (color, color, color), perspective_poly)
+                pygame.draw.polygon(screen, poly_color, perspective_poly)
         else:
             for point in poly[0]:
                 perspective_poly.append(perspective_projection(screen, point, camera))
-            pygame.draw.polygon(screen, (color, color, color), perspective_poly)
+            pygame.draw.polygon(screen, poly_color, perspective_poly)
+        # NOTE: enable for poly by poly rendering.
+        #pygame.display.update()
+        #clock.tick(1)
 
 # sort the polygons from back to front to ensure no overlap
 def sort_polygons(camera, poly_list, offset=(0,0,0)):
     output_list = []
     for poly in poly_list:
         centroid = [0,0,0]
-        vertex_counter = 0
         for vertex in poly[0]:
-            vertex_counter += 1
             for i in range(3): centroid[i] += vertex[i]
-        for value in centroid: value = value / vertex_counter
+        for i in range(len(centroid)):
+            centroid[i] = centroid[i] / len(poly[0])
         distance = math.sqrt(
             (camera.point.x - centroid[0])**2
             +(camera.point.y - centroid[1])**2
@@ -123,16 +137,9 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
     return final_list
 
 # 'main' function of Draw
-def draw_frame_wireframe(screen, camera, obj_list, debug, clock):
-    for obj in obj_list[1:]: # don't draw the camera's hitbox
-        draw_polygons_wireframe(screen, camera, obj.model)
-        if debug:
-            draw_polygons_wireframe(screen, camera, obj.collision_box)
-    camera.fix_angles() # keeps the camera's angles in realistic boundaries.
-    if debug: camera.show_pos(screen, round(clock.get_fps(), 2))
-
 def draw_frame_poly(screen, camera, obj_list, debug, clock):
+    #draw_3d_line(screen, (0,-2,0), (0,0,0), (255,0,0), camera)
     for obj in obj_list[1:]: # don't draw the camera's hitbox
-        draw_polygons(screen, camera, sort_polygons(camera, obj.model))
+        draw_polygons(screen, camera, sort_polygons(camera, obj.model), clock)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))

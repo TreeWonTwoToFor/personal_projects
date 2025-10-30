@@ -21,29 +21,18 @@ pygame.mouse.set_visible(not mouse_control)
 
 monkey_poly = Object.Object(
         (Parser.get_model("./blender_files/monkey.obj")), "poly")
-#cube_poly = Object.Object(
-#        (Parser.get_model("./blender_files/cube.obj")), "poly")
-#monkey_poly.rotate(0, 0, Camera.degrees_to_radians(180))
-#cube_poly.translate(0,0,1)
-
-#monkey_wire = Object.Object(
-#        (Parser.get_model_wireframe("./blender_files/monkey.obj")), "wire")
-#monkey_wire.rotate_wireframe(0, 0, Camera.degrees_to_radians(180))
-#monkey_wire.translate_wireframe(0,0,1)
 
 # pos + angle is simply to highlight the current drawing setup.
 # use Camera.degrees_to_radians() for angles
-game_camera = Camera.Camera((0,0,-1), (0, 0, 0))
+game_camera = Camera.Camera((2,0.5,2), (0, Camera.degrees_to_radians(-135), 0))
 
-object_list_p = [game_camera.bounding_box, monkey_poly]
-#object_list_p = [game_camera.bounding_box, cube_poly]
-#object_list_w = [game_camera.bounding_box, monkey_wire]
+object_list = [game_camera.bounding_box, monkey_poly]
 
 running = True
 while running:
     screen.fill([0,0,0])
-    Draw.draw_frame_poly(screen, game_camera, object_list_p, debug, clock)
-    #Draw.draw_frame_wireframe(screen, game_camera, object_list_w, debug, clock)
+    #monkey_poly.rotate(0,1,0, Camera.degrees_to_radians(0.5))
+    Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or PlayerMovement.player_movement(
@@ -54,5 +43,5 @@ while running:
             running = False
     # the player movement needs to be checked every frame, and not just when a key changes.
     PlayerMovement.player_movement_update(
-        game_camera, mouse_control, mouse_sensitivity, object_list_p)
+        game_camera, mouse_control, mouse_sensitivity, object_list)
     clock.tick(FPS)

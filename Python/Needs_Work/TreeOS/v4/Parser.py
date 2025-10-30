@@ -79,41 +79,8 @@ def get_model(file_name):
     return model
 
 
-def get_model_wireframe(file_name):
-    # returns tuples, where each one holds a pair of points to draw in 3D space
-    text = read_blender_file(file_name)
-    file_dict = get_file_dictionary(text)
-    vertex_list = []
-    face_normal_list = []
-    face_list = []
-    for vertex in get_data(file_dict, 'v'):
-        final_vertex = []
-        for number in vertex.split()[1:]:
-            final_vertex.append(float(number))
-        vertex_list.append(final_vertex)
-    for face in get_data(file_dict, 'f'):
-        final_face = []
-        for point in face.split()[1:]:
-            final_face.append(int(point.split('/')[0]))
-        face_list.append(final_face)
-    face_dict = {}
-    for face in face_list:
-        for i in range(len(face)):
-            index_a = i
-            index_b = i+1
-            if index_b == len(face): index_b = 0
-            point_a = face[index_a]
-            point_b = face[index_b]
-            if point_a < point_b:
-                point_pair = str(point_a) + " " + str(point_b)
-            else:
-                point_pair = str(point_b) + " " + str(point_a)
-            point_a_value = vertex_list[point_a-1]
-            point_b_value = vertex_list[point_b-1]
-            face_dict[point_pair] = [point_a_value, point_b_value]
-    return list(face_dict.values())
-
-
 if __name__ == '__main__':
-    model = get_model("./blender_files/cube.obj")
-    for poly in model: print(poly)
+    model_face = get_model("./blender_files/monkey_face.obj")
+    model = get_model("./blender_files/monkey.obj")
+    for i in range(4):
+        print(f"{i}:\n\t{model_face[i]}\n\t{model[i]}")
