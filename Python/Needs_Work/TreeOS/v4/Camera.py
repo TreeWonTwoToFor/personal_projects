@@ -63,7 +63,7 @@ class Camera:
         if self.angle.y < -degrees_to_radians(180):
             self.angle.y += degrees_to_radians(360)
 
-    def move(self, theta, amount=0.02):
+    def move(self, theta, amount=0.04):
         if self.movement_type == "absolute":
             self.move_absolute(theta, amount)
         elif self.movement_type == "physics":

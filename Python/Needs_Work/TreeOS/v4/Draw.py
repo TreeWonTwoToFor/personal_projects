@@ -87,21 +87,24 @@ def draw_3d_line(screen, point_a, point_b, color, camera):
     draw_pt(screen, new_point_b, color)
     pygame.draw.line(screen, color, new_point_a, new_point_b)
 
-def draw_polygons(screen, camera, poly_list, clock, offset=(0,0,0)):
-    back_culling = False
+def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
+    back_culling = True
     sun = [100, 80, 90]
+    poly_list = []
+    for obj in obj_list:
+        poly_list = sort_polygons(camera, obj.model + poly_list)
     for poly in poly_list:
+        poly_color = list(poly[2])
         perspective_poly = []
         direction_vector = [camera.point.x - poly[0][0][0]]
         direction_vector.append(camera.point.y - poly[0][0][1])
         direction_vector.append(camera.point.z - poly[0][0][2])
-        color = array_dot_product(sun, poly[1])/(
+        color_mod = array_dot_product(sun, poly[1])/(
             vector_magnitude(sun)*vector_magnitude(poly[1]))
-        color = color * 255
-        if color >= 20:
-            poly_color = (color, color, color)
-        else:
-            poly_color = (25, 25, 25)
+        if color_mod < 0: color_mod = 0
+        for i in range(3): 
+            poly_color[i] = poly_color[i]*color_mod
+            if poly_color[i] < 20: poly_color[i] = 20
         if back_culling: 
             if array_dot_product(direction_vector, poly[1]) >= 0:
                 for point in poly[0]:
@@ -139,7 +142,6 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
 # 'main' function of Draw
 def draw_frame_poly(screen, camera, obj_list, debug, clock):
     #draw_3d_line(screen, (0,-2,0), (0,0,0), (255,0,0), camera)
-    for obj in obj_list[1:]: # don't draw the camera's hitbox
-        draw_polygons(screen, camera, sort_polygons(camera, obj.model), clock)
+    draw_polygons(screen, camera, obj_list[1:], clock)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))

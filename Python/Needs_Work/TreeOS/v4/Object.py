@@ -5,11 +5,14 @@ import quaternion
 import Parser
 
 class Object:
-    def __init__(self, model, model_type):
+    def __init__(self, model, color, model_type="poly"):
         self.model = remove_reference(model)
+        self.color = color
         if model_type == "poly":
             self.update()
             self.move_to_origin()
+            for poly in self.model:
+                poly.append(color)
         elif model_type == "wire":
             self.update_wireframe()
             self.move_to_origin_wireframe()
