@@ -16,6 +16,9 @@ def degrees_to_radians(degrees):
 
 class Camera:
     def __init__(self, xyz, theta):
+        theta = list(theta)
+        for i in range(len(theta)):
+            theta[i] = degrees_to_radians(theta[i])
         self.point = Point.Point(xyz[0], xyz[1], xyz[2])
         self.angle = Point.Point(theta[0], theta[1], theta[2]) # stored in rad
 

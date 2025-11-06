@@ -99,6 +99,13 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
         direction_vector = [camera.point.x - poly[0][0][0]]
         direction_vector.append(camera.point.y - poly[0][0][1])
         direction_vector.append(camera.point.z - poly[0][0][2])
+
+        vector_a, vector_b = [], []
+        for i in range(3):
+            vector_a.append(round(poly[0][0][i] - poly[0][1][i], 4))
+            vector_b.append(round(poly[0][0][i] - poly[0][2][i], 4))
+        poly[1] = numpy.cross(numpy.array(vector_a),numpy.array(vector_b))
+
         color_mod = array_dot_product(sun, poly[1])/(
             vector_magnitude(sun)*vector_magnitude(poly[1]))
         if color_mod < 0: color_mod = 0
