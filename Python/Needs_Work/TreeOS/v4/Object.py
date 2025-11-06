@@ -50,11 +50,16 @@ class Object:
         q = numpy.quaternion(numpy.cos(angle / 2), *(axis * numpy.sin(angle / 2)))
         for poly in self.model:
             for point in poly[0]:
-                v = numpy.array([point[0], point[1], point[2]])
+                px = point[0]-self.center_point[0]
+                py = point[1]-self.center_point[1]
+                pz = point[2]-self.center_point[2]
+                v = numpy.array([px, py, pz])
                 v_q = numpy.quaternion(0, *v)
                 v_rot = q * v_q * q.conj()
-                #point[0], point[1], point[2] = v_rot.x, v_rot.y, v_rot.z
-                point[0], point[1], point[2] = v_rot.imag
+                point_list = v_rot.imag
+                for i in range(3):
+                    point[i] = point_list[i] + self.center_point[i]    
+                #point[0], point[1], point[2] = v_rot.imag
         self.update()
 
 

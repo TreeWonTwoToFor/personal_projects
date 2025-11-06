@@ -19,21 +19,28 @@ screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
-test_two_poly = Object.Object(
+red_cylinder = Object.Object(
+        (Parser.get_model("./blender_files/cylinder.obj")), (255, 0, 0))
+green_cylinder = Object.Object(
+        (Parser.get_model("./blender_files/cylinder.obj")), (100, 255, 100))
+blue_cylinder = Object.Object(
         (Parser.get_model("./blender_files/cylinder.obj")), (100, 100, 255))
+red_cylinder.translate(0,0,-1)
+blue_cylinder.translate(0,0,1)
 
 # pos + angle is simply to highlight the current drawing setup.
 # use Camera.degrees_to_radians() for angles
-game_camera = Camera.Camera((2,0.5,2), (0, -135, 0))
+game_camera = Camera.Camera((5,0.5,0), (10, -90, 0))
 
-object_list = [game_camera.bounding_box, test_two_poly]
+object_list = [game_camera.bounding_box, red_cylinder, green_cylinder, blue_cylinder]
 
 running = True
 while running:
     screen.fill([0,0,0])
-    #monkey_poly.rotate(0,1,0, Camera.degrees_to_radians(0.5))
-    test_two_poly.rotate(0,1,0,0.005)
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
+    red_cylinder.rotate(1,0,0, 0.005)
+    green_cylinder.rotate(0,1,0, 0.005)
+    blue_cylinder.rotate(0,0,1, 0.005)
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or PlayerMovement.player_movement(
