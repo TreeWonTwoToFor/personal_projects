@@ -91,27 +91,29 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
     back_culling = True
     sun = [100, 80, 90]
     poly_list = []
+    # sorting all of the objects into one list to ensure proper ordering
     for obj in obj_list:
         poly_list = sort_polygons(camera, obj.model + poly_list)
     for poly in poly_list:
-        poly_color = list(poly[2])
         perspective_poly = []
         direction_vector = [camera.point.x - poly[0][0][0]]
         direction_vector.append(camera.point.y - poly[0][0][1])
         direction_vector.append(camera.point.z - poly[0][0][2])
-
+        # calculating face vectors
         vector_a, vector_b = [], []
         for i in range(3):
             vector_a.append(round(poly[0][0][i] - poly[0][1][i], 4))
             vector_b.append(round(poly[0][0][i] - poly[0][2][i], 4))
         poly[1] = numpy.cross(numpy.array(vector_a),numpy.array(vector_b))
-
+        # using face vector to calculate light intensity
         color_mod = array_dot_product(sun, poly[1])/(
             vector_magnitude(sun)*vector_magnitude(poly[1]))
         if color_mod < 0: color_mod = 0
+        poly_color = list(poly[2])
         for i in range(3): 
             poly_color[i] = poly_color[i]*color_mod
             if poly_color[i] < 20: poly_color[i] = 20
+        # rendering polygons
         if back_culling: 
             if array_dot_product(direction_vector, poly[1]) >= 0:
                 for point in poly[0]:
@@ -140,6 +142,7 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
             +(camera.point.y - centroid[1])**2
             +(camera.point.z - centroid[2])**2)
         output_list.append([poly, distance])
+    # sort based on how far the centroid is from the camera
     sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
     final_list = []
     for poly in sorted_list:

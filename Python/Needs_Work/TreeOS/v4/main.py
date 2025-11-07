@@ -1,6 +1,10 @@
 # General libraries
 import pygame
 
+# Testing
+import cProfile
+import pstats
+
 # Project files
 import Camera
 import Draw
@@ -11,6 +15,7 @@ import Object
 FPS = 60
 resolution = (800, 600) # XGA
 debug = True
+testing = False
 
 mouse_control = False
 mouse_sensitivity = 0.5
@@ -28,14 +33,18 @@ blue_cylinder = Object.Object(
 red_cylinder.translate(0,0,-1)
 blue_cylinder.translate(0,0,1)
 
+test_box = Object.Object(
+        (Parser.get_model("./blender_files/cube.obj")), (255,0,0))
+
 # pos + angle is simply to highlight the current drawing setup.
 # use Camera.degrees_to_radians() for angles
-game_camera = Camera.Camera((5,0.5,0), (10, -90, 0))
+game_camera = Camera.Camera((6,0.5,0), (10, -90, 0))
 
 object_list = [game_camera.bounding_box, red_cylinder, green_cylinder, blue_cylinder]
+#object_list = [game_camera.bounding_box, test_box]
 
-running = True
-while running:
+def iterate():
+    global running
     screen.fill([0,0,0])
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     red_cylinder.rotate(1,0,0, 0.005)
@@ -53,3 +62,16 @@ while running:
     PlayerMovement.player_movement_update(
         game_camera, mouse_control, mouse_sensitivity, object_list)
     clock.tick(FPS)
+
+def test():
+    with cProfile.Profile() as pr:
+        iterate()
+    stats = pstats.Stats(pr)
+    stats.sort_stats(pstats.SortKey.TIME).print_stats(20)
+
+if not testing:
+    running = True
+    while running:
+        iterate()
+else:
+    test()

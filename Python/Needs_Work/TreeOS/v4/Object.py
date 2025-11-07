@@ -1,6 +1,5 @@
 import math
 import numpy
-import quaternion
 
 import Parser
 
@@ -26,6 +25,15 @@ class Object:
         cp = self.center_point
         self.translate(-cp[0], -cp[1], -cp[2])
         self.update()
+
+    def recalculate_normals(self):
+        polys = numpy.array([poly[0] for poly in self.model], dtype=float)
+        v1 = polys[:, 1] - polys[:, 0]
+        v2 = polys[:, 2] - polys[:, 0]
+        normals = numpy.cross(v1, v2)
+        normals /= numpy.linalg.norm(normals, axis=1)[:, None]  # normalize
+        for poly, normal in zip(self.model, normals):
+            poly[1] = normal
         
     def translate(self, x, y, z):
         scalar_list = [x,y,z]
@@ -45,21 +53,28 @@ class Object:
         self.update()
 
     def rotate(self, rx, ry, rz, angle):
-        axis = numpy.array([rx, ry, rz])
-        axis = axis / numpy.linalg.norm(axis)
-        q = numpy.quaternion(numpy.cos(angle / 2), *(axis * numpy.sin(angle / 2)))
+        axis = numpy.array([rx, ry, rz], dtype=float)
+        axis /= numpy.linalg.norm(axis)
+        c = numpy.cos(angle / 2.0)
+        s = numpy.sin(angle / 2.0)
+        x, y, z = axis * s
+        # matrix based on quaternion math
+        R = numpy.array([
+            [1 - 2*(y*y + z*z), 2*(x*y - z*c),     2*(x*z + y*c)],
+            [2*(x*y + z*c),     1 - 2*(x*x + z*z), 2*(y*z - x*c)],
+            [2*(x*z - y*c),     2*(y*z + x*c),     1 - 2*(x*x + y*y)]
+        ])
+        all_points = numpy.array(
+            [point for poly in self.model for point in poly[0]], dtype=float)
+        # translate to origin before rotation
+        centered = all_points - self.center_point
+        rotated = centered @ R.T + self.center_point
+        # put all the rotated points back into the model structure
+        idx = 0
         for poly in self.model:
-            for point in poly[0]:
-                px = point[0]-self.center_point[0]
-                py = point[1]-self.center_point[1]
-                pz = point[2]-self.center_point[2]
-                v = numpy.array([px, py, pz])
-                v_q = numpy.quaternion(0, *v)
-                v_rot = q * v_q * q.conj()
-                point_list = v_rot.imag
-                for i in range(3):
-                    point[i] = point_list[i] + self.center_point[i]    
-                #point[0], point[1], point[2] = v_rot.imag
+            n = len(poly[0])
+            poly[0][:] = rotated[idx:idx+n].tolist()
+            idx += n
         self.update()
 
 

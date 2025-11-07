@@ -2,14 +2,18 @@ Listed in no particular order
 
 1. Mouse movement for camera control ✔
 2. system for creating models ✔
-3. Textures
-4. optimizations
+3. optimizations
+    a. obscured polygons are still being rendered.
+    b. polygons outside of screen bounds are still being rendered. 
+    c. CP calculations are slow. Choose not to repeat every frame?
+    d. 
+4. Textures
 5. fun demos
 6. more camera options 
     a. orbit
     b. lock in place
     c. pre-determined movements
 7. more game engine-y stuff
-    a. objects - kinda works. Should probably have more features tho
-    b. player interactivity with the world
+    a. objects
+    b. player interactivity
     c. scenes

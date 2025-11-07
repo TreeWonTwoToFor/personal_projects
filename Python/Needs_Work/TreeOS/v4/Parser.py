@@ -40,6 +40,19 @@ def get_data(file_dict, data_type):
     return data_list
 
 
+def triangulate(polygons):
+    tris = []
+    for poly in polygons:
+        verts = poly[0]
+        if len(verts) == 3:
+            tris.append(poly)
+        else:
+            # fan triangulation (simple for convex polygons)
+            for i in range(1, len(verts)-1):
+                tris.append([[verts[0], verts[i], verts[i+1]], poly[1]])
+    return tris
+
+
 # each data point in the model has a list of vertices, as well as the face normal
 def get_model(file_name):
     text = read_blender_file(file_name)
@@ -78,9 +91,7 @@ def get_model(file_name):
         model.append(polygon)
     return model
 
-
 if __name__ == '__main__':
-    model_face = get_model("./blender_files/monkey_face.obj")
-    model = get_model("./blender_files/monkey.obj")
-    for i in range(4):
-        print(f"{i}:\n\t{model_face[i]}\n\t{model[i]}")
+    model_cube = get_model("./blender_files/cylinder.obj")
+    print(model_cube)
+    print(triangulate(model_cube))
