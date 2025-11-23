@@ -1,5 +1,9 @@
 import numpy
 
+# needed for winding ordering
+from Draw import perspective_projection as pp
+import Camera
+
 def read_blender_file(file_name):
     try:
         file = open(file_name)
@@ -42,14 +46,34 @@ def get_data(file_dict, data_type):
 
 def triangulate(polygons):
     tris = []
+    camera = Camera.Camera((0,0,0), (0,0,0), True)
     for poly in polygons:
         verts = poly[0]
         if len(verts) == 3:
             tris.append(poly)
         else:
+            # order the vertecies based on their winding order
+            projected_points = []
+            angle_list = []
+            centroid = [0,0]
+            for point in verts:
+                value = list(pp([100,100], point, camera))
+                projected_points.append(value)
+                #centroid[0] += value[0]
+                #centroid[1] += value[1]
+            centroid[0] /= len(verts)
+            centroid[1] /= len(verts)
+            for point in projected_points:
+                for i in range(2): point[i] -= centroid[i]
+                angle_list.append(numpy.arctan2(point[1], point[0]))
+            zipped_list = zip(angle_list, verts)
+            sorted_pairs = sorted(zipped_list)
+            sorted_sorting_list, sorted_list_to_sort = zip(*sorted_pairs)
+            s_verts = list(sorted_list_to_sort)
+            #s_verts.reverse()
             # fan triangulation (simple for convex polygons)
-            for i in range(1, len(verts)-1):
-                tris.append([[verts[0], verts[i], verts[i+1]], poly[1]])
+            for i in range(1, len(s_verts)-1):
+                tris.append([[s_verts[0], s_verts[i], s_verts[i+1]], poly[1]])
     return tris
 
 
@@ -92,6 +116,7 @@ def get_model(file_name):
     return model
 
 if __name__ == '__main__':
-    model_cube = get_model("./blender_files/cylinder.obj")
-    print(model_cube)
-    print(triangulate(model_cube))
+    test_model = get_model("./blender_files/pentagon.obj")
+    print(test_model)
+    print()
+    print(triangulate(test_model))

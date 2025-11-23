@@ -21,7 +21,7 @@ def rotate_object(player_position, object_position, d_theta):
     new_position = (math.cos(theta+d_theta)*distance+player_position[0], math.sin(theta+d_theta)*distance+player_position[1])
     return new_position
 
-def perspective_projection(screen, projected_point, camera):
+def perspective_projection(screen_resolution, projected_point, camera):
     # redefining our list inputs into points/vectors with names that align with wikipedia
     a = Point.Point(projected_point[0], projected_point[1], projected_point[2])
     c = camera.point
@@ -39,8 +39,8 @@ def perspective_projection(screen, projected_point, camera):
         dz = 0.001
     # now we need to find our 'b' values, which are the points projected to the screen.
     # size is the screen size, r is the 'recording surface'
-    size_x, size_y = screen.get_width()//2, screen.get_height()//2
-    recording_x, recording_y, recording_z = screen.get_width()//100, screen.get_height()//100, 10
+    size_x, size_y = screen_resolution[0]//2, screen_resolution[1]//2
+    recording_x, recording_y, recording_z = screen_resolution[0]//100, screen_resolution[1]//100, 10
     bx = (dx*size_x)/(dz*recording_x)*recording_z
     by = (dy*size_y)/(dz*recording_y)*recording_z
     # bx and by need to be centered to the screen instead of 0,0
@@ -65,30 +65,21 @@ def draw_pt(screen, coords, color):
     # this is simply to help make it easier to quickly draw a point
     pygame.draw.circle(screen, color, coords, 2)
 
-def draw_from_lines(screen, camera, line_list, offset=(0,0,0)):
-    # line_list is just a list of pairs of 3d points
-    for line in line_list:
-        point_a = perspective_projection(
-            (line[0][0]+offset[0],line[0][1]+offset[1],line[0][2]+offset[2]), 
-            camera)
-        point_b = perspective_projection(
-            (line[1][0]+offset[0],line[1][1]+offset[1],line[1][2]+offset[2]), 
-            camera)
-        pygame.draw.line(screen, (255, 255, 255), point_a, point_b)
-
 def draw_3d_point(screen, point, color, camera):
-    new_point = perspective_projection(screen, point, camera)
+    new_point = perspective_projection(
+        [screen.get_width(), screen.get_height()], point, camera)
     draw_pt(screen, new_point, color)
 
 def draw_3d_line(screen, point_a, point_b, color, camera):
-    new_point_a = perspective_projection(screen, point_a, camera)
-    new_point_b = perspective_projection(screen, point_b, camera)
+    new_point_a = perspective_projection(
+        [screen.get_width(), screen.get_height()], point_a, camera)
+    new_point_b = perspective_projection(
+        [screen.get_width(), screen.get_height()], point_b, camera)
     draw_pt(screen, new_point_a, color)
     draw_pt(screen, new_point_b, color)
     pygame.draw.line(screen, color, new_point_a, new_point_b)
 
-def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
-    back_culling = True
+def draw_polygons(screen, camera, obj_list, clock, back_culling=True, offset=(0,0,0)):
     sun = [100, 80, 90]
     poly_list = []
     # sorting all of the objects into one list to ensure proper ordering
@@ -117,12 +108,11 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
         if back_culling: 
             if array_dot_product(direction_vector, poly[1]) >= 0:
                 for point in poly[0]:
-                    perspective_poly.append(
-                        perspective_projection(screen, point, camera))
+                    perspective_poly.append(perspective_projection([screen.get_width(), screen.get_height()], point, camera))
                 pygame.draw.polygon(screen, poly_color, perspective_poly)
         else:
             for point in poly[0]:
-                perspective_poly.append(perspective_projection(screen, point, camera))
+                perspective_poly.append(perspective_projection([screen.get_width(), screen.get_height()], point, camera))
             pygame.draw.polygon(screen, poly_color, perspective_poly)
         # NOTE: enable for poly by poly rendering.
         #pygame.display.update()
@@ -151,7 +141,9 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
 
 # 'main' function of Draw
 def draw_frame_poly(screen, camera, obj_list, debug, clock):
-    #draw_3d_line(screen, (0,-2,0), (0,0,0), (255,0,0), camera)
+    #draw_3d_line(screen, (0,-2,0), (0,2,0), (0,255,0), camera)
+    #draw_3d_line(screen, (-2,0,-3), (2,0,-3), (255,0,0), camera)
+    #draw_3d_line(screen, (0,0,1.5), (0,0,4.5), (0,0,255), camera)
     draw_polygons(screen, camera, obj_list[1:], clock)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))

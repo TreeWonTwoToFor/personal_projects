@@ -15,18 +15,19 @@ def degrees_to_radians(degrees):
     return degrees * (math.pi/180)
 
 class Camera:
-    def __init__(self, xyz, theta):
+    def __init__(self, xyz, theta, is_parser=False):
         theta = list(theta)
         for i in range(len(theta)):
             theta[i] = degrees_to_radians(theta[i])
         self.point = Point.Point(xyz[0], xyz[1], xyz[2])
         self.angle = Point.Point(theta[0], theta[1], theta[2]) # stored in rad
 
-        # setting up the player's collision
-        player_box = Object.Object(Parser.get_model("./blender_files/cube.obj"), "poly")
-        player_box.translate(self.point.x, self.point.y-0.5, self.point.z)
-        self.bounding_box = player_box
-        self.bounding_box.scale(0.2, 0.7, 0.2)
+        if not is_parser:
+            # setting up the player's collision
+            player_box = Object.Object(Parser.get_model("./blender_files/cube.obj"), "poly")
+            player_box.translate(self.point.x, self.point.y-0.5, self.point.z)
+            self.bounding_box = player_box
+            self.bounding_box.scale(0.2, 0.7, 0.2)
 
         # setup movement stuff
         self.movement_type = "absolute"

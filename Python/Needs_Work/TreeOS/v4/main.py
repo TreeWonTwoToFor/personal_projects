@@ -25,23 +25,27 @@ clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
 red_cylinder = Object.Object(
-        (Parser.get_model("./blender_files/cylinder.obj")), (255, 0, 0))
+    (Parser.get_model("./blender_files/cylinder.obj")), (255, 0, 0))
 green_cylinder = Object.Object(
-        (Parser.get_model("./blender_files/cylinder.obj")), (100, 255, 100))
+    (Parser.get_model("./blender_files/cylinder.obj")), (100, 255, 100))
 blue_cylinder = Object.Object(
-        (Parser.get_model("./blender_files/cylinder.obj")), (100, 100, 255))
+    (Parser.get_model("./blender_files/cylinder.obj")), (100, 100, 255))
 red_cylinder.translate(0,0,-1)
 blue_cylinder.translate(0,0,1)
 
 test_box = Object.Object(
-        (Parser.get_model("./blender_files/cube.obj")), (255,0,0))
+    (Parser.get_model("./blender_files/cube.obj")), (255,0,0))
+
+test_triangulate = Object.Object(
+    (Parser.get_model("./blender_files/pentagon.obj")), (255,0,0))
+#test_triangulate.rotate(0,0,1, Camera.degrees_to_radians(90))
 
 # pos + angle is simply to highlight the current drawing setup.
 # use Camera.degrees_to_radians() for angles
-game_camera = Camera.Camera((6,0.5,0), (10, -90, 0))
+game_camera = Camera.Camera((5,0,0), (0,-90,0))
 
 object_list = [game_camera.bounding_box, red_cylinder, green_cylinder, blue_cylinder]
-#object_list = [game_camera.bounding_box, test_box]
+#object_list = [game_camera.bounding_box, test_triangulate]
 
 def iterate():
     global running

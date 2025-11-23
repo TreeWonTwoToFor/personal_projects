@@ -3,10 +3,11 @@ Listed in no particular order
 1. Mouse movement for camera control ✔
 2. system for creating models ✔
 3. optimizations
+    currently using painter's algorithm, & back-face culling
     a. obscured polygons are still being rendered.
-    b. polygons outside of screen bounds are still being rendered. 
+    b. polygons outside of screen bounds are still being rendered 
+        -> View Frustum culling
     c. CP calculations are slow. Choose not to repeat every frame?
-    d. 
 4. Textures
 5. fun demos
 6. more camera options 
