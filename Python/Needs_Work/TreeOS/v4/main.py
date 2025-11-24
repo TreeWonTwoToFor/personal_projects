@@ -6,54 +6,34 @@ import cProfile
 import pstats
 
 # Project files
-import Camera
 import Draw
 import PlayerMovement
-import Parser
-import Object
+import SceneManager
 
 FPS = 60
 resolution = (800, 600) # XGA
 debug = True
-testing = False
+# normal, render, testing
+mode = "normal"
 
-mouse_control = False
+mouse_control = True
 mouse_sensitivity = 0.5
 
 screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
-red_cylinder = Object.Object(
-    (Parser.get_model("./blender_files/cylinder.obj")), (255, 0, 0))
-green_cylinder = Object.Object(
-    (Parser.get_model("./blender_files/cylinder.obj")), (100, 255, 100))
-blue_cylinder = Object.Object(
-    (Parser.get_model("./blender_files/cylinder.obj")), (100, 100, 255))
-red_cylinder.translate(0,0,-1)
-blue_cylinder.translate(0,0,1)
-
-test_box = Object.Object(
-    (Parser.get_model("./blender_files/cube.obj")), (255,0,0))
-
-test_triangulate = Object.Object(
-    (Parser.get_model("./blender_files/pentagon.obj")), (255,0,0))
-#test_triangulate.rotate(0,0,1, Camera.degrees_to_radians(90))
-
-# pos + angle is simply to highlight the current drawing setup.
-# use Camera.degrees_to_radians() for angles
-game_camera = Camera.Camera((5,0,0), (0,-90,0))
-
-object_list = [game_camera.bounding_box, red_cylinder, green_cylinder, blue_cylinder]
-#object_list = [game_camera.bounding_box, test_triangulate]
+scene = SceneManager.load_scene("test_scene.txt")
+game_camera = scene[0]
+object_list = scene[1]
 
 def iterate():
     global running
     screen.fill([0,0,0])
+    object_list[1].rotate(1,0,0, 0.005)
+    object_list[2].rotate(0,1,0, 0.005)
+    object_list[3].rotate(0,0,1, 0.005)
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
-    red_cylinder.rotate(1,0,0, 0.005)
-    green_cylinder.rotate(0,1,0, 0.005)
-    blue_cylinder.rotate(0,0,1, 0.005)
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or PlayerMovement.player_movement(
@@ -67,15 +47,19 @@ def iterate():
         game_camera, mouse_control, mouse_sensitivity, object_list)
     clock.tick(FPS)
 
-def test():
-    with cProfile.Profile() as pr:
-        iterate()
-    stats = pstats.Stats(pr)
-    stats.sort_stats(pstats.SortKey.TIME).print_stats(20)
-
-if not testing:
+if mode == "render":
+    running = True
+    for i in range(615):
+        if running:
+            iterate()
+            number = f"{i:03}" # 3 = digits
+            pygame.image.save(screen, "render/frame" + number + ".png")
+elif mode == "normal":
     running = True
     while running:
         iterate()
-else:
-    test()
+elif mode == "testing":
+    with cProfile.Profile() as pr:
+        iterate()
+    stats = pstats.Stats(pr)
+    stats.sort_stats(pstats.SortKey.TIME).print_stats(10)

@@ -1,0 +1,6 @@
+camera x y z rx ry rz
+/ comment for OBJ_NAME
+open OBJ_NAME FILE_NAME r g b
+translate OBJ_NAME x y z
+scale OBJ_NAME x y z
+rotate OBJ_NAME x y z theta

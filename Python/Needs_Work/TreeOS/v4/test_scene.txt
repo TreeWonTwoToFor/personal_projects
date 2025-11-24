@@ -1,0 +1,8 @@
+camera 5 0 0 0 -90 0
+
+open red cylinder 255 0 0
+open green cylinder 0 255 0
+open blue cylinder 0 0 255
+
+translate red 0 0 -1
+translate blue 0 0 1
