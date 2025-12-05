@@ -1,7 +1,7 @@
 import pygame
 import math
 
-import Point
+from Engine import Point
 
 w_held, a_held, s_held, d_held = False, False, False, False
 left_held, right_held, up_held, down_held = False, False, False, False

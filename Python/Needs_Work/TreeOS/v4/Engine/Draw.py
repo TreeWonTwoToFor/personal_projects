@@ -3,23 +3,7 @@ import math
 import numpy
 import random
 
-import Point
-import Polygon
-
-# Functions for 3d manipulations
-def rotate_object(player_position, object_position, d_theta):
-    # uses two 2d points and a change in rotation (radians) to return a point rotated about the player
-    x = object_position[0] - player_position[0]
-    y = math.fabs(object_position[1] - player_position[1])
-    distance = math.sqrt(
-        math.pow(x,2) + math.pow(y,2)
-    )
-    if x != 0: # avoiding a divide by 0 error
-        theta = math.atan2(y, x)
-    else:
-        theta = -math.atan2(y, 1) # this negative is a little sus
-    new_position = (math.cos(theta+d_theta)*distance+player_position[0], math.sin(theta+d_theta)*distance+player_position[1])
-    return new_position
+from Engine import Point
 
 def perspective_projection(screen_resolution, projected_point, camera):
     # redefining our list inputs into points/vectors with names that align with wikipedia
@@ -79,6 +63,27 @@ def draw_3d_line(screen, point_a, point_b, color, camera):
     draw_pt(screen, new_point_b, color)
     pygame.draw.line(screen, color, new_point_a, new_point_b)
 
+# sort the polygons from back to front to ensure no overlap
+def sort_polygons(camera, poly_list, offset=(0,0,0)):
+    output_list = []
+    for poly in poly_list:
+        centroid = [0,0,0]
+        for vertex in poly[0]:
+            for i in range(3): centroid[i] += vertex[i]
+        for i in range(len(centroid)):
+            centroid[i] = centroid[i] / len(poly[0])
+        distance = math.sqrt(
+            (camera.point.x - centroid[0])**2
+            +(camera.point.y - centroid[1])**2
+            +(camera.point.z - centroid[2])**2)
+        output_list.append([poly, distance])
+    # sort based on how far the centroid is from the camera
+    sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
+    final_list = []
+    for poly in sorted_list:
+        final_list.append(poly[0])
+    return final_list
+
 def draw_polygons(screen, camera, obj_list, clock, back_culling=True, offset=(0,0,0)):
     sun = [100, 80, 90]
     poly_list = []
@@ -118,32 +123,9 @@ def draw_polygons(screen, camera, obj_list, clock, back_culling=True, offset=(0,
         #pygame.display.update()
         #clock.tick(1)
 
-# sort the polygons from back to front to ensure no overlap
-def sort_polygons(camera, poly_list, offset=(0,0,0)):
-    output_list = []
-    for poly in poly_list:
-        centroid = [0,0,0]
-        for vertex in poly[0]:
-            for i in range(3): centroid[i] += vertex[i]
-        for i in range(len(centroid)):
-            centroid[i] = centroid[i] / len(poly[0])
-        distance = math.sqrt(
-            (camera.point.x - centroid[0])**2
-            +(camera.point.y - centroid[1])**2
-            +(camera.point.z - centroid[2])**2)
-        output_list.append([poly, distance])
-    # sort based on how far the centroid is from the camera
-    sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
-    final_list = []
-    for poly in sorted_list:
-        final_list.append(poly[0])
-    return final_list
-
 # 'main' function of Draw
 def draw_frame_poly(screen, camera, obj_list, debug, clock):
-    #draw_3d_line(screen, (0,-2,0), (0,2,0), (0,255,0), camera)
-    #draw_3d_line(screen, (-2,0,-3), (2,0,-3), (255,0,0), camera)
-    #draw_3d_line(screen, (0,0,1.5), (0,0,4.5), (0,0,255), camera)
+    # we don't draw the camera's bounding box
     draw_polygons(screen, camera, obj_list[1:], clock)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))

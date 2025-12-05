@@ -1,7 +1,7 @@
 import math
 import numpy
 
-import Parser
+from Engine import Parser
 
 class Object:
     def __init__(self, model, color, model_type="poly"):
@@ -140,7 +140,7 @@ def get_bounding_box(model):
     x_size = math.sqrt((max_x - low_x)**2)/2
     y_size = math.sqrt((max_y - low_y)**2)/2
     z_size = math.sqrt((max_z - low_z)**2)/2
-    box_model = Parser.get_model("./blender_files/cube.obj")
+    box_model = Parser.get_model("./Assets/Objects/cube.obj")
     box_model = scale(box_model, x_size, y_size, z_size)
     cp_box = get_center_point(box_model)
     box_model = translate(box_model, -cp_box[0], -cp_box[1], -cp_box[2])

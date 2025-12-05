@@ -1,15 +1,15 @@
 import numpy
 
 # needed for winding ordering
-from Draw import perspective_projection as pp
-import Camera
+from Engine import Draw
+from Engine import Camera
 
 def read_blender_file(file_name):
     try:
         file = open(file_name)
         return file.read()
     except:
-        raise FileNotFoundError("Could not find the file.")
+        raise FileNotFoundError(f"Could not find '{file_name}'")
 
 
 def get_file_dictionary(file_text):
@@ -57,7 +57,7 @@ def triangulate(polygons):
             angle_list = []
             centroid = [0,0]
             for point in verts:
-                value = list(pp([100,100], point, camera))
+                value = list(Draw.perspective_projection([100,100], point, camera))
                 projected_points.append(value)
                 #centroid[0] += value[0]
                 #centroid[1] += value[1]

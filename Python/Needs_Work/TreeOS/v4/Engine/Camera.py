@@ -1,12 +1,12 @@
 import pygame
 import math
 
-import Point
-import Parser
-import Object
+from Engine import Point
+from Engine import Parser
+from Engine import Object
 
 pygame.font.init()
-font = pygame.font.Font("Comfortaa.ttf", 15)
+font = pygame.font.Font("./Assets/Comfortaa.ttf", 15)
 
 def radians_to_degrees(radians):
     return radians * (180/math.pi)
@@ -24,7 +24,7 @@ class Camera:
 
         if not is_parser:
             # setting up the player's collision
-            player_box = Object.Object(Parser.get_model("./blender_files/cube.obj"), "poly")
+            player_box = Object.Object(Parser.get_model("./Assets/Objects/cube.obj"), "poly")
             player_box.translate(self.point.x, self.point.y-0.5, self.point.z)
             self.bounding_box = player_box
             self.bounding_box.scale(0.2, 0.7, 0.2)

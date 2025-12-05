@@ -1,20 +1,20 @@
-Listed in no particular order
-
-1. Mouse movement for camera control ✔
-2. system for creating models ✔
-3. optimizations
+optimizations
     currently using painter's algorithm, & back-face culling
-    a. obscured polygons are still being rendered.
-    b. polygons outside of screen bounds are still being rendered 
-        -> View Frustum culling
-    c. CP calculations are slow. Choose not to repeat every frame?
-4. Textures
-5. fun demos
-6. more camera options 
-    a. orbit
-    b. lock in place
-    c. pre-determined movements
-7. more game engine-y stuff
-    a. objects
-    b. player interactivity
-    c. scenes
+    obscured polygons are still being rendered.
+         occlusion culling
+    polygons outside of screen bounds are still being rendered 
+        View Frustum culling
+    CP calculations are slow. 
+        caching values seems like a good idea
+Textures
+fun demos
+more game engine-y stuff
+    objects
+        orbit
+        collision
+        assignable attributes
+    player interactivity
+        collision
+        more movement options
+    scenes ✔
+        cutscene in the file itself?

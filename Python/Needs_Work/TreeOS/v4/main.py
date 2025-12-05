@@ -6,9 +6,9 @@ import cProfile
 import pstats
 
 # Project files
-import Draw
-import PlayerMovement
-import SceneManager
+from Engine import Draw
+from Engine import PlayerMovement
+from Engine import SceneManager
 
 FPS = 60
 resolution = (800, 600) # XGA
@@ -16,23 +16,24 @@ debug = True
 # normal, render, testing
 mode = "normal"
 
-mouse_control = True
+mouse_control = False
 mouse_sensitivity = 0.5
 
 screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
-scene = SceneManager.load_scene("test_scene.txt")
+scene = SceneManager.load_scene("./Assets/Scenes/test_scene.txt")
 game_camera = scene[0]
-object_list = scene[1]
+object_dict = scene[1]
 
 def iterate():
     global running
     screen.fill([0,0,0])
-    object_list[1].rotate(1,0,0, 0.005)
-    object_list[2].rotate(0,1,0, 0.005)
-    object_list[3].rotate(0,0,1, 0.005)
+    object_dict["red"].rotate(1,0,0, 0.005)
+    object_dict["green"].rotate(0,1,0, 0.005)
+    object_dict["blue"].rotate(0,0,1, 0.005)
+    object_list = list(object_dict.values())
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     pygame.display.update()
     for event in pygame.event.get():
