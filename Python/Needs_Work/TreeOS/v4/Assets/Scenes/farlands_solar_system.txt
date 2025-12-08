@@ -1,0 +1,12 @@
+camera 0 5 0 90 0 0
+
+open red icosphere 255 0 0
+open orange icosphere 255 100 0
+open yellow icosphere 255 255 0
+open green icosphere 50 255 50
+open blue icosphere 100 100 255
+
+translate orange 3 0 0
+translate yellow 3 0 3
+translate green 3 0 -3
+translate blue 0 0 3

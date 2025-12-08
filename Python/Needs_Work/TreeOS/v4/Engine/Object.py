@@ -8,7 +8,6 @@ class Object:
         self.model = remove_reference(model)
         self.color = color
         if model_type == "poly":
-            self.update()
             self.move_to_origin()
             for poly in self.model:
                 poly.append(color)
@@ -22,9 +21,11 @@ class Object:
         self.collision_values = get_bounding_box_values(self.model)
 
     def move_to_origin(self):
-        cp = self.center_point
-        self.translate(-cp[0], -cp[1], -cp[2])
         self.update()
+        cp = self.center_point
+        if cp != [0,0,0]:
+            self.translate(-cp[0], -cp[1], -cp[2])
+            self.update()
 
     def recalculate_normals(self):
         polys = numpy.array([poly[0] for poly in self.model], dtype=float)
@@ -37,8 +38,8 @@ class Object:
         
     def translate(self, x, y, z):
         scalar_list = [x,y,z]
-        for point_pair in self.model:
-            for point in point_pair[0]:
+        for poly in self.model:
+            for point in poly[0]:
                 for i in range(3):
                     point[i] = point[i] + scalar_list[i]
         self.update()
@@ -83,7 +84,10 @@ def remove_reference(model):
     for vertex_list, face in model:
         new_poly = []
         for vertex in vertex_list:
-            new_poly.append(vertex)
+            new_vertex = []
+            for val in vertex:
+                new_vertex.append(val)
+            new_poly.append(new_vertex)
         new_model.append([new_poly, face])
     return new_model
 
@@ -117,7 +121,7 @@ def scale(og_model, x, y, z):
                 point[i] = (point[i] - cp[i]) * scalar_list[i] + cp[i]
     return model
 
-def translate(og_model, x, y, z):
+def translate_old(og_model, x, y, z):
     model = remove_reference(og_model)
     scalar_list = [x,y,z]
     for poly in model:
@@ -143,9 +147,9 @@ def get_bounding_box(model):
     box_model = Parser.get_model("./Assets/Objects/cube.obj")
     box_model = scale(box_model, x_size, y_size, z_size)
     cp_box = get_center_point(box_model)
-    box_model = translate(box_model, -cp_box[0], -cp_box[1], -cp_box[2])
+    box_model = translate_old(box_model, -cp_box[0], -cp_box[1], -cp_box[2])
     cp_full = get_center_point(model)
-    return translate(box_model, cp_full[0], cp_full[1], cp_full[2])
+    return translate_old(box_model, cp_full[0], cp_full[1], cp_full[2])
 
 def get_bounding_box_values(model):
     max_x, max_y, max_z = model[0][0][0][0], model[0][0][0][1], model[0][0][0][2]
