@@ -15,6 +15,7 @@ resolution = (800, 600) # XGA
 debug = True
 # normal, render, testing
 mode = "normal"
+scene_name = "farlands_solar_system.txt"
 
 mouse_control = False
 mouse_sensitivity = 0.5
@@ -23,16 +24,18 @@ screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
-scene = SceneManager.load_scene("./Assets/Scenes/farlands_solar_system.txt")
+scene = SceneManager.load_scene("./Assets/Scenes/" + scene_name)
 game_camera = scene[0]
 object_dict = scene[1]
 
 def iterate():
     global running
     screen.fill([0,0,0])
-    #object_dict["red"].rotate(1,0,0, 0.005)
-    #object_dict["green"].rotate(0,1,0, 0.005)
-    #object_dict["blue"].rotate(0,0,1, 0.005)
+    if scene_name == "test_scene.txt":
+        object_dict["red"].rotate(1,0,0, 0.005)
+        object_dict["green"].rotate(0,1,0, 0.005)
+        object_dict["blue"].rotate(0,0,1, 0.005)
+    object_dict['orange'].orbit(0,1,0, 0.01, 0,0,10)
     object_list = list(object_dict.values())
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     pygame.display.update()

@@ -46,8 +46,8 @@ class Object:
     
     def scale(self, x, y, z):
         scalar_list = [x,y,z]
-        for point_pair in self.model:
-            for point in point_pair[0]:
+        for poly in self.model:
+            for point in poly[0]:
                 for i in range(3):
                     point[i] = (point[i] - self.center_point[i]
                       ) * scalar_list[i] + self.center_point[i]
@@ -77,6 +77,14 @@ class Object:
             poly[0][:] = rotated[idx:idx+n].tolist()
             idx += n
         self.update()
+
+    def orbit(self, rx, ry, rz, angle, ox=0, oy=0, oz=0):
+        old_center = self.center_point
+        self.center_point = [ox,oy,oz] # rotate tries to move to origin initially.
+        self.rotate(rx, ry, rz, angle)
+        self.center_point = old_center
+        # undoes the rotation on the object. could likely be condenced into one, smart call?
+        self.rotate(rx, ry, rz, -angle)
 
 
 def remove_reference(model):
