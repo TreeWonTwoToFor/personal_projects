@@ -17,7 +17,7 @@ class Object:
 
     def update(self):
         self.center_point = get_center_point(self.model)
-        self.collision_box = get_bounding_box(self.model)
+        self.collision_box = get_bounding_box(self)
         self.collision_values = get_bounding_box_values(self.model)
 
     def move_to_origin(self):
@@ -138,7 +138,8 @@ def translate_old(og_model, x, y, z):
                 point[i] = point[i] + scalar_list[i]
     return model
 
-def get_bounding_box(model):
+def get_bounding_box(obj):
+    model = obj.model
     max_x, max_y, max_z = model[0][0][0][0], model[0][0][0][1], model[0][0][0][2]
     low_x, low_y, low_z = model[0][0][0][0], model[0][0][0][1], model[0][0][0][2]
     for poly in model:
@@ -149,6 +150,8 @@ def get_bounding_box(model):
             if point[1] < low_y: low_y = point[1]
             if point[2] > max_z: max_z = point[2]
             if point[2] < low_z: low_z = point[2]
+    obj.aabb_min = (low_x, low_y, low_z)
+    obj.aabb_max = (max_x, max_y, max_z)
     x_size = math.sqrt((max_x - low_x)**2)/2
     y_size = math.sqrt((max_y - low_y)**2)/2
     z_size = math.sqrt((max_z - low_z)**2)/2

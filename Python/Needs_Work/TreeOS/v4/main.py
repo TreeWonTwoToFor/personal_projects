@@ -15,8 +15,8 @@ FPS = 60
 resolution = (800, 600) # XGA
 debug = True
 # normal, render, testing
-mode = "render"
-scene_name = "farlands_solar_system.txt"
+mode = "normal"
+scene_name = "test_scene.txt"
 render_frame_count = 630
 
 mouse_control = False
@@ -37,7 +37,6 @@ def iterate():
         object_dict["red"].rotate(1,0,0, 0.005)
         object_dict["green"].rotate(0,1,0, 0.005)
         object_dict["blue"].rotate(0,0,1, 0.005)
-    object_dict['orange'].orbit(0,1,0, 0.01, 0,0,10)
     object_list = list(object_dict.values())
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     pygame.display.update()
@@ -54,6 +53,15 @@ def iterate():
     clock.tick(FPS)
 
 match mode:
+    case "normal":
+        running = True
+        while running:
+            iterate()
+    case "testing":
+        with cProfile.Profile() as pr:
+            iterate()
+        stats = pstats.Stats(pr)
+        stats.sort_stats(pstats.SortKey.CALLS).print_stats(200)
     case "render":
         # creates an empty folder, named render
         current_path = os.getcwd()
@@ -76,12 +84,3 @@ match mode:
                 iterate()
                 number = f"{i:03}" # 3 = digits
                 pygame.image.save(screen, "render/frame" + number + ".png")
-    case "normal":
-        running = True
-        while running:
-            iterate()
-    case "testing":
-        with cProfile.Profile() as pr:
-            iterate()
-        stats = pstats.Stats(pr)
-        stats.sort_stats(pstats.SortKey.CALLS).print_stats(200)

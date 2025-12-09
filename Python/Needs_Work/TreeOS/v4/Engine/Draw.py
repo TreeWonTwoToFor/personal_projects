@@ -5,6 +5,70 @@ import random
 
 from Engine import Point
 
+def get_view_frustum(screen_resolution, camera):
+    pitch, yaw, roll = camera.angle.x, camera.angle.y, camera.angle.z
+    # calculate camera's forward, right, and up vectors for view matrix
+    forward = [math.cos(pitch) * math.sin(yaw)]
+    forward.append(math.sin(pitch))
+    forward.append(math.cos(pitch) * math.cos(yaw))
+    forward = numpy.array(forward)
+    forward = forward/numpy.linalg.norm(forward)
+    right = numpy.cross(numpy.array([0,1,0]), forward)
+    right = right/numpy.linalg.norm(right)
+    up = numpy.cross(forward, right)
+    up = up/numpy.linalg.norm(up)
+    
+    # perspective projection matrix
+    near = 0.01
+    far = 10000.0
+    fovX = math.pi/2
+    aspect = screen_resolution[0]/screen_resolution[1]
+    fovY = 2 * math.atan(math.tan(fovX/2)/aspect)
+    f = 1 / math.tan(fovY/2)
+    
+    # matrix construction
+    eye = numpy.array([camera.point.x, camera.point.y, camera.point.z])
+    view = numpy.array([
+        [right[0], right[1], right[2], -numpy.dot(right, eye)],
+        [up[0], up[1], up[2], -numpy.dot(up,eye)],
+        [-forward[0], -forward[1], -forward[2], numpy.dot(forward, eye)],
+        [0,0,0,1]
+    ])
+    projection = numpy.array([
+        [f/aspect, 0, 0, 0],
+        [0, f, 0, 0],
+        [0, 0, -(far+near)/(far-near), -(2*far*near)/(far-near)],
+        [0, 0, -1, 0]
+    ])
+    VP = projection @ view
+    
+    # plane extraction
+    planes = []
+    row0 = VP[0,:]
+    row1 = VP[1,:]
+    row2 = VP[2,:]
+    row3 = VP[3,:]
+    planes.append(row3 + row0)   # left
+    planes.append(row3 - row0)   # right
+    planes.append(row3 + row1)   # bottom
+    planes.append(row3 - row1)   # top
+    planes.append(row3 + row2)   # far
+    planes.append(row3 - row2)   # near
+    
+    # normalize the planes
+    for i in range(6):
+        n = planes[i][:3]
+        mag = numpy.linalg.norm(n)
+        planes[i] = planes[i] / mag
+    
+    return planes
+
+def aabb_outside_plane(plane, aabb_min, aabb_max):
+    normal = plane[:3]
+    positive_vertex = numpy.where(normal >= 0, aabb_max, aabb_min)
+    distance = numpy.dot(normal, positive_vertex) + plane[3]
+    return distance < 0
+
 def perspective_projection(screen_resolution, projected_point, camera):
     # redefining our list inputs into points/vectors with names that align with wikipedia
     a = Point.Point(projected_point[0], projected_point[1], projected_point[2])
@@ -85,11 +149,18 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
     return final_list
 
 def draw_polygons(screen, camera, obj_list, clock, back_culling=True, offset=(0,0,0)):
+    frustum_planes = get_view_frustum(screen.get_size(), camera)
     sun = [100, 80, 90]
     poly_list = []
     # sorting all of the objects into one list to ensure proper ordering
     for obj in obj_list:
-        poly_list = sort_polygons(camera, obj.model + poly_list)
+        out_of_bounds = False
+        for plane in frustum_planes:
+            if aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
+                out_of_bounds = True
+        if not out_of_bounds:
+            poly_list = obj.model + poly_list
+    poly_list = sort_polygons(camera, poly_list)
     for poly in poly_list:
         perspective_poly = []
         direction_vector = [camera.point.x - poly[0][0][0]]
@@ -128,4 +199,5 @@ def draw_frame_poly(screen, camera, obj_list, debug, clock):
     # we don't draw the camera's bounding box
     draw_polygons(screen, camera, obj_list[1:], clock)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
+    get_view_frustum(screen.get_size(), camera)
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))
