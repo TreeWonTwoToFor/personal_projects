@@ -17,7 +17,7 @@ debug = True
 # normal, render, testing
 mode = "render"
 scene_name = "farlands_solar_system.txt"
-render_frame_count = 630
+render_frame_count = 10
 
 mouse_control = False
 mouse_sensitivity = 0.5
@@ -69,9 +69,8 @@ match mode:
                     except OSError as e:
                         print(f"Error removing {file_path}: {e}")
         # iterates for the given number of frames, saving each frame as a file.
-        debug = False
         running = True
-        for i in range(render_frame_count):
+        for i in range(10):
             if running:
                 iterate()
                 number = f"{i:03}" # 3 = digits
