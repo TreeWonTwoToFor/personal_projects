@@ -17,4 +17,4 @@ more game engine-y stuff
         collision
         more movement options
     scenes ✔
-        cutscene in the file itself?
+        cutscene in the file itself? ✔ (need to add orbit)

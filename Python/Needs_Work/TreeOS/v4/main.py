@@ -36,12 +36,9 @@ def iterate():
     screen.fill([0,0,0])
     for action in object_actions:
         match action[0]:
-            case "translate":
-                action[1].translate(action[2][0], action[2][1], action[2][2])
-            case "scale":
-                action[1].scale(action[2][0], action[2][1], action[2][2])
-            case "rotate":
-                action[1].rotate(action[2][0], action[2][1], action[2][2], action[3])
+            case "translate": action[1].translate(action[2])
+            case "scale": action[1].scale(action[2])
+            case "rotate": action[1].rotate(action[2], action[3])
     object_list = list(object_dict.values())
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     pygame.display.update()

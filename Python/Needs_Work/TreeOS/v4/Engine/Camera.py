@@ -25,9 +25,9 @@ class Camera:
         if not is_parser:
             # setting up the player's collision
             player_box = Object.Object(Parser.get_model("./Assets/Objects/cube.obj"), "poly")
-            player_box.translate(self.point.x, self.point.y-0.5, self.point.z)
+            player_box.translate([self.point.x, self.point.y-0.5, self.point.z])
             self.bounding_box = player_box
-            self.bounding_box.scale(0.2, 0.7, 0.2)
+            self.bounding_box.scale([0.2, 0.7, 0.2])
 
         # setup movement stuff
         self.movement_type = "absolute"
@@ -83,7 +83,7 @@ class Camera:
         self.point.x += dx * amount
         self.point.z += dz * amount
         self.bounding_box.move_to_origin()
-        self.bounding_box.translate(self.point.x, self.point.y - 0.5, self.point.z)
+        self.bounding_box.translate([self.point.x, self.point.y - 0.5, self.point.z])
 
     def move_physics_version(self, theta, amount=0.02):
         direction = degrees_to_radians(90) - self.angle.y + theta
@@ -96,7 +96,7 @@ class Camera:
         self.point.x += self.velocity_vector.x
         self.point.y += self.velocity_vector.y
         self.point.z += self.velocity_vector.z
-        self.bounding_box.translate(self.velocity_vector.x, self.velocity_vector.y, self.velocity_vector.z)
+        self.bounding_box.translate([self.velocity_vector.x, self.velocity_vector.y, self.velocity_vector.z])
  
     def physics_update(self):
         self.velocity_vector.x += self.aceleration_vector.x

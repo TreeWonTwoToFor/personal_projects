@@ -24,7 +24,7 @@ class Object:
         self.update()
         cp = self.center_point
         if cp != [0,0,0]:
-            self.translate(-cp[0], -cp[1], -cp[2])
+            self.translate([-cp[0], -cp[1], -cp[2]])
             self.update()
 
     def recalculate_normals(self):
@@ -36,25 +36,23 @@ class Object:
         for poly, normal in zip(self.model, normals):
             poly[1] = normal
         
-    def translate(self, x, y, z):
-        scalar_list = [x,y,z]
+    def translate(self, xyz):
         for poly in self.model:
             for point in poly[0]:
                 for i in range(3):
-                    point[i] = point[i] + scalar_list[i]
+                    point[i] = point[i] + xyz[i]
         self.update()
     
-    def scale(self, x, y, z):
-        scalar_list = [x,y,z]
+    def scale(self, xyz):
         for poly in self.model:
             for point in poly[0]:
                 for i in range(3):
                     point[i] = (point[i] - self.center_point[i]
-                      ) * scalar_list[i] + self.center_point[i]
+                      ) * xyz[i] + self.center_point[i]
         self.update()
 
-    def rotate(self, rx, ry, rz, angle):
-        axis = numpy.array([rx, ry, rz], dtype=float)
+    def rotate(self, xyz, angle):
+        axis = numpy.array([xyz[0],xyz[1],xyz[2]], dtype=float)
         axis /= numpy.linalg.norm(axis)
         c = numpy.cos(angle / 2.0)
         s = numpy.sin(angle / 2.0)
@@ -78,13 +76,13 @@ class Object:
             idx += n
         self.update()
 
-    def orbit(self, rx, ry, rz, angle, ox=0, oy=0, oz=0):
+    def orbit(self, xyz, angle, oxyz=[0,0,0]):
         old_center = self.center_point
-        self.center_point = [ox,oy,oz] # rotate tries to move to origin initially.
-        self.rotate(rx, ry, rz, angle)
+        self.center_point = oxyz # rotate tries to move to origin initially.
+        self.rotate(xyz, angle)
         self.center_point = old_center
         # undoes the rotation on the object. could likely be condenced into one, smart call?
-        self.rotate(rx, ry, rz, -angle)
+        self.rotate(xyz, -angle)
 
 
 def remove_reference(model):

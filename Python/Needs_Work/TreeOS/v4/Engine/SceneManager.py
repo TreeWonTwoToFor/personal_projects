@@ -39,16 +39,16 @@ def load_scene(scene_name):
                             this_obj = object_dict[object_name]
                             x,y,z = float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])
                             if line_tokens[0] == 'translate':
-                                this_obj.translate(x,y,z)
+                                this_obj.translate([x,y,z])
                             elif line_tokens[0] == 'scale':
                                 x,y,z = math.sqrt(math.sqrt(x)), math.sqrt(math.sqrt(y)), math.sqrt(math.sqrt(z))
-                                this_obj.scale(x,y,z)
+                                this_obj.scale([x,y,z])
                         case "rotate":
                             object_name = line_tokens[1]
                             this_obj = object_dict[object_name]
                             x,y,z = float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])
                             theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
-                            this_obj.rotate(x,y,z,theta)
+                            this_obj.rotate([x,y,z],theta)
                         case "#":
                             setup = False
                 else:
