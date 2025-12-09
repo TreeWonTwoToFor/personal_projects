@@ -19,8 +19,8 @@ def get_view_frustum(screen_resolution, camera):
     up = up/numpy.linalg.norm(up)
     
     # perspective projection matrix
-    near = 0.01
-    far = 10000.0
+    near = 0.1
+    far = 1000.0
     fovX = math.pi/2
     aspect = screen_resolution[0]/screen_resolution[1]
     fovY = 2 * math.atan(math.tan(fovX/2)/aspect)
@@ -181,14 +181,15 @@ def draw_polygons(screen, camera, obj_list, clock, back_culling=True, offset=(0,
             poly_color[i] = poly_color[i]*color_mod
             if poly_color[i] < 20: poly_color[i] = 20
         # rendering polygons
+        ss = screen.get_size()
         if back_culling: 
             if array_dot_product(direction_vector, poly[1]) >= 0:
                 for point in poly[0]:
-                    perspective_poly.append(perspective_projection([screen.get_width(), screen.get_height()], point, camera))
+                    perspective_poly.append(perspective_projection(ss, point, camera))
                 pygame.draw.polygon(screen, poly_color, perspective_poly)
         else:
             for point in poly[0]:
-                perspective_poly.append(perspective_projection([screen.get_width(), screen.get_height()], point, camera))
+                perspective_poly.append(perspective_projection(ss, point, camera))
             pygame.draw.polygon(screen, poly_color, perspective_poly)
         # NOTE: enable for poly by poly rendering.
         #pygame.display.update()
@@ -199,5 +200,4 @@ def draw_frame_poly(screen, camera, obj_list, debug, clock):
     # we don't draw the camera's bounding box
     draw_polygons(screen, camera, obj_list[1:], clock)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
-    get_view_frustum(screen.get_size(), camera)
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))

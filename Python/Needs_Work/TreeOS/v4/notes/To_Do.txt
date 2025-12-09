@@ -3,14 +3,14 @@ optimizations
     obscured polygons are still being rendered.
          occlusion culling
     polygons outside of screen bounds are still being rendered 
-        View Frustum culling
+        View Frustum culling ✔
     CP calculations are slow. 
         caching values seems like a good idea
 Textures
 fun demos
 more game engine-y stuff
     objects
-        orbit
+        orbit ✔
         collision
         assignable attributes
     player interactivity

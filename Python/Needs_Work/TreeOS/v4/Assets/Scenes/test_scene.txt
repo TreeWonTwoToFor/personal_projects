@@ -6,3 +6,8 @@ open blue cylinder 0 0 255
 
 translate red 0 0 -3
 translate blue 0 0 3
+
+# rotate testing
+rotate red 1 0 0 0.5
+rotate green 0 1 0 0.5
+rotate blue 0 0 1 0.5
