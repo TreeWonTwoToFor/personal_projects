@@ -7,6 +7,7 @@ class Object:
     def __init__(self, model, color, model_type="poly"):
         self.model = remove_reference(model)
         self.color = color
+        self.update(True)
         if model_type == "poly":
             self.move_to_origin()
             for poly in self.model:
@@ -15,17 +16,16 @@ class Object:
             self.update_wireframe()
             self.move_to_origin_wireframe()
 
-    def update(self):
-        self.center_point = get_center_point(self.model)
+    def update(self, change_cp):
+        if change_cp:
+            self.center_point = get_center_point(self.model)
         self.collision_box = get_bounding_box(self)
         self.collision_values = get_bounding_box_values(self.model)
 
     def move_to_origin(self):
-        self.update()
         cp = self.center_point
         if cp != [0,0,0]:
             self.translate([-cp[0], -cp[1], -cp[2]])
-            self.update()
 
     def recalculate_normals(self):
         polys = numpy.array([poly[0] for poly in self.model], dtype=float)
@@ -41,7 +41,7 @@ class Object:
             for point in poly[0]:
                 for i in range(3):
                     point[i] = point[i] + xyz[i]
-        self.update()
+        self.update(True)
     
     def scale(self, xyz):
         for poly in self.model:
@@ -49,7 +49,7 @@ class Object:
                 for i in range(3):
                     point[i] = (point[i] - self.center_point[i]
                       ) * xyz[i] + self.center_point[i]
-        self.update()
+        self.update(False)
 
     def rotate(self, xyz, angle):
         axis = numpy.array([xyz[0],xyz[1],xyz[2]], dtype=float)
@@ -74,7 +74,7 @@ class Object:
             n = len(poly[0])
             poly[0][:] = rotated[idx:idx+n].tolist()
             idx += n
-        self.update()
+        self.update(False)
 
     def orbit(self, xyz, angle, oxyz=[0,0,0]):
         old_center = self.center_point

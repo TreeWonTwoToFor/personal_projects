@@ -15,9 +15,9 @@ FPS = 60
 resolution = (800, 600) # XGA
 debug = True
 # normal, render, testing
-mode = "normal"
+mode = "testing"
 scene_name = "test_scene.txt"
-render_frame_count = 630
+frame_count = 100
 
 mouse_control = False
 mouse_sensitivity = 0.5
@@ -61,9 +61,10 @@ match mode:
             iterate()
     case "testing":
         with cProfile.Profile() as pr:
-            iterate()
+            for i in range(frame_count):
+                iterate()
         stats = pstats.Stats(pr)
-        stats.sort_stats(pstats.SortKey.CALLS).print_stats(200)
+        stats.sort_stats(pstats.SortKey.TIME).print_stats(10)
     case "render":
         # creates an empty folder, named render
         current_path = os.getcwd()
@@ -81,7 +82,7 @@ match mode:
         # iterates for the given number of frames, saving each frame as a file.
         debug = False
         running = True
-        for i in range(render_frame_count):
+        for i in range(frame_count):
             if running:
                 iterate()
                 number = f"{i:03}" # 3 = digits
