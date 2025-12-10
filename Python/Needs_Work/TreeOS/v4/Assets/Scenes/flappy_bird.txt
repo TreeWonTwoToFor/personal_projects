@@ -1,0 +1,37 @@
+camera 0 0 10 0 180 0
+
+ / bird setup
+open bird icosphere 255 255 0
+scale bird 0.5 0.5 0.5
+
+open pipe_1 cylinder 0 255 0
+open pipe_2 cylinder 0 255 0
+open pipe_3 cylinder 0 255 0
+open pipe_4 cylinder 0 255 0
+open pipe_5 cylinder 0 255 0
+open pipe_6 cylinder 0 255 0
+
+scale pipe_1 1 100 1
+scale pipe_2 1 100 1
+scale pipe_3 1 100 1
+scale pipe_4 1 100 1
+scale pipe_5 1 100 1
+scale pipe_6 1 100 1
+
+translate pipe_1 -8 -5.5 0
+translate pipe_2 -8 5.5 0
+translate pipe_3 -16 -6.5 0
+translate pipe_4 -16 4.5 0
+translate pipe_5 -24 -4.5 0
+translate pipe_6 -24 6.5 0
+
+# move pipes
+translate pipe_1 0.1 0 0
+translate pipe_2 0.1 0 0
+translate pipe_3 0.1 0 0
+translate pipe_4 0.1 0 0
+translate pipe_5 0.1 0 0
+translate pipe_6 0.1 0 0
+
+/ make the bird fall
+translate bird 0 -0.1 0
