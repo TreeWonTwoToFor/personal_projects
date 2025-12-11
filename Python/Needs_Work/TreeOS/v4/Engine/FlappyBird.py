@@ -1,5 +1,6 @@
 import pygame
 import math
+import random
 
 from Engine import Point
 
@@ -29,7 +30,7 @@ def game_logic(object_list):
     pipes = object_list[2:]
     for i in range(len(pipes)-1):
         bottom = pipes[i]
-        top = pipes[i]
+        top = pipes[i+1]
         if bottom.center_point[0] > 10:
             bottom.move_to_origin()
             top.move_to_origin()

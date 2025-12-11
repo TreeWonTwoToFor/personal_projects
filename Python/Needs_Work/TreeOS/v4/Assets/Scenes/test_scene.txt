@@ -8,6 +8,6 @@ translate red 0 0 -3
 translate blue 0 0 3
 
 # rotate testing
-rotate red 1 0 0 0.5
-rotate green 0 1 0 0.5
-rotate blue 0 0 1 0.5
+rotate red 1 0 0 10
+rotate green 0 1 0 10
+rotate blue 0 0 1 10

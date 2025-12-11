@@ -1,7 +1,6 @@
 # General libraries
 import pygame
 import os
-import random
 
 # Testing
 import cProfile
@@ -9,10 +8,10 @@ import pstats
 
 # Project files
 from Engine import LaunchSettings
-from Engine import Draw
 from Engine import SceneManager
 from Engine import PlayerMovement
 from Engine import FlappyBird
+from Engine import Draw
 
 # pull the general settings
 settings = LaunchSettings.get_settings()
@@ -36,9 +35,10 @@ game_camera      = scene[0]
 object_dict      = scene[1]
 scene_actions    = scene[2]
 background_color = scene[3]
+dt = 0.016
 
 def iterate():
-    global running
+    global running, dt
 
     # scene specific code
     GameFile = PlayerMovement
@@ -51,9 +51,9 @@ def iterate():
     # object update
     for action in scene_actions:
         match action[0]:
-            case "translate": action[1].translate(action[2])
-            case "scale": action[1].scale(action[2])
-            case "rotate": action[1].rotate(action[2], action[3])
+            case "translate": action[1].translate([val*dt for val in action[2]])
+            case "scale": action[1].scale([val*dt for val in action[2]])
+            case "rotate": action[1].rotate(action[2], action[3] * dt)
     object_list = list(object_dict.values())
     game_logic(object_list)
 
@@ -70,7 +70,7 @@ def iterate():
     # the player movement needs to be checked every frame, and not just when a key changes.
     update_function(game_camera, mouse_control, mouse_sensitivity, object_list)
     # delay if necessary
-    clock.tick(FPS)
+    dt = round(clock.tick(FPS) * 0.001, 4)
 
 match mode:
     case "normal":
@@ -79,8 +79,10 @@ match mode:
             iterate()
     case "testing":
         with cProfile.Profile() as pr:
+            running = True
             for i in range(frame_count):
-                iterate()
+                if running:
+                    iterate()
         stats = pstats.Stats(pr)
         stats.sort_stats(pstats.SortKey.TIME).print_stats(10)
     case "render":

@@ -27,12 +27,12 @@ translate pipe_5 -24 -4.5 0
 translate pipe_6 -24 6.5 0
 
 # move pipes
-translate pipe_1 0.1 0 0
-translate pipe_2 0.1 0 0
-translate pipe_3 0.1 0 0
-translate pipe_4 0.1 0 0
-translate pipe_5 0.1 0 0
-translate pipe_6 0.1 0 0
+translate pipe_1 2 0 0
+translate pipe_2 2 0 0
+translate pipe_3 2 0 0
+translate pipe_4 2 0 0
+translate pipe_5 2 0 0
+translate pipe_6 2 0 0
 
 / make the bird fall
-translate bird 0 -0.1 0
+translate bird 0 -2 0

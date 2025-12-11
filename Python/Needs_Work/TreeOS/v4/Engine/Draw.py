@@ -114,14 +114,14 @@ def draw_pt(screen, coords, color):
 
 def draw_3d_point(screen, point, color, camera):
     new_point = perspective_projection(
-        [screen.get_width(), screen.get_height()], point, camera)
+        screen.get_size(), point, camera)
     draw_pt(screen, new_point, color)
 
 def draw_3d_line(screen, point_a, point_b, color, camera):
     new_point_a = perspective_projection(
-        [screen.get_width(), screen.get_height()], point_a, camera)
+        screen.get_size(), point_a, camera)
     new_point_b = perspective_projection(
-        [screen.get_width(), screen.get_height()], point_b, camera)
+        screen.get_size(), point_b, camera)
     draw_pt(screen, new_point_a, color)
     draw_pt(screen, new_point_b, color)
     pygame.draw.line(screen, color, new_point_a, new_point_b)
