@@ -18,7 +18,7 @@ resolution = (800, 600) # XGA
 debug = True
 # normal, render, testing
 mode = "normal"
-scene_name = "flappy_bird.txt"
+scene_name = "test_scene.txt"
 frame_count = 100
 
 mouse_control = False
@@ -31,19 +31,27 @@ pygame.mouse.set_visible(not mouse_control)
 scene = SceneManager.load_scene("./Assets/Scenes/" + scene_name)
 game_camera = scene[0]
 object_dict = scene[1]
-object_actions = scene[2]
+scene_actions = scene[2]
+background_color = scene[3]
 
 def iterate():
     global running
-    screen.fill([0,0,0])
+
+    # scene specific code
+    game_function = PlayerMovement.player_movement
+    update_function = PlayerMovement.player_movement_update
     if scene_name == "flappy_bird.txt":
-        screen.fill((100, 100, 255))
-    for action in object_actions:
+        game_function = FlappyBird.player_movement
+        update_function = FlappyBird.player_movement_update
+    
+    # object update
+    for action in scene_actions:
         match action[0]:
             case "translate": action[1].translate(action[2])
             case "scale": action[1].scale(action[2])
             case "rotate": action[1].rotate(action[2], action[3])
     object_list = list(object_dict.values())
+    # specific game logic
     if scene_name == "flappy_bird.txt":
         pipes = object_list[2:]
         for i in range(len(pipes)-1):
@@ -55,27 +63,20 @@ def iterate():
                 height = (random.random()-0.5)* 4
                 bottom.translate((-16,-5.5 + height,0))
                 top.translate((-16,5.5 + height,0))
+
+    # visual/game update
+    screen.fill(background_color)
     Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
     pygame.display.update()
-    if scene_name =="flappy_bird.txt":
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT or FlappyBird.player_movement(
-                    event):
-                # this is a little unintuitive, but since PlayerMovment
-                #   handles the escape key, it returns True when ESC
-                #   is pressed. It updates the keyboard when called.
-                running = False
-        # the player movement needs to be checked every frame, and not just when a key changes.
-        FlappyBird.player_movement_update(object_list)
-    else:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT or PlayerMovement.player_movement(event, mouse_control):
-                # this is a little unintuitive, but since PlayerMovment
-                #   handles the escape key, it returns True when ESC
-                #   is pressed. It updates the keyboard when called.
-                running = False
-        # the player movement needs to be checked every frame, and not just when a key changes.
-        PlayerMovement.player_movement_update(game_camera, mouse_control, mouse_sensitivity, object_list)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT or game_function(event, mouse_control):
+            # this is a little unintuitive, but since game_function
+            #   handles the escape key, it returns True when ESC
+            #   is pressed. It updates the keyboard when called.
+            running = False
+    # the player movement needs to be checked every frame, and not just when a key changes.
+    update_function(game_camera, mouse_control, mouse_sensitivity, object_list)
+    # delay if necessary
     clock.tick(FPS)
 
 match mode:

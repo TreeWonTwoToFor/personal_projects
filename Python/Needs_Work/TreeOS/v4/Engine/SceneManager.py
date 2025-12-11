@@ -8,6 +8,7 @@ def load_scene(scene_name):
     game_camera = None
     object_dict = {}
     game_actions = []
+    background_color = [0,0,0]
     with open(scene_name, "r") as file:
         content = file.read()
         content_lines = content.split("\n")
@@ -50,7 +51,11 @@ def load_scene(scene_name):
                             theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
                             this_obj.rotate([x,y,z],theta)
                         case "#":
-                            setup = False
+                            # allows for scene actions to start
+                            setup = False 
+                        case "background":
+                            background_color = [float(line_tokens[1]), 
+                                    float(line_tokens[2]), float(line_tokens[3])]
                 else:
                     action_type = line_tokens[0]
                     action_object = object_dict[line_tokens[1]]
@@ -59,7 +64,7 @@ def load_scene(scene_name):
                     if action_type == "rotate":
                         theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
                     game_actions.append((action_type, action_object, (x,y,z), theta))
-    return [game_camera, object_dict, game_actions]
+    return [game_camera, object_dict, game_actions, background_color]
         
 if __name__ == '__main__':
     print(load_scene("test_scene.txt"))

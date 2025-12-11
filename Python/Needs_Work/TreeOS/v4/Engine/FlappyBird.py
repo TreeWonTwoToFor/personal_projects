@@ -6,7 +6,7 @@ from Engine import Point
 pressing_space = False
 flapped = False
 
-def player_movement(event):
+def player_movement(event, mouse_control):
     global pressing_space
     if event.type == pygame.KEYDOWN:
         match event.key:
@@ -17,7 +17,7 @@ def player_movement(event):
             pressing_space = False
     return False
 
-def player_movement_update(object_list):
+def player_movement_update(camera, m_control, m_sensitivity, object_list):
     global flapped
     if pressing_space and not flapped:
         flapped = True
