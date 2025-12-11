@@ -54,6 +54,7 @@ def iterate():
             case "translate": action[1].translate([val*dt for val in action[2]])
             case "scale": action[1].scale([val*dt for val in action[2]])
             case "rotate": action[1].rotate(action[2], action[3] * dt)
+            case "orbit": action[1].orbit(action[2], action[3] * dt, action[4])
     object_list = list(object_dict.values())
     game_logic(object_list)
 

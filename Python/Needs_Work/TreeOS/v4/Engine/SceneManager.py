@@ -50,6 +50,15 @@ def load_scene(scene_name):
                             x,y,z = float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])
                             theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
                             this_obj.rotate([x,y,z],theta)
+                        case "orbit":
+                            object_name = line_tokens[1]
+                            this_obj = object_dict[object_name]
+                            xyz = [float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])]
+                            theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
+                            oxyz = [0,0,0]
+                            if len(line_tokens) > 6:
+                                oxyz = [float(line_tokens[6]), float(line_tokens[7]), float(line_tokens[8])]
+                            this_obj.orbit(xyz, theta, oxyz)
                         case "#":
                             # allows for scene actions to start
                             setup = False 
@@ -59,11 +68,15 @@ def load_scene(scene_name):
                 else:
                     action_type = line_tokens[0]
                     action_object = object_dict[line_tokens[1]]
-                    x,y,z = float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])
+                    xyz = [float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])]
+                    oxyz = None
                     theta = None
                     if action_type == "rotate":
                         theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
-                    game_actions.append((action_type, action_object, (x,y,z), theta))
+                    elif action_type == "orbit":
+                        theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
+                        oxyz = [float(line_tokens[6]), float(line_tokens[7]), float(line_tokens[8])]
+                    game_actions.append((action_type, action_object, xyz, theta, oxyz))
     return [game_camera, object_dict, game_actions, background_color]
         
 if __name__ == '__main__':

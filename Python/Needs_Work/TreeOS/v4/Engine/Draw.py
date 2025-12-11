@@ -24,8 +24,8 @@ def get_view_frustum(screen_resolution, camera):
     # perspective projection matrix
     near = 0.1
     far = 1000.0
-    fovX = math.pi/2
     aspect = screen_resolution[0]/screen_resolution[1]
+    fovX = math.pi/2
     fovY = 2 * math.atan(math.tan(fovX/2)/aspect)
     f = 1 / math.tan(fovY/2)
     
@@ -156,7 +156,7 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
         out_of_bounds = False
         for plane in frustum_planes:
             if aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
-                out_of_bounds = True
+                #out_of_bounds = True
                 break
         if not out_of_bounds:
             poly_list = obj.model + poly_list

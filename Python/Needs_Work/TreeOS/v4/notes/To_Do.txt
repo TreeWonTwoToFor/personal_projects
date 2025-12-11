@@ -4,6 +4,7 @@ optimizations
          occlusion culling
     polygons outside of screen bounds are still being rendered 
         View Frustum culling ✔
+        fovx/y is wrong :/
     CP calculations are slow. 
         caching values seems like a good idea
 Textures

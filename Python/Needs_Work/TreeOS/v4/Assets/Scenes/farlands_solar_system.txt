@@ -1,13 +1,10 @@
-camera 5 10 10 66 -90 0
+camera 0 10 10 90 -180 0
 
 open red icosphere 255 0 0
 open orange icosphere 255 100 0
-/ open yellow icosphere 255 255 0
-/ open green icosphere 50 255 50
-/ open blue icosphere 100 100 255
 
 translate red 0 0 10
 translate orange 0 0 6
-/ translate yellow 3 0 3
-/ translate green 3 0 -3
-/ translate blue 0 0 3
+
+# planetary rotation
+orbit orange 0 1 0 45 0 0 10

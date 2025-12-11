@@ -74,7 +74,7 @@ class Object:
             n = len(poly[0])
             poly[0][:] = rotated[idx:idx+n].tolist()
             idx += n
-        self.update(False)
+        self.update(True)
 
     def orbit(self, xyz, angle, oxyz=[0,0,0]):
         old_center = self.center_point
