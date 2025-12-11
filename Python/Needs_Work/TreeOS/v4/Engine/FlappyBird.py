@@ -25,9 +25,6 @@ def player_movement_update(camera, m_control, m_sensitivity, object_list):
     elif not pressing_space and flapped:
         flapped = False
 
-    if object_collision(object_list):
-        print('you died')
-
 def game_logic(object_list):
     pipes = object_list[2:]
     for i in range(len(pipes)-1):
@@ -39,6 +36,8 @@ def game_logic(object_list):
             height = (random.random()-0.5) * 4
             bottom.translate((-16, -5.5 + height, 0))
             top.translate((-16, 5.5 + height, 0))
+    if object_collision(object_list):
+        print('you died')
 
 def object_collision(object_list):
     player = object_list[1].collision_values

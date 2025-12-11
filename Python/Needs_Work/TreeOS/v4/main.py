@@ -8,30 +8,33 @@ import cProfile
 import pstats
 
 # Project files
+from Engine import LaunchSettings
 from Engine import Draw
 from Engine import SceneManager
 from Engine import PlayerMovement
 from Engine import FlappyBird
 
-FPS = 60
-resolution = (800, 600) # XGA
-debug = True
-# normal, render, testing
-mode = "normal"
-scene_name = "flappy_bird.txt"
-frame_count = 100
+# pull the general settings
+settings = LaunchSettings.get_settings()
+FPS               = settings[0]
+resolution        = settings[1]
+debug             = settings[2]
+mode              = settings[3]
+scene_name        = settings[4]
+frame_count       = settings[5]
+mouse_control     = settings[6]
+mouse_sensitivity = settings[7]
 
-mouse_control = False
-mouse_sensitivity = 0.5
-
+# initialize some key components
 screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
+# load in the scene
 scene = SceneManager.load_scene("./Assets/Scenes/" + scene_name)
-game_camera = scene[0]
-object_dict = scene[1]
-scene_actions = scene[2]
+game_camera      = scene[0]
+object_dict      = scene[1]
+scene_actions    = scene[2]
 background_color = scene[3]
 
 def iterate():
