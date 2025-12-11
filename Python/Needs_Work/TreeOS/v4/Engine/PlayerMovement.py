@@ -71,6 +71,10 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
         camera.angle.y += mouse_sensitivity*(mouse_x/500)
         pygame.mouse.set_pos((300, 300))
 
+def game_logic(object_list):
+    # nothing to do
+    return 0
+
 def object_collision(camera, object_list):
     player = camera.bounding_box.collision_values
     intersect_list = []

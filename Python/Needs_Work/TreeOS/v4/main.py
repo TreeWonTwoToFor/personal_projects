@@ -18,7 +18,7 @@ resolution = (800, 600) # XGA
 debug = True
 # normal, render, testing
 mode = "normal"
-scene_name = "test_scene.txt"
+scene_name = "flappy_bird.txt"
 frame_count = 100
 
 mouse_control = False
@@ -38,11 +38,12 @@ def iterate():
     global running
 
     # scene specific code
-    game_function = PlayerMovement.player_movement
-    update_function = PlayerMovement.player_movement_update
+    GameFile = PlayerMovement
     if scene_name == "flappy_bird.txt":
-        game_function = FlappyBird.player_movement
-        update_function = FlappyBird.player_movement_update
+        GameFile = FlappyBird
+    game_logic      = GameFile.game_logic
+    game_function   = GameFile.player_movement
+    update_function = GameFile.player_movement_update
     
     # object update
     for action in scene_actions:
@@ -51,18 +52,7 @@ def iterate():
             case "scale": action[1].scale(action[2])
             case "rotate": action[1].rotate(action[2], action[3])
     object_list = list(object_dict.values())
-    # specific game logic
-    if scene_name == "flappy_bird.txt":
-        pipes = object_list[2:]
-        for i in range(len(pipes)-1):
-            bottom = pipes[i]
-            top = pipes[i+1]
-            if bottom.center_point[0] > 10:
-                bottom.move_to_origin()
-                top.move_to_origin()
-                height = (random.random()-0.5)* 4
-                bottom.translate((-16,-5.5 + height,0))
-                top.translate((-16,5.5 + height,0))
+    game_logic(object_list)
 
     # visual/game update
     screen.fill(background_color)

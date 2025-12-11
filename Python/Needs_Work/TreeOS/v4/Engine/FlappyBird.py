@@ -28,6 +28,18 @@ def player_movement_update(camera, m_control, m_sensitivity, object_list):
     if object_collision(object_list):
         print('you died')
 
+def game_logic(object_list):
+    pipes = object_list[2:]
+    for i in range(len(pipes)-1):
+        bottom = pipes[i]
+        top = pipes[i]
+        if bottom.center_point[0] > 10:
+            bottom.move_to_origin()
+            top.move_to_origin()
+            height = (random.random()-0.5) * 4
+            bottom.translate((-16, -5.5 + height, 0))
+            top.translate((-16, 5.5 + height, 0))
+
 def object_collision(object_list):
     player = object_list[1].collision_values
     intersect_list = []
