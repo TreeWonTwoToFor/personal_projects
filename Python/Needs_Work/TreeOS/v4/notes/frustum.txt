@@ -1,0 +1,8 @@
+near right up
+near right down
+near left up
+near left down
+far right up
+far right down
+far left up
+far left down
