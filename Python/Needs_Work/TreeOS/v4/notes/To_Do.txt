@@ -4,8 +4,8 @@ optimizations
          occlusion culling
     polygons outside of screen bounds are still being rendered 
         View Frustum culling ✔
-        fovx/y is wrong :/
-    CP calculations are slow. 
+        the plane definitions are incoreectly messing stuff up (specifically the farlands scene)
+    CP calculations are slowing down the game a lot
         caching values seems like a good idea
 Textures
 fun demos
@@ -18,4 +18,4 @@ more game engine-y stuff
         collision
         more movement options
     scenes ✔
-        cutscene in the file itself? ✔ (need to add orbit)
+        cutscene in the file itself? ✔ (need to add orbit) ✔

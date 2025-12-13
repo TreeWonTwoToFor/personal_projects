@@ -1,4 +1,4 @@
-camera 0 10 10 90 -180 0
+camera 0 10 20 45 -180 0
 
 open red icosphere 255 0 0
 open orange icosphere 255 100 0

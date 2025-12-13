@@ -25,7 +25,7 @@ def get_view_frustum(screen_resolution, camera):
     near = 0.1
     far = 1000.0
     aspect = screen_resolution[0]/screen_resolution[1]
-    fovX = math.pi/2
+    fovX = math.pi/2.25
     fovY = 2 * math.atan(math.tan(fovX/2)/aspect)
     f = 1 / math.tan(fovY/2)
     
@@ -55,7 +55,7 @@ def get_view_frustum(screen_resolution, camera):
     planes.append(VP[3] - VP[2])   # near
     
     # normalize the planes
-    for i in range(6):
+    for i in range(len(planes)):
         n = planes[i][:3]
         mag = numpy.linalg.norm(n)
         planes[i] = planes[i] / mag
@@ -154,12 +154,19 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
     # sorting all of the objects into one list to ensure proper ordering
     for obj in obj_list:
         out_of_bounds = False
-        for plane in frustum_planes:
+        for i in range(len(frustum_planes)):
+            plane = frustum_planes[i]
             if aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
-                #out_of_bounds = True
+                out_of_bounds = True
                 break
         if not out_of_bounds:
             poly_list = obj.model + poly_list
+        # temporary wireframe drawing for bb
+        #for square_full in obj.collision_box:
+        #    square = square_full[0]
+        #    for i in range(3):
+        #        draw_3d_line(screen, square[i], square[i+1], (255,255,255), camera)
+        #    draw_3d_line(screen, square[3], square[0], (255,255,255), camera)
     poly_list = sort_polygons(camera, poly_list)
     # render polygons, one by one
     for poly in poly_list:

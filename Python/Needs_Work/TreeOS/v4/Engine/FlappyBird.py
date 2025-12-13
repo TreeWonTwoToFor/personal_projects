@@ -35,8 +35,8 @@ def game_logic(object_list):
             bottom.move_to_origin()
             top.move_to_origin()
             height = (random.random()-0.5) * 4
-            bottom.translate((-16, -5.5 + height, 0))
-            top.translate((-16, 5.5 + height, 0))
+            bottom.translate((-14, -5.5 + height, 0))
+            top.translate((-14, 5.5 + height, 0))
     if object_collision(object_list):
         print('you died')
 

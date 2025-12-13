@@ -47,7 +47,7 @@ def iterate():
     game_logic      = GameFile.game_logic
     game_function   = GameFile.player_movement
     update_function = GameFile.player_movement_update
-    
+
     # object update
     for action in scene_actions:
         match action[0]:
@@ -87,7 +87,7 @@ match mode:
         stats = pstats.Stats(pr)
         stats.sort_stats(pstats.SortKey.TIME).print_stats(10)
     case "render":
-        # creates an empty folder, named render
+        # creates an empty folder, named 'render'
         current_path = os.getcwd()
         render_path = current_path + "/render/"
         if not os.path.isdir(render_path):
@@ -101,10 +101,11 @@ match mode:
                     except OSError as e:
                         print(f"Error removing {file_path}: {e}")
         # iterates for the given number of frames, saving each frame as a file.
-        debug = False
+        debug = False # ensures that only the world is being drawn
         running = True
         for i in range(frame_count):
             if running:
                 iterate()
+                dt = 0.016 # forces 60 FPS for rendering
                 number = f"{i:03}" # 3 = digits
                 pygame.image.save(screen, "render/frame" + number + ".png")

@@ -17,10 +17,14 @@ class Object:
             self.move_to_origin_wireframe()
 
     def update(self, change_cp):
+        aabb = get_bounding_box(self)
         if change_cp:
-            self.center_point = get_center_point(self.model)
-        self.collision_box = get_bounding_box(self)
-        self.collision_values = get_bounding_box_values(self.model)
+            avg_x = (aabb[1][0] + aabb[1][3]) / 2
+            avg_y = (aabb[1][1] + aabb[1][4]) / 2
+            avg_z = (aabb[1][2] + aabb[1][5]) / 2
+            self.center_point = (avg_x, avg_y, avg_z)
+        self.collision_box = aabb[0]
+        self.collision_values = aabb[1]
 
     def move_to_origin(self):
         cp = self.center_point
@@ -117,7 +121,7 @@ def get_center_point(model):
 
     return [center_x, center_y, center_z]
 
-def scale(og_model, x, y, z):
+def scale_old(og_model, x, y, z):
     model = remove_reference(og_model)
     cp = get_center_point(model)
     scalar_list = [x,y,z]
@@ -150,25 +154,17 @@ def get_bounding_box(obj):
             if point[2] < low_z: low_z = point[2]
     obj.aabb_min = (low_x, low_y, low_z)
     obj.aabb_max = (max_x, max_y, max_z)
+
     x_size = math.sqrt((max_x - low_x)**2)/2
     y_size = math.sqrt((max_y - low_y)**2)/2
     z_size = math.sqrt((max_z - low_z)**2)/2
+
     box_model = Parser.get_model("./Assets/Objects/cube.obj")
-    box_model = scale(box_model, x_size, y_size, z_size)
+    box_model = scale_old(box_model, x_size, y_size, z_size)
     cp_box = get_center_point(box_model)
     box_model = translate_old(box_model, -cp_box[0], -cp_box[1], -cp_box[2])
     cp_full = get_center_point(model)
-    return translate_old(box_model, cp_full[0], cp_full[1], cp_full[2])
 
-def get_bounding_box_values(model):
-    max_x, max_y, max_z = model[0][0][0][0], model[0][0][0][1], model[0][0][0][2]
-    low_x, low_y, low_z = model[0][0][0][0], model[0][0][0][1], model[0][0][0][2]
-    for point_pair in model:
-        for point in point_pair[0]:
-            if point[0] > max_x: max_x = point[0]
-            if point[0] < low_x: low_x = point[0]
-            if point[1] > max_y: max_y = point[1]
-            if point[1] < low_y: low_y = point[1]
-            if point[2] > max_z: max_z = point[2]
-            if point[2] < low_z: low_z = point[2]
-    return (low_x, low_y,low_z, max_x, max_y, max_z)
+    bb_model = translate_old(box_model, cp_full[0], cp_full[1], cp_full[2])
+    bb_values = (low_x, low_y,low_z, max_x, max_y, max_z)
+    return (bb_model, bb_values)
