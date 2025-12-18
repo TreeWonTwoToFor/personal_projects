@@ -8,7 +8,7 @@ from Engine import Point
 frustum_planes = None
 camera_pos = None
 
-frustum_culling = False
+frustum_culling = True
 
 def get_view_frustum(screen_resolution, camera):
     pitch, yaw, roll = camera.angle.x, camera.angle.y, camera.angle.z
@@ -32,7 +32,7 @@ def get_view_frustum(screen_resolution, camera):
     f = 1 / math.tan(fovY/2)
     
     # matrix construction
-    eye = numpy.array([camera.point.x, camera.point.y, camera.point.z])
+    eye = numpy.array([camera.point.x, -camera.point.y, camera.point.z])
     view = numpy.array([
         [right[0], right[1], right[2], -numpy.dot(right, eye)],
         [up[0], up[1], up[2], -numpy.dot(up,eye)],

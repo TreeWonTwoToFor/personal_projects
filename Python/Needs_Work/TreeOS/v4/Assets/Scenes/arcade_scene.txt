@@ -1,0 +1,5 @@
+camera 6 2 4 15 -125 0
+
+open arcade arcade 100 100 255
+scale arcade 0.4 0.4 0.4
+rotate arcade 0 1 0 270
