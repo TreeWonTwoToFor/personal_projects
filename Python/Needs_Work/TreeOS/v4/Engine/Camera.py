@@ -7,6 +7,7 @@ from Engine import Object
 
 pygame.font.init()
 font = pygame.font.Font("./Assets/Comfortaa.ttf", 15)
+move_speed = 0.05
 
 def radians_to_degrees(radians):
     return radians * (180/math.pi)
@@ -31,8 +32,6 @@ class Camera:
 
         # setup movement stuff
         self.movement_type = "absolute"
-        self.velocity_vector = Point.Point(0, 0, 0)
-        self.acceleration_vector = Point.Point(0, 0, 0)
 
     def __str__(self):
         return f"Camera Info\n\tPos: {self.point}\n\tAngle: {self.angle}"
@@ -67,14 +66,7 @@ class Camera:
         if self.angle.y < -degrees_to_radians(180):
             self.angle.y += degrees_to_radians(360)
 
-    def move(self, theta, amount=0.04):
-        if self.movement_type == "absolute":
-            self.move_absolute(theta, amount)
-        elif self.movement_type == "physics":
-            self.move_physics_version(theta, amount)
-
-
-    def move_absolute(self, theta, amount=0.02):
+    def move_direction(self, theta, amount=move_speed):
         direction = degrees_to_radians(90) - self.angle.y + theta
         # calculate the triangle of movement based on our angle theta in radians
         dx = math.cos(direction)
@@ -85,20 +77,9 @@ class Camera:
         self.bounding_box.move_to_origin()
         self.bounding_box.translate([self.point.x, self.point.y - 0.5, self.point.z])
 
-    def move_physics_version(self, theta, amount=0.02):
-        direction = degrees_to_radians(90) - self.angle.y + theta
-        # calculate the triangle of movement based on our angle theta in radians
-        self.acceleration_vector.x = math.cos(direction) * amount
-        self.acceleration_vector.y = 0
-        self.acceleration_vector.z = math.sin(direction) * amount
-        # change the position based on that change times the length of our difference
-
-        self.point.x += self.velocity_vector.x
-        self.point.y += self.velocity_vector.y
-        self.point.z += self.velocity_vector.z
-        self.bounding_box.translate([self.velocity_vector.x, self.velocity_vector.y, self.velocity_vector.z])
- 
-    def physics_update(self):
-        self.velocity_vector.x += self.aceleration_vector.x
-        self.velocity_vector.y += self.acceleration_vector.y
-        self.velocity_vector.z += self.acceleration_vector.z
+    def move_vertically(self, up_or_down, amount=move_speed):
+        match up_or_down:
+            case "up":   self.point.y += amount
+            case "down": self.point.y -= amount
+        self.bounding_box.move_to_origin()
+        self.bounding_box.translate([self.point.x, self.point.y - 0.5, self.point.z])

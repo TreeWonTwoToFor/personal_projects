@@ -5,9 +5,10 @@ from Engine import Point
 
 w_held, a_held, s_held, d_held = False, False, False, False
 left_held, right_held, up_held, down_held = False, False, False, False
+space_held, shift_held = False, False
 
 def player_movement(event, using_mouse):
-    global w_held, a_held, s_held, d_held, left_held, right_held, up_held, down_held
+    global w_held, a_held, s_held, d_held, left_held, right_held, up_held, down_held, space_held, shift_held
     if not using_mouse:
         if event.type == pygame.KEYDOWN:
             match event.key:
@@ -19,6 +20,8 @@ def player_movement(event, using_mouse):
                 case pygame.K_RIGHT: right_held = True 
                 case pygame.K_UP: up_held = True  
                 case pygame.K_DOWN: down_held = True 
+                case pygame.K_SPACE: space_held = True 
+                case pygame.K_LSHIFT: shift_held = True 
                 case pygame.K_ESCAPE: return True
         if event.type == pygame.KEYUP:
             match event.key:
@@ -30,6 +33,8 @@ def player_movement(event, using_mouse):
                 case pygame.K_RIGHT: right_held = False 
                 case pygame.K_UP: up_held = False
                 case pygame.K_DOWN: down_held = False
+                case pygame.K_SPACE: space_held = False
+                case pygame.K_LSHIFT: shift_held = False
     else:
         if event.type == pygame.KEYDOWN:
             match event.key:
@@ -37,6 +42,8 @@ def player_movement(event, using_mouse):
                 case pygame.K_s: s_held = True 
                 case pygame.K_a: a_held = True  
                 case pygame.K_d: d_held = True 
+                case pygame.K_SPACE: space_held = True 
+                case pygame.K_LSHIFT: shift_held = True 
                 case pygame.K_ESCAPE: return True
         if event.type == pygame.KEYUP:
             match event.key:
@@ -44,18 +51,24 @@ def player_movement(event, using_mouse):
                 case pygame.K_s: s_held = False 
                 case pygame.K_a: a_held = False
                 case pygame.K_d: d_held = False
+                case pygame.K_SPACE: space_held = False
+                case pygame.K_LSHIFT: shift_held = False
     return False
 
 def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
     old_camera_position = Point.Point(camera.point.x, camera.point.y, camera.point.z)
     if w_held: 
-        camera.move(0)
+        camera.move_direction(0)
     if s_held: 
-        camera.move(math.pi)
+        camera.move_direction(math.pi)
     if a_held: 
-        camera.move(math.pi/2)
+        camera.move_direction(math.pi/2)
     if d_held: 
-        camera.move(-math.pi/2)
+        camera.move_direction(-math.pi/2)
+    if space_held:
+        camera.move_vertically("up")
+    if shift_held:
+        camera.move_vertically("down")
     # if we are running into an object, undo that move
     if object_collision(camera, object_list):
         camera.point = old_camera_position

@@ -81,10 +81,10 @@ class Object:
         self.update(True)
 
     def orbit(self, xyz, angle, oxyz=[0,0,0]):
-        self.center_point = oxyz # makes the object rotate around the origin, aka orbit
+        self.center_point = oxyz # makes the object rotate around the new origin, aka orbit
         self.rotate(xyz, angle)
-        # undoes the rotation on the object.
-        self.rotate(xyz, -angle)
+        # unseen step is that the center point is put back into the object
+        self.rotate(xyz, -angle) # undoes the rotation on the object.
 
 
 def remove_reference(model):
