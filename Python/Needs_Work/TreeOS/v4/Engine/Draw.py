@@ -8,6 +8,8 @@ from Engine import Point
 frustum_planes = None
 camera_pos = None
 
+frustum_culling = False
+
 def get_view_frustum(screen_resolution, camera):
     pitch, yaw, roll = camera.angle.x, camera.angle.y, camera.angle.z
     # calculate camera's forward, right, and up vectors for view matrix
@@ -154,11 +156,12 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
     # sorting all of the objects into one list to ensure proper ordering
     for obj in obj_list:
         out_of_bounds = False
-        for i in range(len(frustum_planes)):
-            plane = frustum_planes[i]
-            if aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
-                out_of_bounds = True
-                break
+        if frustum_culling:
+            for i in range(len(frustum_planes)):
+                plane = frustum_planes[i]
+                if aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
+                    out_of_bounds = True
+                    break
         if not out_of_bounds:
             poly_list = obj.model + poly_list
         # temporary wireframe drawing for bb

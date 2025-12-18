@@ -81,11 +81,9 @@ class Object:
         self.update(True)
 
     def orbit(self, xyz, angle, oxyz=[0,0,0]):
-        old_center = self.center_point
-        self.center_point = oxyz # rotate tries to move to origin initially.
+        self.center_point = oxyz # makes the object rotate around the origin, aka orbit
         self.rotate(xyz, angle)
-        self.center_point = old_center
-        # undoes the rotation on the object. could likely be condenced into one, smart call?
+        # undoes the rotation on the object.
         self.rotate(xyz, -angle)
 
 

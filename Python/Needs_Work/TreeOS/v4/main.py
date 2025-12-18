@@ -44,6 +44,8 @@ def iterate():
     GameFile = PlayerMovement
     if scene_name == "flappy_bird.txt":
         GameFile = FlappyBird
+    elif scene_name == "monkey_scene.txt":
+        print(object_dict["monkey"].center_point)
     game_logic      = GameFile.game_logic
     game_function   = GameFile.player_movement
     update_function = GameFile.player_movement_update
