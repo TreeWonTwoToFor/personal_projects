@@ -1,7 +1,7 @@
 camera 7 0 0 0 -90 0
 
 open red cylinder 255 0 0
-open green cylinder 0 255 0
+open checkered cylinder
 open blue cylinder 0 0 255
 
 translate red 0 0 -3
@@ -9,5 +9,5 @@ translate blue 0 0 3
 
 # rotate testing
 rotate red 1 0 0 10
-rotate green 0 1 0 10
+rotate checkered 0 1 0 10
 rotate blue 0 0 1 10

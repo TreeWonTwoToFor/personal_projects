@@ -4,13 +4,14 @@ import numpy
 from Engine import Parser
 
 class Object:
-    def __init__(self, model, color, model_type="poly"):
+    def __init__(self, model, color_list, model_type="poly"):
         self.model = remove_reference(model)
-        self.color = color
         self.update(True)
         if model_type == "poly":
             self.move_to_origin()
-            for poly in self.model:
+            for i in range(len(self.model)):
+                poly = self.model[i]
+                color = color_list[i]
                 poly.append(color)
         elif model_type == "wire":
             self.update_wireframe()

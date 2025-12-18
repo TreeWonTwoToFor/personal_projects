@@ -31,9 +31,19 @@ def load_scene(scene_name):
                                                         (v_list[3],v_list[4],v_list[5]))
                             object_dict["camera bounding box"] = game_camera.bounding_box
                         case "open":
-                            rgb = (int(line_tokens[3]),int(line_tokens[4]),int(line_tokens[5]))
-                            this_obj = Object.Object(
-                                (Parser.get_model("./Assets/Objects/" + line_tokens[2] + ".obj")), rgb)
+                            object_path = "./Assets/Objects/" + line_tokens[2] + "/"
+                            model = Parser.get_model(object_path + line_tokens[2] + "_object.obj")
+                            if len(line_tokens) == 6:
+                                rgb = (int(line_tokens[3]),int(line_tokens[4]),int(line_tokens[5]))
+                                this_obj = Object.Object(model, [rgb]*len(model))
+                            elif len(line_tokens) == 3:
+                                file_path = object_path + line_tokens[1] + "_color.txt"
+                                color_list = open(file_path).read().split('\n')[:-1]
+                                for i in range(len(color_list)):
+                                    color_list[i] = color_list[i].split()
+                                    for j in range(len(color_list[i])):
+                                        color_list[i][j] = int(color_list[i][j])
+                                this_obj = Object.Object(model, color_list)
                             object_dict[line_tokens[1]] = this_obj
                         case "translate" | "scale":
                             object_name = line_tokens[1]

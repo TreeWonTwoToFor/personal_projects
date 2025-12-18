@@ -4,7 +4,8 @@ optimizations
          occlusion culling
     polygons outside of screen bounds are still being rendered 
         View Frustum culling ✔
-        the plane definitions are incoreectly messing stuff up (specifically the farlands scene)
+        the plane definitions are incoreectly messing stuff up (specifically the farlands scene) ✔
+            turns out, the y position for the camera needs to be inverted.
     CP calculations are slowing down the game a lot
         caching values seems like a good idea
 Textures

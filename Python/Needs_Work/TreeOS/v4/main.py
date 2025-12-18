@@ -24,6 +24,14 @@ frame_count       = settings[5]
 mouse_control     = settings[6]
 mouse_sensitivity = settings[7]
 
+# title the pygame window
+clean_title = ""
+split_title = scene_name.split('.')[0].split('_')
+for token in split_title:
+    clean_title += token.capitalize() + " "
+clean_title = clean_title.strip()
+pygame.display.set_caption(clean_title)
+
 # initialize some key components
 screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
