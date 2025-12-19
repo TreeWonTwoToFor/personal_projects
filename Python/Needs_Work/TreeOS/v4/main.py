@@ -46,6 +46,7 @@ scene_actions    = scene[2]
 background_color = scene[3]
 dt = 0.016
 
+# one time run operations
 if scene_name == "rubiks_cube.txt":
     RubiksCube.scramble(list(object_dict.values()))
 
@@ -58,7 +59,7 @@ def iterate():
         GameFile = FlappyBird
     elif scene_name == "rubiks_cube.txt":
         GameFile = RubiksCube
-        Draw.lighting = False
+        Draw.lighting = False # makes the colors more vibrant
     game_logic      = GameFile.game_logic
     game_function   = GameFile.player_movement
     update_function = GameFile.player_movement_update

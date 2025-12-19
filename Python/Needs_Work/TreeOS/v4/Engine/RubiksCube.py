@@ -11,7 +11,7 @@ turning = -1
 layers = None
 layer_names = ['u', 'd', 'f', 'b', 'r', 'l']
 side_index = None
-frame_count = 25
+frame_count = 10
 amount = math.pi/frame_count/2
 
 def player_movement(event, using_mouse):

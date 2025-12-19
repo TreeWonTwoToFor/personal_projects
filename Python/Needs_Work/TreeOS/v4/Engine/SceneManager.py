@@ -15,6 +15,13 @@ def load_scene(scene_name):
         setup = True
         for line in content_lines:
             line_tokens = line.split(' ')
+            initial_len = len(line_tokens)
+            # removes extra spaces
+            for i in range(initial_len):
+                index = initial_len-i-1
+                token = line_tokens[index]
+                if token == "":
+                    line_tokens.pop(index)
             if len(line) > 0 and line[0] != "/":
                 if setup:
                     match line_tokens[0]:
@@ -82,13 +89,14 @@ def load_scene(scene_name):
                     action_type = line_tokens[0]
                     action_object = object_dict[line_tokens[1]]
                     xyz = [float(line_tokens[2]), float(line_tokens[3]), float(line_tokens[4])]
-                    oxyz = None
                     theta = None
+                    oxyz = [0,0,0]
                     if action_type == "rotate":
                         theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
                     elif action_type == "orbit":
+                        if len(line_tokens) > 6:
+                            oxyz = [float(line_tokens[6]), float(line_tokens[7]), float(line_tokens[8])]
                         theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
-                        oxyz = [float(line_tokens[6]), float(line_tokens[7]), float(line_tokens[8])]
                     game_actions.append((action_type, action_object, xyz, theta, oxyz))
     return [game_camera, object_dict, game_actions, background_color]
         

@@ -1,4 +1,4 @@
-camera 7 0 0 0 -90 0
+camera 6 2 0 20 -90 0
 
 open red cylinder 255 0 0
 open checkered cylinder
