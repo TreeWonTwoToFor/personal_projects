@@ -2,9 +2,9 @@ FPS = 60
 resolution = (800, 600)
 debug = True
 # normal, render, testing
-mode = "render"
-scene_name = "solar_system.txt"
-frame_count = 1000
+mode = "normal"
+scene_name = "test_scene.txt"
+frame_count = 100 
 mouse_control = False
 mouse_sensitivity = 0.5
 

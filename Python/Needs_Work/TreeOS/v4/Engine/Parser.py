@@ -114,9 +114,3 @@ def get_model(file_name):
         polygon.append(cp)
         model.append(polygon)
     return model
-
-if __name__ == '__main__':
-    test_model = get_model("./blender_files/pentagon.obj")
-    print(test_model)
-    print()
-    print(triangulate(test_model))

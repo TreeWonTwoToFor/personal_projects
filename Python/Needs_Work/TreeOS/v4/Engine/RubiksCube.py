@@ -2,8 +2,6 @@ import pygame
 import math
 import random
 
-from Engine import Point
-
 j_held, f_held, i_held, k_held, e_held, d_held = False, False, False, False, False, False
 h_held, g_held, o_held, w_held, l_held, s_held = False, False, False, False, False, False
 

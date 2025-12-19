@@ -3,8 +3,6 @@ import math
 import numpy
 import random
 
-from Engine import Point
-
 frustum_planes = None
 camera_pos = None
 
@@ -13,7 +11,7 @@ back_culling = True
 lighting = True
 
 def get_view_frustum(screen_resolution, camera):
-    pitch, yaw, roll = camera.angle.x, camera.angle.y, camera.angle.z
+    pitch, yaw, roll = camera.angle[0], camera.angle[1], camera.angle[2]
     # calculate camera's forward, right, and up vectors for view matrix
     forward = [math.cos(pitch) * math.sin(yaw)]
     forward.append(math.sin(pitch))
@@ -34,7 +32,7 @@ def get_view_frustum(screen_resolution, camera):
     f = 1 / math.tan(fovY/2)
     
     # matrix construction
-    eye = numpy.array([camera.point.x, -camera.point.y, camera.point.z])
+    eye = numpy.array([camera.point[0], -camera.point[1], camera.point[2]])
     view = numpy.array([
         [right[0], right[1], right[2], -numpy.dot(right, eye)],
         [up[0], up[1], up[2], -numpy.dot(up,eye)],
@@ -74,14 +72,14 @@ def aabb_outside_plane(plane, aabb_min, aabb_max):
 
 def perspective_projection(screen_resolution, projected_point, camera):
     # redefining our list inputs into points/vectors with names that align with wikipedia
-    a = Point.Point(projected_point[0], projected_point[1], projected_point[2])
+    a = projected_point
     c = camera.point
     theta = camera.angle
     # now we need to find the 'd' values, aka a vector that will intersect with the image surface
     # before we find the d values, let's match the variable names on the page
-    cx, cy, cz = math.cos(theta.x), math.cos(theta.y), math.cos(theta.z)
-    sx, sy, sz = math.sin(theta.x), math.sin(theta.y), math.sin(theta.z)
-    x, y, z = (a.x-c.x), (a.y-c.y), (a.z-c.z)
+    cx, cy, cz = math.cos(theta[0]), math.cos(theta[1]), math.cos(theta[2])
+    sx, sy, sz = math.sin(theta[0]), math.sin(theta[1]), math.sin(theta[2])
+    x, y, z = (a[0]-c[0]), (a[1]-c[1]), (a[2]-c[2])
     # now let's find our 3 d values
     dx = cy*(sz*y + cz*x) - sy*z
     dy = sx*(cy*z + sy*(sz*y + cz*x)) + cx*(cz*y - sz*x)
@@ -140,9 +138,9 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
         for i in range(len(centroid)):
             centroid[i] = centroid[i] / len(poly[0])
         distance = math.sqrt(
-            (camera.point.x - centroid[0])**2
-            +(camera.point.y - centroid[1])**2
-            +(camera.point.z - centroid[2])**2)
+            (camera.point[0] - centroid[0])**2
+            +(camera.point[1] - centroid[1])**2
+            +(camera.point[2] - centroid[2])**2)
         output_list.append([poly, distance])
     # sort based on how far the centroid is from the camera
     sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
@@ -176,9 +174,9 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
     # render polygons, one by one
     for poly in poly_list:
         direction_vector = numpy.array([
-            camera.point.x - poly[0][0][0],
-            camera.point.y - poly[0][0][1],
-            camera.point.z - poly[0][0][2]])
+            camera.point[0] - poly[0][0][0],
+            camera.point[1] - poly[0][0][1],
+            camera.point[2] - poly[0][0][2]])
         # calculating face vectors
         vector_a, vector_b = [], []
         for i in range(3):
@@ -212,7 +210,7 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
 def draw_frame_poly(screen, camera, obj_list, debug, clock):
     # we don't draw the camera's bounding box
     global camera_pos, frustum_planes
-    current_camera = ((camera.point.x, camera.point.y, camera.point.z),(camera.angle.x, camera.angle.y))
+    current_camera = (camera.point,camera.angle)
     if camera_pos != current_camera:
         frustum_planes = get_view_frustum(screen.get_size(), camera)
         camera_pos = current_camera

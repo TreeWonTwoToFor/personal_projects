@@ -1,8 +1,6 @@
 import pygame
 import math
 
-from Engine import Point
-
 w_held, a_held, s_held, d_held = False, False, False, False
 left_held, right_held, up_held, down_held = False, False, False, False
 space_held, shift_held = False, False
@@ -56,7 +54,7 @@ def player_movement(event, using_mouse):
     return False
 
 def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
-    old_camera_position = Point.Point(camera.point.x, camera.point.y, camera.point.z)
+    old_camera_position = [camera.point[0], camera.point[1], camera.point[2]]
     if w_held: 
         camera.move_direction(0)
     if s_held: 
@@ -74,14 +72,14 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
         camera.point = old_camera_position
 
     if not using_mouse:
-        if up_held: camera.angle.x -= 0.02
-        if down_held: camera.angle.x += 0.02
-        if left_held: camera.angle.y -= 0.02
-        if right_held: camera.angle.y += 0.02
+        if up_held: camera.angle[0] -= 0.02
+        if down_held: camera.angle[0] += 0.02
+        if left_held: camera.angle[1] -= 0.02
+        if right_held: camera.angle[1] += 0.02
     else:
         mouse_x, mouse_y = pygame.mouse.get_rel()
-        camera.angle.x += mouse_sensitivity*(mouse_y/500)
-        camera.angle.y += mouse_sensitivity*(mouse_x/500)
+        camera.angle[0] += mouse_sensitivity*(mouse_y/500)
+        camera.angle[1] += mouse_sensitivity*(mouse_x/500)
         pygame.mouse.set_pos((300, 300))
 
 def game_logic(object_list):

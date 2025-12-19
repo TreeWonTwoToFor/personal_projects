@@ -119,9 +119,10 @@ match mode:
         # iterates for the given number of frames, saving each frame as a file.
         debug = False # ensures that only the world is being drawn
         running = True
+        frame_digits = len(str(frame_count))
         for i in range(frame_count):
             if running:
                 iterate()
                 dt = 0.016 # forces 60 FPS for rendering
-                number = f"{i:03}" # 3 = digits
+                number = f"{i:0{frame_digits}}"
                 pygame.image.save(screen, "render/frame" + number + ".png")

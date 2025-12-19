@@ -2,8 +2,6 @@ import pygame
 import math
 import random
 
-from Engine import Point
-
 pressing_space = False
 flapped = False
 
