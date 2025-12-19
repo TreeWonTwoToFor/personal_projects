@@ -8,7 +8,9 @@ from Engine import Point
 frustum_planes = None
 camera_pos = None
 
-frustum_culling = True
+frustum_culling = True 
+back_culling = True
+lighting = True
 
 def get_view_frustum(screen_resolution, camera):
     pitch, yaw, roll = camera.angle.x, camera.angle.y, camera.angle.z
@@ -185,16 +187,17 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
         vector_a, vector_b = numpy.array(vector_a), numpy.array(vector_b)
         poly[1] = numpy.cross(vector_a, vector_b)
         # back culling
-        if numpy.dot(direction_vector, poly[1]) < 0:
+        if back_culling and numpy.dot(direction_vector, poly[1]) < 0:
             continue
         # using face vector to calculate light intensity
-        color_mod = array_dot_product(sun, poly[1])/(
-            vector_magnitude(sun)*vector_magnitude(poly[1]))
-        if color_mod < 0: color_mod = 0
         poly_color = list(poly[2])
-        for i in range(3): 
-            poly_color[i] = poly_color[i]*color_mod
-            if poly_color[i] < 20: poly_color[i] = 20
+        if lighting:
+            color_mod = array_dot_product(sun, poly[1])/(
+                vector_magnitude(sun)*vector_magnitude(poly[1]))
+            if color_mod < 0: color_mod = 0
+            for i in range(3): 
+                poly_color[i] = poly_color[i]*color_mod
+                if poly_color[i] < 20: poly_color[i] = 20
         # rendering polygons
         ss = screen.get_size()
         perspective_poly = []

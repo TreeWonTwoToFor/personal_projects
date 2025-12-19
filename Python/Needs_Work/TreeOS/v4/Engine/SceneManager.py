@@ -36,8 +36,11 @@ def load_scene(scene_name):
                             if len(line_tokens) == 6:
                                 rgb = (int(line_tokens[3]),int(line_tokens[4]),int(line_tokens[5]))
                                 this_obj = Object.Object(model, [rgb]*len(model))
-                            elif len(line_tokens) == 3:
-                                file_path = object_path + line_tokens[1] + "_color.txt"
+                            elif len(line_tokens) == 3 or len(line_tokens) == 4:
+                                if len(line_tokens) == 3:
+                                    file_path = object_path + line_tokens[1] + "_color.txt"
+                                elif len(line_tokens) == 4:
+                                    file_path = object_path + line_tokens[3] + "_color.txt"
                                 color_list = open(file_path).read().split('\n')[:-1]
                                 for i in range(len(color_list)):
                                     color_list[i] = color_list[i].split()

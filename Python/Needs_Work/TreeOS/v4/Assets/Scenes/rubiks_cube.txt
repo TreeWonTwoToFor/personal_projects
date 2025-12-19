@@ -1,0 +1,75 @@
+camera 4 4 6 30 -150 0
+
+open a cube rubiks
+open b cube rubiks
+open c cube rubiks
+open d cube rubiks
+open e cube rubiks
+open f cube rubiks
+open g cube rubiks
+open h cube rubiks
+open i cube rubiks
+open j cube rubiks
+open k cube rubiks
+open l cube rubiks
+open m cube rubiks
+open n cube rubiks
+open o cube rubiks
+open p cube rubiks
+open q cube rubiks
+open r cube rubiks
+open s cube rubiks
+open t cube rubiks
+open u cube rubiks
+open v cube rubiks
+open w cube rubiks
+open x cube rubiks
+open y cube rubiks
+open z cube rubiks
+
+translate a 2 0 0
+translate b 0 2 0
+translate c 0 0 2
+translate d -2 0 0
+translate e 0 -2 0
+translate f 0 0 -2
+translate g 2 2 0
+translate h -2 2 0
+translate i 2 -2 0
+translate j -2 -2 0
+translate k 2 0 2
+translate l 2 0 -2
+translate m -2 0 2
+translate n -2 0 -2
+translate y 0 2 2
+translate o 0 2 -2
+translate p 0 -2 2
+translate q 0 -2 -2
+translate r 2 2 2
+translate s 2 2 -2
+translate t 2 -2 2
+translate u 2 -2 -2
+translate v -2 2 2
+translate w -2 2 -2
+translate x -2 -2 2
+translate z -2 -2 -2
+
+# top layer turn
+orbit b 0 1 0 20 0 2 0
+orbit g 0 1 0 20 0 2 0
+orbit h 0 1 0 20 0 2 0
+orbit y 0 1 0 20 0 2 0
+orbit o 0 1 0 20 0 2 0
+orbit r 0 1 0 20 0 2 0
+orbit s 0 1 0 20 0 2 0
+orbit v 0 1 0 20 0 2 0
+orbit w 0 1 0 20 0 2 0
+rotate b 0 1 0 20
+rotate g 0 1 0 20
+rotate h 0 1 0 20
+rotate y 0 1 0 20
+rotate o 0 1 0 20
+rotate r 0 1 0 20
+rotate s 0 1 0 20
+rotate v 0 1 0 20
+rotate w 0 1 0 20
