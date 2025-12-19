@@ -1,4 +1,4 @@
-camera 4 4 6 30 -150 0
+camera 4 6 8 35 -155 0
 
 open a cube rubiks
 open b cube rubiks
@@ -53,23 +53,3 @@ translate v -2 2 2
 translate w -2 2 -2
 translate x -2 -2 2
 translate z -2 -2 -2
-
-# top layer turn
-orbit b 0 1 0 20 0 2 0
-orbit g 0 1 0 20 0 2 0
-orbit h 0 1 0 20 0 2 0
-orbit y 0 1 0 20 0 2 0
-orbit o 0 1 0 20 0 2 0
-orbit r 0 1 0 20 0 2 0
-orbit s 0 1 0 20 0 2 0
-orbit v 0 1 0 20 0 2 0
-orbit w 0 1 0 20 0 2 0
-rotate b 0 1 0 20
-rotate g 0 1 0 20
-rotate h 0 1 0 20
-rotate y 0 1 0 20
-rotate o 0 1 0 20
-rotate r 0 1 0 20
-rotate s 0 1 0 20
-rotate v 0 1 0 20
-rotate w 0 1 0 20
