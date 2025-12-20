@@ -9,7 +9,7 @@ turning = -1
 layers = None
 layer_names = ['u', 'd', 'f', 'b', 'r', 'l']
 side_index = None
-frame_count = 5
+frame_count = 15
 amount = math.pi/frame_count/2
 current_scramble = None
 # auto or manual

@@ -2,27 +2,16 @@ optimizations
     currently using painter's algorithm, & back-face culling
     obscured polygons are still being rendered.
          occlusion culling
-    polygons outside of screen bounds are still being rendered 
-        View Frustum culling ✔
-        the plane definitions are incoreectly messing stuff up (specifically the farlands scene) ✔
-            turns out, the y position for the camera needs to be inverted.
-    CP calculations are slowing down the game a lot
-        caching values seems like a good idea
 Textures
-fun demos ✔
 lighting/shader stuff
     transparent objects
     light
-        multiple light sources ✔
         light emitting objects
         directional lighting (flashlight kinda thing)
 more game engine-y stuff
     objects
-        orbit ✔
         collision
         assignable attributes
     player interactivity
         collision
         more movement options
-    scenes ✔
-        cutscene in the file itself? ✔ (need to add orbit) ✔

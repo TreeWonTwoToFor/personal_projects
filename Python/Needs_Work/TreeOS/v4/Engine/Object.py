@@ -47,7 +47,7 @@ class Object:
                       ) * xyz[i] + self.center_point[i]
         self.update(False)
 
-    def rotate(self, xyz, angle, recalculate_normals=True):
+    def rotate(self, xyz, angle):
         axis = numpy.array(xyz, dtype=float)
         axis /= numpy.linalg.norm(axis)
         c = numpy.cos(angle / 2.0)
@@ -80,9 +80,9 @@ class Object:
 
     def orbit(self, xyz, angle, oxyz=[0,0,0]):
         self.center_point = oxyz # makes the object rotate around the new origin, aka orbit
-        self.rotate(xyz, angle, False)
+        self.rotate(xyz, angle)
         # unseen step is that the center point is put back into the object
-        self.rotate(xyz, -angle, False) # undoes the rotation on the object.
+        self.rotate(xyz, -angle) # undoes the rotation on the object.
 
 
 def remove_reference(model):
