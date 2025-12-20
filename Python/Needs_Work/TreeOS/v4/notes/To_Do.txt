@@ -9,7 +9,12 @@ optimizations
     CP calculations are slowing down the game a lot
         caching values seems like a good idea
 Textures
-fun demos
+fun demos ✔
+lighting/shader stuff
+    transparent objects
+    light
+        light emitting objects
+        directional lighting (flashlight kinda thing
 more game engine-y stuff
     objects
         orbit ✔

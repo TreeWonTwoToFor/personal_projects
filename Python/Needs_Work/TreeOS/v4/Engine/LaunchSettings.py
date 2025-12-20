@@ -2,9 +2,9 @@ FPS = 60
 resolution = (800, 600)
 debug = True
 # normal, render, testing
-mode = "normal"
-scene_name = "test_scene.txt"
-frame_count = 100 
+mode = "render"
+scene_name = "rubiks_cube.txt"
+frame_count = 600
 mouse_control = False
 mouse_sensitivity = 0.5
 

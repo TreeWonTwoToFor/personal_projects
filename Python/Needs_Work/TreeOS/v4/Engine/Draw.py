@@ -210,7 +210,8 @@ def draw_polygons(screen, camera, obj_list, clock, offset=(0,0,0)):
 def draw_frame_poly(screen, camera, obj_list, debug, clock):
     # we don't draw the camera's bounding box
     global camera_pos, frustum_planes
-    current_camera = (camera.point,camera.angle)
+    current_camera = ((camera.point[0], camera.point[1], camera.point[2]),
+                        (camera.angle[0], camera.angle[1], camera.angle[2]))
     if camera_pos != current_camera:
         frustum_planes = get_view_frustum(screen.get_size(), camera)
         camera_pos = current_camera

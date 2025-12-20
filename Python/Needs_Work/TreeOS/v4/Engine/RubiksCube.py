@@ -9,8 +9,11 @@ turning = -1
 layers = None
 layer_names = ['u', 'd', 'f', 'b', 'r', 'l']
 side_index = None
-frame_count = 10
+frame_count = 25
 amount = math.pi/frame_count/2
+current_scramble = None
+# auto or manual
+cube_mode = "auto"
 
 def player_movement(event, using_mouse):
     global j_held,f_held,i_held,k_held,e_held,d_held,h_held,g_held,o_held,w_held,l_held,s_held
@@ -56,50 +59,100 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
 # w = B, o = B'
 
 def game_logic(object_list):
-    global turning, layers, side_index, amount
-    if turning == -1 or layers == None:
-        layers = get_layers(object_list)
-        if j_held:
-            side_index = 0
-        elif f_held:
-            side_index = 0
-            amount *= -1
-        elif s_held:
-            side_index = 1
-            amount *= -1
-        elif l_held:
-            side_index = 1
-        elif h_held:
-            side_index = 2
-        elif g_held:
-            side_index = 2
-            amount *= -1
-        elif w_held:
-            side_index = 3
-            amount *= -1
-        elif o_held:
-            side_index = 3
-        elif i_held:
-            side_index = 4
-            amount *= -1
-        elif k_held:
-            side_index = 4
-        elif d_held:
-            side_index = 5
-        elif e_held:
-            side_index = 5
-            amount *= -1
-        if side_index != None:
-            turning = 0
-    else:
-        turning += 1
-        turn_layer(layers[side_index], layer_names[side_index], amount)
-        if turning == frame_count:
+    global turning, layers, side_index, amount, cube_mode
+    if cube_mode == "manual": 
+        if turning == -1 or layers == None:
+            layers = get_layers(object_list)
+            if j_held:
+                side_index = 0
+            elif f_held:
+                side_index = 0
+                amount *= -1
+            elif s_held:
+                side_index = 1
+                amount *= -1
+            elif l_held:
+                side_index = 1
+            elif h_held:
+                side_index = 2
+            elif g_held:
+                side_index = 2
+                amount *= -1
+            elif w_held:
+                side_index = 3
+                amount *= -1
+            elif o_held:
+                side_index = 3
+            elif i_held:
+                side_index = 4
+                amount *= -1
+            elif k_held:
+                side_index = 4
+            elif d_held:
+                side_index = 5
+            elif e_held:
+                side_index = 5
+                amount *= -1
+            if side_index != None:
+                turning = 0
+        else:
+            turning += 1
+            turn_layer(layers[side_index], layer_names[side_index], amount)
+            if turning == frame_count:
+                turning = -1
+                amount = math.fabs(amount)
+                side_index = None
+    elif cube_mode == "auto":
+        if len(current_scramble) == 0:
+            cube_mode == "manual"
             turning = -1
-            amount = math.fabs(amount)
-            side_index = None
+            return 0
+        if turning == -1 or layers == None:
+            layers = get_layers(object_list)
+            turn = current_scramble[-1]
+            if turn == ('u', 1):
+                side_index = 0
+            elif turn == ('u', 0):
+                side_index = 0
+                amount *= -1
+            elif turn == ('d', 0):
+                side_index = 1
+                amount *= -1
+            elif turn == ('d', 1):
+                side_index = 1
+            elif turn == ('f', 1):
+                side_index = 2
+            elif turn == ('f', 0):
+                side_index = 2
+                amount *= -1
+            elif turn == ('b', 0):
+                side_index = 3
+                amount *= -1
+            elif turn == ('b', 1):
+                side_index = 3
+            elif turn == ('r', 0):
+                side_index = 4
+                amount *= -1
+            elif turn == ('r', 1):
+                side_index = 4
+            elif turn == ('l', 1):
+                side_index = 5
+            elif turn == ('l', 0):
+                side_index = 5
+                amount *= -1
+            if side_index != None:
+                turning = 0
+        else:
+            turning += 1
+            turn_layer(layers[side_index], layer_names[side_index], amount)
+            if turning == frame_count:
+                turning = -1
+                amount = math.fabs(amount)
+                side_index = None
+                current_scramble.pop()
 
 def scramble(object_list):
+    global current_scramble
     turn_list = []
     while len(turn_list) < 20: 
         turn_side = layer_names[random.randint(0,5)]
@@ -108,6 +161,7 @@ def scramble(object_list):
             continue
         is_prime = random.randint(0,1)
         turn_list.append((turn_side, is_prime))
+    current_scramble = turn_list
     for turn in turn_list:
         layers = get_layers(object_list)
         turn_index = layer_names.index(turn[0])
