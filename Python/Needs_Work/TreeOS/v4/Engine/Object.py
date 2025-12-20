@@ -31,15 +31,6 @@ class Object:
         cp = self.center_point
         if cp != [0,0,0]:
             self.translate([-cp[0], -cp[1], -cp[2]])
-
-    def recalculate_normals(self):
-        polys = numpy.array([poly[0] for poly in self.model], dtype=float)
-        v1 = polys[:, 1] - polys[:, 0]
-        v2 = polys[:, 2] - polys[:, 0]
-        normals = numpy.cross(v1, v2)
-        normals /= numpy.linalg.norm(normals, axis=1)[:, None]  # normalize
-        for poly, normal in zip(self.model, normals):
-            poly[1] = normal
         
     def translate(self, xyz):
         for poly in self.model:
@@ -56,8 +47,8 @@ class Object:
                       ) * xyz[i] + self.center_point[i]
         self.update(False)
 
-    def rotate(self, xyz, angle):
-        axis = numpy.array([xyz[0],xyz[1],xyz[2]], dtype=float)
+    def rotate(self, xyz, angle, recalculate_normals=True):
+        axis = numpy.array(xyz, dtype=float)
         axis /= numpy.linalg.norm(axis)
         c = numpy.cos(angle / 2.0)
         s = numpy.sin(angle / 2.0)
@@ -70,22 +61,28 @@ class Object:
         ])
         all_points = numpy.array(
             [point for poly in self.model for point in poly[0]], dtype=float)
+        all_normals= numpy.array(
+            [poly[1] for poly in self.model], dtype=float)
         # translate to origin before rotation
-        centered = all_points - self.center_point
-        rotated = centered @ R.T + self.center_point
+        centered_points = all_points - self.center_point
+        rotated_points = centered_points @ R.T + self.center_point
+        rotated_normals = all_normals @ R.T
         # put all the rotated points back into the model structure
-        idx = 0
+        idx_v = 0 # vertex
+        idx_n = 0 # normal
         for poly in self.model:
             n = len(poly[0])
-            poly[0][:] = rotated[idx:idx+n].tolist()
-            idx += n
+            poly[0][:] = rotated_points[idx_v:idx_v+n].tolist()
+            poly[1] = rotated_normals[idx_n].tolist()
+            idx_v += n
+            idx_n += 1
         self.update(True)
 
     def orbit(self, xyz, angle, oxyz=[0,0,0]):
         self.center_point = oxyz # makes the object rotate around the new origin, aka orbit
-        self.rotate(xyz, angle)
+        self.rotate(xyz, angle, False)
         # unseen step is that the center point is put back into the object
-        self.rotate(xyz, -angle) # undoes the rotation on the object.
+        self.rotate(xyz, -angle, False) # undoes the rotation on the object.
 
 
 def remove_reference(model):

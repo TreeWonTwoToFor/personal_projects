@@ -177,12 +177,12 @@ def draw_polygons(screen, camera, obj_list, light_list, offset=(0,0,0)):
             camera.point[1] - poly[0][0][1],
             camera.point[2] - poly[0][0][2]])
         # calculating face vectors
-        vector_a, vector_b = [], []
-        for i in range(3):
-            vector_a.append(round(poly[0][0][i] - poly[0][1][i], 4))
-            vector_b.append(round(poly[0][0][i] - poly[0][2][i], 4))
-        vector_a, vector_b = numpy.array(vector_a), numpy.array(vector_b)
-        poly[1] = numpy.cross(vector_a, vector_b)
+        #vector_a, vector_b = [], []
+        #for i in range(3):
+        #    vector_a.append(round(poly[0][0][i] - poly[0][1][i], 4))
+        #    vector_b.append(round(poly[0][0][i] - poly[0][2][i], 4))
+        #vector_a, vector_b = numpy.array(vector_a), numpy.array(vector_b)
+        #poly[1] = numpy.cross(vector_a, vector_b)
         # back culling
         if back_culling and numpy.dot(direction_vector, poly[1]) < 0:
             continue
