@@ -104,12 +104,12 @@ def get_center_point(model):
     for poly in model:
         for point in poly[0]:
             x, y, z = point
-            min_x = min(min_x, x)
-            max_x = max(max_x, x)
-            min_y = min(min_y, y)
-            max_y = max(max_y, y)
-            min_z = min(min_z, z)
-            max_z = max(max_z, z)
+            if min_x>x: min_x=x
+            if max_x<x: max_x=x
+            if min_y>y: min_y=y
+            if max_y<y: max_y=y
+            if min_z>z: min_z=z
+            if max_z<z: max_z=z
 
     center_x = (min_x + max_x) / 2
     center_y = (min_y + max_y) / 2
