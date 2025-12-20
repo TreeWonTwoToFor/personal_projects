@@ -8,7 +8,8 @@ def load_scene(scene_name):
     game_camera = None
     object_dict = {}
     game_actions = []
-    background_color = [0,0,0]
+    light_list = []
+    background_color = None
     with open(scene_name, "r") as file:
         content = file.read()
         content_lines = content.split("\n")
@@ -37,6 +38,10 @@ def load_scene(scene_name):
                             game_camera = Camera.Camera((v_list[0],v_list[1],v_list[2]), 
                                                         (v_list[3],v_list[4],v_list[5]))
                             object_dict["camera bounding box"] = game_camera.bounding_box
+                        case "light":
+                            light_pos = (float(line_tokens[1]),float(line_tokens[2]),float(line_tokens[3]))
+                            light_str = float(line_tokens[4])
+                            light_list.append((light_pos, light_str))
                         case "open":
                             object_path = "./Assets/Objects/" + line_tokens[2] + "/"
                             model = Parser.get_model(object_path + line_tokens[2] + "_object.obj")
@@ -98,7 +103,9 @@ def load_scene(scene_name):
                             oxyz = [float(line_tokens[6]), float(line_tokens[7]), float(line_tokens[8])]
                         theta = float(line_tokens[5]) * (math.pi/180) # degrees to radians
                     game_actions.append((action_type, action_object, xyz, theta, oxyz))
-    return [game_camera, object_dict, game_actions, background_color]
+    if background_color == None: background_color = [0,0,0]
+    if light_list == []: light_list.append(((100, 80, 90), 100))
+    return [game_camera, object_dict, game_actions, background_color, light_list]
         
 if __name__ == '__main__':
     print(load_scene("test_scene.txt"))

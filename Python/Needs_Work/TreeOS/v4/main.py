@@ -44,6 +44,7 @@ game_camera      = scene[0]
 object_dict      = scene[1]
 scene_actions    = scene[2]
 background_color = scene[3]
+light_sources    = scene[4]
 dt = 0.016
 
 # one time run operations
@@ -76,7 +77,7 @@ def iterate():
 
     # visual/game update
     screen.fill(background_color)
-    Draw.draw_frame_poly(screen, game_camera, object_list, debug, clock)
+    Draw.draw_frame_poly(screen, game_camera, object_list, light_sources, debug, clock)
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or game_function(event, mouse_control):

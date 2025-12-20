@@ -13,8 +13,9 @@ fun demos ✔
 lighting/shader stuff
     transparent objects
     light
+        multiple light sources ✔
         light emitting objects
-        directional lighting (flashlight kinda thing
+        directional lighting (flashlight kinda thing)
 more game engine-y stuff
     objects
         orbit ✔

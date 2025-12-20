@@ -9,14 +9,15 @@ turning = -1
 layers = None
 layer_names = ['u', 'd', 'f', 'b', 'r', 'l']
 side_index = None
-frame_count = 25
+frame_count = 5
 amount = math.pi/frame_count/2
 current_scramble = None
 # auto or manual
-cube_mode = "auto"
+cube_mode = "manual"
+start_scramble = False
 
 def player_movement(event, using_mouse):
-    global j_held,f_held,i_held,k_held,e_held,d_held,h_held,g_held,o_held,w_held,l_held,s_held
+    global j_held,f_held,i_held,k_held,e_held,d_held,h_held,g_held,o_held,w_held,l_held,s_held, start_scramble
     if event.type == pygame.KEYDOWN:
         match event.key:
             case pygame.K_j: j_held = True 
@@ -31,6 +32,7 @@ def player_movement(event, using_mouse):
             case pygame.K_w: w_held = True 
             case pygame.K_l: l_held = True  
             case pygame.K_s: s_held = True 
+            case pygame.K_SPACE: start_scramble = True
             case pygame.K_ESCAPE: return True
     if event.type == pygame.KEYUP:
         match event.key:
@@ -59,7 +61,7 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
 # w = B, o = B'
 
 def game_logic(object_list):
-    global turning, layers, side_index, amount, cube_mode
+    global turning, layers, side_index, amount, cube_mode, start_scramble
     if cube_mode == "manual": 
         if turning == -1 or layers == None:
             layers = get_layers(object_list)
@@ -150,6 +152,9 @@ def game_logic(object_list):
                 amount = math.fabs(amount)
                 side_index = None
                 current_scramble.pop()
+    if start_scramble:
+        scramble(object_list)
+        start_scramble = False
 
 def scramble(object_list):
     global current_scramble
