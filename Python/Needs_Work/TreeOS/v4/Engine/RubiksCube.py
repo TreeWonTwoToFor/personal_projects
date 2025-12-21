@@ -106,7 +106,7 @@ def game_logic(object_list):
                 side_index = None
     elif cube_mode == "auto":
         if len(current_scramble) == 0:
-            cube_mode == "manual"
+            cube_mode = "manual"
             turning = -1
             return 0
         if turning == -1 or layers == None:

@@ -84,6 +84,17 @@ class Object:
         # unseen step is that the center point is put back into the object
         self.rotate(xyz, -angle) # undoes the rotation on the object.
 
+    def get_centroids(self):
+        centroid_list = []
+        for poly in self.model:
+            centroid = [0,0,0]
+            for vertex in poly[0]:
+                for i in range(3): centroid[i] += vertex[i]
+            for i in range(len(centroid)):
+                centroid[i] = centroid[i] / len(poly[0])
+            centroid_list.append(centroid)
+        return centroid_list
+
 
 def remove_reference(model):
     new_model = []

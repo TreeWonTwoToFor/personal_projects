@@ -50,6 +50,7 @@ dt = 0.016
 # one time run operations
 if scene_name == "rubiks_cube.txt":
     RubiksCube.scramble(list(object_dict.values()))
+    RubiksCube.cube_mode = "auto"
 
 def iterate():
     global running, dt
