@@ -1,0 +1,6 @@
+a: orange center - positive x
+b: yellow center - positive y
+c: blue center   - positive z
+d: red center    - negative x
+e: white center  - negative y
+f: green center  - negative z

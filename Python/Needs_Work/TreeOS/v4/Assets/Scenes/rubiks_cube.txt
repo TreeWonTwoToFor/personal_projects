@@ -1,31 +1,32 @@
 camera 4 6 8 35 -155 0
+background 20 20 20
 
-open a cube rubiks
-open b cube rubiks
-open c cube rubiks
-open d cube rubiks
-open e cube rubiks
-open f cube rubiks
-open g cube rubiks
-open h cube rubiks
-open i cube rubiks
-open j cube rubiks
-open k cube rubiks
-open l cube rubiks
-open m cube rubiks
-open n cube rubiks
-open o cube rubiks
-open p cube rubiks
-open q cube rubiks
-open r cube rubiks
-open s cube rubiks
-open t cube rubiks
-open u cube rubiks
-open v cube rubiks
-open w cube rubiks
-open x cube rubiks
-open y cube rubiks
-open z cube rubiks
+open a cube
+open b cube
+open c cube
+open d cube
+open e cube
+open f cube
+open g cube
+open h cube
+open i cube
+open j cube
+open k cube
+open l cube
+open m cube
+open n cube
+open o cube
+open p cube
+open q cube
+open r cube
+open s cube
+open t cube
+open u cube
+open v cube
+open w cube
+open x cube
+open y cube
+open z cube
 
 translate a 2 0 0
 translate b 0 2 0
