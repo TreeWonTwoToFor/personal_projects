@@ -7,12 +7,12 @@ import cProfile
 import pstats
 
 # Project files
-from Engine import LaunchSettings
-from Engine import SceneManager
-from Engine import PlayerMovement
-from Engine import FlappyBird
-from Engine import RubiksCube
 from Engine import Draw
+from Engine import SceneManager
+from Engine import LaunchSettings
+from Logic import FlappyBird
+from Logic import RubiksCube
+from Logic import StandardMovement
 
 # pull the general settings
 settings = LaunchSettings.get_settings()
@@ -50,13 +50,12 @@ dt = 0.016
 # one time run operations
 if scene_name == "rubiks_cube.txt":
     RubiksCube.scramble(list(object_dict.values()))
-    RubiksCube.cube_mode = "auto"
 
 def iterate():
     global running, dt
 
     # scene specific code
-    GameFile = PlayerMovement
+    GameFile = StandardMovement
     if scene_name == "flappy_bird.txt":
         GameFile = FlappyBird
     elif scene_name == "rubiks_cube.txt":

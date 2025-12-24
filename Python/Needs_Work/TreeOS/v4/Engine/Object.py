@@ -4,18 +4,14 @@ import numpy
 from Engine import Parser
 
 class Object:
-    def __init__(self, model, color_list, model_type="poly"):
+    def __init__(self, model, color_list):
         self.model = remove_reference(model)
         self.update(True)
-        if model_type == "poly":
-            self.move_to_origin()
-            for i in range(len(self.model)):
-                poly = self.model[i]
-                color = color_list[i]
-                poly.append(color)
-        elif model_type == "wire":
-            self.update_wireframe()
-            self.move_to_origin_wireframe()
+        self.move_to_origin()
+        for i in range(len(self.model)):
+            poly = self.model[i]
+            color = color_list[i]
+            poly.append(color)
 
     def update(self, change_cp):
         aabb = get_bounding_box(self)
@@ -26,11 +22,6 @@ class Object:
             self.center_point = (avg_x, avg_y, avg_z)
         self.collision_box = aabb[0]
         self.collision_values = aabb[1]
-
-    def move_to_origin(self):
-        cp = self.center_point
-        if cp != [0,0,0]:
-            self.translate([-cp[0], -cp[1], -cp[2]])
         
     def translate(self, xyz):
         for poly in self.model:
@@ -84,29 +75,19 @@ class Object:
         # unseen step is that the center point is put back into the object
         self.rotate(xyz, -angle) # undoes the rotation on the object.
 
-    def get_centroids(self):
-        centroid_list = []
-        for poly in self.model:
-            centroid = [0,0,0]
-            for vertex in poly[0]:
-                for i in range(3): centroid[i] += vertex[i]
-            for i in range(len(centroid)):
-                centroid[i] = centroid[i] / len(poly[0])
-            centroid_list.append(centroid)
-        return centroid_list
+    def move_to_origin(self):
+        cp = self.center_point
+        self.translate([-cp[0], -cp[1], -cp[2]])
 
 
 def remove_reference(model):
     new_model = []
     for poly in model:
-        vertex_list = poly[0]
-        normal = poly[1]
-        uv_list = poly[2]
         new_vertex_list = []
         new_uv_list = []
-        for i in range(len(vertex_list)):
-            vertex = vertex_list[i]
-            uv = uv_list[i]
+        for i in range(len(poly[0])):
+            vertex = poly[0][i]
+            uv = poly[2][i]
             new_vertex = []
             for j in range(len(vertex)): # should always be 3
                 vertex_val = vertex[j]
@@ -117,37 +98,16 @@ def remove_reference(model):
                 uv_val = uv[j]
                 new_uv.append(uv_val)
             new_uv_list.append(new_uv)
-        new_model.append([new_vertex_list, normal, new_uv_list])
+        new_model.append([new_vertex_list, poly[1], new_uv_list])
     return new_model
-
-def get_center_point(model):
-    min_x, min_y, min_z = float('inf'), float('inf'), float('inf')
-    max_x, max_y, max_z = float('-inf'), float('-inf'), float('-inf')
-
-    for poly in model:
-        for point in poly[0]:
-            x, y, z = point
-            if min_x>x: min_x=x
-            if max_x<x: max_x=x
-            if min_y>y: min_y=y
-            if max_y<y: max_y=y
-            if min_z>z: min_z=z
-            if max_z<z: max_z=z
-
-    center_x = (min_x + max_x) / 2
-    center_y = (min_y + max_y) / 2
-    center_z = (min_z + max_z) / 2
-
-    return [center_x, center_y, center_z]
 
 def scale_old(og_model, x, y, z):
     model = remove_reference(og_model)
-    cp = get_center_point(model)
     scalar_list = [x,y,z]
-    for point_pair in model:
-        for point in point_pair[0]:
+    for poly in model:
+        for point in poly[0]:
             for i in range(3):
-                point[i] = (point[i] - cp[i]) * scalar_list[i] + cp[i]
+                point[i] = (point[i]) * scalar_list[i]
     return model
 
 def translate_old(og_model, x, y, z):
@@ -180,10 +140,8 @@ def get_bounding_box(obj):
 
     box_model = Parser.get_model("./Assets/Objects/cube.obj")
     box_model = scale_old(box_model, x_size, y_size, z_size)
-    cp_box = get_center_point(box_model)
-    box_model = translate_old(box_model, -cp_box[0], -cp_box[1], -cp_box[2])
-    cp_full = get_center_point(model)
 
+    cp_full = [(low_x+max_x)/2, (low_y+max_y)/2, (low_z+max_z)/2]
     bb_model = translate_old(box_model, cp_full[0], cp_full[1], cp_full[2])
     bb_values = (low_x, low_y,low_z, max_x, max_y, max_z)
     return (bb_model, bb_values)
