@@ -98,14 +98,26 @@ class Object:
 
 def remove_reference(model):
     new_model = []
-    for vertex_list, face in model:
-        new_poly = []
-        for vertex in vertex_list:
+    for poly in model:
+        vertex_list = poly[0]
+        normal = poly[1]
+        uv_list = poly[2]
+        new_vertex_list = []
+        new_uv_list = []
+        for i in range(len(vertex_list)):
+            vertex = vertex_list[i]
+            uv = uv_list[i]
             new_vertex = []
-            for val in vertex:
-                new_vertex.append(val)
-            new_poly.append(new_vertex)
-        new_model.append([new_poly, face])
+            for j in range(len(vertex)): # should always be 3
+                vertex_val = vertex[j]
+                new_vertex.append(vertex_val)
+            new_vertex_list.append(new_vertex)
+            new_uv = []
+            for j in range(len(uv)): # should always be 2
+                uv_val = uv[j]
+                new_uv.append(uv_val)
+            new_uv_list.append(new_uv)
+        new_model.append([new_vertex_list, normal, new_uv_list])
     return new_model
 
 def get_center_point(model):

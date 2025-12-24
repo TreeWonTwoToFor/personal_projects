@@ -80,18 +80,14 @@ def get_model(file_name):
         face = face_list[i]
         polygon = []
         face_points = []
+        uv_points = []
         for j in range(len(face)):
             vertex_index = face[j][0]-1
             face_points.append(vertex_list[vertex_index])
+            uv_points.append(uv_list[vertex_index])
         polygon.append(face_points)
-        cp = vertex_normal_list[face[0][2]-1]
-        #vector_a, vector_b = [], []
-        #for k in range(3):
-        #    vector_a.append(round(face_points[0][k] - face_points[1][k], 4))
-        #    vector_b.append(round(face_points[0][k] - face_points[2][k], 4))
-        #vector_a = numpy.array(vector_a)
-        #vector_b = numpy.array(vector_b)
-        #cp = numpy.cross(vector_a, vector_b)
-        polygon.append(cp)
+        normal = vertex_normal_list[face[0][2]-1]
+        polygon.append(normal)
+        polygon.append(uv_points)
         model.append(polygon)
     return model

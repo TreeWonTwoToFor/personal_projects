@@ -12,3 +12,6 @@
 IDEAS:
 
 for this program, simply getting the v and f values will be enough.
+* it used to be, but now that I'm caching normals in the polygon itself,
+    I need to at least be able to read the vn values.
+**I also wanted to use uv for textures, so that's also being read lol
