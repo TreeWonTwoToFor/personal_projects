@@ -45,20 +45,8 @@ def load_scene(scene_name):
                         case "open":
                             object_path = "./Assets/Objects/" + line_tokens[2] + "/"
                             model = Parser.get_model(object_path + line_tokens[2] + "_object.obj")
-                            if len(line_tokens) == 6:
-                                rgb = (int(line_tokens[3]),int(line_tokens[4]),int(line_tokens[5]))
-                                this_obj = Object.Object(model, [rgb]*len(model))
-                            elif len(line_tokens) == 3 or len(line_tokens) == 4:
-                                if len(line_tokens) == 3:
-                                    file_path = object_path + line_tokens[1] + "_color.txt"
-                                elif len(line_tokens) == 4:
-                                    file_path = object_path + line_tokens[3] + "_color.txt"
-                                color_list = open(file_path).read().split('\n')[:-1]
-                                for i in range(len(color_list)):
-                                    color_list[i] = color_list[i].split()
-                                    for j in range(len(color_list[i])):
-                                        color_list[i][j] = int(color_list[i][j])
-                                this_obj = Object.Object(model, color_list)
+                            file_path = object_path + line_tokens[1] + "_texture.bmp"
+                            this_obj = Object.Object(model, file_path)
                             object_dict[line_tokens[1]] = this_obj
                         case "translate" | "scale":
                             object_name = line_tokens[1]

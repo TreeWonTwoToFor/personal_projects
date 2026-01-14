@@ -11,14 +11,12 @@ def read_blender_file(file_name):
     except:
         raise FileNotFoundError(f"Could not find '{file_name}'")
 
-
 def get_file_dictionary(file_text):
     line_list = file_text.split('\n')
     line_dictionary = {}
     for i in range(len(line_list)):
         line_dictionary[i+1] = line_list[i]
     return line_dictionary
-
 
 def get_data(file_dict, data_type):
     data_list = []
@@ -78,16 +76,26 @@ def get_model(file_name):
     # collects all vertecies in a face
     for i in range(len(face_list)):
         face = face_list[i]
-        polygon = []
-        face_points = []
-        uv_points = []
-        for j in range(len(face)):
-            vertex_index = face[j][0]-1
-            face_points.append(vertex_list[vertex_index])
-            uv_points.append(uv_list[vertex_index])
-        polygon.append(face_points)
-        normal = vertex_normal_list[face[0][2]-1]
-        polygon.append(normal)
-        polygon.append(uv_points)
-        model.append(polygon)
+        poly_vertices = [0, 1, 2]
+        # if a face isn't a tri, split it into tris using the fan algo
+        for j in range(len(face)-2):
+            #print(poly_vertices)
+            polygon = []
+            face_points = []
+            uv_points = []
+            # this needs to be offset based on k and j, maybe a list of vertex indexes?
+            for k in range(3):
+                vertex_index = face[poly_vertices[k]][0]-1
+                face_points.append(vertex_list[vertex_index])
+                uv_points.append(uv_list[vertex_index])
+            polygon.append(face_points)
+            normal = vertex_normal_list[face[0][2]-1]
+            polygon.append(normal)
+            polygon.append(uv_points)
+            model.append(polygon)
+            poly_vertices.pop(1)
+            poly_vertices.append(poly_vertices[-1]+1)
+    # format: points, normal vector, uv_points
+    #for poly in model:
+    #    print(poly)
     return model

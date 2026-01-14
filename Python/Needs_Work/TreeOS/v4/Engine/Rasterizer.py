@@ -2,12 +2,13 @@ import math
 import time
 import numpy
 import pygame
+from PIL import Image
 
 def dp(vector_a, vector_b):
     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
 
 def right_angle(vector):
-    return (vector[1], -vector[0])
+    return (-vector[1], vector[0])
 
 def inside_triangle(a, b, c, p):
     # abc define a triangle, while p is a point
@@ -46,7 +47,7 @@ def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0
     except IndexError:
         raise IndexError(f"Bad buffer offset: buffer_offset -> {buffer_offset}, max_offset -> {ss[0]*ss[1]*4}")
 
-def draw_polygon(screen, points, color, fill=False):
+def draw_polygon(screen, points, texture):
     buffer = screen.get_buffer()
     ss = screen.get_size()
     # getting bounds of polygon
@@ -58,36 +59,52 @@ def draw_polygon(screen, points, color, fill=False):
         if point[1] < min_y: min_y = point[1]
         if point[1] > max_y: max_y = point[1]
     # getting uv values per point
-    uv_list = [(0,0), (1,1), (0.5, 0.5)] # shouldn't be hardcoded
-    # scan line based filling
-    ab = (points[0][0]-points[1][0], points[0][1]-points[1][1])
-    ac = (points[0][0]-points[2][0], points[0][1]-points[2][1])
-    triangle_area = math.fabs(dp(ab, right_angle(ac)))/2
+    uv_list = []
+    for point in points:
+        uv_list.append([point[3], point[4]])
+    # checking every pixel in the bounding box
     for i in range(min_y, max_y):
         for j in range(min_x, max_x):
+            # will this pixel be behind another object?
             pixel_val = read_pixel_buffer(screen, (j,i))
+            buffer_depth = int.from_bytes(pixel_val[-1:])
+            # FIXME -> needs to actually compare against the depth buffer
             tri_vals = inside_triangle(points[0], points[1], points[2], (j,i))
+            # is the point inside the triangle?
             if tri_vals[0]>0 and tri_vals[1]>0 and tri_vals[2]>0:
-                r = int(tri_vals[0]/triangle_area*255)
-                g = int(tri_vals[1]/triangle_area*255)
-                b = int(tri_vals[2]/triangle_area*255)
-                write_pixel_buffer(buffer, ss, (j,i), [r,g,b])
+                # use our triangle area to 'blend' the uv weights
+                final_uv = [0,0]
+                for k in range(3):
+                    for l in range(2):
+                        final_uv[l] += uv_list[k][l] * (tri_vals[k]/tri_vals[-1])
+                # pull that new uv color from our texture, and write it to the buffer
+                color = get_color_NN(texture, final_uv[0], final_uv[1])
+                write_pixel_buffer(buffer, ss, (j,i), color)
 
 def load_texture(file_name):
-    # use PIL to load and read image
-    print("")
+    img = Image.open(file_name)
+    return (img.size, img.load())
 
-def get_color(image, u, v):
-    img_size = (800, 600) # should actually be read from the image
+# nearest neighbor
+def get_color_NN(texture, u,v):
+    img_size = texture[0]
+    pixel_x = round(u * img_size[0])
+    pixel_y = round(v * img_size[1])
+    if pixel_x == img_size[0]: pixel_x -= 1
+    if pixel_y == img_size[1]: pixel_y -= 1
+    color_val = texture[1][pixel_x, pixel_y]
+    return color_val
+
+# bilinear interpelation
+def get_color_BI(texture, u, v):
+    img_size = texture[0]
     pixel_x = u * img_size[0]
     pixel_y = v * img_size[1]
-    print(pixel_x, pixel_y)
     # getting the positons of the four nearest pixels
     top_left = (math.floor(pixel_x), math.floor(pixel_y))
     top_right = (math.ceil(pixel_x), math.floor(pixel_y))
     bottom_left = (math.floor(pixel_x), math.ceil(pixel_y))
     bottom_right = (math.ceil(pixel_x), math.ceil(pixel_y))
-    print(top_left, top_right, bottom_left, bottom_right)
     # average out the values
     # also should be read from the image
     tl_val = (0,0,0)
@@ -106,18 +123,24 @@ def get_color(image, u, v):
     final_val = [0,0,0]
     for i in range(3):
         final_val[i] = round((top_val[i] * (1-vertical_weight)) + (bottom_val[i] * vertical_weight), 4)
-    print(final_val)
+    return final_val
 
 if __name__ == "__main__":
     pygame.init()
     screen = pygame.display.set_mode((200,200))
-    start = time.time()
-    draw_polygon(screen, ((20, 20), (100, 100), (180,30)), (255,255,255))
-    draw_polygon(screen, ((100, 100), (160, 180), (180,30)), (255,255,0))
-    draw_polygon(screen, ((20, 180), (100, 180), (20, 60)), (255,0,255))
-    print(time.time() - start)
-    #load_texture("./Assets/Objects/cube/rubiks_texture.png")
-    #get_color("blah", 0.123478, 0.4398)
+    texture = load_texture("./Assets/Objects/cube/rubiks_texture.bmp")
+    # point = (screen_x, screen_y, depth_z, texture_u, texture_v)
+    point_list = []
+    point_list.append((100, 100, 0, 0.3333, 0.25))
+    point_list.append((20, 60, 0, 0.6666, 0.25))
+    point_list.append((180, 60, 0, 0.3333, 0.5))
+    point_list.append((100, 20, 0, 0.6666, 0.5))
+    point_list.append((100, 180, 0, 0, 0.25))
+    point_list.append((100, 180, 0, 0.3333, 0))
+    draw_polygon(screen, (point_list[0], point_list[1], point_list[2]), texture)
+    draw_polygon(screen, (point_list[3], point_list[2], point_list[1]), texture)
+    draw_polygon(screen, (point_list[4], point_list[0], point_list[2]), texture)
+    draw_polygon(screen, (point_list[5], point_list[1], point_list[0]), texture)
     pygame.display.update()
     running = True
     while running:

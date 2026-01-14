@@ -24,7 +24,7 @@ class Camera:
 
         if not is_parser:
             # setting up the player's collision
-            player_box = Object.Object(Parser.get_model("./Assets/Objects/cube.obj"), ["camera"]*6)
+            player_box = Object.Object(Parser.get_model("./Assets/Objects/cube.obj"), None)
             player_box.translate([self.point[0], self.point[1]-0.5, self.point[2]])
             self.bounding_box = player_box
             self.bounding_box.scale([0.2, 0.7, 0.2])

@@ -1,8 +1,10 @@
 import math
+import time
 import pygame
 
 from Engine import Helper
 from Engine import ViewFrustum
+from Engine import Rasterizer
 
 frustum_planes = None
 camera_pos = None
@@ -10,6 +12,7 @@ camera_pos = None
 frustum_culling = True 
 back_culling = True
 lighting = True
+homemade_rasterizer = False
 
 def perspective_projection(screen, projected_point, camera):
     screen_resolution = screen.get_size()
@@ -61,55 +64,80 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
 
 def draw_polygons(screen, camera, obj_list, light_list, offset=(0,0,0)):
     global frustum_planes
-    poly_list = []
-    # sorting all of the objects into one list to ensure proper ordering
-    for obj in obj_list:
-        out_of_bounds = False
-        if frustum_culling:
-            for i in range(len(frustum_planes)):
-                plane = frustum_planes[i]
-                if ViewFrustum.aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
-                    out_of_bounds = True
-                    break
-        if not out_of_bounds:
-            poly_list = obj.model + poly_list
-        #for square_full in obj.collision_box:
-        #    square = square_full[0]
-        #    for i in range(3):
-        #        Helper.draw_3d_line(screen, square[i], square[i+1], (255,255,255), camera)
-        #    Helper.draw_3d_line(screen, square[3], square[0], (255,255,255), camera)
-    poly_list = sort_polygons(camera, poly_list)
-    # render polygons, one by one
-    for poly in poly_list:
-        direction_vector = [
-            camera.point[0] - poly[0][0][0],
-            camera.point[1] - poly[0][0][1],
-            camera.point[2] - poly[0][0][2]]
-        # back culling
-        if back_culling and Helper.array_dp(direction_vector, poly[1]) < 0:
-            continue
-        # using face vector to calculate light intensity
-        poly_color = list(poly[3])
-        if lighting:
-            new_color = [0,0,0]
-            for light in light_list:
-                light_pos = light[0]
-                light_str = light[1]
-                color_mod = Helper.array_dp(light_pos, poly[1])/Helper.vector_magnitude(light_pos)
-                if color_mod < 0: color_mod = 0
-                for i in range(3): 
-                    new_color[i] = (poly_color[i]*color_mod*(light_str/100)) + new_color[i]
-            for i in range(len(new_color)):
-                if new_color[i] < 20: new_color[i] = 20
-                if new_color[i] > 255: new_color[i] = 255
-            poly_color = new_color
-        # rendering polygons
-        perspective_poly = []
-        for point in poly[0]:
-            # perspective_projection's 0 index is the xy screen position
-            # the 1 index is the distance value, would be used for depth buffering
-            perspective_poly.append(perspective_projection(screen, point, camera)[0])
-        pygame.draw.polygon(screen, poly_color, perspective_poly)
+    if not homemade_rasterizer:
+        poly_list = []
+        # sorting all of the objects into one list to ensure proper ordering
+        for obj in obj_list:
+            out_of_bounds = False
+            if frustum_culling:
+                for i in range(len(frustum_planes)):
+                    plane = frustum_planes[i]
+                    if ViewFrustum.aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
+                        out_of_bounds = True
+                        break
+            if not out_of_bounds:
+                poly_list = obj.model + poly_list
+            #for square_full in obj.collision_box:
+            #    square = square_full[0]
+            #    for i in range(3):
+            #        Helper.draw_3d_line(screen, square[i], square[i+1], (255,255,255), camera)
+            #    Helper.draw_3d_line(screen, square[3], square[0], (255,255,255), camera)
+        poly_list = sort_polygons(camera, poly_list)
+        # render polygons, one by one
+        for poly in poly_list:
+            direction_vector = [
+                camera.point[0] - poly[0][0][0],
+                camera.point[1] - poly[0][0][1],
+                camera.point[2] - poly[0][0][2]]
+            # back culling
+            if back_culling and Helper.array_dp(direction_vector, poly[1]) < 0:
+                continue
+            # using face vector to calculate light intensity
+            poly_color = list((255,255,255))
+            if lighting:
+                new_color = [0,0,0]
+                for light in light_list:
+                    light_pos = light[0]
+                    light_str = light[1]
+                    color_mod = Helper.array_dp(light_pos, poly[1])/Helper.vector_magnitude(light_pos)
+                    if color_mod < 0: color_mod = 0
+                    for i in range(3): 
+                        new_color[i] = (poly_color[i]*color_mod*(light_str/100)) + new_color[i]
+                for i in range(len(new_color)):
+                    if new_color[i] < 20: new_color[i] = 20
+                    if new_color[i] > 255: new_color[i] = 255
+                poly_color = new_color
+            # rendering polygons
+            perspective_poly = []
+            for point in poly[0]:
+                # perspective_projection's 0 index is the xy screen position
+                # the 1 index is the distance value, would be used for depth buffering
+                perspective_poly.append(perspective_projection(screen, point, camera)[0])
+            pygame.draw.polygon(screen, poly_color, perspective_poly)
+    else:
+        for obj in obj_list:
+            for poly in obj.model:
+                direction_vector = [
+                    camera.point[0] - poly[0][0][0],
+                    camera.point[1] - poly[0][0][1],
+                    camera.point[2] - poly[0][0][2]]
+                # back culling
+                if back_culling and Helper.array_dp(direction_vector, poly[1]) < 0:
+                    continue
+                # rendering polygons
+                perspective_poly = []
+                uv_values = poly[2]
+                for i in range(len(poly[0])):
+                    point = poly[0][i]
+                    # perspective_projection's 0 index is the xy screen position
+                    # the 1 index is the distance value, would be used for depth buffering
+                    projected_point = perspective_projection(screen, point, camera)
+                    screen_pos = projected_point[0]
+                    depth = projected_point[1]
+                    perspective_poly.append([int(screen_pos[0]), int(screen_pos[1]), depth] + uv_values[i])
+                final_poly = perspective_poly + uv_values
+                Rasterizer.draw_polygon(screen, perspective_poly, obj.texture)
+        pygame.display.update()
 
 # 'main' function of Draw
 def draw_frame_poly(screen, camera, obj_list, light_list, debug, clock):

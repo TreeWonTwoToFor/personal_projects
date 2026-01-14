@@ -2,16 +2,15 @@ import math
 import numpy
 
 from Engine import Parser
+from Engine import Rasterizer
 
 class Object:
-    def __init__(self, model, color_list):
+    def __init__(self, model, texture):
         self.model = remove_reference(model)
+        if texture != None:
+            self.texture = Rasterizer.load_texture(texture)
         self.update(True)
         self.move_to_origin()
-        for i in range(len(self.model)):
-            poly = self.model[i]
-            color = color_list[i]
-            poly.append(color)
 
     def update(self, change_cp):
         aabb = get_bounding_box(self)
