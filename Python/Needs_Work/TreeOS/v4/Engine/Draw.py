@@ -12,7 +12,7 @@ camera_pos = None
 frustum_culling = True 
 back_culling = True
 lighting = True
-homemade_rasterizer = False
+homemade_rasterizer = True
 
 def perspective_projection(screen, projected_point, camera):
     screen_resolution = screen.get_size()
@@ -124,6 +124,15 @@ def draw_polygons(screen, camera, obj_list, light_list, offset=(0,0,0)):
                 # back culling
                 if back_culling and Helper.array_dp(direction_vector, poly[1]) < 0:
                     continue
+                if lighting:
+                    rasterizer_light_value = 0
+                    for light in light_list:
+                        light_pos = light[0]
+                        light_str = light[1]
+                        color_mod = Helper.array_dp(light_pos, poly[1])/Helper.vector_magnitude(light_pos)
+                        if color_mod < 0: color_mod = 0
+                        rasterizer_light_value += (color_mod*(light_str/100))
+                    if rasterizer_light_value < 0.2: rasterizer_light_value = 0.2
                 # rendering polygons
                 perspective_poly = []
                 uv_values = poly[2]
@@ -136,8 +145,7 @@ def draw_polygons(screen, camera, obj_list, light_list, offset=(0,0,0)):
                     depth = projected_point[1]
                     perspective_poly.append([int(screen_pos[0]), int(screen_pos[1]), depth] + uv_values[i])
                 final_poly = perspective_poly + uv_values
-                Rasterizer.draw_polygon(screen, perspective_poly, obj.texture)
-        pygame.display.update()
+                Rasterizer.draw_polygon(screen, perspective_poly, obj.texture, rasterizer_light_value)
 
 # 'main' function of Draw
 def draw_frame_poly(screen, camera, obj_list, light_list, debug, clock):

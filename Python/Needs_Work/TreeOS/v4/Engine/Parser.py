@@ -79,7 +79,6 @@ def get_model(file_name):
         poly_vertices = [0, 1, 2]
         # if a face isn't a tri, split it into tris using the fan algo
         for j in range(len(face)-2):
-            #print(poly_vertices)
             polygon = []
             face_points = []
             uv_points = []
@@ -87,7 +86,8 @@ def get_model(file_name):
             for k in range(3):
                 vertex_index = face[poly_vertices[k]][0]-1
                 face_points.append(vertex_list[vertex_index])
-                uv_points.append(uv_list[vertex_index])
+                uv_index = face[poly_vertices[k]][1]-1
+                uv_points.append(uv_list[uv_index])
             polygon.append(face_points)
             normal = vertex_normal_list[face[0][2]-1]
             polygon.append(normal)
@@ -96,6 +96,4 @@ def get_model(file_name):
             poly_vertices.pop(1)
             poly_vertices.append(poly_vertices[-1]+1)
     # format: points, normal vector, uv_points
-    #for poly in model:
-    #    print(poly)
     return model
