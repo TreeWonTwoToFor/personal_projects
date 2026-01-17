@@ -79,7 +79,6 @@ def get_model(file_name):
         poly_vertices = [0, 1, 2]
         # if a face isn't a tri, split it into tris using the fan algo
         for j in range(len(face)-2):
-            polygon = []
             face_points = []
             uv_points = []
             # this needs to be offset based on k and j, maybe a list of vertex indexes?
@@ -88,8 +87,9 @@ def get_model(file_name):
                 face_points.append(vertex_list[vertex_index])
                 uv_index = face[poly_vertices[k]][1]-1
                 uv_points.append(uv_list[uv_index])
-            polygon.append(face_points)
             normal = vertex_normal_list[face[0][2]-1]
+            polygon = []
+            polygon.append(face_points)
             polygon.append(normal)
             polygon.append(uv_points)
             model.append(polygon)
