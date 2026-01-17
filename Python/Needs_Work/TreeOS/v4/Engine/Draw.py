@@ -114,7 +114,19 @@ def draw_polygons(screen, camera, obj_list, light_list, offset=(0,0,0)):
                 perspective_poly.append(perspective_projection(screen, point, camera)[0])
             pygame.draw.polygon(screen, poly_color, perspective_poly)
     else:
+        culled_obj_list = []
+        # sorting all of the objects into one list to ensure proper ordering
         for obj in obj_list:
+            out_of_bounds = False
+            if frustum_culling:
+                for i in range(len(frustum_planes)):
+                    plane = frustum_planes[i]
+                    if ViewFrustum.aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
+                        out_of_bounds = True
+                        break
+            if not out_of_bounds:
+                culled_obj_list.append(obj)
+        for obj in culled_obj_list:
             for poly in obj.model:
                 direction_vector = [
                     camera.point[0] - poly[0][0][0],

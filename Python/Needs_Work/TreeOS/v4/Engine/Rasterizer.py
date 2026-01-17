@@ -1,6 +1,4 @@
 import math
-import time
-import numpy
 import pygame
 from PIL import Image
 
@@ -59,7 +57,7 @@ def find_edges(points, scanline_height):
     left, right = int(min(intersections))+1, int(max(intersections))+1
     tri_1 = inside_triangle(points[0], points[1], points[2], (left, scanline_height))
     tri_2 = inside_triangle(points[0], points[1], points[2], (left+1, scanline_height))
-    return(left, right, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
+    return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
 
 def read_pixel_buffer(buffer, ss, pixel_pos):
     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
@@ -93,56 +91,32 @@ def draw_polygon(screen, points, texture, light_val):
     uv_list = [uv_list[ia], uv_list[ib], uv_list[ic]]
     # checking every pixel in the bounding box
     for i in range(min_y, max_y):
-        # idea: on each scanline, find the 'edge' using the tri_vals, then arithmetically
-        #       shift the values of the area as you go across the scanline. Should be
-        #       much faster than doing all the dps
-        # better idea: that scanline search should be based on binary search
-        #       once to find a point inside the tri, and then once on each
-        #       side to find the left/right edges. Should be faster than linear
-        if not edge_search:
-            for j in range(min_x, max_x):
-                # will this pixel be behind another object?
-                # NOTE: the read is really slow, and we need to check the depth
-                #pixel_val = read_pixel_buffer(buffer, ss, (j,i))
-                #buffer_depth = int.from_bytes(pixel_val[-1:])
-                tri_vals = inside_triangle(points[0], points[1], points[2], (j,i))
-                # is the point inside the triangle?
-                if check_inside_triangle(tri_vals):
-                    # use our triangle area to 'blend' the uv weights
-                    final_uv = [0,0]
-                    for k in range(3):
-                        area_mod = tri_vals[k]/tri_vals[-1]
-                        for l in range(2):
-                            final_uv[l] += uv_list[k][l] * area_mod
-                    # pull that new uv color from our texture, and write it to the buffer
-                    color = list(get_color_NN(texture, final_uv[0], final_uv[1]))
-                    for k in range(len(color)):
-                        color[k] = int(color[k] * light_val)
-                    write_pixel_buffer(buffer, ss, (j,i), color)
-        else:
-            edges_and_area_change = find_edges(points, i)
-            if edges_and_area_change == None: continue
-            left_edge = edges_and_area_change[0]
-            right_edge = edges_and_area_change[1]
-            deltas = edges_and_area_change[2]
-            tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge,i)))
-            if tri_vals[0] < 0 or tri_vals[1] < 0 or tri_vals[2] < 0 or tri_vals[3] == 0:
-                continue
-            # removing the +1 actually makes a decent view of the individual polygons
-            for j in range(left_edge, right_edge):
-                final_uv = [0,0]
-                for k in range(3):
-                    area_mod = tri_vals[k]/tri_vals[-1]
-                    for l in range(2):
-                        final_uv[l] += uv_list[k][l] * area_mod
-                # pull that new uv color from our texture, and write it to the buffer
-                color = list(get_color_NN(texture, final_uv[0], final_uv[1]))
-                for k in range(len(color)):
-                    color[k] = int(color[k] * light_val)
-                write_pixel_buffer(buffer, ss, (j,i), color)
-                # update the area of the triangles for uv blending
-                for k in range(3):
-                    tri_vals[k] -= deltas[k]
+        if i < 0 or i >= ss[1]: continue # prevent buffer overflow
+        edges_and_area_change = find_edges(points, i)
+        if edges_and_area_change == None: continue
+        left_edge = edges_and_area_change[0]
+        right_edge = edges_and_area_change[1]
+        tri_vals = list(edges_and_area_change[2])
+        deltas = edges_and_area_change[3]
+        #tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge,i)))
+        if tri_vals[0] < 0 or tri_vals[1] < 0 or tri_vals[2] < 0 or tri_vals[3] == 0:
+            continue
+        # removing the +1 actually makes a decent view of the individual polygons
+        for j in range(left_edge, right_edge):
+            if j < 0 or j >= ss[0]: continue # prevent buffer overflow
+            final_uv = [0,0]
+            for k in range(3):
+                area_mod = tri_vals[k]/tri_vals[-1]
+                for l in range(2):
+                    final_uv[l] += uv_list[k][l] * area_mod
+            # pull that new uv color from our texture, and write it to the buffer
+            color = list(get_color_NN(texture, final_uv[0], final_uv[1]))
+            for k in range(len(color)):
+                color[k] = int(color[k] * light_val)
+            write_pixel_buffer(buffer, ss, (j,i), color)
+            # update the area of the triangles for uv blending
+            for k in range(3):
+                tri_vals[k] -= deltas[k]
 
 def load_texture(file_name):
     img = Image.open(file_name)
@@ -156,37 +130,6 @@ def get_color_NN(texture, u,v):
     pixel_y = round((1-v) * (img_size[1]-1)) #bottom left origin
     color_val = texture[1][pixel_x, pixel_y]
     return color_val
-
-# bilinear interpelation
-#NOTE: 100% doesn't work lol
-def get_color_BI(texture, u, v):
-    img_size = texture[0]
-    pixel_x = u * img_size[0]
-    pixel_y = v * img_size[1]
-    # getting the positons of the four nearest pixels
-    top_left = (math.floor(pixel_x), math.floor(pixel_y))
-    top_right = (math.ceil(pixel_x), math.floor(pixel_y))
-    bottom_left = (math.floor(pixel_x), math.ceil(pixel_y))
-    bottom_right = (math.ceil(pixel_x), math.ceil(pixel_y))
-    # average out the values
-    # also should be read from the image
-    tl_val = (0,0,0)
-    tr_val = (255,0,0)
-    bl_val = (0,0,255)
-    br_val = (255,255,255)
-    # performing bilinear interpolation
-    horizontal_weight = pixel_x % 1
-    vertical_weight = pixel_y % 1
-    top_val = [0,0,0]
-    for i in range(3):
-        top_val[i] = (tl_val[i] * (1-horizontal_weight)) + (tr_val[i] * (horizontal_weight))
-    bottom_val = [0,0,0]
-    for i in range(3):
-        bottom_val[i] = (bl_val[i] * (1-horizontal_weight)) + (br_val[i] * (horizontal_weight))
-    final_val = [0,0,0]
-    for i in range(3):
-        final_val[i] = round((top_val[i] * (1-vertical_weight)) + (bottom_val[i] * vertical_weight), 4)
-    return final_val
 
 if __name__ == "__main__":
     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]
