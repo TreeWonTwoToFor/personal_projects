@@ -4,6 +4,7 @@ from PIL import Image
 
 edge_search = True
 
+# triangle functions
 def dp(vector_a, vector_b):
     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
 
@@ -35,6 +36,23 @@ def check_inside_triangle(inside_triangle_values):
     tri_vals = inside_triangle_values
     return tri_vals[0]>=0 and tri_vals[1]>=0 and tri_vals[2]>=0 and tri_vals[3] != 0
 
+# buffer based functions
+def read_pixel_buffer(buffer, ss, pixel_pos):
+    # this function is really slow for some reason. string manip?
+    buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
+    return buffer.raw[buffer_offset:buffer_offset+4]
+
+def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):
+    ss = screen_size
+    buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
+    # coded to RGB instead of BGR
+    byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
+    try:
+        buffer.write(byte_color, buffer_offset)
+    except IndexError:
+        raise IndexError(f"Bad buffer offset: buffer_offset -> {buffer_offset}, max_offset -> {ss[0]*ss[1]*4}")
+
+# drawing functions
 def find_edges(points, scanline_height):
     min_x, max_x = points[0][0], points[0][0]
     for point in points:
@@ -58,20 +76,6 @@ def find_edges(points, scanline_height):
     tri_1 = inside_triangle(points[0], points[1], points[2], (left, scanline_height))
     tri_2 = inside_triangle(points[0], points[1], points[2], (left+1, scanline_height))
     return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
-
-def read_pixel_buffer(buffer, ss, pixel_pos):
-    buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
-    return buffer.raw[buffer_offset:buffer_offset+4]
-
-def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):
-    ss = screen_size
-    buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
-    # coded to RGB instead of BGR
-    byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
-    try:
-        buffer.write(byte_color, buffer_offset)
-    except IndexError:
-        raise IndexError(f"Bad buffer offset: buffer_offset -> {buffer_offset}, max_offset -> {ss[0]*ss[1]*4}")
 
 def draw_polygon(screen, points, texture, light_val):
     buffer = screen.get_buffer()
@@ -101,7 +105,7 @@ def draw_polygon(screen, points, texture, light_val):
         #tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge,i)))
         if tri_vals[0] < 0 or tri_vals[1] < 0 or tri_vals[2] < 0 or tri_vals[3] == 0:
             continue
-        # removing the +1 actually makes a decent view of the individual polygons
+        pixel_write = b''
         for j in range(left_edge, right_edge):
             if j < 0 or j >= ss[0]: continue # prevent buffer overflow
             final_uv = [0,0]
@@ -113,10 +117,12 @@ def draw_polygon(screen, points, texture, light_val):
             color = list(get_color_NN(texture, final_uv[0], final_uv[1]))
             for k in range(len(color)):
                 color[k] = int(color[k] * light_val)
-            write_pixel_buffer(buffer, ss, (j,i), color)
+            pixel_write = pixel_write + bytes([color[2], color[1], color[0], 0])
             # update the area of the triangles for uv blending
             for k in range(3):
                 tri_vals[k] -= deltas[k]
+        buffer_offset = (left_edge + i * ss[0]) * 4
+        buffer.write(pixel_write, buffer_offset)
 
 def load_texture(file_name):
     img = Image.open(file_name)
