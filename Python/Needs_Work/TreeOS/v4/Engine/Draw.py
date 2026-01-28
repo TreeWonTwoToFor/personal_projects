@@ -3,7 +3,7 @@ import pygame
 
 from Engine import Helper
 from Engine import ViewFrustum
-from Engine import Rasterizer
+from Engine import RasterizerCython
 
 frustum_planes = None
 camera_pos = None
@@ -156,7 +156,7 @@ def draw_polygons(screen, camera, obj_list, light_list, offset=(0,0,0)):
                     depth = projected_point[1]
                     perspective_poly.append([int(screen_pos[0]), int(screen_pos[1]), depth] + uv_values[i])
                 final_poly = perspective_poly + uv_values
-                Rasterizer.draw_polygon(screen, perspective_poly, obj.texture, rasterizer_light_value)
+                RasterizerCython.draw_polygon(screen, perspective_poly, obj.texture, rasterizer_light_value)
 
 # 'main' function of Draw
 def draw_frame_poly(screen, camera, obj_list, light_list, debug, clock):

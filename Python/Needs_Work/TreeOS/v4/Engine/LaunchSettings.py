@@ -4,7 +4,7 @@ debug = True
 # normal, render, testing
 mode = "testing"
 scene_name = "barrel_scene.txt"
-frame_count = 10
+frame_count = 60
 mouse_control = False
 mouse_sensitivity = 0.5
 
