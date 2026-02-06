@@ -2,6 +2,8 @@ import math
 import pygame
 from PIL import Image
 
+draw_type = "old"
+
 # triangle functions
 def dp(vector_a, vector_b):
     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
@@ -76,19 +78,7 @@ def find_edges(points, scanline_height):
     #tri_2 = inside_triangle(points[0], points[1], points[2], (left+1, scanline_height))
     #return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
 
-def make_edge(point1, point2):
-    x1, y1 = point1[0], point1[1]
-    x2, y2 = point2[0], point2[1]
-    A = y2 - y1
-    B = -(x2 - x1)
-    C = x2*y1 - y2*x1
-    return A, B, C
-
-def eval_edge(edge, x, y):
-    A, B, C = edge
-    return A*x + B*y + C
-
-def draw_polygon(screen, points, texture, light_val):
+def draw_polygon_old(screen, points, texture, light_val):
     buffer = screen.get_buffer()
     ss = screen.get_size()
     # getting bounds of polygon + uv values
@@ -140,6 +130,18 @@ def draw_polygon(screen, points, texture, light_val):
         # write that sanline to the buffer
         buffer_offset = (left_edge + i * ss[0]) * 4
         buffer.write(pixel_write, buffer_offset)
+
+def make_edge(point1, point2):
+    x1, y1 = point1[0], point1[1]
+    x2, y2 = point2[0], point2[1]
+    A = y2 - y1
+    B = -(x2 - x1)
+    C = x2*y1 - y2*x1
+    return A, B, C
+
+def eval_edge(edge, x, y):
+    A, B, C = edge
+    return A*x + B*y + C
 
 def draw_polygon_new(screen, points, texture, light_val):
     buffer = screen.get_buffer()
@@ -195,6 +197,11 @@ def get_color_NN(texture, u,v):
     pixel_y = round((1-v) * (img_size[1]-1)) #bottom left origin
     color_val = texture[1][pixel_x, pixel_y]
     return color_val
+
+if draw_type == "old":
+    draw_polygon = draw_polygon_old
+elif draw_type == "new":
+    draw_polygon = draw_polygon_new
 
 if __name__ == "__main__":
     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]

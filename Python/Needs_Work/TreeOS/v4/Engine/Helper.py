@@ -3,9 +3,13 @@ import numpy
 import pygame
 
 def array_dp(array_a, array_b):
-    face_vector = numpy.array(array_a)
-    camera_vector = numpy.array(array_b)
-    dp = numpy.dot(array_a, array_b)
+    #face_vector = numpy.array(array_a)
+    #camera_vector = numpy.array(array_b)
+    #dp = numpy.dot(array_a, array_b)
+    if len(array_a) != len(array_b): raise ValueError(f"cannot perform dp between {array_a} and {array_b}")
+    dp = 0
+    for i in range(len(array_a)):
+        dp += array_a[i] * array_b[i]
     return dp
 
 def vector_magnitude(vector):

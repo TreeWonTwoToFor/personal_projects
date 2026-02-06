@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "RasterizerCython",
+        "name": "Rasterizer",
         "sources": [
-            "RasterizerCython.pyx"
+            "Rasterizer.pyx"
         ]
     },
-    "module_name": "RasterizerCython"
+    "module_name": "Rasterizer"
 }
 END: Cython Metadata */
 
@@ -1126,8 +1126,8 @@ static int __Pyx_init_co_variables(void) {
   #endif
 #endif
 
-#define __PYX_HAVE__RasterizerCython
-#define __PYX_HAVE_API__RasterizerCython
+#define __PYX_HAVE__Rasterizer
+#define __PYX_HAVE_API__Rasterizer
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1345,7 +1345,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "RasterizerCython.pyx",
+  "Rasterizer.pyx",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -2044,18 +2044,6 @@ static CYTHON_INLINE int __Pyx_PyList_Append(PyObject* list, PyObject* x) {
 #define __Pyx_PyList_Append(L,x) PyList_Append(L,x)
 #endif
 
-/* RaiseTooManyValuesToUnpack.proto */
-static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
-
-/* RaiseNeedMoreValuesToUnpack.proto */
-static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
-
-/* IterFinish.proto */
-static CYTHON_INLINE int __Pyx_IterFinish(void);
-
-/* UnpackItemEndCheck.proto */
-static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
-
 /* PyRange_Check.proto */
 #if CYTHON_COMPILING_IN_PYPY && !defined(PyRange_Check)
   #define PyRange_Check(obj)  __Pyx_TypeCheck((obj), &PyRange_Type)
@@ -2070,6 +2058,18 @@ static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
 static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v);
 static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObject *v,
                                                int is_list, int wraparound, int boundscheck, int unsafe_shared);
+
+/* RaiseTooManyValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected);
+
+/* RaiseNeedMoreValuesToUnpack.proto */
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index);
+
+/* IterFinish.proto */
+static CYTHON_INLINE int __Pyx_IterFinish(void);
+
+/* UnpackItemEndCheck.proto */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected);
 
 /* PyLongBinop.proto */
 #if !CYTHON_COMPILING_IN_PYPY
@@ -2419,14 +2419,14 @@ static int __Pyx_State_RemoveModule(void*);
 #define __PYX_TYPE_MODULE_PREFIX __PYX_ABI_MODULE_NAME "."
 
 
-/* Module declarations from "RasterizerCython" */
+/* Module declarations from "Rasterizer" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "RasterizerCython"
-extern int __pyx_module_is_main_RasterizerCython;
-int __pyx_module_is_main_RasterizerCython = 0;
+#define __Pyx_MODULE_NAME "Rasterizer"
+extern int __pyx_module_is_main_Rasterizer;
+int __pyx_module_is_main_Rasterizer = 0;
 
-/* Implementation of "RasterizerCython" */
+/* Implementation of "Rasterizer" */
 /* #### Code section: global_var ### */
 static PyObject *__pyx_builtin_print;
 static PyObject *__pyx_builtin_min;
@@ -2434,19 +2434,19 @@ static PyObject *__pyx_builtin_max;
 static PyObject *__pyx_builtin_round;
 /* #### Code section: string_decls ### */
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector_a, PyObject *__pyx_v_vector_b); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c, PyObject *__pyx_v_p); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inside_triangle_values); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_ss, PyObject *__pyx_v_pixel_pos); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_screen_size, PyObject *__pyx_v_pixel_pos, PyObject *__pyx_v_pixel_color, PyObject *__pyx_v_extra_byte); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_points, PyObject *__pyx_v_scanline_height); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_14make_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_point1, PyObject *__pyx_v_point2); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_16eval_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_edge, PyObject *__pyx_v_x, PyObject *__pyx_v_y); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, CYTHON_UNUSED PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_file_name); /* proto */
-static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_texture, PyObject *__pyx_v_u, PyObject *__pyx_v_v); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_dp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector_a, PyObject *__pyx_v_vector_b); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_2right_angle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_4inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c, PyObject *__pyx_v_p); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_6check_inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inside_triangle_values); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_8read_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_ss, PyObject *__pyx_v_pixel_pos); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_10write_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_screen_size, PyObject *__pyx_v_pixel_pos, PyObject *__pyx_v_pixel_color, PyObject *__pyx_v_extra_byte); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_12find_edges(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_points, PyObject *__pyx_v_scanline_height); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_14draw_polygon_old(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_16make_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_point1, PyObject *__pyx_v_point2); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_18eval_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_edge, PyObject *__pyx_v_x, PyObject *__pyx_v_y); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_20draw_polygon_new(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, CYTHON_UNUSED PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_22load_texture(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_file_name); /* proto */
+static PyObject *__pyx_pf_10Rasterizer_24get_color_NN(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_texture, PyObject *__pyx_v_u, PyObject *__pyx_v_v); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2472,7 +2472,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_tuple[5];
   PyObject *__pyx_codeobj_tab[13];
-  PyObject *__pyx_string_tab[168];
+  PyObject *__pyx_string_tab[172];
   PyObject *__pyx_number_tab[11];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -2516,7 +2516,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 /* #### Code section: constant_name_defines ### */
 #define __pyx_kp_u_Assets_Objects_cylinder_red_tex __pyx_string_tab[0]
 #define __pyx_kp_u_Bad_buffer_offset_buffer_offset __pyx_string_tab[1]
-#define __pyx_kp_u_RasterizerCython_pyx __pyx_string_tab[2]
+#define __pyx_kp_u_Rasterizer_pyx __pyx_string_tab[2]
 #define __pyx_kp_u__2 __pyx_string_tab[3]
 #define __pyx_kp_u__3 __pyx_string_tab[4]
 #define __pyx_kp_u_max_offset __pyx_string_tab[5]
@@ -2532,7 +2532,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_Image __pyx_string_tab[15]
 #define __pyx_n_u_PIL __pyx_string_tab[16]
 #define __pyx_n_u_Pyx_PyDict_NextRef __pyx_string_tab[17]
-#define __pyx_n_u_RasterizerCython __pyx_string_tab[18]
+#define __pyx_n_u_Rasterizer __pyx_string_tab[18]
 #define __pyx_n_u_a __pyx_string_tab[19]
 #define __pyx_n_u_ab __pyx_string_tab[20]
 #define __pyx_n_u_ab_r __pyx_string_tab[21]
@@ -2562,126 +2562,130 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_dp __pyx_string_tab[45]
 #define __pyx_n_u_draw_polygon __pyx_string_tab[46]
 #define __pyx_n_u_draw_polygon_new __pyx_string_tab[47]
-#define __pyx_n_u_du __pyx_string_tab[48]
-#define __pyx_n_u_dv __pyx_string_tab[49]
-#define __pyx_n_u_e0 __pyx_string_tab[50]
-#define __pyx_n_u_e1 __pyx_string_tab[51]
-#define __pyx_n_u_e2 __pyx_string_tab[52]
-#define __pyx_n_u_edge __pyx_string_tab[53]
-#define __pyx_n_u_edges_and_area_change __pyx_string_tab[54]
-#define __pyx_n_u_eval_edge __pyx_string_tab[55]
-#define __pyx_n_u_extra_byte __pyx_string_tab[56]
-#define __pyx_n_u_fabs __pyx_string_tab[57]
-#define __pyx_n_u_file_name __pyx_string_tab[58]
-#define __pyx_n_u_find_edges __pyx_string_tab[59]
-#define __pyx_n_u_func __pyx_string_tab[60]
-#define __pyx_n_u_get_buffer __pyx_string_tab[61]
-#define __pyx_n_u_get_color_NN __pyx_string_tab[62]
-#define __pyx_n_u_get_size __pyx_string_tab[63]
-#define __pyx_n_u_i __pyx_string_tab[64]
-#define __pyx_n_u_ia __pyx_string_tab[65]
-#define __pyx_n_u_ib __pyx_string_tab[66]
-#define __pyx_n_u_ic __pyx_string_tab[67]
-#define __pyx_n_u_img __pyx_string_tab[68]
-#define __pyx_n_u_img_size __pyx_string_tab[69]
-#define __pyx_n_u_init __pyx_string_tab[70]
-#define __pyx_n_u_inside_triangle __pyx_string_tab[71]
-#define __pyx_n_u_inside_triangle_values __pyx_string_tab[72]
-#define __pyx_n_u_intersections __pyx_string_tab[73]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[74]
-#define __pyx_n_u_items __pyx_string_tab[75]
-#define __pyx_n_u_j __pyx_string_tab[76]
-#define __pyx_n_u_k __pyx_string_tab[77]
-#define __pyx_n_u_l __pyx_string_tab[78]
-#define __pyx_n_u_left __pyx_string_tab[79]
-#define __pyx_n_u_left_edge __pyx_string_tab[80]
-#define __pyx_n_u_left_uv __pyx_string_tab[81]
-#define __pyx_n_u_light_val __pyx_string_tab[82]
-#define __pyx_n_u_load __pyx_string_tab[83]
-#define __pyx_n_u_load_texture __pyx_string_tab[84]
-#define __pyx_n_u_main __pyx_string_tab[85]
-#define __pyx_n_u_make_edge __pyx_string_tab[86]
-#define __pyx_n_u_math __pyx_string_tab[87]
-#define __pyx_n_u_max __pyx_string_tab[88]
-#define __pyx_n_u_max_x __pyx_string_tab[89]
-#define __pyx_n_u_max_y __pyx_string_tab[90]
-#define __pyx_n_u_min __pyx_string_tab[91]
-#define __pyx_n_u_min_x __pyx_string_tab[92]
-#define __pyx_n_u_min_y __pyx_string_tab[93]
-#define __pyx_n_u_module __pyx_string_tab[94]
-#define __pyx_n_u_name __pyx_string_tab[95]
-#define __pyx_n_u_next_uv __pyx_string_tab[96]
-#define __pyx_n_u_open __pyx_string_tab[97]
-#define __pyx_n_u_p __pyx_string_tab[98]
-#define __pyx_n_u_pair __pyx_string_tab[99]
-#define __pyx_n_u_pixel_color __pyx_string_tab[100]
-#define __pyx_n_u_pixel_pos __pyx_string_tab[101]
-#define __pyx_n_u_pixel_write __pyx_string_tab[102]
-#define __pyx_n_u_pixel_x __pyx_string_tab[103]
-#define __pyx_n_u_pixel_y __pyx_string_tab[104]
-#define __pyx_n_u_point __pyx_string_tab[105]
-#define __pyx_n_u_point1 __pyx_string_tab[106]
-#define __pyx_n_u_point2 __pyx_string_tab[107]
-#define __pyx_n_u_point_pairs __pyx_string_tab[108]
-#define __pyx_n_u_points __pyx_string_tab[109]
-#define __pyx_n_u_pop __pyx_string_tab[110]
-#define __pyx_n_u_print __pyx_string_tab[111]
-#define __pyx_n_u_pygame __pyx_string_tab[112]
-#define __pyx_n_u_qualname __pyx_string_tab[113]
-#define __pyx_n_u_raw __pyx_string_tab[114]
-#define __pyx_n_u_read_pixel_buffer __pyx_string_tab[115]
-#define __pyx_n_u_right __pyx_string_tab[116]
-#define __pyx_n_u_right_ab __pyx_string_tab[117]
-#define __pyx_n_u_right_angle __pyx_string_tab[118]
-#define __pyx_n_u_right_bc __pyx_string_tab[119]
-#define __pyx_n_u_right_ca __pyx_string_tab[120]
-#define __pyx_n_u_right_edge __pyx_string_tab[121]
-#define __pyx_n_u_round __pyx_string_tab[122]
-#define __pyx_n_u_scanline_height __pyx_string_tab[123]
-#define __pyx_n_u_screen __pyx_string_tab[124]
-#define __pyx_n_u_screen_size __pyx_string_tab[125]
-#define __pyx_n_u_set_mode __pyx_string_tab[126]
-#define __pyx_n_u_set_name __pyx_string_tab[127]
-#define __pyx_n_u_setdefault __pyx_string_tab[128]
-#define __pyx_n_u_size __pyx_string_tab[129]
-#define __pyx_n_u_ss __pyx_string_tab[130]
-#define __pyx_n_u_t __pyx_string_tab[131]
-#define __pyx_n_u_test __pyx_string_tab[132]
-#define __pyx_n_u_texture __pyx_string_tab[133]
-#define __pyx_n_u_tri_2 __pyx_string_tab[134]
-#define __pyx_n_u_tri_vals __pyx_string_tab[135]
-#define __pyx_n_u_triangle __pyx_string_tab[136]
-#define __pyx_n_u_u __pyx_string_tab[137]
-#define __pyx_n_u_update __pyx_string_tab[138]
-#define __pyx_n_u_uv_list __pyx_string_tab[139]
-#define __pyx_n_u_v __pyx_string_tab[140]
-#define __pyx_n_u_values __pyx_string_tab[141]
-#define __pyx_n_u_vector __pyx_string_tab[142]
-#define __pyx_n_u_vector_a __pyx_string_tab[143]
-#define __pyx_n_u_vector_b __pyx_string_tab[144]
-#define __pyx_n_u_write __pyx_string_tab[145]
-#define __pyx_n_u_write_pixel_buffer __pyx_string_tab[146]
-#define __pyx_n_u_x __pyx_string_tab[147]
-#define __pyx_n_u_x1 __pyx_string_tab[148]
-#define __pyx_n_u_x2 __pyx_string_tab[149]
-#define __pyx_n_u_y __pyx_string_tab[150]
-#define __pyx_n_u_y0 __pyx_string_tab[151]
-#define __pyx_n_u_y1 __pyx_string_tab[152]
-#define __pyx_n_u_y2 __pyx_string_tab[153]
-#define __pyx_kp_b_ __pyx_string_tab[154]
-#define __pyx_kp_b_iso88591_1Baq_Qar_1A_1Baq_Qar_1A_1Baq_Qa __pyx_string_tab[155]
-#define __pyx_kp_b_iso88591_81Baxq_2XQb __pyx_string_tab[156]
-#define __pyx_kp_b_iso88591_86_AT_q_1_5_BgXU_1_5_BgXU_1_A_F __pyx_string_tab[157]
-#define __pyx_kp_b_iso88591_AV1D_aq __pyx_string_tab[158]
-#define __pyx_kp_b_iso88591_DA_Yas_IQc_2Qd_A_aq_1D_1D_1D_fA __pyx_string_tab[159]
-#define __pyx_kp_b_iso88591_V1D_aq_V1D_aq_2Q_Rq_3b_1_3c __pyx_string_tab[160]
-#define __pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq __pyx_string_tab[161]
-#define __pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq_2 __pyx_string_tab[162]
-#define __pyx_kp_b_iso88591_Yas_IQc_2Qd_A_6_QnM __pyx_string_tab[163]
-#define __pyx_kp_b_iso88591_q_81Bb_har_2T_Bb_HASPSST __pyx_string_tab[164]
-#define __pyx_kp_b_iso88591_s_a_1ARr_2Rq __pyx_string_tab[165]
-#define __pyx_kp_b_iso88591_uAQ_Cwc_a __pyx_string_tab[166]
-#define __pyx_kp_b_iso88591_waq_e1Bc_AQ_e2Qas_XQb_q_9A_1 __pyx_string_tab[167]
+#define __pyx_n_u_draw_polygon_old __pyx_string_tab[48]
+#define __pyx_n_u_draw_type __pyx_string_tab[49]
+#define __pyx_n_u_du __pyx_string_tab[50]
+#define __pyx_n_u_dv __pyx_string_tab[51]
+#define __pyx_n_u_e0 __pyx_string_tab[52]
+#define __pyx_n_u_e1 __pyx_string_tab[53]
+#define __pyx_n_u_e2 __pyx_string_tab[54]
+#define __pyx_n_u_edge __pyx_string_tab[55]
+#define __pyx_n_u_edges_and_area_change __pyx_string_tab[56]
+#define __pyx_n_u_eval_edge __pyx_string_tab[57]
+#define __pyx_n_u_extra_byte __pyx_string_tab[58]
+#define __pyx_n_u_fabs __pyx_string_tab[59]
+#define __pyx_n_u_file_name __pyx_string_tab[60]
+#define __pyx_n_u_find_edges __pyx_string_tab[61]
+#define __pyx_n_u_func __pyx_string_tab[62]
+#define __pyx_n_u_get_buffer __pyx_string_tab[63]
+#define __pyx_n_u_get_color_NN __pyx_string_tab[64]
+#define __pyx_n_u_get_size __pyx_string_tab[65]
+#define __pyx_n_u_i __pyx_string_tab[66]
+#define __pyx_n_u_ia __pyx_string_tab[67]
+#define __pyx_n_u_ib __pyx_string_tab[68]
+#define __pyx_n_u_ic __pyx_string_tab[69]
+#define __pyx_n_u_img __pyx_string_tab[70]
+#define __pyx_n_u_img_size __pyx_string_tab[71]
+#define __pyx_n_u_init __pyx_string_tab[72]
+#define __pyx_n_u_inside_triangle __pyx_string_tab[73]
+#define __pyx_n_u_inside_triangle_values __pyx_string_tab[74]
+#define __pyx_n_u_intersections __pyx_string_tab[75]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[76]
+#define __pyx_n_u_items __pyx_string_tab[77]
+#define __pyx_n_u_j __pyx_string_tab[78]
+#define __pyx_n_u_k __pyx_string_tab[79]
+#define __pyx_n_u_l __pyx_string_tab[80]
+#define __pyx_n_u_left __pyx_string_tab[81]
+#define __pyx_n_u_left_edge __pyx_string_tab[82]
+#define __pyx_n_u_left_uv __pyx_string_tab[83]
+#define __pyx_n_u_light_val __pyx_string_tab[84]
+#define __pyx_n_u_load __pyx_string_tab[85]
+#define __pyx_n_u_load_texture __pyx_string_tab[86]
+#define __pyx_n_u_main __pyx_string_tab[87]
+#define __pyx_n_u_make_edge __pyx_string_tab[88]
+#define __pyx_n_u_math __pyx_string_tab[89]
+#define __pyx_n_u_max __pyx_string_tab[90]
+#define __pyx_n_u_max_x __pyx_string_tab[91]
+#define __pyx_n_u_max_y __pyx_string_tab[92]
+#define __pyx_n_u_min __pyx_string_tab[93]
+#define __pyx_n_u_min_x __pyx_string_tab[94]
+#define __pyx_n_u_min_y __pyx_string_tab[95]
+#define __pyx_n_u_module __pyx_string_tab[96]
+#define __pyx_n_u_name __pyx_string_tab[97]
+#define __pyx_n_u_new __pyx_string_tab[98]
+#define __pyx_n_u_next_uv __pyx_string_tab[99]
+#define __pyx_n_u_old __pyx_string_tab[100]
+#define __pyx_n_u_open __pyx_string_tab[101]
+#define __pyx_n_u_p __pyx_string_tab[102]
+#define __pyx_n_u_pair __pyx_string_tab[103]
+#define __pyx_n_u_pixel_color __pyx_string_tab[104]
+#define __pyx_n_u_pixel_pos __pyx_string_tab[105]
+#define __pyx_n_u_pixel_write __pyx_string_tab[106]
+#define __pyx_n_u_pixel_x __pyx_string_tab[107]
+#define __pyx_n_u_pixel_y __pyx_string_tab[108]
+#define __pyx_n_u_point __pyx_string_tab[109]
+#define __pyx_n_u_point1 __pyx_string_tab[110]
+#define __pyx_n_u_point2 __pyx_string_tab[111]
+#define __pyx_n_u_point_pairs __pyx_string_tab[112]
+#define __pyx_n_u_points __pyx_string_tab[113]
+#define __pyx_n_u_pop __pyx_string_tab[114]
+#define __pyx_n_u_print __pyx_string_tab[115]
+#define __pyx_n_u_pygame __pyx_string_tab[116]
+#define __pyx_n_u_qualname __pyx_string_tab[117]
+#define __pyx_n_u_raw __pyx_string_tab[118]
+#define __pyx_n_u_read_pixel_buffer __pyx_string_tab[119]
+#define __pyx_n_u_right __pyx_string_tab[120]
+#define __pyx_n_u_right_ab __pyx_string_tab[121]
+#define __pyx_n_u_right_angle __pyx_string_tab[122]
+#define __pyx_n_u_right_bc __pyx_string_tab[123]
+#define __pyx_n_u_right_ca __pyx_string_tab[124]
+#define __pyx_n_u_right_edge __pyx_string_tab[125]
+#define __pyx_n_u_round __pyx_string_tab[126]
+#define __pyx_n_u_scanline_height __pyx_string_tab[127]
+#define __pyx_n_u_screen __pyx_string_tab[128]
+#define __pyx_n_u_screen_size __pyx_string_tab[129]
+#define __pyx_n_u_set_mode __pyx_string_tab[130]
+#define __pyx_n_u_set_name __pyx_string_tab[131]
+#define __pyx_n_u_setdefault __pyx_string_tab[132]
+#define __pyx_n_u_size __pyx_string_tab[133]
+#define __pyx_n_u_ss __pyx_string_tab[134]
+#define __pyx_n_u_t __pyx_string_tab[135]
+#define __pyx_n_u_test __pyx_string_tab[136]
+#define __pyx_n_u_texture __pyx_string_tab[137]
+#define __pyx_n_u_tri_2 __pyx_string_tab[138]
+#define __pyx_n_u_tri_vals __pyx_string_tab[139]
+#define __pyx_n_u_triangle __pyx_string_tab[140]
+#define __pyx_n_u_u __pyx_string_tab[141]
+#define __pyx_n_u_update __pyx_string_tab[142]
+#define __pyx_n_u_uv_list __pyx_string_tab[143]
+#define __pyx_n_u_v __pyx_string_tab[144]
+#define __pyx_n_u_values __pyx_string_tab[145]
+#define __pyx_n_u_vector __pyx_string_tab[146]
+#define __pyx_n_u_vector_a __pyx_string_tab[147]
+#define __pyx_n_u_vector_b __pyx_string_tab[148]
+#define __pyx_n_u_write __pyx_string_tab[149]
+#define __pyx_n_u_write_pixel_buffer __pyx_string_tab[150]
+#define __pyx_n_u_x __pyx_string_tab[151]
+#define __pyx_n_u_x1 __pyx_string_tab[152]
+#define __pyx_n_u_x2 __pyx_string_tab[153]
+#define __pyx_n_u_y __pyx_string_tab[154]
+#define __pyx_n_u_y0 __pyx_string_tab[155]
+#define __pyx_n_u_y1 __pyx_string_tab[156]
+#define __pyx_n_u_y2 __pyx_string_tab[157]
+#define __pyx_kp_b_ __pyx_string_tab[158]
+#define __pyx_kp_b_iso88591_1Baq_Qar_1A_1Baq_Qar_1A_1Baq_Qa __pyx_string_tab[159]
+#define __pyx_kp_b_iso88591_81Baxq_2XQb __pyx_string_tab[160]
+#define __pyx_kp_b_iso88591_86_AT_q_1_5_BgXU_1_5_BgXU_1_A_F __pyx_string_tab[161]
+#define __pyx_kp_b_iso88591_AV1D_aq __pyx_string_tab[162]
+#define __pyx_kp_b_iso88591_DA_Yas_IQc_2Qd_A_aq_1D_1D_1D_fA __pyx_string_tab[163]
+#define __pyx_kp_b_iso88591_V1D_aq_V1D_aq_2Q_Rq_3b_1_3c __pyx_string_tab[164]
+#define __pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq __pyx_string_tab[165]
+#define __pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq_2 __pyx_string_tab[166]
+#define __pyx_kp_b_iso88591_Yas_IQc_2Qd_A_6_QnM __pyx_string_tab[167]
+#define __pyx_kp_b_iso88591_q_81Bb_har_2T_Bb_HASPSST __pyx_string_tab[168]
+#define __pyx_kp_b_iso88591_s_a_1ARr_2Rq __pyx_string_tab[169]
+#define __pyx_kp_b_iso88591_uAQ_Cwc_a __pyx_string_tab[170]
+#define __pyx_kp_b_iso88591_waq_e1Bc_AQ_e2Qas_XQb_q_9A_1 __pyx_string_tab[171]
 #define __pyx_int_0 __pyx_number_tab[0]
 #define __pyx_int_1 __pyx_number_tab[1]
 #define __pyx_int_2 __pyx_number_tab[2]
@@ -2709,7 +2713,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #endif
   for (int i=0; i<5; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<13; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<168; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<172; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<11; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -2735,7 +2739,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   __Pyx_VISIT_CONST(traverse_module_state->__pyx_empty_unicode);
   for (int i=0; i<5; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<13; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<168; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<172; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<11; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -2750,7 +2754,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* "RasterizerCython.pyx":6
+/* "Rasterizer.pyx":8
  * 
  * # triangle functions
  * def dp(vector_a, vector_b):             # <<<<<<<<<<<<<<
@@ -2759,15 +2763,15 @@ return 0;
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_1dp(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_1dp(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_1dp = {"dp", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_1dp, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_1dp(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_1dp = {"dp", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_1dp, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_1dp(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2798,50 +2802,50 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_vector_a,&__pyx_mstate_global->__pyx_n_u_vector_b,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 6, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 8, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 6, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 8, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 6, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 8, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dp", 0) < (0)) __PYX_ERR(0, 6, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "dp", 0) < (0)) __PYX_ERR(0, 8, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dp", 1, 2, 2, i); __PYX_ERR(0, 6, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("dp", 1, 2, 2, i); __PYX_ERR(0, 8, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 6, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 8, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 6, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 8, __pyx_L3_error)
     }
     __pyx_v_vector_a = values[0];
     __pyx_v_vector_b = values[1];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("dp", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 6, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("dp", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 8, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.dp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.dp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_dp(__pyx_self, __pyx_v_vector_a, __pyx_v_vector_b);
+  __pyx_r = __pyx_pf_10Rasterizer_dp(__pyx_self, __pyx_v_vector_a, __pyx_v_vector_b);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -2851,7 +2855,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector_a, PyObject *__pyx_v_vector_b) {
+static PyObject *__pyx_pf_10Rasterizer_dp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector_a, PyObject *__pyx_v_vector_b) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2863,7 +2867,7 @@ static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_se
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("dp", 0);
 
-  /* "RasterizerCython.pyx":7
+  /* "Rasterizer.pyx":9
  * # triangle functions
  * def dp(vector_a, vector_b):
  *     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]             # <<<<<<<<<<<<<<
@@ -2871,23 +2875,23 @@ static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_se
  * def right_angle(vector):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_vector_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_vector_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_vector_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_vector_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -2895,7 +2899,7 @@ static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_se
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":6
+  /* "Rasterizer.pyx":8
  * 
  * # triangle functions
  * def dp(vector_a, vector_b):             # <<<<<<<<<<<<<<
@@ -2909,7 +2913,7 @@ static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("RasterizerCython.dp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.dp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2917,7 +2921,7 @@ static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_se
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":9
+/* "Rasterizer.pyx":11
  *     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
  * 
  * def right_angle(vector):             # <<<<<<<<<<<<<<
@@ -2926,15 +2930,15 @@ static PyObject *__pyx_pf_16RasterizerCython_dp(CYTHON_UNUSED PyObject *__pyx_se
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_3right_angle(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_3right_angle(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_3right_angle = {"right_angle", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_3right_angle, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_3right_angle(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_3right_angle = {"right_angle", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_3right_angle, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_3right_angle(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2964,43 +2968,43 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_vector,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 9, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 11, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 9, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 11, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "right_angle", 0) < (0)) __PYX_ERR(0, 9, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "right_angle", 0) < (0)) __PYX_ERR(0, 11, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("right_angle", 1, 1, 1, i); __PYX_ERR(0, 9, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("right_angle", 1, 1, 1, i); __PYX_ERR(0, 11, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 9, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 11, __pyx_L3_error)
     }
     __pyx_v_vector = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("right_angle", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 9, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("right_angle", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 11, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.right_angle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.right_angle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_2right_angle(__pyx_self, __pyx_v_vector);
+  __pyx_r = __pyx_pf_10Rasterizer_2right_angle(__pyx_self, __pyx_v_vector);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -3010,7 +3014,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector) {
+static PyObject *__pyx_pf_10Rasterizer_2right_angle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_vector) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3021,7 +3025,7 @@ static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("right_angle", 0);
 
-  /* "RasterizerCython.pyx":10
+  /* "Rasterizer.pyx":12
  * 
  * def right_angle(vector):
  *     return (-vector[1], vector[0])             # <<<<<<<<<<<<<<
@@ -3029,26 +3033,26 @@ static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject
  * def inside_triangle(a, b, c, p):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Negative(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Negative(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_vector, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 10, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 12, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1) != (0)) __PYX_ERR(0, 10, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1) != (0)) __PYX_ERR(0, 12, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_t_1 = 0;
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":9
+  /* "Rasterizer.pyx":11
  *     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
  * 
  * def right_angle(vector):             # <<<<<<<<<<<<<<
@@ -3061,7 +3065,7 @@ static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("RasterizerCython.right_angle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.right_angle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3069,7 +3073,7 @@ static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":12
+/* "Rasterizer.pyx":14
  *     return (-vector[1], vector[0])
  * 
  * def inside_triangle(a, b, c, p):             # <<<<<<<<<<<<<<
@@ -3078,15 +3082,15 @@ static PyObject *__pyx_pf_16RasterizerCython_2right_angle(CYTHON_UNUSED PyObject
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_5inside_triangle(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_5inside_triangle(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_5inside_triangle = {"inside_triangle", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_5inside_triangle, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_5inside_triangle(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_5inside_triangle = {"inside_triangle", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_5inside_triangle, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_5inside_triangle(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3119,44 +3123,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_a,&__pyx_mstate_global->__pyx_n_u_b,&__pyx_mstate_global->__pyx_n_u_c,&__pyx_mstate_global->__pyx_n_u_p,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 12, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 14, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 14, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "inside_triangle", 0) < (0)) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "inside_triangle", 0) < (0)) __PYX_ERR(0, 14, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("inside_triangle", 1, 4, 4, i); __PYX_ERR(0, 12, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("inside_triangle", 1, 4, 4, i); __PYX_ERR(0, 14, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 14, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 14, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 14, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 14, __pyx_L3_error)
     }
     __pyx_v_a = values[0];
     __pyx_v_b = values[1];
@@ -3165,18 +3169,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("inside_triangle", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 12, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("inside_triangle", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 14, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_4inside_triangle(__pyx_self, __pyx_v_a, __pyx_v_b, __pyx_v_c, __pyx_v_p);
+  __pyx_r = __pyx_pf_10Rasterizer_4inside_triangle(__pyx_self, __pyx_v_a, __pyx_v_b, __pyx_v_c, __pyx_v_p);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -3186,7 +3190,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c, PyObject *__pyx_v_p) {
+static PyObject *__pyx_pf_10Rasterizer_4inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_a, PyObject *__pyx_v_b, PyObject *__pyx_v_c, PyObject *__pyx_v_p) {
   PyObject *__pyx_v_ab = NULL;
   PyObject *__pyx_v_bc = NULL;
   PyObject *__pyx_v_ca = NULL;
@@ -3217,92 +3221,24 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("inside_triangle", 0);
 
-  /* "RasterizerCython.pyx":14
+  /* "Rasterizer.pyx":16
  * def inside_triangle(a, b, c, p):
  *     # abc define a triangle, while p is a point
  *     ab = (b[0]-a[0], b[1]-a[1])             # <<<<<<<<<<<<<<
  *     bc = (c[0]-b[0], c[1]-b[1])
  *     ca = (a[0]-c[0], a[1]-c[1])
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 14, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 14, __pyx_L1_error);
-  __pyx_t_3 = 0;
-  __pyx_t_4 = 0;
-  __pyx_v_ab = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "RasterizerCython.pyx":15
- *     # abc define a triangle, while p is a point
- *     ab = (b[0]-a[0], b[1]-a[1])
- *     bc = (c[0]-b[0], c[1]-b[1])             # <<<<<<<<<<<<<<
- *     ca = (a[0]-c[0], a[1]-c[1])
- * 
-*/
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 15, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 15, __pyx_L1_error);
-  __pyx_t_3 = 0;
-  __pyx_t_2 = 0;
-  __pyx_v_bc = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "RasterizerCython.pyx":16
- *     ab = (b[0]-a[0], b[1]-a[1])
- *     bc = (c[0]-b[0], c[1]-b[1])
- *     ca = (a[0]-c[0], a[1]-c[1])             # <<<<<<<<<<<<<<
- * 
- *     ab_r = right_angle(ab)
-*/
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -3316,10 +3252,78 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
   if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 16, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_4 = 0;
+  __pyx_v_ab = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "Rasterizer.pyx":17
+ *     # abc define a triangle, while p is a point
+ *     ab = (b[0]-a[0], b[1]-a[1])
+ *     bc = (c[0]-b[0], c[1]-b[1])             # <<<<<<<<<<<<<<
+ *     ca = (a[0]-c[0], a[1]-c[1])
+ * 
+*/
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_3);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 17, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_2);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 17, __pyx_L1_error);
+  __pyx_t_3 = 0;
+  __pyx_t_2 = 0;
+  __pyx_v_bc = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "Rasterizer.pyx":18
+ *     ab = (b[0]-a[0], b[1]-a[1])
+ *     bc = (c[0]-b[0], c[1]-b[1])
+ *     ca = (a[0]-c[0], a[1]-c[1])             # <<<<<<<<<<<<<<
+ * 
+ *     ab_r = right_angle(ab)
+*/
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_3);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 18, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_4);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 18, __pyx_L1_error);
+  __pyx_t_3 = 0;
+  __pyx_t_4 = 0;
   __pyx_v_ca = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":18
+  /* "Rasterizer.pyx":20
  *     ca = (a[0]-c[0], a[1]-c[1])
  * 
  *     ab_r = right_angle(ab)             # <<<<<<<<<<<<<<
@@ -3327,7 +3331,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  *     ca_r = right_angle(ca)
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3346,13 +3350,13 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_ab_r = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":19
+  /* "Rasterizer.pyx":21
  * 
  *     ab_r = right_angle(ab)
  *     bc_r = right_angle(bc)             # <<<<<<<<<<<<<<
@@ -3360,7 +3364,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  * 
 */
   __pyx_t_3 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3379,13 +3383,13 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_bc_r = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":20
+  /* "Rasterizer.pyx":22
  *     ab_r = right_angle(ab)
  *     bc_r = right_angle(bc)
  *     ca_r = right_angle(ca)             # <<<<<<<<<<<<<<
@@ -3393,7 +3397,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  *     ap = (p[0]-a[0], p[1]-a[1])
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3412,90 +3416,22 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_3, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_ca_r = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":22
+  /* "Rasterizer.pyx":24
  *     ca_r = right_angle(ca)
  * 
  *     ap = (p[0]-a[0], p[1]-a[1])             # <<<<<<<<<<<<<<
  *     bp = (p[0]-b[0], p[1]-b[1])
  *     cp = (p[0]-c[0], p[1]-c[1])
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Subtract(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4) != (0)) __PYX_ERR(0, 22, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 22, __pyx_L1_error);
-  __pyx_t_4 = 0;
-  __pyx_t_2 = 0;
-  __pyx_v_ap = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "RasterizerCython.pyx":23
- * 
- *     ap = (p[0]-a[0], p[1]-a[1])
- *     bp = (p[0]-b[0], p[1]-b[1])             # <<<<<<<<<<<<<<
- *     cp = (p[0]-c[0], p[1]-c[1])
- * 
-*/
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4) != (0)) __PYX_ERR(0, 23, __pyx_L1_error);
-  __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 23, __pyx_L1_error);
-  __pyx_t_4 = 0;
-  __pyx_t_3 = 0;
-  __pyx_v_bp = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "RasterizerCython.pyx":24
- *     ap = (p[0]-a[0], p[1]-a[1])
- *     bp = (p[0]-b[0], p[1]-b[1])
- *     cp = (p[0]-c[0], p[1]-c[1])             # <<<<<<<<<<<<<<
- * 
- *     right_ab = dp(ab_r, ap)/2
-*/
   __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_a, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -3503,7 +3439,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_a, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = PyNumber_Subtract(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3517,10 +3453,78 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
   if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 24, __pyx_L1_error);
   __pyx_t_4 = 0;
   __pyx_t_2 = 0;
+  __pyx_v_ap = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "Rasterizer.pyx":25
+ * 
+ *     ap = (p[0]-a[0], p[1]-a[1])
+ *     bp = (p[0]-b[0], p[1]-b[1])             # <<<<<<<<<<<<<<
+ *     cp = (p[0]-c[0], p[1]-c[1])
+ * 
+*/
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_b, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_b, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_4);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4) != (0)) __PYX_ERR(0, 25, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_3);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 25, __pyx_L1_error);
+  __pyx_t_4 = 0;
+  __pyx_t_3 = 0;
+  __pyx_v_bp = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "Rasterizer.pyx":26
+ *     ap = (p[0]-a[0], p[1]-a[1])
+ *     bp = (p[0]-b[0], p[1]-b[1])
+ *     cp = (p[0]-c[0], p[1]-c[1])             # <<<<<<<<<<<<<<
+ * 
+ *     right_ab = dp(ab_r, ap)/2
+*/
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_p, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_c, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyNumber_Subtract(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_p, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_c, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyNumber_Subtract(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_4);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4) != (0)) __PYX_ERR(0, 26, __pyx_L1_error);
+  __Pyx_GIVEREF(__pyx_t_2);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 26, __pyx_L1_error);
+  __pyx_t_4 = 0;
+  __pyx_t_2 = 0;
   __pyx_v_cp = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":26
+  /* "Rasterizer.pyx":28
  *     cp = (p[0]-c[0], p[1]-c[1])
  * 
  *     right_ab = dp(ab_r, ap)/2             # <<<<<<<<<<<<<<
@@ -3528,7 +3532,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  *     right_ca = dp(ca_r, cp)/2
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3547,16 +3551,16 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 26, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_4 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_1, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_1, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_right_ab = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":27
+  /* "Rasterizer.pyx":29
  * 
  *     right_ab = dp(ab_r, ap)/2
  *     right_bc = dp(bc_r, bp)/2             # <<<<<<<<<<<<<<
@@ -3564,7 +3568,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  * 
 */
   __pyx_t_1 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3583,16 +3587,16 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 27, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_2 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_right_bc = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":28
+  /* "Rasterizer.pyx":30
  *     right_ab = dp(ab_r, ap)/2
  *     right_bc = dp(bc_r, bp)/2
  *     right_ca = dp(ca_r, cp)/2             # <<<<<<<<<<<<<<
@@ -3600,7 +3604,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  *     area = math.fabs(dp(ab, right_angle(bc)))/2
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3619,16 +3623,16 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_5, (3-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 30, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_1 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_2, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_2, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_right_ca = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":30
+  /* "Rasterizer.pyx":32
  *     right_ca = dp(ca_r, cp)/2
  * 
  *     area = math.fabs(dp(ab, right_angle(bc)))/2             # <<<<<<<<<<<<<<
@@ -3636,16 +3640,16 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_math); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_math); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_fabs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_fabs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_6 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_dp); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_9 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_right_angle); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __pyx_t_5 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -3664,7 +3668,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __pyx_t_8 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_10, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 30, __pyx_L1_error)
+    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
   }
   __pyx_t_5 = 1;
@@ -3685,7 +3689,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_t_5 = 1;
@@ -3706,16 +3710,16 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 30, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 32, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  __pyx_t_3 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_1, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_TrueDivideObjC(__pyx_t_1, __pyx_mstate_global->__pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_area = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "RasterizerCython.pyx":31
+  /* "Rasterizer.pyx":33
  * 
  *     area = math.fabs(dp(ab, right_angle(bc)))/2
  *     return (right_ab, right_bc, right_ca, area)             # <<<<<<<<<<<<<<
@@ -3723,25 +3727,25 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
  * def check_inside_triangle(inside_triangle_values):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_right_ab);
   __Pyx_GIVEREF(__pyx_v_right_ab);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_right_ab) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_right_ab) != (0)) __PYX_ERR(0, 33, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_right_bc);
   __Pyx_GIVEREF(__pyx_v_right_bc);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_right_bc) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_right_bc) != (0)) __PYX_ERR(0, 33, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_right_ca);
   __Pyx_GIVEREF(__pyx_v_right_ca);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_right_ca) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_right_ca) != (0)) __PYX_ERR(0, 33, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_area);
   __Pyx_GIVEREF(__pyx_v_area);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_v_area) != (0)) __PYX_ERR(0, 31, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_v_area) != (0)) __PYX_ERR(0, 33, __pyx_L1_error);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":12
+  /* "Rasterizer.pyx":14
  *     return (-vector[1], vector[0])
  * 
  * def inside_triangle(a, b, c, p):             # <<<<<<<<<<<<<<
@@ -3760,7 +3764,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("RasterizerCython.inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_ab);
@@ -3781,7 +3785,7 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":33
+/* "Rasterizer.pyx":35
  *     return (right_ab, right_bc, right_ca, area)
  * 
  * def check_inside_triangle(inside_triangle_values):             # <<<<<<<<<<<<<<
@@ -3790,15 +3794,15 @@ static PyObject *__pyx_pf_16RasterizerCython_4inside_triangle(CYTHON_UNUSED PyOb
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_7check_inside_triangle(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_7check_inside_triangle(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_7check_inside_triangle = {"check_inside_triangle", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_7check_inside_triangle, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_7check_inside_triangle(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_7check_inside_triangle = {"check_inside_triangle", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_7check_inside_triangle, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_7check_inside_triangle(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -3828,43 +3832,43 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_inside_triangle_values,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 33, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 35, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 33, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 35, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "check_inside_triangle", 0) < (0)) __PYX_ERR(0, 33, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "check_inside_triangle", 0) < (0)) __PYX_ERR(0, 35, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("check_inside_triangle", 1, 1, 1, i); __PYX_ERR(0, 33, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("check_inside_triangle", 1, 1, 1, i); __PYX_ERR(0, 35, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 33, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 35, __pyx_L3_error)
     }
     __pyx_v_inside_triangle_values = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("check_inside_triangle", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 33, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("check_inside_triangle", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 35, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.check_inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.check_inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_6check_inside_triangle(__pyx_self, __pyx_v_inside_triangle_values);
+  __pyx_r = __pyx_pf_10Rasterizer_6check_inside_triangle(__pyx_self, __pyx_v_inside_triangle_values);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -3874,7 +3878,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inside_triangle_values) {
+static PyObject *__pyx_pf_10Rasterizer_6check_inside_triangle(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_inside_triangle_values) {
   PyObject *__pyx_v_tri_vals = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -3887,7 +3891,7 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("check_inside_triangle", 0);
 
-  /* "RasterizerCython.pyx":34
+  /* "Rasterizer.pyx":36
  * 
  * def check_inside_triangle(inside_triangle_values):
  *     tri_vals = inside_triangle_values             # <<<<<<<<<<<<<<
@@ -3897,7 +3901,7 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
   __Pyx_INCREF(__pyx_v_inside_triangle_values);
   __pyx_v_tri_vals = __pyx_v_inside_triangle_values;
 
-  /* "RasterizerCython.pyx":35
+  /* "Rasterizer.pyx":37
  * def check_inside_triangle(inside_triangle_values):
  *     tri_vals = inside_triangle_values
  *     return tri_vals[0]>=0 and tri_vals[1]>=0 and tri_vals[2]>=0 and tri_vals[3] != 0             # <<<<<<<<<<<<<<
@@ -3905,11 +3909,11 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
  * # buffer based functions
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_tri_vals, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_tri_vals, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_mstate_global->__pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_mstate_global->__pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 37, __pyx_L1_error)
   if (__pyx_t_4) {
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
@@ -3918,11 +3922,11 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tri_vals, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tri_vals, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_mstate_global->__pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_mstate_global->__pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 37, __pyx_L1_error)
   if (__pyx_t_4) {
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
@@ -3931,11 +3935,11 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_tri_vals, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_tri_vals, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_mstate_global->__pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_mstate_global->__pyx_int_0, Py_GE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(0, 37, __pyx_L1_error)
   if (__pyx_t_4) {
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
@@ -3944,9 +3948,9 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     goto __pyx_L3_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tri_vals, 3, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_tri_vals, 3, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyLong_NeObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_NeObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_INCREF(__pyx_t_2);
@@ -3957,7 +3961,7 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":33
+  /* "Rasterizer.pyx":35
  *     return (right_ab, right_bc, right_ca, area)
  * 
  * def check_inside_triangle(inside_triangle_values):             # <<<<<<<<<<<<<<
@@ -3970,7 +3974,7 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("RasterizerCython.check_inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.check_inside_triangle", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_tri_vals);
@@ -3979,7 +3983,7 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":38
+/* "Rasterizer.pyx":40
  * 
  * # buffer based functions
  * def read_pixel_buffer(buffer, ss, pixel_pos):             # <<<<<<<<<<<<<<
@@ -3988,15 +3992,15 @@ static PyObject *__pyx_pf_16RasterizerCython_6check_inside_triangle(CYTHON_UNUSE
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_9read_pixel_buffer(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_9read_pixel_buffer(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_9read_pixel_buffer = {"read_pixel_buffer", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_9read_pixel_buffer, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_9read_pixel_buffer(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_9read_pixel_buffer = {"read_pixel_buffer", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_9read_pixel_buffer, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_9read_pixel_buffer(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4028,38 +4032,38 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_buffer,&__pyx_mstate_global->__pyx_n_u_ss,&__pyx_mstate_global->__pyx_n_u_pixel_pos,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 38, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 40, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 38, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 40, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 38, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 40, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 38, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 40, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "read_pixel_buffer", 0) < (0)) __PYX_ERR(0, 38, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "read_pixel_buffer", 0) < (0)) __PYX_ERR(0, 40, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("read_pixel_buffer", 1, 3, 3, i); __PYX_ERR(0, 38, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("read_pixel_buffer", 1, 3, 3, i); __PYX_ERR(0, 40, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 38, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 40, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 38, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 40, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 38, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 40, __pyx_L3_error)
     }
     __pyx_v_buffer = values[0];
     __pyx_v_ss = values[1];
@@ -4067,18 +4071,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read_pixel_buffer", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 38, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("read_pixel_buffer", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 40, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.read_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.read_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_8read_pixel_buffer(__pyx_self, __pyx_v_buffer, __pyx_v_ss, __pyx_v_pixel_pos);
+  __pyx_r = __pyx_pf_10Rasterizer_8read_pixel_buffer(__pyx_self, __pyx_v_buffer, __pyx_v_ss, __pyx_v_pixel_pos);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4088,7 +4092,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_ss, PyObject *__pyx_v_pixel_pos) {
+static PyObject *__pyx_pf_10Rasterizer_8read_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_ss, PyObject *__pyx_v_pixel_pos) {
   PyObject *__pyx_v_buffer_offset = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4101,34 +4105,34 @@ static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("read_pixel_buffer", 0);
 
-  /* "RasterizerCython.pyx":40
+  /* "Rasterizer.pyx":42
  * def read_pixel_buffer(buffer, ss, pixel_pos):
  *     # this function is really slow for some reason. string manip?
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4             # <<<<<<<<<<<<<<
  *     return buffer.raw[buffer_offset:buffer_offset+4]
  * 
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyLong_MultiplyObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_MultiplyObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_buffer_offset = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":41
+  /* "Rasterizer.pyx":43
  *     # this function is really slow for some reason. string manip?
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
  *     return buffer.raw[buffer_offset:buffer_offset+4]             # <<<<<<<<<<<<<<
@@ -4136,11 +4140,11 @@ static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED Py
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_buffer, __pyx_mstate_global->__pyx_n_u_raw); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_buffer, __pyx_mstate_global->__pyx_n_u_raw); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyLong_AddObjC(__pyx_v_buffer_offset, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_AddObjC(__pyx_v_buffer_offset, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 0, &__pyx_v_buffer_offset, &__pyx_t_3, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_4, 0, 0, &__pyx_v_buffer_offset, &__pyx_t_3, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4148,7 +4152,7 @@ static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":38
+  /* "Rasterizer.pyx":40
  * 
  * # buffer based functions
  * def read_pixel_buffer(buffer, ss, pixel_pos):             # <<<<<<<<<<<<<<
@@ -4162,7 +4166,7 @@ static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("RasterizerCython.read_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.read_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_buffer_offset);
@@ -4171,7 +4175,7 @@ static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":43
+/* "Rasterizer.pyx":45
  *     return buffer.raw[buffer_offset:buffer_offset+4]
  * 
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):             # <<<<<<<<<<<<<<
@@ -4180,15 +4184,15 @@ static PyObject *__pyx_pf_16RasterizerCython_8read_pixel_buffer(CYTHON_UNUSED Py
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_11write_pixel_buffer(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_11write_pixel_buffer(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_11write_pixel_buffer = {"write_pixel_buffer", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_11write_pixel_buffer, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_11write_pixel_buffer(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_11write_pixel_buffer = {"write_pixel_buffer", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_11write_pixel_buffer, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_11write_pixel_buffer(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4222,53 +4226,53 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_buffer,&__pyx_mstate_global->__pyx_n_u_screen_size,&__pyx_mstate_global->__pyx_n_u_pixel_pos,&__pyx_mstate_global->__pyx_n_u_pixel_color,&__pyx_mstate_global->__pyx_n_u_extra_byte,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 43, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 45, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  5:
         values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "write_pixel_buffer", 0) < (0)) __PYX_ERR(0, 43, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "write_pixel_buffer", 0) < (0)) __PYX_ERR(0, 45, __pyx_L3_error)
       if (!values[4]) values[4] = __Pyx_NewRef(((PyObject *)((PyObject*)__pyx_mstate_global->__pyx_int_0)));
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("write_pixel_buffer", 0, 4, 5, i); __PYX_ERR(0, 43, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("write_pixel_buffer", 0, 4, 5, i); __PYX_ERR(0, 45, __pyx_L3_error) }
       }
     } else {
       switch (__pyx_nargs) {
         case  5:
         values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 45, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 45, __pyx_L3_error)
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 45, __pyx_L3_error)
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 45, __pyx_L3_error)
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 43, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 45, __pyx_L3_error)
         break;
         default: goto __pyx_L5_argtuple_error;
       }
@@ -4282,18 +4286,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("write_pixel_buffer", 0, 4, 5, __pyx_nargs); __PYX_ERR(0, 43, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("write_pixel_buffer", 0, 4, 5, __pyx_nargs); __PYX_ERR(0, 45, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.write_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.write_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_10write_pixel_buffer(__pyx_self, __pyx_v_buffer, __pyx_v_screen_size, __pyx_v_pixel_pos, __pyx_v_pixel_color, __pyx_v_extra_byte);
+  __pyx_r = __pyx_pf_10Rasterizer_10write_pixel_buffer(__pyx_self, __pyx_v_buffer, __pyx_v_screen_size, __pyx_v_pixel_pos, __pyx_v_pixel_color, __pyx_v_extra_byte);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4303,7 +4307,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_screen_size, PyObject *__pyx_v_pixel_pos, PyObject *__pyx_v_pixel_color, PyObject *__pyx_v_extra_byte) {
+static PyObject *__pyx_pf_10Rasterizer_10write_pixel_buffer(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_buffer, PyObject *__pyx_v_screen_size, PyObject *__pyx_v_pixel_pos, PyObject *__pyx_v_pixel_color, PyObject *__pyx_v_extra_byte) {
   PyObject *__pyx_v_ss = NULL;
   PyObject *__pyx_v_buffer_offset = NULL;
   PyObject *__pyx_v_byte_color = NULL;
@@ -4329,7 +4333,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("write_pixel_buffer", 0);
 
-  /* "RasterizerCython.pyx":44
+  /* "Rasterizer.pyx":46
  * 
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):
  *     ss = screen_size             # <<<<<<<<<<<<<<
@@ -4339,34 +4343,34 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
   __Pyx_INCREF(__pyx_v_screen_size);
   __pyx_v_ss = __pyx_v_screen_size;
 
-  /* "RasterizerCython.pyx":45
+  /* "Rasterizer.pyx":47
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):
  *     ss = screen_size
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4             # <<<<<<<<<<<<<<
  *     # coded to RGB instead of BGR
  *     byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pixel_pos, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyLong_MultiplyObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_MultiplyObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_buffer_offset = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":47
+  /* "Rasterizer.pyx":49
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
  *     # coded to RGB instead of BGR
  *     byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])             # <<<<<<<<<<<<<<
@@ -4374,23 +4378,23 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
  *         buffer.write(byte_color, buffer_offset)
 */
   __pyx_t_3 = NULL;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pixel_color, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pixel_color, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pixel_color, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_pixel_color, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_pixel_color, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_GetItemInt(__pyx_v_pixel_color, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyList_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 49, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 49, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 49, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 2, __pyx_t_5) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 2, __pyx_t_5) != (0)) __PYX_ERR(0, 49, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_extra_byte);
   __Pyx_GIVEREF(__pyx_v_extra_byte);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 3, __pyx_v_extra_byte) != (0)) __PYX_ERR(0, 47, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_6, 3, __pyx_v_extra_byte) != (0)) __PYX_ERR(0, 49, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_2 = 0;
   __pyx_t_5 = 0;
@@ -4400,13 +4404,13 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
     __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(&PyBytes_Type), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
   __pyx_v_byte_color = ((PyObject*)__pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":48
+  /* "Rasterizer.pyx":50
  *     # coded to RGB instead of BGR
  *     byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
  *     try:             # <<<<<<<<<<<<<<
@@ -4422,7 +4426,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
     __Pyx_XGOTREF(__pyx_t_10);
     /*try:*/ {
 
-      /* "RasterizerCython.pyx":49
+      /* "Rasterizer.pyx":51
  *     byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
  *     try:
  *         buffer.write(byte_color, buffer_offset)             # <<<<<<<<<<<<<<
@@ -4436,12 +4440,12 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
         PyObject *__pyx_callargs[3] = {__pyx_t_6, __pyx_v_byte_color, __pyx_v_buffer_offset};
         __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_write, __pyx_callargs+__pyx_t_7, (3-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 49, __pyx_L3_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 51, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
       }
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "RasterizerCython.pyx":48
+      /* "Rasterizer.pyx":50
  *     # coded to RGB instead of BGR
  *     byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
  *     try:             # <<<<<<<<<<<<<<
@@ -4461,7 +4465,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "RasterizerCython.pyx":50
+    /* "Rasterizer.pyx":52
  *     try:
  *         buffer.write(byte_color, buffer_offset)
  *     except IndexError:             # <<<<<<<<<<<<<<
@@ -4470,13 +4474,13 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
 */
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(((PyTypeObject*)PyExc_IndexError))));
     if (__pyx_t_11) {
-      __Pyx_AddTraceback("RasterizerCython.write_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_3) < 0) __PYX_ERR(0, 50, __pyx_L5_except_error)
+      __Pyx_AddTraceback("Rasterizer.write_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      if (__Pyx_GetException(&__pyx_t_4, &__pyx_t_6, &__pyx_t_3) < 0) __PYX_ERR(0, 52, __pyx_L5_except_error)
       __Pyx_XGOTREF(__pyx_t_4);
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_3);
 
-      /* "RasterizerCython.pyx":51
+      /* "Rasterizer.pyx":53
  *         buffer.write(byte_color, buffer_offset)
  *     except IndexError:
  *         raise IndexError(f"Bad buffer offset: buffer_offset -> {buffer_offset}, max_offset -> {ss[0]*ss[1]*4}")             # <<<<<<<<<<<<<<
@@ -4484,20 +4488,20 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
  * # drawing functions
 */
       __pyx_t_2 = NULL;
-      __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_buffer_offset, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __pyx_t_1 = __Pyx_PyObject_FormatSimple(__pyx_v_buffer_offset, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __pyx_t_12 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_ss, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_ss, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_14 = PyNumber_Multiply(__pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __pyx_t_14 = PyNumber_Multiply(__pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = __Pyx_PyLong_MultiplyObjC(__pyx_t_14, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __pyx_t_13 = __Pyx_PyLong_MultiplyObjC(__pyx_t_14, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __pyx_t_14 = __Pyx_PyObject_FormatSimple(__pyx_t_13, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __pyx_t_15[0] = __pyx_mstate_global->__pyx_kp_u_Bad_buffer_offset_buffer_offset;
@@ -4505,7 +4509,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
       __pyx_t_15[2] = __pyx_mstate_global->__pyx_kp_u_max_offset;
       __pyx_t_15[3] = __pyx_t_14;
       __pyx_t_13 = __Pyx_PyUnicode_Join(__pyx_t_15, 4, 36 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_1) + 16 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_14), 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_1) | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_14));
-      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 53, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -4515,16 +4519,16 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
         __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_IndexError)), __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 51, __pyx_L5_except_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L5_except_error)
         __Pyx_GOTREF(__pyx_t_5);
       }
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __PYX_ERR(0, 51, __pyx_L5_except_error)
+      __PYX_ERR(0, 53, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
 
-    /* "RasterizerCython.pyx":48
+    /* "Rasterizer.pyx":50
  *     # coded to RGB instead of BGR
  *     byte_color = bytes([pixel_color[2], pixel_color[1], pixel_color[0], extra_byte])
  *     try:             # <<<<<<<<<<<<<<
@@ -4540,7 +4544,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
     __pyx_L8_try_end:;
   }
 
-  /* "RasterizerCython.pyx":43
+  /* "Rasterizer.pyx":45
  *     return buffer.raw[buffer_offset:buffer_offset+4]
  * 
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):             # <<<<<<<<<<<<<<
@@ -4561,7 +4565,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_14);
-  __Pyx_AddTraceback("RasterizerCython.write_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.write_pixel_buffer", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_ss);
@@ -4572,7 +4576,7 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":54
+/* "Rasterizer.pyx":56
  * 
  * # drawing functions
  * def find_edges(points, scanline_height):             # <<<<<<<<<<<<<<
@@ -4581,15 +4585,15 @@ static PyObject *__pyx_pf_16RasterizerCython_10write_pixel_buffer(CYTHON_UNUSED 
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_13find_edges(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_13find_edges(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_13find_edges = {"find_edges", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_13find_edges, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_13find_edges(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_13find_edges = {"find_edges", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_13find_edges, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_13find_edges(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -4620,50 +4624,50 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_points,&__pyx_mstate_global->__pyx_n_u_scanline_height,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 54, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 56, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 56, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 54, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 56, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "find_edges", 0) < (0)) __PYX_ERR(0, 54, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "find_edges", 0) < (0)) __PYX_ERR(0, 56, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("find_edges", 1, 2, 2, i); __PYX_ERR(0, 54, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("find_edges", 1, 2, 2, i); __PYX_ERR(0, 56, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 2)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 54, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 56, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 54, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 56, __pyx_L3_error)
     }
     __pyx_v_points = values[0];
     __pyx_v_scanline_height = values[1];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find_edges", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 54, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find_edges", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 56, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.find_edges", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.find_edges", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_12find_edges(__pyx_self, __pyx_v_points, __pyx_v_scanline_height);
+  __pyx_r = __pyx_pf_10Rasterizer_12find_edges(__pyx_self, __pyx_v_points, __pyx_v_scanline_height);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -4673,7 +4677,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_points, PyObject *__pyx_v_scanline_height) {
+static PyObject *__pyx_pf_10Rasterizer_12find_edges(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_points, PyObject *__pyx_v_scanline_height) {
   PyObject *__pyx_v_min_x = NULL;
   PyObject *__pyx_v_max_x = NULL;
   PyObject *__pyx_v_point = NULL;
@@ -4710,21 +4714,21 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_edges", 0);
 
-  /* "RasterizerCython.pyx":55
+  /* "Rasterizer.pyx":57
  * # drawing functions
  * def find_edges(points, scanline_height):
  *     min_x, max_x = points[0][0], points[0][0]             # <<<<<<<<<<<<<<
  *     for point in points:
  *         if point[0] < min_x: min_x = point[0]
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 55, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 57, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_min_x = __pyx_t_2;
@@ -4732,7 +4736,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   __pyx_v_max_x = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "RasterizerCython.pyx":56
+  /* "Rasterizer.pyx":58
  * def find_edges(points, scanline_height):
  *     min_x, max_x = points[0][0], points[0][0]
  *     for point in points:             # <<<<<<<<<<<<<<
@@ -4744,9 +4748,9 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     __pyx_t_4 = 0;
     __pyx_t_5 = NULL;
   } else {
-    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_points); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_4 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_points); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 58, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 56, __pyx_L1_error)
+    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 58, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_5)) {
@@ -4754,7 +4758,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_3);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 58, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -4764,7 +4768,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_3);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 58, __pyx_L1_error)
           #endif
           if (__pyx_t_4 >= __pyx_temp) break;
         }
@@ -4775,13 +4779,13 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
         #endif
         ++__pyx_t_4;
       }
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
     } else {
       __pyx_t_2 = __pyx_t_5(__pyx_t_3);
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 56, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 58, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -4791,47 +4795,47 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     __Pyx_XDECREF_SET(__pyx_v_point, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":57
+    /* "Rasterizer.pyx":59
  *     min_x, max_x = points[0][0], points[0][0]
  *     for point in points:
  *         if point[0] < min_x: min_x = point[0]             # <<<<<<<<<<<<<<
  *         if point[0] > max_x: max_x = point[0]
  *     # line intersection based approach
 */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_v_min_x, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_v_min_x, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 57, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_6) {
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 57, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF_SET(__pyx_v_min_x, __pyx_t_1);
       __pyx_t_1 = 0;
     }
 
-    /* "RasterizerCython.pyx":58
+    /* "Rasterizer.pyx":60
  *     for point in points:
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]             # <<<<<<<<<<<<<<
  *     # line intersection based approach
  *     intersections = []
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_v_max_x, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_v_max_x, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 58, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 < 0))) __PYX_ERR(0, 60, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (__pyx_t_6) {
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 58, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF_SET(__pyx_v_max_x, __pyx_t_2);
       __pyx_t_2 = 0;
     }
 
-    /* "RasterizerCython.pyx":56
+    /* "Rasterizer.pyx":58
  * def find_edges(points, scanline_height):
  *     min_x, max_x = points[0][0], points[0][0]
  *     for point in points:             # <<<<<<<<<<<<<<
@@ -4841,76 +4845,76 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "RasterizerCython.pyx":60
+  /* "Rasterizer.pyx":62
  *         if point[0] > max_x: max_x = point[0]
  *     # line intersection based approach
  *     intersections = []             # <<<<<<<<<<<<<<
  *     point_pairs = [(points[0], points[1]), (points[2], points[1]), (points[2], points[0])]
  *     for pair in point_pairs:
 */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_intersections = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "RasterizerCython.pyx":61
+  /* "Rasterizer.pyx":63
  *     # line intersection based approach
  *     intersections = []
  *     point_pairs = [(points[0], points[1]), (points[2], points[1]), (points[2], points[0])]             # <<<<<<<<<<<<<<
  *     for pair in point_pairs:
  *         y0 = scanline_height
 */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_3) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_2);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_2 = 0;
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_8);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_t_8) != (0)) __PYX_ERR(0, 61, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_t_8) != (0)) __PYX_ERR(0, 63, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_7 = 0;
   __pyx_t_8 = 0;
   __pyx_v_point_pairs = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":62
+  /* "Rasterizer.pyx":64
  *     intersections = []
  *     point_pairs = [(points[0], points[1]), (points[2], points[1]), (points[2], points[0])]
  *     for pair in point_pairs:             # <<<<<<<<<<<<<<
@@ -4923,18 +4927,18 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     {
       Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_2);
       #if !CYTHON_ASSUME_SAFE_SIZE
-      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 62, __pyx_L1_error)
+      if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 64, __pyx_L1_error)
       #endif
       if (__pyx_t_4 >= __pyx_temp) break;
     }
     __pyx_t_8 = __Pyx_PyList_GetItemRefFast(__pyx_t_2, __pyx_t_4, __Pyx_ReferenceSharing_OwnStrongReference);
     ++__pyx_t_4;
-    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 62, __pyx_L1_error)
+    if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_XDECREF_SET(__pyx_v_pair, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "RasterizerCython.pyx":63
+    /* "Rasterizer.pyx":65
  *     point_pairs = [(points[0], points[1]), (points[2], points[1]), (points[2], points[0])]
  *     for pair in point_pairs:
  *         y0 = scanline_height             # <<<<<<<<<<<<<<
@@ -4944,21 +4948,21 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     __Pyx_INCREF(__pyx_v_scanline_height);
     __Pyx_XDECREF_SET(__pyx_v_y0, __pyx_v_scanline_height);
 
-    /* "RasterizerCython.pyx":64
+    /* "Rasterizer.pyx":66
  *     for pair in point_pairs:
  *         y0 = scanline_height
  *         x1, y1 = pair[0][0], pair[0][1]             # <<<<<<<<<<<<<<
  *         x2, y2 = pair[1][0], pair[1][1]
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):
 */
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_v_pair, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_8, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_8, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_XDECREF_SET(__pyx_v_x1, __pyx_t_7);
@@ -4966,21 +4970,21 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     __Pyx_XDECREF_SET(__pyx_v_y1, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "RasterizerCython.pyx":65
+    /* "Rasterizer.pyx":67
  *         y0 = scanline_height
  *         x1, y1 = pair[0][0], pair[0][1]
  *         x2, y2 = pair[1][0], pair[1][1]             # <<<<<<<<<<<<<<
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):
  *             try:
 */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pair, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pair, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pair, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_pair, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_GetItemInt(__pyx_t_1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_x2, __pyx_t_7);
@@ -4988,37 +4992,37 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     __Pyx_XDECREF_SET(__pyx_v_y2, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "RasterizerCython.pyx":66
+    /* "Rasterizer.pyx":68
  *         x1, y1 = pair[0][0], pair[0][1]
  *         x2, y2 = pair[1][0], pair[1][1]
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):             # <<<<<<<<<<<<<<
  *             try:
  *                 t = (y0 - y1) / (y2 - y1)
 */
-    __pyx_t_8 = PyObject_RichCompare(__pyx_v_y1, __pyx_v_y0, Py_LE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_8 = PyObject_RichCompare(__pyx_v_y1, __pyx_v_y0, Py_LE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
     if (__Pyx_PyObject_IsTrue(__pyx_t_8)) {
       __Pyx_DECREF(__pyx_t_8);
-      __pyx_t_8 = PyObject_RichCompare(__pyx_v_y0, __pyx_v_y2, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_8 = PyObject_RichCompare(__pyx_v_y0, __pyx_v_y2, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
     }
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     if (!__pyx_t_9) {
     } else {
       __pyx_t_6 = __pyx_t_9;
       goto __pyx_L11_bool_binop_done;
     }
-    __pyx_t_8 = PyObject_RichCompare(__pyx_v_y2, __pyx_v_y0, Py_LE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_8 = PyObject_RichCompare(__pyx_v_y2, __pyx_v_y0, Py_LE); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
     if (__Pyx_PyObject_IsTrue(__pyx_t_8)) {
       __Pyx_DECREF(__pyx_t_8);
-      __pyx_t_8 = PyObject_RichCompare(__pyx_v_y0, __pyx_v_y1, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 66, __pyx_L1_error)
+      __pyx_t_8 = PyObject_RichCompare(__pyx_v_y0, __pyx_v_y1, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L1_error)
     }
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 66, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_8); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 68, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_6 = __pyx_t_9;
     __pyx_L11_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "RasterizerCython.pyx":67
+      /* "Rasterizer.pyx":69
  *         x2, y2 = pair[1][0], pair[1][1]
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):
  *             try:             # <<<<<<<<<<<<<<
@@ -5034,25 +5038,25 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
         __Pyx_XGOTREF(__pyx_t_12);
         /*try:*/ {
 
-          /* "RasterizerCython.pyx":68
+          /* "Rasterizer.pyx":70
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):
  *             try:
  *                 t = (y0 - y1) / (y2 - y1)             # <<<<<<<<<<<<<<
  *             except:
  *                 continue
 */
-          __pyx_t_8 = PyNumber_Subtract(__pyx_v_y0, __pyx_v_y1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 68, __pyx_L13_error)
+          __pyx_t_8 = PyNumber_Subtract(__pyx_v_y0, __pyx_v_y1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 70, __pyx_L13_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_7 = PyNumber_Subtract(__pyx_v_y2, __pyx_v_y1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 68, __pyx_L13_error)
+          __pyx_t_7 = PyNumber_Subtract(__pyx_v_y2, __pyx_v_y1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 70, __pyx_L13_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L13_error)
+          __pyx_t_1 = __Pyx_PyNumber_Divide(__pyx_t_8, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L13_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_XDECREF_SET(__pyx_v_t, __pyx_t_1);
           __pyx_t_1 = 0;
 
-          /* "RasterizerCython.pyx":67
+          /* "Rasterizer.pyx":69
  *         x2, y2 = pair[1][0], pair[1][1]
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):
  *             try:             # <<<<<<<<<<<<<<
@@ -5070,7 +5074,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "RasterizerCython.pyx":69
+        /* "Rasterizer.pyx":71
  *             try:
  *                 t = (y0 - y1) / (y2 - y1)
  *             except:             # <<<<<<<<<<<<<<
@@ -5078,13 +5082,13 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
  *             x = x1 + t * (x2 - x1)
 */
         /*except:*/ {
-          __Pyx_AddTraceback("RasterizerCython.find_edges", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_7, &__pyx_t_8) < 0) __PYX_ERR(0, 69, __pyx_L15_except_error)
+          __Pyx_AddTraceback("Rasterizer.find_edges", __pyx_clineno, __pyx_lineno, __pyx_filename);
+          if (__Pyx_GetException(&__pyx_t_1, &__pyx_t_7, &__pyx_t_8) < 0) __PYX_ERR(0, 71, __pyx_L15_except_error)
           __Pyx_XGOTREF(__pyx_t_1);
           __Pyx_XGOTREF(__pyx_t_7);
           __Pyx_XGOTREF(__pyx_t_8);
 
-          /* "RasterizerCython.pyx":70
+          /* "Rasterizer.pyx":72
  *                 t = (y0 - y1) / (y2 - y1)
  *             except:
  *                 continue             # <<<<<<<<<<<<<<
@@ -5099,7 +5103,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
           goto __pyx_L19_try_continue;
         }
 
-        /* "RasterizerCython.pyx":67
+        /* "Rasterizer.pyx":69
  *         x2, y2 = pair[1][0], pair[1][1]
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):
  *             try:             # <<<<<<<<<<<<<<
@@ -5121,52 +5125,52 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
         __pyx_L20_try_end:;
       }
 
-      /* "RasterizerCython.pyx":71
+      /* "Rasterizer.pyx":73
  *             except:
  *                 continue
  *             x = x1 + t * (x2 - x1)             # <<<<<<<<<<<<<<
  *             if x >= min_x-1 and x <= max_x: intersections.append(x)
  *     left, right = int(min(intersections))+1, int(max(intersections))+1
 */
-      __pyx_t_8 = PyNumber_Subtract(__pyx_v_x2, __pyx_v_x1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_8 = PyNumber_Subtract(__pyx_v_x2, __pyx_v_x1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 73, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_7 = PyNumber_Multiply(__pyx_v_t, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Multiply(__pyx_v_t, __pyx_t_8); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 73, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PyNumber_Add(__pyx_v_x1, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 71, __pyx_L1_error)
+      __pyx_t_8 = PyNumber_Add(__pyx_v_x1, __pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 73, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "RasterizerCython.pyx":72
+      /* "Rasterizer.pyx":74
  *                 continue
  *             x = x1 + t * (x2 - x1)
  *             if x >= min_x-1 and x <= max_x: intersections.append(x)             # <<<<<<<<<<<<<<
  *     left, right = int(min(intersections))+1, int(max(intersections))+1
  *     return (left, right)
 */
-      __pyx_t_8 = __Pyx_PyLong_SubtractObjC(__pyx_v_min_x, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyLong_SubtractObjC(__pyx_v_min_x, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 74, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_7 = PyObject_RichCompare(__pyx_v_x, __pyx_t_8, Py_GE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(__pyx_v_x, __pyx_t_8, Py_GE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 74, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (__pyx_t_9) {
       } else {
         __pyx_t_6 = __pyx_t_9;
         goto __pyx_L24_bool_binop_done;
       }
-      __pyx_t_7 = PyObject_RichCompare(__pyx_v_x, __pyx_v_max_x, Py_LE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 72, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(__pyx_v_x, __pyx_v_max_x, Py_LE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 74, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __pyx_t_6 = __pyx_t_9;
       __pyx_L24_bool_binop_done:;
       if (__pyx_t_6) {
-        __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_intersections, __pyx_v_x); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 72, __pyx_L1_error)
+        __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_intersections, __pyx_v_x); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 74, __pyx_L1_error)
       }
 
-      /* "RasterizerCython.pyx":66
+      /* "Rasterizer.pyx":68
  *         x1, y1 = pair[0][0], pair[0][1]
  *         x2, y2 = pair[1][0], pair[1][1]
  *         if (y1 <= y0 < y2) or (y2 <= y0 < y1):             # <<<<<<<<<<<<<<
@@ -5175,7 +5179,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
 */
     }
 
-    /* "RasterizerCython.pyx":62
+    /* "Rasterizer.pyx":64
  *     intersections = []
  *     point_pairs = [(points[0], points[1]), (points[2], points[1]), (points[2], points[0])]
  *     for pair in point_pairs:             # <<<<<<<<<<<<<<
@@ -5186,7 +5190,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":73
+  /* "Rasterizer.pyx":75
  *             x = x1 + t * (x2 - x1)
  *             if x >= min_x-1 and x <= max_x: intersections.append(x)
  *     left, right = int(min(intersections))+1, int(max(intersections))+1             # <<<<<<<<<<<<<<
@@ -5199,13 +5203,13 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_intersections};
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin_min, __pyx_callargs+__pyx_t_14, (2-__pyx_t_14) | (__pyx_t_14*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyLong_AddObjC(__pyx_t_7, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_AddObjC(__pyx_t_7, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_8 = NULL;
@@ -5214,13 +5218,13 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
     PyObject *__pyx_callargs[2] = {__pyx_t_8, __pyx_v_intersections};
     __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin_max, __pyx_callargs+__pyx_t_14, (2-__pyx_t_14) | (__pyx_t_14*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 73, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
   }
-  __pyx_t_8 = __Pyx_PyNumber_Int(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyNumber_Int(__pyx_t_7); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_PyLong_AddObjC(__pyx_t_8, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyLong_AddObjC(__pyx_t_8, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_left = ((PyObject*)__pyx_t_2);
@@ -5228,7 +5232,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   __pyx_v_right = ((PyObject*)__pyx_t_7);
   __pyx_t_7 = 0;
 
-  /* "RasterizerCython.pyx":74
+  /* "Rasterizer.pyx":76
  *             if x >= min_x-1 and x <= max_x: intersections.append(x)
  *     left, right = int(min(intersections))+1, int(max(intersections))+1
  *     return (left, right)             # <<<<<<<<<<<<<<
@@ -5236,19 +5240,19 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
  *     #tri_2 = inside_triangle(points[0], points[1], points[2], (left+1, scanline_height))
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_INCREF(__pyx_v_left);
   __Pyx_GIVEREF(__pyx_v_left);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_left) != (0)) __PYX_ERR(0, 74, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_left) != (0)) __PYX_ERR(0, 76, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_right);
   __Pyx_GIVEREF(__pyx_v_right);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_right) != (0)) __PYX_ERR(0, 74, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_v_right) != (0)) __PYX_ERR(0, 76, __pyx_L1_error);
   __pyx_r = __pyx_t_7;
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":54
+  /* "Rasterizer.pyx":56
  * 
  * # drawing functions
  * def find_edges(points, scanline_height):             # <<<<<<<<<<<<<<
@@ -5263,7 +5267,7 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("RasterizerCython.find_edges", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.find_edges", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_min_x);
@@ -5286,515 +5290,24 @@ static PyObject *__pyx_pf_16RasterizerCython_12find_edges(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":79
+/* "Rasterizer.pyx":81
  *     #return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
  * 
- * def make_edge(point1, point2):             # <<<<<<<<<<<<<<
- *     x1, y1 = point1[0], point1[1]
- *     x2, y2 = point2[0], point2[1]
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_15make_edge(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_15make_edge = {"make_edge", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_15make_edge, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_15make_edge(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_point1 = 0;
-  PyObject *__pyx_v_point2 = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("make_edge (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_point1,&__pyx_mstate_global->__pyx_n_u_point2,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 79, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 79, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 79, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "make_edge", 0) < (0)) __PYX_ERR(0, 79, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("make_edge", 1, 2, 2, i); __PYX_ERR(0, 79, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 2)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 79, __pyx_L3_error)
-      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 79, __pyx_L3_error)
-    }
-    __pyx_v_point1 = values[0];
-    __pyx_v_point2 = values[1];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("make_edge", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 79, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("RasterizerCython.make_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_14make_edge(__pyx_self, __pyx_v_point1, __pyx_v_point2);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_16RasterizerCython_14make_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_point1, PyObject *__pyx_v_point2) {
-  PyObject *__pyx_v_x1 = NULL;
-  PyObject *__pyx_v_y1 = NULL;
-  PyObject *__pyx_v_x2 = NULL;
-  PyObject *__pyx_v_y2 = NULL;
-  PyObject *__pyx_v_A = NULL;
-  PyObject *__pyx_v_B = NULL;
-  PyObject *__pyx_v_C = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("make_edge", 0);
-
-  /* "RasterizerCython.pyx":80
- * 
- * def make_edge(point1, point2):
- *     x1, y1 = point1[0], point1[1]             # <<<<<<<<<<<<<<
- *     x2, y2 = point2[0], point2[1]
- *     A = y2 - y1
-*/
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 80, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_x1 = __pyx_t_1;
-  __pyx_t_1 = 0;
-  __pyx_v_y1 = __pyx_t_2;
-  __pyx_t_2 = 0;
-
-  /* "RasterizerCython.pyx":81
- * def make_edge(point1, point2):
- *     x1, y1 = point1[0], point1[1]
- *     x2, y2 = point2[0], point2[1]             # <<<<<<<<<<<<<<
- *     A = y2 - y1
- *     B = -(x2 - x1)
-*/
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point2, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 81, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_x2 = __pyx_t_2;
-  __pyx_t_2 = 0;
-  __pyx_v_y2 = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "RasterizerCython.pyx":82
- *     x1, y1 = point1[0], point1[1]
- *     x2, y2 = point2[0], point2[1]
- *     A = y2 - y1             # <<<<<<<<<<<<<<
- *     B = -(x2 - x1)
- *     C = x2*y1 - y2*x1
-*/
-  __pyx_t_1 = PyNumber_Subtract(__pyx_v_y2, __pyx_v_y1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_A = __pyx_t_1;
-  __pyx_t_1 = 0;
-
-  /* "RasterizerCython.pyx":83
- *     x2, y2 = point2[0], point2[1]
- *     A = y2 - y1
- *     B = -(x2 - x1)             # <<<<<<<<<<<<<<
- *     C = x2*y1 - y2*x1
- *     return A, B, C
-*/
-  __pyx_t_1 = PyNumber_Subtract(__pyx_v_x2, __pyx_v_x1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyNumber_Negative(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_B = __pyx_t_2;
-  __pyx_t_2 = 0;
-
-  /* "RasterizerCython.pyx":84
- *     A = y2 - y1
- *     B = -(x2 - x1)
- *     C = x2*y1 - y2*x1             # <<<<<<<<<<<<<<
- *     return A, B, C
- * 
-*/
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_x2, __pyx_v_y1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Multiply(__pyx_v_y2, __pyx_v_x1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_v_C = __pyx_t_3;
-  __pyx_t_3 = 0;
-
-  /* "RasterizerCython.pyx":85
- *     B = -(x2 - x1)
- *     C = x2*y1 - y2*x1
- *     return A, B, C             # <<<<<<<<<<<<<<
- * 
- * def eval_edge(edge, x, y):
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_INCREF(__pyx_v_A);
-  __Pyx_GIVEREF(__pyx_v_A);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_A) != (0)) __PYX_ERR(0, 85, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_v_B);
-  __Pyx_GIVEREF(__pyx_v_B);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_B) != (0)) __PYX_ERR(0, 85, __pyx_L1_error);
-  __Pyx_INCREF(__pyx_v_C);
-  __Pyx_GIVEREF(__pyx_v_C);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_C) != (0)) __PYX_ERR(0, 85, __pyx_L1_error);
-  __pyx_r = __pyx_t_3;
-  __pyx_t_3 = 0;
-  goto __pyx_L0;
-
-  /* "RasterizerCython.pyx":79
- *     #return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
- * 
- * def make_edge(point1, point2):             # <<<<<<<<<<<<<<
- *     x1, y1 = point1[0], point1[1]
- *     x2, y2 = point2[0], point2[1]
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("RasterizerCython.make_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_x1);
-  __Pyx_XDECREF(__pyx_v_y1);
-  __Pyx_XDECREF(__pyx_v_x2);
-  __Pyx_XDECREF(__pyx_v_y2);
-  __Pyx_XDECREF(__pyx_v_A);
-  __Pyx_XDECREF(__pyx_v_B);
-  __Pyx_XDECREF(__pyx_v_C);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "RasterizerCython.pyx":87
- *     return A, B, C
- * 
- * def eval_edge(edge, x, y):             # <<<<<<<<<<<<<<
- *     A, B, C = edge
- *     return A*x + B*y + C
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_17eval_edge(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_17eval_edge = {"eval_edge", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_17eval_edge, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_17eval_edge(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_edge = 0;
-  PyObject *__pyx_v_x = 0;
-  PyObject *__pyx_v_y = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[3] = {0,0,0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("eval_edge (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_edge,&__pyx_mstate_global->__pyx_n_u_x,&__pyx_mstate_global->__pyx_n_u_y,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 87, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  3:
-        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 87, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  2:
-        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 87, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 87, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "eval_edge", 0) < (0)) __PYX_ERR(0, 87, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("eval_edge", 1, 3, 3, i); __PYX_ERR(0, 87, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 3)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 87, __pyx_L3_error)
-      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 87, __pyx_L3_error)
-      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 87, __pyx_L3_error)
-    }
-    __pyx_v_edge = values[0];
-    __pyx_v_x = values[1];
-    __pyx_v_y = values[2];
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("eval_edge", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 87, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("RasterizerCython.eval_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_16eval_edge(__pyx_self, __pyx_v_edge, __pyx_v_x, __pyx_v_y);
-
-  /* function exit code */
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_16RasterizerCython_16eval_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_edge, PyObject *__pyx_v_x, PyObject *__pyx_v_y) {
-  PyObject *__pyx_v_A = NULL;
-  PyObject *__pyx_v_B = NULL;
-  PyObject *__pyx_v_C = NULL;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
-  PyObject *__pyx_t_4 = NULL;
-  PyObject *(*__pyx_t_5)(PyObject *);
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("eval_edge", 0);
-
-  /* "RasterizerCython.pyx":88
- * 
- * def eval_edge(edge, x, y):
- *     A, B, C = edge             # <<<<<<<<<<<<<<
- *     return A*x + B*y + C
- * 
-*/
-  if ((likely(PyTuple_CheckExact(__pyx_v_edge))) || (PyList_CheckExact(__pyx_v_edge))) {
-    PyObject* sequence = __pyx_v_edge;
-    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
-    if (unlikely(size != 3)) {
-      if (size > 3) __Pyx_RaiseTooManyValuesError(3);
-      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 88, __pyx_L1_error)
-    }
-    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    if (likely(PyTuple_CheckExact(sequence))) {
-      __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0);
-      __Pyx_INCREF(__pyx_t_1);
-      __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1);
-      __Pyx_INCREF(__pyx_t_2);
-      __pyx_t_3 = PyTuple_GET_ITEM(sequence, 2);
-      __Pyx_INCREF(__pyx_t_3);
-    } else {
-      __pyx_t_1 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
-      __Pyx_XGOTREF(__pyx_t_1);
-      __pyx_t_2 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
-      __Pyx_XGOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyList_GetItemRefFast(sequence, 2, __Pyx_ReferenceSharing_SharedReference);
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
-      __Pyx_XGOTREF(__pyx_t_3);
-    }
-    #else
-    __pyx_t_1 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    #endif
-  } else {
-    Py_ssize_t index = -1;
-    __pyx_t_4 = PyObject_GetIter(__pyx_v_edge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4);
-    index = 0; __pyx_t_1 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_1)) goto __pyx_L3_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_1);
-    index = 1; __pyx_t_2 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_2)) goto __pyx_L3_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_2);
-    index = 2; __pyx_t_3 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_3)) goto __pyx_L3_unpacking_failed;
-    __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_4), 3) < (0)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __pyx_t_5 = NULL;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    goto __pyx_L4_unpacking_done;
-    __pyx_L3_unpacking_failed:;
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_5 = NULL;
-    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 88, __pyx_L1_error)
-    __pyx_L4_unpacking_done:;
-  }
-  __pyx_v_A = __pyx_t_1;
-  __pyx_t_1 = 0;
-  __pyx_v_B = __pyx_t_2;
-  __pyx_t_2 = 0;
-  __pyx_v_C = __pyx_t_3;
-  __pyx_t_3 = 0;
-
-  /* "RasterizerCython.pyx":89
- * def eval_edge(edge, x, y):
- *     A, B, C = edge
- *     return A*x + B*y + C             # <<<<<<<<<<<<<<
- * 
- * def draw_polygon(screen, points, texture, light_val):
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_A, __pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Multiply(__pyx_v_B, __pyx_v_y); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_C); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_r = __pyx_t_2;
-  __pyx_t_2 = 0;
-  goto __pyx_L0;
-
-  /* "RasterizerCython.pyx":87
- *     return A, B, C
- * 
- * def eval_edge(edge, x, y):             # <<<<<<<<<<<<<<
- *     A, B, C = edge
- *     return A*x + B*y + C
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("RasterizerCython.eval_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_A);
-  __Pyx_XDECREF(__pyx_v_B);
-  __Pyx_XDECREF(__pyx_v_C);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "RasterizerCython.pyx":91
- *     return A*x + B*y + C
- * 
- * def draw_polygon(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
+ * def draw_polygon_old(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
  *     buffer = screen.get_buffer()
  *     ss = screen.get_size()
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_19draw_polygon(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_15draw_polygon_old(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_19draw_polygon = {"draw_polygon", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_19draw_polygon, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_19draw_polygon(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_15draw_polygon_old = {"draw_polygon_old", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_15draw_polygon_old, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_15draw_polygon_old(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -5815,7 +5328,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("draw_polygon (wrapper)", 0);
+  __Pyx_RefNannySetupContext("draw_polygon_old (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -5827,44 +5340,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_screen,&__pyx_mstate_global->__pyx_n_u_points,&__pyx_mstate_global->__pyx_n_u_texture,&__pyx_mstate_global->__pyx_n_u_light_val,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 91, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 81, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 91, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 81, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 91, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 81, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 91, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 81, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 91, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 81, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "draw_polygon", 0) < (0)) __PYX_ERR(0, 91, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "draw_polygon_old", 0) < (0)) __PYX_ERR(0, 81, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("draw_polygon", 1, 4, 4, i); __PYX_ERR(0, 91, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("draw_polygon_old", 1, 4, 4, i); __PYX_ERR(0, 81, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 91, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 81, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 91, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 81, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 91, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 81, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 91, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 81, __pyx_L3_error)
     }
     __pyx_v_screen = values[0];
     __pyx_v_points = values[1];
@@ -5873,18 +5386,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("draw_polygon", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 91, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("draw_polygon_old", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 81, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.draw_polygon", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.draw_polygon_old", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_18draw_polygon(__pyx_self, __pyx_v_screen, __pyx_v_points, __pyx_v_texture, __pyx_v_light_val);
+  __pyx_r = __pyx_pf_10Rasterizer_14draw_polygon_old(__pyx_self, __pyx_v_screen, __pyx_v_points, __pyx_v_texture, __pyx_v_light_val);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -5894,7 +5407,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val) {
+static PyObject *__pyx_pf_10Rasterizer_14draw_polygon_old(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val) {
   PyObject *__pyx_v_buffer = NULL;
   PyObject *__pyx_v_ss = NULL;
   PyObject *__pyx_v_uv_list = NULL;
@@ -5953,11 +5466,11 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("draw_polygon", 0);
+  __Pyx_RefNannySetupContext("draw_polygon_old", 0);
 
-  /* "RasterizerCython.pyx":92
+  /* "Rasterizer.pyx":82
  * 
- * def draw_polygon(screen, points, texture, light_val):
+ * def draw_polygon_old(screen, points, texture, light_val):
  *     buffer = screen.get_buffer()             # <<<<<<<<<<<<<<
  *     ss = screen.get_size()
  *     # getting bounds of polygon + uv values
@@ -5969,14 +5482,14 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_get_buffer, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 92, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 82, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_buffer = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":93
- * def draw_polygon(screen, points, texture, light_val):
+  /* "Rasterizer.pyx":83
+ * def draw_polygon_old(screen, points, texture, light_val):
  *     buffer = screen.get_buffer()
  *     ss = screen.get_size()             # <<<<<<<<<<<<<<
  *     # getting bounds of polygon + uv values
@@ -5989,39 +5502,39 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_get_size, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_ss = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":95
+  /* "Rasterizer.pyx":85
  *     ss = screen.get_size()
  *     # getting bounds of polygon + uv values
  *     uv_list = []             # <<<<<<<<<<<<<<
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 95, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_uv_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":96
+  /* "Rasterizer.pyx":86
  *     # getting bounds of polygon + uv values
  *     uv_list = []
  *     min_x, max_x = points[0][0], points[0][0]             # <<<<<<<<<<<<<<
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_min_x = __pyx_t_2;
@@ -6029,21 +5542,21 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   __pyx_v_max_x = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":97
+  /* "Rasterizer.pyx":87
  *     uv_list = []
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]             # <<<<<<<<<<<<<<
  *     for point in points:
  *         uv_list.append([point[3], point[4]])
 */
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_min_y = __pyx_t_2;
@@ -6051,7 +5564,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   __pyx_v_max_y = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":98
+  /* "Rasterizer.pyx":88
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:             # <<<<<<<<<<<<<<
@@ -6063,9 +5576,9 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_points); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_points); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 98, __pyx_L1_error)
+    __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
@@ -6073,7 +5586,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 98, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 88, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
@@ -6083,7 +5596,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 98, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 88, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
@@ -6094,13 +5607,13 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         #endif
         ++__pyx_t_5;
       }
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
     } else {
       __pyx_t_2 = __pyx_t_6(__pyx_t_1);
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 98, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 88, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -6110,109 +5623,109 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     __Pyx_XDECREF_SET(__pyx_v_point, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":99
+    /* "Rasterizer.pyx":89
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:
  *         uv_list.append([point[3], point[4]])             # <<<<<<<<<<<<<<
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]
 */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 3, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 3, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 4, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 4, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_2);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 99, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 89, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 99, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 89, __pyx_L1_error);
     __pyx_t_2 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_uv_list, __pyx_t_7); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_uv_list, __pyx_t_7); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":100
+    /* "Rasterizer.pyx":90
  *     for point in points:
  *         uv_list.append([point[3], point[4]])
  *         if point[0] < min_x: min_x = point[0]             # <<<<<<<<<<<<<<
  *         if point[0] > max_x: max_x = point[0]
  *         if point[1] < min_y: min_y = point[1]
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_x, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_x, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 100, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 90, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_9) {
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 90, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_min_x, __pyx_t_4);
       __pyx_t_4 = 0;
     }
 
-    /* "RasterizerCython.pyx":101
+    /* "Rasterizer.pyx":91
  *         uv_list.append([point[3], point[4]])
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]             # <<<<<<<<<<<<<<
  *         if point[1] < min_y: min_y = point[1]
  *         if point[1] > max_y: max_y = point[1]
 */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_x, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_x, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_9) {
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 91, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_max_x, __pyx_t_7);
       __pyx_t_7 = 0;
     }
 
-    /* "RasterizerCython.pyx":102
+    /* "Rasterizer.pyx":92
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]
  *         if point[1] < min_y: min_y = point[1]             # <<<<<<<<<<<<<<
  *         if point[1] > max_y: max_y = point[1]
  *     # NOTE: this is actually black magic, idk how this works
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_y, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_y, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 102, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_9) {
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_min_y, __pyx_t_4);
       __pyx_t_4 = 0;
     }
 
-    /* "RasterizerCython.pyx":103
+    /* "Rasterizer.pyx":93
  *         if point[0] > max_x: max_x = point[0]
  *         if point[1] < min_y: min_y = point[1]
  *         if point[1] > max_y: max_y = point[1]             # <<<<<<<<<<<<<<
  *     # NOTE: this is actually black magic, idk how this works
  *     ia, ib, ic = 2,0,1
 */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_y, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_y, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 103, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_9) {
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 103, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 93, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_max_y, __pyx_t_7);
       __pyx_t_7 = 0;
     }
 
-    /* "RasterizerCython.pyx":98
+    /* "Rasterizer.pyx":88
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:             # <<<<<<<<<<<<<<
@@ -6222,7 +5735,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":105
+  /* "Rasterizer.pyx":95
  *         if point[1] > max_y: max_y = point[1]
  *     # NOTE: this is actually black magic, idk how this works
  *     ia, ib, ic = 2,0,1             # <<<<<<<<<<<<<<
@@ -6236,34 +5749,34 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   __pyx_v_ib = __pyx_t_11;
   __pyx_v_ic = __pyx_t_12;
 
-  /* "RasterizerCython.pyx":106
+  /* "Rasterizer.pyx":96
  *     # NOTE: this is actually black magic, idk how this works
  *     ia, ib, ic = 2,0,1
  *     uv_list = [uv_list[ia], uv_list[ib], uv_list[ic]]             # <<<<<<<<<<<<<<
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):
 */
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ia, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ia, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ib, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ib, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ic, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ic, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 106, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 96, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 106, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 96, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_t_4) != (0)) __PYX_ERR(0, 106, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_t_4) != (0)) __PYX_ERR(0, 96, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_7 = 0;
   __pyx_t_4 = 0;
   __Pyx_DECREF_SET(__pyx_v_uv_list, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":108
+  /* "Rasterizer.pyx":98
  *     uv_list = [uv_list[ia], uv_list[ib], uv_list[ic]]
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):             # <<<<<<<<<<<<<<
@@ -6276,12 +5789,12 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     PyObject *__pyx_callargs[3] = {__pyx_t_4, __pyx_v_min_y, __pyx_v_max_y};
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_3, (3-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_4 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 98, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
     {
@@ -6289,7 +5802,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 108, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 98, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -6299,26 +5812,26 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":109
+    /* "Rasterizer.pyx":99
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):
  *         if i < 0 or i >= ss[1]: continue # prevent buffer overflow             # <<<<<<<<<<<<<<
  *         edges_and_area_change = find_edges(points, i)
  *         if edges_and_area_change == None: continue
 */
-    __pyx_t_2 = PyObject_RichCompare(__pyx_v_i, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
-    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 109, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_v_i, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!__pyx_t_13) {
     } else {
       __pyx_t_9 = __pyx_t_13;
       goto __pyx_L13_bool_binop_done;
     }
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_ss, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_ss, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_v_i, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 109, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_v_i, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 109, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_13 < 0))) __PYX_ERR(0, 99, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_9 = __pyx_t_13;
     __pyx_L13_bool_binop_done:;
@@ -6326,7 +5839,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       goto __pyx_L10_continue;
     }
 
-    /* "RasterizerCython.pyx":110
+    /* "Rasterizer.pyx":100
  *     for i in range(min_y, max_y):
  *         if i < 0 or i >= ss[1]: continue # prevent buffer overflow
  *         edges_and_area_change = find_edges(points, i)             # <<<<<<<<<<<<<<
@@ -6334,7 +5847,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *         left_edge = edges_and_area_change[0]
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_find_edges); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_find_edges); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_3 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -6353,51 +5866,51 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_1, __pyx_callargs+__pyx_t_3, (3-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
     __Pyx_XDECREF_SET(__pyx_v_edges_and_area_change, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":111
+    /* "Rasterizer.pyx":101
  *         if i < 0 or i >= ss[1]: continue # prevent buffer overflow
  *         edges_and_area_change = find_edges(points, i)
  *         if edges_and_area_change == None: continue             # <<<<<<<<<<<<<<
  *         left_edge = edges_and_area_change[0]
  *         right_edge = edges_and_area_change[1]
 */
-    __pyx_t_7 = PyObject_RichCompare(__pyx_v_edges_and_area_change, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 111, __pyx_L1_error)
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_v_edges_and_area_change, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 101, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 101, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_9) {
       goto __pyx_L10_continue;
     }
 
-    /* "RasterizerCython.pyx":112
+    /* "Rasterizer.pyx":102
  *         edges_and_area_change = find_edges(points, i)
  *         if edges_and_area_change == None: continue
  *         left_edge = edges_and_area_change[0]             # <<<<<<<<<<<<<<
  *         right_edge = edges_and_area_change[1]
  *         tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge, i)))
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_edges_and_area_change, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_edges_and_area_change, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_XDECREF_SET(__pyx_v_left_edge, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":113
+    /* "Rasterizer.pyx":103
  *         if edges_and_area_change == None: continue
  *         left_edge = edges_and_area_change[0]
  *         right_edge = edges_and_area_change[1]             # <<<<<<<<<<<<<<
  *         tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge, i)))
  *         if not check_inside_triangle(tri_vals):
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_edges_and_area_change, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_edges_and_area_change, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_XDECREF_SET(__pyx_v_right_edge, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":114
+    /* "Rasterizer.pyx":104
  *         left_edge = edges_and_area_change[0]
  *         right_edge = edges_and_area_change[1]
  *         tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge, i)))             # <<<<<<<<<<<<<<
@@ -6405,22 +5918,22 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *             # is a point inside the bb outside of the tri?
 */
     __pyx_t_1 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_inside_triangle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_inside_triangle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_15 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_16 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-    __pyx_t_17 = PyTuple_New(2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_17 = PyTuple_New(2); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_INCREF(__pyx_v_left_edge);
     __Pyx_GIVEREF(__pyx_v_left_edge);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_v_left_edge) != (0)) __PYX_ERR(0, 114, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_v_left_edge) != (0)) __PYX_ERR(0, 104, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_i);
     __Pyx_GIVEREF(__pyx_v_i);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 1, __pyx_v_i) != (0)) __PYX_ERR(0, 114, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_17, 1, __pyx_v_i) != (0)) __PYX_ERR(0, 104, __pyx_L1_error);
     __pyx_t_3 = 1;
     #if CYTHON_UNPACK_METHODS
     if (unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -6442,16 +5955,16 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
-    __pyx_t_2 = __Pyx_PySequence_ListKeepNew(__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PySequence_ListKeepNew(__pyx_t_7); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_XDECREF_SET(__pyx_v_tri_vals, ((PyObject*)__pyx_t_2));
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":115
+    /* "Rasterizer.pyx":105
  *         right_edge = edges_and_area_change[1]
  *         tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge, i)))
  *         if not check_inside_triangle(tri_vals):             # <<<<<<<<<<<<<<
@@ -6459,7 +5972,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *             continue
 */
     __pyx_t_7 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_17, __pyx_mstate_global->__pyx_n_u_check_inside_triangle); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 115, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_17, __pyx_mstate_global->__pyx_n_u_check_inside_triangle); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __pyx_t_3 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -6478,15 +5991,15 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_17, __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 115, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_13 = (!__pyx_t_9);
     if (__pyx_t_13) {
 
-      /* "RasterizerCython.pyx":117
+      /* "Rasterizer.pyx":107
  *         if not check_inside_triangle(tri_vals):
  *             # is a point inside the bb outside of the tri?
  *             continue             # <<<<<<<<<<<<<<
@@ -6495,7 +6008,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
 */
       goto __pyx_L10_continue;
 
-      /* "RasterizerCython.pyx":115
+      /* "Rasterizer.pyx":105
  *         right_edge = edges_and_area_change[1]
  *         tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge, i)))
  *         if not check_inside_triangle(tri_vals):             # <<<<<<<<<<<<<<
@@ -6504,7 +6017,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
 */
     }
 
-    /* "RasterizerCython.pyx":119
+    /* "Rasterizer.pyx":109
  *             continue
  *         # getting the u, v, du, and dv values for sampling the texture
  *         tri_2 = inside_triangle(points[0], points[1], points[2], (left_edge+1,i))             # <<<<<<<<<<<<<<
@@ -6512,23 +6025,23 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *         left_uv = [0,0]
 */
     __pyx_t_17 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_inside_triangle); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_inside_triangle); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_16 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-    __pyx_t_15 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_1 = __Pyx_PyLong_AddObjC(__pyx_v_left_edge, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyLong_AddObjC(__pyx_v_left_edge, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_GIVEREF(__pyx_t_1);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 119, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 109, __pyx_L1_error);
     __Pyx_INCREF(__pyx_v_i);
     __Pyx_GIVEREF(__pyx_v_i);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_v_i) != (0)) __PYX_ERR(0, 119, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_v_i) != (0)) __PYX_ERR(0, 109, __pyx_L1_error);
     __pyx_t_1 = 0;
     __pyx_t_3 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -6551,94 +6064,94 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_XDECREF_SET(__pyx_v_tri_2, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":120
+    /* "Rasterizer.pyx":110
  *         # getting the u, v, du, and dv values for sampling the texture
  *         tri_2 = inside_triangle(points[0], points[1], points[2], (left_edge+1,i))
  *         deltas = (tri_vals[0]-tri_2[0], tri_vals[1]-tri_2[1], tri_vals[2]-tri_2[2])             # <<<<<<<<<<<<<<
  *         left_uv = [0,0]
  *         next_uv = [0,0]
 */
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_tri_2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_tri_2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_18 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_18 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_tri_2, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_tri_2, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_14 = PyNumber_Subtract(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Subtract(__pyx_t_7, __pyx_t_2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, 2, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, 2, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_tri_2, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_tri_2, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_15 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_15 = PyNumber_Subtract(__pyx_t_2, __pyx_t_7); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_7 = PyTuple_New(3); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_18);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_18) != (0)) __PYX_ERR(0, 120, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_18) != (0)) __PYX_ERR(0, 110, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_14);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 120, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_14) != (0)) __PYX_ERR(0, 110, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_15);
-    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 120, __pyx_L1_error);
+    if (__Pyx_PyTuple_SET_ITEM(__pyx_t_7, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 110, __pyx_L1_error);
     __pyx_t_18 = 0;
     __pyx_t_14 = 0;
     __pyx_t_15 = 0;
     __Pyx_XDECREF_SET(__pyx_v_deltas, ((PyObject*)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":121
+    /* "Rasterizer.pyx":111
  *         tri_2 = inside_triangle(points[0], points[1], points[2], (left_edge+1,i))
  *         deltas = (tri_vals[0]-tri_2[0], tri_vals[1]-tri_2[1], tri_vals[2]-tri_2[2])
  *         left_uv = [0,0]             # <<<<<<<<<<<<<<
  *         next_uv = [0,0]
  *         for k in range(3):
 */
-    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
     __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_0);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 121, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
     __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
     __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_0);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 121, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 111, __pyx_L1_error);
     __Pyx_XDECREF_SET(__pyx_v_left_uv, ((PyObject*)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":122
+    /* "Rasterizer.pyx":112
  *         deltas = (tri_vals[0]-tri_2[0], tri_vals[1]-tri_2[1], tri_vals[2]-tri_2[2])
  *         left_uv = [0,0]
  *         next_uv = [0,0]             # <<<<<<<<<<<<<<
  *         for k in range(3):
  *             area_mod = tri_vals[k]/tri_vals[-1]
 */
-    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
     __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_0);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 122, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 112, __pyx_L1_error);
     __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
     __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_0);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 122, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 112, __pyx_L1_error);
     __Pyx_XDECREF_SET(__pyx_v_next_uv, ((PyObject*)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":123
+    /* "Rasterizer.pyx":113
  *         left_uv = [0,0]
  *         next_uv = [0,0]
  *         for k in range(3):             # <<<<<<<<<<<<<<
@@ -6648,49 +6161,49 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     for (__pyx_t_5 = 0; __pyx_t_5 < 3; __pyx_t_5+=1) {
       __pyx_v_k = __pyx_t_5;
 
-      /* "RasterizerCython.pyx":124
+      /* "Rasterizer.pyx":114
  *         next_uv = [0,0]
  *         for k in range(3):
  *             area_mod = tri_vals[k]/tri_vals[-1]             # <<<<<<<<<<<<<<
  *             area_mod_next = (tri_vals[k]+deltas[k])/tri_vals[-1]
  *             for l in range(2):
 */
-      __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, -1L, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, -1L, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_14 = __Pyx_PyNumber_Divide(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyNumber_Divide(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 114, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_XDECREF_SET(__pyx_v_area_mod, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "RasterizerCython.pyx":125
+      /* "Rasterizer.pyx":115
  *         for k in range(3):
  *             area_mod = tri_vals[k]/tri_vals[-1]
  *             area_mod_next = (tri_vals[k]+deltas[k])/tri_vals[-1]             # <<<<<<<<<<<<<<
  *             for l in range(2):
  *                 left_uv[l] += uv_list[k][l] * area_mod
 */
-      __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_15 = __Pyx_GetItemInt_Tuple(__pyx_v_deltas, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_GetItemInt_Tuple(__pyx_v_deltas, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_7 = PyNumber_Add(__pyx_t_14, __pyx_t_15); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_t_7 = PyNumber_Add(__pyx_t_14, __pyx_t_15); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, -1L, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_tri_vals, -1L, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_14 = __Pyx_PyNumber_Divide(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 125, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyNumber_Divide(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_XDECREF_SET(__pyx_v_area_mod_next, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "RasterizerCython.pyx":126
+      /* "Rasterizer.pyx":116
  *             area_mod = tri_vals[k]/tri_vals[-1]
  *             area_mod_next = (tri_vals[k]+deltas[k])/tri_vals[-1]
  *             for l in range(2):             # <<<<<<<<<<<<<<
@@ -6700,7 +6213,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       for (__pyx_t_12 = 0; __pyx_t_12 < 2; __pyx_t_12+=1) {
         __pyx_v_l = __pyx_t_12;
 
-        /* "RasterizerCython.pyx":127
+        /* "Rasterizer.pyx":117
  *             area_mod_next = (tri_vals[k]+deltas[k])/tri_vals[-1]
  *             for l in range(2):
  *                 left_uv[l] += uv_list[k][l] * area_mod             # <<<<<<<<<<<<<<
@@ -6708,24 +6221,24 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *         u, v = left_uv[0], left_uv[1]
 */
         __pyx_t_11 = __pyx_v_l;
-        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_left_uv, __pyx_t_11, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_left_uv, __pyx_t_11, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_15, __pyx_v_l, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt(__pyx_t_15, __pyx_v_l, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __pyx_t_15 = PyNumber_Multiply(__pyx_t_7, __pyx_v_area_mod); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_15 = PyNumber_Multiply(__pyx_t_7, __pyx_v_area_mod); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-        __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_14, __pyx_t_15); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 127, __pyx_L1_error)
+        __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_14, __pyx_t_15); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        if (unlikely((__Pyx_SetItemInt(__pyx_v_left_uv, __pyx_t_11, __pyx_t_7, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
+        if (unlikely((__Pyx_SetItemInt(__pyx_v_left_uv, __pyx_t_11, __pyx_t_7, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 117, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-        /* "RasterizerCython.pyx":128
+        /* "Rasterizer.pyx":118
  *             for l in range(2):
  *                 left_uv[l] += uv_list[k][l] * area_mod
  *                 next_uv[l] += uv_list[k][l] * area_mod_next             # <<<<<<<<<<<<<<
@@ -6733,56 +6246,56 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *         du, dv = u-next_uv[0], v-next_uv[1]
 */
         __pyx_t_11 = __pyx_v_l;
-        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_next_uv, __pyx_t_11, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 128, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_next_uv, __pyx_t_11, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
-        __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 128, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
-        __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_15, __pyx_v_l, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 128, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_15, __pyx_v_l, long, 1, __Pyx_PyLong_From_long, 0, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        __pyx_t_15 = PyNumber_Multiply(__pyx_t_14, __pyx_v_area_mod_next); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 128, __pyx_L1_error)
+        __pyx_t_15 = PyNumber_Multiply(__pyx_t_14, __pyx_v_area_mod_next); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 128, __pyx_L1_error)
+        __pyx_t_14 = PyNumber_InPlaceAdd(__pyx_t_7, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        if (unlikely((__Pyx_SetItemInt(__pyx_v_next_uv, __pyx_t_11, __pyx_t_14, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 128, __pyx_L1_error)
+        if (unlikely((__Pyx_SetItemInt(__pyx_v_next_uv, __pyx_t_11, __pyx_t_14, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       }
     }
 
-    /* "RasterizerCython.pyx":129
+    /* "Rasterizer.pyx":119
  *                 left_uv[l] += uv_list[k][l] * area_mod
  *                 next_uv[l] += uv_list[k][l] * area_mod_next
  *         u, v = left_uv[0], left_uv[1]             # <<<<<<<<<<<<<<
  *         du, dv = u-next_uv[0], v-next_uv[1]
  *         # creating + filling the buffer for the scanline
 */
-    __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_left_uv, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_left_uv, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_left_uv, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_left_uv, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_XDECREF_SET(__pyx_v_u, __pyx_t_14);
     __pyx_t_14 = 0;
     __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_15);
     __pyx_t_15 = 0;
 
-    /* "RasterizerCython.pyx":130
+    /* "Rasterizer.pyx":120
  *                 next_uv[l] += uv_list[k][l] * area_mod_next
  *         u, v = left_uv[0], left_uv[1]
  *         du, dv = u-next_uv[0], v-next_uv[1]             # <<<<<<<<<<<<<<
  *         # creating + filling the buffer for the scanline
  *         pixel_write = b''
 */
-    __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_next_uv, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_next_uv, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_14 = PyNumber_Subtract(__pyx_v_u, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Subtract(__pyx_v_u, __pyx_t_15); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_next_uv, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_GetItemInt_List(__pyx_v_next_uv, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_7 = PyNumber_Subtract(__pyx_v_v, __pyx_t_15); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_7 = PyNumber_Subtract(__pyx_v_v, __pyx_t_15); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
     __Pyx_XDECREF_SET(__pyx_v_du, __pyx_t_14);
@@ -6790,7 +6303,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     __Pyx_XDECREF_SET(__pyx_v_dv, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":132
+    /* "Rasterizer.pyx":122
  *         du, dv = u-next_uv[0], v-next_uv[1]
  *         # creating + filling the buffer for the scanline
  *         pixel_write = b''             # <<<<<<<<<<<<<<
@@ -6800,7 +6313,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     __Pyx_INCREF(__pyx_mstate_global->__pyx_kp_b_);
     __Pyx_XDECREF_SET(__pyx_v_pixel_write, __pyx_mstate_global->__pyx_kp_b_);
 
-    /* "RasterizerCython.pyx":133
+    /* "Rasterizer.pyx":123
  *         # creating + filling the buffer for the scanline
  *         pixel_write = b''
  *         for j in range(left_edge, right_edge):             # <<<<<<<<<<<<<<
@@ -6813,12 +6326,12 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       PyObject *__pyx_callargs[3] = {__pyx_t_14, __pyx_v_left_edge, __pyx_v_right_edge};
       __pyx_t_7 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_3, (3-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 133, __pyx_L1_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 123, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
-    __pyx_t_14 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_14 = PyObject_GetIter(__pyx_t_7); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_19 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_14); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_19 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_14); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     for (;;) {
       {
@@ -6826,7 +6339,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         if (unlikely(!__pyx_t_7)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 133, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 123, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
@@ -6836,26 +6349,26 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_7);
       __pyx_t_7 = 0;
 
-      /* "RasterizerCython.pyx":134
+      /* "Rasterizer.pyx":124
  *         pixel_write = b''
  *         for j in range(left_edge, right_edge):
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow             # <<<<<<<<<<<<<<
  *             color = list(get_color_NN(texture, u, v))
  *             for k in range(len(color)):
 */
-      __pyx_t_7 = PyObject_RichCompare(__pyx_v_j, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_7 = PyObject_RichCompare(__pyx_v_j, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       if (!__pyx_t_9) {
       } else {
         __pyx_t_13 = __pyx_t_9;
         goto __pyx_L24_bool_binop_done;
       }
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_15 = PyObject_RichCompare(__pyx_v_j, __pyx_t_7, Py_GE); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_15 = PyObject_RichCompare(__pyx_v_j, __pyx_t_7, Py_GE); __Pyx_XGOTREF(__pyx_t_15); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 134, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __pyx_t_13 = __pyx_t_9;
       __pyx_L24_bool_binop_done:;
@@ -6863,7 +6376,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         goto __pyx_L21_continue;
       }
 
-      /* "RasterizerCython.pyx":135
+      /* "Rasterizer.pyx":125
  *         for j in range(left_edge, right_edge):
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow
  *             color = list(get_color_NN(texture, u, v))             # <<<<<<<<<<<<<<
@@ -6871,7 +6384,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *                 color[k] = int(color[k] * light_val)
 */
       __pyx_t_7 = NULL;
-      __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_mstate_global->__pyx_n_u_get_color_NN); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_mstate_global->__pyx_n_u_get_color_NN); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __pyx_t_3 = 1;
       #if CYTHON_UNPACK_METHODS
@@ -6890,47 +6403,47 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         __pyx_t_15 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_18, __pyx_callargs+__pyx_t_3, (4-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-        if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 135, __pyx_L1_error)
+        if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 125, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
       }
-      __pyx_t_18 = __Pyx_PySequence_ListKeepNew(__pyx_t_15); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 135, __pyx_L1_error)
+      __pyx_t_18 = __Pyx_PySequence_ListKeepNew(__pyx_t_15); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
       __Pyx_XDECREF_SET(__pyx_v_color, ((PyObject*)__pyx_t_18));
       __pyx_t_18 = 0;
 
-      /* "RasterizerCython.pyx":136
+      /* "Rasterizer.pyx":126
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow
  *             color = list(get_color_NN(texture, u, v))
  *             for k in range(len(color)):             # <<<<<<<<<<<<<<
  *                 color[k] = int(color[k] * light_val)
  *             pixel_write += bytes([color[2], color[1], color[0], 0])
 */
-      __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_color); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 136, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_color); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 126, __pyx_L1_error)
       __pyx_t_20 = __pyx_t_5;
       for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
         __pyx_v_k = __pyx_t_21;
 
-        /* "RasterizerCython.pyx":137
+        /* "Rasterizer.pyx":127
  *             color = list(get_color_NN(texture, u, v))
  *             for k in range(len(color)):
  *                 color[k] = int(color[k] * light_val)             # <<<<<<<<<<<<<<
  *             pixel_write += bytes([color[2], color[1], color[0], 0])
  *             u += du; v += dv
 */
-        __pyx_t_18 = __Pyx_GetItemInt_List(__pyx_v_color, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_GetItemInt_List(__pyx_v_color, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 127, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
-        __pyx_t_15 = PyNumber_Multiply(__pyx_t_18, __pyx_v_light_val); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_15 = PyNumber_Multiply(__pyx_t_18, __pyx_v_light_val); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 127, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_15);
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-        __pyx_t_18 = __Pyx_PyNumber_Int(__pyx_t_15); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 137, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyNumber_Int(__pyx_t_15); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 127, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-        if (unlikely((__Pyx_SetItemInt(__pyx_v_color, __pyx_v_k, __pyx_t_18, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 137, __pyx_L1_error)
+        if (unlikely((__Pyx_SetItemInt(__pyx_v_color, __pyx_v_k, __pyx_t_18, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 127, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       }
 
-      /* "RasterizerCython.pyx":138
+      /* "Rasterizer.pyx":128
  *             for k in range(len(color)):
  *                 color[k] = int(color[k] * light_val)
  *             pixel_write += bytes([color[2], color[1], color[0], 0])             # <<<<<<<<<<<<<<
@@ -6938,23 +6451,23 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
  *         # write that sanline to the buffer
 */
       __pyx_t_15 = NULL;
-      __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_color, 2, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_color, 2, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_color, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt_List(__pyx_v_color, 1, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_16 = __Pyx_GetItemInt_List(__pyx_v_color, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_GetItemInt_List(__pyx_v_color, 0, long, 1, __Pyx_PyLong_From_long, 1, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_17 = PyList_New(4); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_17 = PyList_New(4); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_17);
       __Pyx_GIVEREF(__pyx_t_7);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 138, __pyx_L1_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 128, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_2);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 138, __pyx_L1_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 1, __pyx_t_2) != (0)) __PYX_ERR(0, 128, __pyx_L1_error);
       __Pyx_GIVEREF(__pyx_t_16);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 2, __pyx_t_16) != (0)) __PYX_ERR(0, 138, __pyx_L1_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 2, __pyx_t_16) != (0)) __PYX_ERR(0, 128, __pyx_L1_error);
       __Pyx_INCREF(__pyx_mstate_global->__pyx_int_0);
       __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_0);
-      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 3, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 138, __pyx_L1_error);
+      if (__Pyx_PyList_SET_ITEM(__pyx_t_17, 3, __pyx_mstate_global->__pyx_int_0) != (0)) __PYX_ERR(0, 128, __pyx_L1_error);
       __pyx_t_7 = 0;
       __pyx_t_2 = 0;
       __pyx_t_16 = 0;
@@ -6964,32 +6477,32 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
         __pyx_t_18 = __Pyx_PyObject_FastCall((PyObject*)(&PyBytes_Type), __pyx_callargs+__pyx_t_3, (2-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
         __Pyx_XDECREF(__pyx_t_15); __pyx_t_15 = 0;
         __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-        if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 138, __pyx_L1_error)
+        if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 128, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
       }
-      __pyx_t_17 = PyNumber_InPlaceAdd(__pyx_v_pixel_write, __pyx_t_18); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 138, __pyx_L1_error)
+      __pyx_t_17 = PyNumber_InPlaceAdd(__pyx_v_pixel_write, __pyx_t_18); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 128, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_17);
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_DECREF_SET(__pyx_v_pixel_write, ((PyObject*)__pyx_t_17));
       __pyx_t_17 = 0;
 
-      /* "RasterizerCython.pyx":139
+      /* "Rasterizer.pyx":129
  *                 color[k] = int(color[k] * light_val)
  *             pixel_write += bytes([color[2], color[1], color[0], 0])
  *             u += du; v += dv             # <<<<<<<<<<<<<<
  *         # write that sanline to the buffer
  *         buffer_offset = (left_edge + i * ss[0]) * 4
 */
-      __pyx_t_17 = PyNumber_InPlaceAdd(__pyx_v_u, __pyx_v_du); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_17 = PyNumber_InPlaceAdd(__pyx_v_u, __pyx_v_du); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_17);
       __Pyx_DECREF_SET(__pyx_v_u, __pyx_t_17);
       __pyx_t_17 = 0;
-      __pyx_t_17 = PyNumber_InPlaceAdd(__pyx_v_v, __pyx_v_dv); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_17 = PyNumber_InPlaceAdd(__pyx_v_v, __pyx_v_dv); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 129, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_17);
       __Pyx_DECREF_SET(__pyx_v_v, __pyx_t_17);
       __pyx_t_17 = 0;
 
-      /* "RasterizerCython.pyx":133
+      /* "Rasterizer.pyx":123
  *         # creating + filling the buffer for the scanline
  *         pixel_write = b''
  *         for j in range(left_edge, right_edge):             # <<<<<<<<<<<<<<
@@ -7000,33 +6513,33 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "RasterizerCython.pyx":141
+    /* "Rasterizer.pyx":131
  *             u += du; v += dv
  *         # write that sanline to the buffer
  *         buffer_offset = (left_edge + i * ss[0]) * 4             # <<<<<<<<<<<<<<
  *         buffer.write(pixel_write, buffer_offset)
  * 
 */
-    __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_17 = PyNumber_Multiply(__pyx_v_i, __pyx_t_14); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_17 = PyNumber_Multiply(__pyx_v_i, __pyx_t_14); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_14 = PyNumber_Add(__pyx_v_left_edge, __pyx_t_17); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Add(__pyx_v_left_edge, __pyx_t_17); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-    __pyx_t_17 = __Pyx_PyLong_MultiplyObjC(__pyx_t_14, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 141, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyLong_MultiplyObjC(__pyx_t_14, __pyx_mstate_global->__pyx_int_4, 4, 0, 0); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 131, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_XDECREF_SET(__pyx_v_buffer_offset, __pyx_t_17);
     __pyx_t_17 = 0;
 
-    /* "RasterizerCython.pyx":142
+    /* "Rasterizer.pyx":132
  *         # write that sanline to the buffer
  *         buffer_offset = (left_edge + i * ss[0]) * 4
  *         buffer.write(pixel_write, buffer_offset)             # <<<<<<<<<<<<<<
  * 
- * def draw_polygon_new(screen, points, texture, light_val):
+ * def make_edge(point1, point2):
 */
     __pyx_t_14 = __pyx_v_buffer;
     __Pyx_INCREF(__pyx_t_14);
@@ -7035,12 +6548,12 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
       PyObject *__pyx_callargs[3] = {__pyx_t_14, __pyx_v_pixel_write, __pyx_v_buffer_offset};
       __pyx_t_17 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_write, __pyx_callargs+__pyx_t_3, (3-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 142, __pyx_L1_error)
+      if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 132, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_17);
     }
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
 
-    /* "RasterizerCython.pyx":108
+    /* "Rasterizer.pyx":98
  *     uv_list = [uv_list[ia], uv_list[ib], uv_list[ic]]
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):             # <<<<<<<<<<<<<<
@@ -7051,10 +6564,10 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   }
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":91
- *     return A*x + B*y + C
+  /* "Rasterizer.pyx":81
+ *     #return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
  * 
- * def draw_polygon(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
+ * def draw_polygon_old(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
  *     buffer = screen.get_buffer()
  *     ss = screen.get_size()
 */
@@ -7072,7 +6585,7 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_16);
   __Pyx_XDECREF(__pyx_t_17);
   __Pyx_XDECREF(__pyx_t_18);
-  __Pyx_AddTraceback("RasterizerCython.draw_polygon", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.draw_polygon_old", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_buffer);
@@ -7107,8 +6620,499 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":144
+/* "Rasterizer.pyx":134
  *         buffer.write(pixel_write, buffer_offset)
+ * 
+ * def make_edge(point1, point2):             # <<<<<<<<<<<<<<
+ *     x1, y1 = point1[0], point1[1]
+ *     x2, y2 = point2[0], point2[1]
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10Rasterizer_17make_edge(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10Rasterizer_17make_edge = {"make_edge", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_17make_edge, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_17make_edge(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_point1 = 0;
+  PyObject *__pyx_v_point2 = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[2] = {0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("make_edge (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_point1,&__pyx_mstate_global->__pyx_n_u_point2,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 134, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 134, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 134, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "make_edge", 0) < (0)) __PYX_ERR(0, 134, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("make_edge", 1, 2, 2, i); __PYX_ERR(0, 134, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 2)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 134, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 134, __pyx_L3_error)
+    }
+    __pyx_v_point1 = values[0];
+    __pyx_v_point2 = values[1];
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("make_edge", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 134, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("Rasterizer.make_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10Rasterizer_16make_edge(__pyx_self, __pyx_v_point1, __pyx_v_point2);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10Rasterizer_16make_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_point1, PyObject *__pyx_v_point2) {
+  PyObject *__pyx_v_x1 = NULL;
+  PyObject *__pyx_v_y1 = NULL;
+  PyObject *__pyx_v_x2 = NULL;
+  PyObject *__pyx_v_y2 = NULL;
+  PyObject *__pyx_v_A = NULL;
+  PyObject *__pyx_v_B = NULL;
+  PyObject *__pyx_v_C = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("make_edge", 0);
+
+  /* "Rasterizer.pyx":135
+ * 
+ * def make_edge(point1, point2):
+ *     x1, y1 = point1[0], point1[1]             # <<<<<<<<<<<<<<
+ *     x2, y2 = point2[0], point2[1]
+ *     A = y2 - y1
+*/
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_v_x1 = __pyx_t_1;
+  __pyx_t_1 = 0;
+  __pyx_v_y1 = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "Rasterizer.pyx":136
+ * def make_edge(point1, point2):
+ *     x1, y1 = point1[0], point1[1]
+ *     x2, y2 = point2[0], point2[1]             # <<<<<<<<<<<<<<
+ *     A = y2 - y1
+ *     B = -(x2 - x1)
+*/
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_point2, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_x2 = __pyx_t_2;
+  __pyx_t_2 = 0;
+  __pyx_v_y2 = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "Rasterizer.pyx":137
+ *     x1, y1 = point1[0], point1[1]
+ *     x2, y2 = point2[0], point2[1]
+ *     A = y2 - y1             # <<<<<<<<<<<<<<
+ *     B = -(x2 - x1)
+ *     C = x2*y1 - y2*x1
+*/
+  __pyx_t_1 = PyNumber_Subtract(__pyx_v_y2, __pyx_v_y1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_A = __pyx_t_1;
+  __pyx_t_1 = 0;
+
+  /* "Rasterizer.pyx":138
+ *     x2, y2 = point2[0], point2[1]
+ *     A = y2 - y1
+ *     B = -(x2 - x1)             # <<<<<<<<<<<<<<
+ *     C = x2*y1 - y2*x1
+ *     return A, B, C
+*/
+  __pyx_t_1 = PyNumber_Subtract(__pyx_v_x2, __pyx_v_x1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyNumber_Negative(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_B = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "Rasterizer.pyx":139
+ *     A = y2 - y1
+ *     B = -(x2 - x1)
+ *     C = x2*y1 - y2*x1             # <<<<<<<<<<<<<<
+ *     return A, B, C
+ * 
+*/
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_x2, __pyx_v_y1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyNumber_Multiply(__pyx_v_y2, __pyx_v_x1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_C = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "Rasterizer.pyx":140
+ *     B = -(x2 - x1)
+ *     C = x2*y1 - y2*x1
+ *     return A, B, C             # <<<<<<<<<<<<<<
+ * 
+ * def eval_edge(edge, x, y):
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(__pyx_v_A);
+  __Pyx_GIVEREF(__pyx_v_A);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_A) != (0)) __PYX_ERR(0, 140, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_v_B);
+  __Pyx_GIVEREF(__pyx_v_B);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_B) != (0)) __PYX_ERR(0, 140, __pyx_L1_error);
+  __Pyx_INCREF(__pyx_v_C);
+  __Pyx_GIVEREF(__pyx_v_C);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_C) != (0)) __PYX_ERR(0, 140, __pyx_L1_error);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
+  goto __pyx_L0;
+
+  /* "Rasterizer.pyx":134
+ *         buffer.write(pixel_write, buffer_offset)
+ * 
+ * def make_edge(point1, point2):             # <<<<<<<<<<<<<<
+ *     x1, y1 = point1[0], point1[1]
+ *     x2, y2 = point2[0], point2[1]
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("Rasterizer.make_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_x1);
+  __Pyx_XDECREF(__pyx_v_y1);
+  __Pyx_XDECREF(__pyx_v_x2);
+  __Pyx_XDECREF(__pyx_v_y2);
+  __Pyx_XDECREF(__pyx_v_A);
+  __Pyx_XDECREF(__pyx_v_B);
+  __Pyx_XDECREF(__pyx_v_C);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Rasterizer.pyx":142
+ *     return A, B, C
+ * 
+ * def eval_edge(edge, x, y):             # <<<<<<<<<<<<<<
+ *     A, B, C = edge
+ *     return A*x + B*y + C
+*/
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10Rasterizer_19eval_edge(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_10Rasterizer_19eval_edge = {"eval_edge", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_19eval_edge, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_19eval_edge(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  PyObject *__pyx_v_edge = 0;
+  PyObject *__pyx_v_x = 0;
+  PyObject *__pyx_v_y = 0;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[3] = {0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("eval_edge (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_edge,&__pyx_mstate_global->__pyx_n_u_x,&__pyx_mstate_global->__pyx_n_u_y,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 142, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 142, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 142, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 142, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "eval_edge", 0) < (0)) __PYX_ERR(0, 142, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("eval_edge", 1, 3, 3, i); __PYX_ERR(0, 142, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 3)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 142, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 142, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 142, __pyx_L3_error)
+    }
+    __pyx_v_edge = values[0];
+    __pyx_v_x = values[1];
+    __pyx_v_y = values[2];
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("eval_edge", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 142, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("Rasterizer.eval_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10Rasterizer_18eval_edge(__pyx_self, __pyx_v_edge, __pyx_v_x, __pyx_v_y);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10Rasterizer_18eval_edge(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_edge, PyObject *__pyx_v_x, PyObject *__pyx_v_y) {
+  PyObject *__pyx_v_A = NULL;
+  PyObject *__pyx_v_B = NULL;
+  PyObject *__pyx_v_C = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *(*__pyx_t_5)(PyObject *);
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("eval_edge", 0);
+
+  /* "Rasterizer.pyx":143
+ * 
+ * def eval_edge(edge, x, y):
+ *     A, B, C = edge             # <<<<<<<<<<<<<<
+ *     return A*x + B*y + C
+ * 
+*/
+  if ((likely(PyTuple_CheckExact(__pyx_v_edge))) || (PyList_CheckExact(__pyx_v_edge))) {
+    PyObject* sequence = __pyx_v_edge;
+    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+    if (unlikely(size != 3)) {
+      if (size > 3) __Pyx_RaiseTooManyValuesError(3);
+      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+      __PYX_ERR(0, 143, __pyx_L1_error)
+    }
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    if (likely(PyTuple_CheckExact(sequence))) {
+      __pyx_t_1 = PyTuple_GET_ITEM(sequence, 0);
+      __Pyx_INCREF(__pyx_t_1);
+      __pyx_t_2 = PyTuple_GET_ITEM(sequence, 1);
+      __Pyx_INCREF(__pyx_t_2);
+      __pyx_t_3 = PyTuple_GET_ITEM(sequence, 2);
+      __Pyx_INCREF(__pyx_t_3);
+    } else {
+      __pyx_t_1 = __Pyx_PyList_GetItemRefFast(sequence, 0, __Pyx_ReferenceSharing_SharedReference);
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_XGOTREF(__pyx_t_1);
+      __pyx_t_2 = __Pyx_PyList_GetItemRefFast(sequence, 1, __Pyx_ReferenceSharing_SharedReference);
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_XGOTREF(__pyx_t_2);
+      __pyx_t_3 = __Pyx_PyList_GetItemRefFast(sequence, 2, __Pyx_ReferenceSharing_SharedReference);
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
+      __Pyx_XGOTREF(__pyx_t_3);
+    }
+    #else
+    __pyx_t_1 = __Pyx_PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __Pyx_PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    #endif
+  } else {
+    Py_ssize_t index = -1;
+    __pyx_t_4 = PyObject_GetIter(__pyx_v_edge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_4);
+    index = 0; __pyx_t_1 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_1)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_1);
+    index = 1; __pyx_t_2 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_2)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_2);
+    index = 2; __pyx_t_3 = __pyx_t_5(__pyx_t_4); if (unlikely(!__pyx_t_3)) goto __pyx_L3_unpacking_failed;
+    __Pyx_GOTREF(__pyx_t_3);
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_5(__pyx_t_4), 3) < (0)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_5 = NULL;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    goto __pyx_L4_unpacking_done;
+    __pyx_L3_unpacking_failed:;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __pyx_t_5 = NULL;
+    if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
+    __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_L4_unpacking_done:;
+  }
+  __pyx_v_A = __pyx_t_1;
+  __pyx_t_1 = 0;
+  __pyx_v_B = __pyx_t_2;
+  __pyx_t_2 = 0;
+  __pyx_v_C = __pyx_t_3;
+  __pyx_t_3 = 0;
+
+  /* "Rasterizer.pyx":144
+ * def eval_edge(edge, x, y):
+ *     A, B, C = edge
+ *     return A*x + B*y + C             # <<<<<<<<<<<<<<
+ * 
+ * def draw_polygon_new(screen, points, texture, light_val):
+*/
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_A, __pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_2 = PyNumber_Multiply(__pyx_v_B, __pyx_v_y); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_C); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "Rasterizer.pyx":142
+ *     return A, B, C
+ * 
+ * def eval_edge(edge, x, y):             # <<<<<<<<<<<<<<
+ *     A, B, C = edge
+ *     return A*x + B*y + C
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("Rasterizer.eval_edge", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_A);
+  __Pyx_XDECREF(__pyx_v_B);
+  __Pyx_XDECREF(__pyx_v_C);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "Rasterizer.pyx":146
+ *     return A*x + B*y + C
  * 
  * def draw_polygon_new(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
  *     buffer = screen.get_buffer()
@@ -7116,15 +7120,15 @@ static PyObject *__pyx_pf_16RasterizerCython_18draw_polygon(CYTHON_UNUSED PyObje
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_21draw_polygon_new(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_21draw_polygon_new(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_21draw_polygon_new = {"draw_polygon_new", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_21draw_polygon_new, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_21draw_polygon_new(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_21draw_polygon_new = {"draw_polygon_new", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_21draw_polygon_new, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_21draw_polygon_new(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -7157,44 +7161,44 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_screen,&__pyx_mstate_global->__pyx_n_u_points,&__pyx_mstate_global->__pyx_n_u_texture,&__pyx_mstate_global->__pyx_n_u_light_val,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 144, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 146, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  4:
         values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 144, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 146, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 144, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 146, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 144, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 146, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 144, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 146, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "draw_polygon_new", 0) < (0)) __PYX_ERR(0, 144, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "draw_polygon_new", 0) < (0)) __PYX_ERR(0, 146, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 4; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("draw_polygon_new", 1, 4, 4, i); __PYX_ERR(0, 144, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("draw_polygon_new", 1, 4, 4, i); __PYX_ERR(0, 146, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 4)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 144, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 146, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 144, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 146, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 144, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 146, __pyx_L3_error)
       values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 144, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 146, __pyx_L3_error)
     }
     __pyx_v_screen = values[0];
     __pyx_v_points = values[1];
@@ -7203,18 +7207,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("draw_polygon_new", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 144, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("draw_polygon_new", 1, 4, 4, __pyx_nargs); __PYX_ERR(0, 146, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.draw_polygon_new", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.draw_polygon_new", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_20draw_polygon_new(__pyx_self, __pyx_v_screen, __pyx_v_points, __pyx_v_texture, __pyx_v_light_val);
+  __pyx_r = __pyx_pf_10Rasterizer_20draw_polygon_new(__pyx_self, __pyx_v_screen, __pyx_v_points, __pyx_v_texture, __pyx_v_light_val);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -7224,7 +7228,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, CYTHON_UNUSED PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val) {
+static PyObject *__pyx_pf_10Rasterizer_20draw_polygon_new(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_screen, PyObject *__pyx_v_points, CYTHON_UNUSED PyObject *__pyx_v_texture, PyObject *__pyx_v_light_val) {
   PyObject *__pyx_v_buffer = NULL;
   PyObject *__pyx_v_ss = NULL;
   PyObject *__pyx_v_uv_list = NULL;
@@ -7274,7 +7278,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("draw_polygon_new", 0);
 
-  /* "RasterizerCython.pyx":145
+  /* "Rasterizer.pyx":147
  * 
  * def draw_polygon_new(screen, points, texture, light_val):
  *     buffer = screen.get_buffer()             # <<<<<<<<<<<<<<
@@ -7288,13 +7292,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_get_buffer, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_buffer = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":146
+  /* "Rasterizer.pyx":148
  * def draw_polygon_new(screen, points, texture, light_val):
  *     buffer = screen.get_buffer()
  *     ss = screen.get_size()             # <<<<<<<<<<<<<<
@@ -7308,39 +7312,39 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_1 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_get_size, __pyx_callargs+__pyx_t_3, (1-__pyx_t_3) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_ss = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":148
+  /* "Rasterizer.pyx":150
  *     ss = screen.get_size()
  *     # getting bounds of polygon + uv values
  *     uv_list = []             # <<<<<<<<<<<<<<
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_uv_list = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":149
+  /* "Rasterizer.pyx":151
  *     # getting bounds of polygon + uv values
  *     uv_list = []
  *     min_x, max_x = points[0][0], points[0][0]             # <<<<<<<<<<<<<<
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_min_x = __pyx_t_2;
@@ -7348,21 +7352,21 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   __pyx_v_max_x = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "RasterizerCython.pyx":150
+  /* "Rasterizer.pyx":152
  *     uv_list = []
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]             # <<<<<<<<<<<<<<
  *     for point in points:
  *         uv_list.append([point[3], point[4]])
 */
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_min_y = __pyx_t_2;
@@ -7370,7 +7374,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   __pyx_v_max_y = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":151
+  /* "Rasterizer.pyx":153
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:             # <<<<<<<<<<<<<<
@@ -7382,9 +7386,9 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __pyx_t_5 = 0;
     __pyx_t_6 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_points); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_5 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_points); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 151, __pyx_L1_error)
+    __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 153, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_6)) {
@@ -7392,7 +7396,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
         {
           Py_ssize_t __pyx_temp = __Pyx_PyList_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 151, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 153, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
@@ -7402,7 +7406,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
         {
           Py_ssize_t __pyx_temp = __Pyx_PyTuple_GET_SIZE(__pyx_t_1);
           #if !CYTHON_ASSUME_SAFE_SIZE
-          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 151, __pyx_L1_error)
+          if (unlikely((__pyx_temp < 0))) __PYX_ERR(0, 153, __pyx_L1_error)
           #endif
           if (__pyx_t_5 >= __pyx_temp) break;
         }
@@ -7413,13 +7417,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
         #endif
         ++__pyx_t_5;
       }
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
     } else {
       __pyx_t_2 = __pyx_t_6(__pyx_t_1);
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 151, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 153, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -7429,109 +7433,109 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_point, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":152
+    /* "Rasterizer.pyx":154
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:
  *         uv_list.append([point[3], point[4]])             # <<<<<<<<<<<<<<
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]
 */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 3, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_point, 3, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 4, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 4, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_2);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 152, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 154, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_4);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 152, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_7, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 154, __pyx_L1_error);
     __pyx_t_2 = 0;
     __pyx_t_4 = 0;
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_uv_list, __pyx_t_7); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 152, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_uv_list, __pyx_t_7); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "RasterizerCython.pyx":153
+    /* "Rasterizer.pyx":155
  *     for point in points:
  *         uv_list.append([point[3], point[4]])
  *         if point[0] < min_x: min_x = point[0]             # <<<<<<<<<<<<<<
  *         if point[0] > max_x: max_x = point[0]
  *         if point[1] < min_y: min_y = point[1]
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_x, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_x, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 153, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_9) {
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_min_x, __pyx_t_4);
       __pyx_t_4 = 0;
     }
 
-    /* "RasterizerCython.pyx":154
+    /* "Rasterizer.pyx":156
  *         uv_list.append([point[3], point[4]])
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]             # <<<<<<<<<<<<<<
  *         if point[1] < min_y: min_y = point[1]
  *         if point[1] > max_y: max_y = point[1]
 */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_x, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_x, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 154, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_9) {
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 154, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_max_x, __pyx_t_7);
       __pyx_t_7 = 0;
     }
 
-    /* "RasterizerCython.pyx":155
+    /* "Rasterizer.pyx":157
  *         if point[0] < min_x: min_x = point[0]
  *         if point[0] > max_x: max_x = point[0]
  *         if point[1] < min_y: min_y = point[1]             # <<<<<<<<<<<<<<
  *         if point[1] > max_y: max_y = point[1]
  *     # NOTE: this is actually black magic, idk how this works
 */
-    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_y, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_t_7, __pyx_v_min_y, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 155, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_9) {
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 157, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF_SET(__pyx_v_min_y, __pyx_t_4);
       __pyx_t_4 = 0;
     }
 
-    /* "RasterizerCython.pyx":156
+    /* "Rasterizer.pyx":158
  *         if point[0] > max_x: max_x = point[0]
  *         if point[1] < min_y: min_y = point[1]
  *         if point[1] > max_y: max_y = point[1]             # <<<<<<<<<<<<<<
  *     # NOTE: this is actually black magic, idk how this works
  *     ia, ib, ic = 2,0,1
 */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_y, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_7 = PyObject_RichCompare(__pyx_t_4, __pyx_v_max_y, Py_GT); __Pyx_XGOTREF(__pyx_t_7); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_IsTrue(__pyx_t_7); if (unlikely((__pyx_t_9 < 0))) __PYX_ERR(0, 158, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     if (__pyx_t_9) {
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_point, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF_SET(__pyx_v_max_y, __pyx_t_7);
       __pyx_t_7 = 0;
     }
 
-    /* "RasterizerCython.pyx":151
+    /* "Rasterizer.pyx":153
  *     min_x, max_x = points[0][0], points[0][0]
  *     min_y, max_y = points[0][1], points[0][1]
  *     for point in points:             # <<<<<<<<<<<<<<
@@ -7541,7 +7545,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":158
+  /* "Rasterizer.pyx":160
  *         if point[1] > max_y: max_y = point[1]
  *     # NOTE: this is actually black magic, idk how this works
  *     ia, ib, ic = 2,0,1             # <<<<<<<<<<<<<<
@@ -7555,34 +7559,34 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   __pyx_v_ib = __pyx_t_11;
   __pyx_v_ic = __pyx_t_12;
 
-  /* "RasterizerCython.pyx":159
+  /* "Rasterizer.pyx":161
  *     # NOTE: this is actually black magic, idk how this works
  *     ia, ib, ic = 2,0,1
  *     uv_list = [uv_list[ia], uv_list[ib], uv_list[ic]]             # <<<<<<<<<<<<<<
  * 
  *     e0 = make_edge(points[1], points[2])
 */
-  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ia, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ia, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ib, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ib, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ic, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_v_uv_list, __pyx_v_ic, long, 1, __Pyx_PyLong_From_long, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 159, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 161, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_7);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 159, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 1, __pyx_t_7) != (0)) __PYX_ERR(0, 161, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_t_4) != (0)) __PYX_ERR(0, 159, __pyx_L1_error);
+  if (__Pyx_PyList_SET_ITEM(__pyx_t_2, 2, __pyx_t_4) != (0)) __PYX_ERR(0, 161, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_7 = 0;
   __pyx_t_4 = 0;
   __Pyx_DECREF_SET(__pyx_v_uv_list, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":161
+  /* "Rasterizer.pyx":163
  *     uv_list = [uv_list[ia], uv_list[ib], uv_list[ic]]
  * 
  *     e0 = make_edge(points[1], points[2])             # <<<<<<<<<<<<<<
@@ -7590,11 +7594,11 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  *     e2 = make_edge(points[0], points[1])
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_make_edge); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_make_edge); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __pyx_t_3 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7615,13 +7619,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_e0 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":162
+  /* "Rasterizer.pyx":164
  * 
  *     e0 = make_edge(points[1], points[2])
  *     e1 = make_edge(points[2], points[0])             # <<<<<<<<<<<<<<
@@ -7629,11 +7633,11 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  * 
 */
   __pyx_t_7 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_make_edge); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_make_edge); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 2, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7654,13 +7658,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_e1 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":163
+  /* "Rasterizer.pyx":165
  *     e0 = make_edge(points[1], points[2])
  *     e1 = make_edge(points[2], points[0])
  *     e2 = make_edge(points[0], points[1])             # <<<<<<<<<<<<<<
@@ -7668,11 +7672,11 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  *     E0_row = eval_edge(e0, min_x, min_y)
 */
   __pyx_t_13 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_make_edge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_make_edge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_points, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_points, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_3 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7693,13 +7697,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 163, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_e2 = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":165
+  /* "Rasterizer.pyx":167
  *     e2 = make_edge(points[0], points[1])
  * 
  *     E0_row = eval_edge(e0, min_x, min_y)             # <<<<<<<<<<<<<<
@@ -7707,7 +7711,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  *     E2_row = eval_edge(e2, min_x, min_y)
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_eval_edge); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_eval_edge); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_3 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7726,13 +7730,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_3, (4-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_E0_row = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":166
+  /* "Rasterizer.pyx":168
  * 
  *     E0_row = eval_edge(e0, min_x, min_y)
  *     E1_row = eval_edge(e1, min_x, min_y)             # <<<<<<<<<<<<<<
@@ -7740,7 +7744,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  * 
 */
   __pyx_t_7 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_eval_edge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_eval_edge); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_3 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7759,13 +7763,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_3, (4-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 168, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_E1_row = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":167
+  /* "Rasterizer.pyx":169
  *     E0_row = eval_edge(e0, min_x, min_y)
  *     E1_row = eval_edge(e1, min_x, min_y)
  *     E2_row = eval_edge(e2, min_x, min_y)             # <<<<<<<<<<<<<<
@@ -7773,7 +7777,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  *     # checking every pixel in the bounding box
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_eval_edge); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_eval_edge); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_t_3 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -7792,13 +7796,13 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_7, __pyx_callargs+__pyx_t_3, (4-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v_E2_row = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":170
+  /* "Rasterizer.pyx":172
  * 
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):             # <<<<<<<<<<<<<<
@@ -7811,12 +7815,12 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     PyObject *__pyx_callargs[3] = {__pyx_t_7, __pyx_v_min_y, __pyx_v_max_y};
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_3, (3-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_7 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 170, __pyx_L1_error)
+  __pyx_t_6 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_7); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
     {
@@ -7824,7 +7828,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
       if (unlikely(!__pyx_t_2)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
-          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 170, __pyx_L1_error)
+          if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 172, __pyx_L1_error)
           PyErr_Clear();
         }
         break;
@@ -7834,26 +7838,26 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":171
+    /* "Rasterizer.pyx":173
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):
  *         if i < 0 or i >= ss[1]: continue # prevent buffer overflow             # <<<<<<<<<<<<<<
  *         E0 = E0_row
  *         E1 = E1_row
 */
-    __pyx_t_2 = PyObject_RichCompare(__pyx_v_i, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
-    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_2 = PyObject_RichCompare(__pyx_v_i, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     if (!__pyx_t_14) {
     } else {
       __pyx_t_9 = __pyx_t_14;
       goto __pyx_L13_bool_binop_done;
     }
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_ss, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_ss, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = PyObject_RichCompare(__pyx_v_i, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_4 = PyObject_RichCompare(__pyx_v_i, __pyx_t_2, Py_GE); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 173, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_9 = __pyx_t_14;
     __pyx_L13_bool_binop_done:;
@@ -7861,7 +7865,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
       goto __pyx_L10_continue;
     }
 
-    /* "RasterizerCython.pyx":172
+    /* "Rasterizer.pyx":174
  *     for i in range(min_y, max_y):
  *         if i < 0 or i >= ss[1]: continue # prevent buffer overflow
  *         E0 = E0_row             # <<<<<<<<<<<<<<
@@ -7871,7 +7875,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_INCREF(__pyx_v_E0_row);
     __Pyx_XDECREF_SET(__pyx_v_E0, __pyx_v_E0_row);
 
-    /* "RasterizerCython.pyx":173
+    /* "Rasterizer.pyx":175
  *         if i < 0 or i >= ss[1]: continue # prevent buffer overflow
  *         E0 = E0_row
  *         E1 = E1_row             # <<<<<<<<<<<<<<
@@ -7881,7 +7885,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_INCREF(__pyx_v_E1_row);
     __Pyx_XDECREF_SET(__pyx_v_E1, __pyx_v_E1_row);
 
-    /* "RasterizerCython.pyx":174
+    /* "Rasterizer.pyx":176
  *         E0 = E0_row
  *         E1 = E1_row
  *         E2 = E2_row             # <<<<<<<<<<<<<<
@@ -7891,7 +7895,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     __Pyx_INCREF(__pyx_v_E2_row);
     __Pyx_XDECREF_SET(__pyx_v_E2, __pyx_v_E2_row);
 
-    /* "RasterizerCython.pyx":176
+    /* "Rasterizer.pyx":178
  *         E2 = E2_row
  *         # creating + filling the buffer for the scanline
  *         for j in range(min_x, max_x):             # <<<<<<<<<<<<<<
@@ -7904,12 +7908,12 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
       PyObject *__pyx_callargs[3] = {__pyx_t_2, __pyx_v_min_x, __pyx_v_max_x};
       __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(&PyRange_Type), __pyx_callargs+__pyx_t_3, (3-__pyx_t_3) | (__pyx_t_3*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 176, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 178, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
-    __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_15 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_15 = (CYTHON_COMPILING_IN_LIMITED_API) ? PyIter_Next : __Pyx_PyObject_GetIterNextFunc(__pyx_t_2); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
       {
@@ -7917,7 +7921,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
         if (unlikely(!__pyx_t_4)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
-            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 176, __pyx_L1_error)
+            if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) __PYX_ERR(0, 178, __pyx_L1_error)
             PyErr_Clear();
           }
           break;
@@ -7927,26 +7931,26 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
       __Pyx_XDECREF_SET(__pyx_v_j, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "RasterizerCython.pyx":177
+      /* "Rasterizer.pyx":179
  *         # creating + filling the buffer for the scanline
  *         for j in range(min_x, max_x):
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow             # <<<<<<<<<<<<<<
  *             if E0 <= 0 and E1 <= 0 and E2 <= 0:
  *                 color = [255,255,255]
 */
-      __pyx_t_4 = PyObject_RichCompare(__pyx_v_j, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_4 = PyObject_RichCompare(__pyx_v_j, __pyx_mstate_global->__pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (!__pyx_t_14) {
       } else {
         __pyx_t_9 = __pyx_t_14;
         goto __pyx_L18_bool_binop_done;
       }
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_ss, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_j, __pyx_t_4, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_j, __pyx_t_4, Py_GE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 177, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 179, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_9 = __pyx_t_14;
       __pyx_L18_bool_binop_done:;
@@ -7954,89 +7958,89 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
         goto __pyx_L15_continue;
       }
 
-      /* "RasterizerCython.pyx":178
+      /* "Rasterizer.pyx":180
  *         for j in range(min_x, max_x):
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow
  *             if E0 <= 0 and E1 <= 0 and E2 <= 0:             # <<<<<<<<<<<<<<
  *                 color = [255,255,255]
  *                 for k in range(len(color)):
 */
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_E0, __pyx_mstate_global->__pyx_int_0, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_E0, __pyx_mstate_global->__pyx_int_0, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_14) {
       } else {
         __pyx_t_9 = __pyx_t_14;
         goto __pyx_L21_bool_binop_done;
       }
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_E1, __pyx_mstate_global->__pyx_int_0, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_E1, __pyx_mstate_global->__pyx_int_0, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_14) {
       } else {
         __pyx_t_9 = __pyx_t_14;
         goto __pyx_L21_bool_binop_done;
       }
-      __pyx_t_1 = PyObject_RichCompare(__pyx_v_E2, __pyx_mstate_global->__pyx_int_0, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
-      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 178, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_v_E2, __pyx_mstate_global->__pyx_int_0, Py_LE); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_14 < 0))) __PYX_ERR(0, 180, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_9 = __pyx_t_14;
       __pyx_L21_bool_binop_done:;
       if (__pyx_t_9) {
 
-        /* "RasterizerCython.pyx":179
+        /* "Rasterizer.pyx":181
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow
  *             if E0 <= 0 and E1 <= 0 and E2 <= 0:
  *                 color = [255,255,255]             # <<<<<<<<<<<<<<
  *                 for k in range(len(color)):
  *                     color[k] = int(color[k] * light_val)
 */
-        __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+        __pyx_t_1 = PyList_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_INCREF(__pyx_mstate_global->__pyx_int_255);
         __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_255);
-        if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 0, __pyx_mstate_global->__pyx_int_255) != (0)) __PYX_ERR(0, 179, __pyx_L1_error);
+        if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 0, __pyx_mstate_global->__pyx_int_255) != (0)) __PYX_ERR(0, 181, __pyx_L1_error);
         __Pyx_INCREF(__pyx_mstate_global->__pyx_int_255);
         __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_255);
-        if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 1, __pyx_mstate_global->__pyx_int_255) != (0)) __PYX_ERR(0, 179, __pyx_L1_error);
+        if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 1, __pyx_mstate_global->__pyx_int_255) != (0)) __PYX_ERR(0, 181, __pyx_L1_error);
         __Pyx_INCREF(__pyx_mstate_global->__pyx_int_255);
         __Pyx_GIVEREF(__pyx_mstate_global->__pyx_int_255);
-        if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 2, __pyx_mstate_global->__pyx_int_255) != (0)) __PYX_ERR(0, 179, __pyx_L1_error);
+        if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 2, __pyx_mstate_global->__pyx_int_255) != (0)) __PYX_ERR(0, 181, __pyx_L1_error);
         __Pyx_XDECREF_SET(__pyx_v_color, ((PyObject*)__pyx_t_1));
         __pyx_t_1 = 0;
 
-        /* "RasterizerCython.pyx":180
+        /* "Rasterizer.pyx":182
  *             if E0 <= 0 and E1 <= 0 and E2 <= 0:
  *                 color = [255,255,255]
  *                 for k in range(len(color)):             # <<<<<<<<<<<<<<
  *                     color[k] = int(color[k] * light_val)
  *                 write_pixel_buffer(buffer, ss, (j,i), color)
 */
-        __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_color); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 180, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyList_GET_SIZE(__pyx_v_color); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(0, 182, __pyx_L1_error)
         __pyx_t_16 = __pyx_t_5;
         for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_16; __pyx_t_17+=1) {
           __pyx_v_k = __pyx_t_17;
 
-          /* "RasterizerCython.pyx":181
+          /* "Rasterizer.pyx":183
  *                 color = [255,255,255]
  *                 for k in range(len(color)):
  *                     color[k] = int(color[k] * light_val)             # <<<<<<<<<<<<<<
  *                 write_pixel_buffer(buffer, ss, (j,i), color)
  *             E0 += e0[0]; E1 += e1[0]; E2 += e2[0]
 */
-          __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_color, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_color, __pyx_v_k, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_v_light_val); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_4 = PyNumber_Multiply(__pyx_t_1, __pyx_v_light_val); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely((__Pyx_SetItemInt(__pyx_v_color, __pyx_v_k, __pyx_t_1, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 181, __pyx_L1_error)
+          if (unlikely((__Pyx_SetItemInt(__pyx_v_color, __pyx_v_k, __pyx_t_1, Py_ssize_t, 1, PyLong_FromSsize_t, 1, 1, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference) < 0))) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         }
 
-        /* "RasterizerCython.pyx":182
+        /* "Rasterizer.pyx":184
  *                 for k in range(len(color)):
  *                     color[k] = int(color[k] * light_val)
  *                 write_pixel_buffer(buffer, ss, (j,i), color)             # <<<<<<<<<<<<<<
@@ -8044,16 +8048,16 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
  *         E0_row += e0[1]; E1_row += e1[1]; E2_row += e2[1]
 */
         __pyx_t_4 = NULL;
-        __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_write_pixel_buffer); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 182, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_mstate_global->__pyx_n_u_write_pixel_buffer); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 184, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
-        __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 182, __pyx_L1_error)
+        __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 184, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         __Pyx_INCREF(__pyx_v_j);
         __Pyx_GIVEREF(__pyx_v_j);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_v_j) != (0)) __PYX_ERR(0, 182, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_v_j) != (0)) __PYX_ERR(0, 184, __pyx_L1_error);
         __Pyx_INCREF(__pyx_v_i);
         __Pyx_GIVEREF(__pyx_v_i);
-        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_v_i) != (0)) __PYX_ERR(0, 182, __pyx_L1_error);
+        if (__Pyx_PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_v_i) != (0)) __PYX_ERR(0, 184, __pyx_L1_error);
         __pyx_t_3 = 1;
         #if CYTHON_UNPACK_METHODS
         if (unlikely(PyMethod_Check(__pyx_t_13))) {
@@ -8072,12 +8076,12 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 182, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 184, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
         }
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "RasterizerCython.pyx":178
+        /* "Rasterizer.pyx":180
  *         for j in range(min_x, max_x):
  *             if j < 0 or j >= ss[0]: continue # prevent buffer overflow
  *             if E0 <= 0 and E1 <= 0 and E2 <= 0:             # <<<<<<<<<<<<<<
@@ -8086,36 +8090,36 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
 */
       }
 
-      /* "RasterizerCython.pyx":183
+      /* "Rasterizer.pyx":185
  *                     color[k] = int(color[k] * light_val)
  *                 write_pixel_buffer(buffer, ss, (j,i), color)
  *             E0 += e0[0]; E1 += e1[0]; E2 += e2[0]             # <<<<<<<<<<<<<<
  *         E0_row += e0[1]; E1_row += e1[1]; E2_row += e2[1]
  * 
 */
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_e0, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_e0, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E0, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E0, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 185, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_E0, __pyx_t_13);
       __pyx_t_13 = 0;
-      __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_e1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_e1, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 185, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_E1, __pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_1 = PyNumber_InPlaceAdd(__pyx_v_E1, __pyx_t_13); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF_SET(__pyx_v_E1, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_e2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_e2, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E2, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 183, __pyx_L1_error)
+      __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E2, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 185, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF_SET(__pyx_v_E2, __pyx_t_13);
       __pyx_t_13 = 0;
 
-      /* "RasterizerCython.pyx":176
+      /* "Rasterizer.pyx":178
  *         E2 = E2_row
  *         # creating + filling the buffer for the scanline
  *         for j in range(min_x, max_x):             # <<<<<<<<<<<<<<
@@ -8126,36 +8130,36 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":184
+    /* "Rasterizer.pyx":186
  *                 write_pixel_buffer(buffer, ss, (j,i), color)
  *             E0 += e0[0]; E1 += e1[0]; E2 += e2[0]
  *         E0_row += e0[1]; E1_row += e1[1]; E2_row += e2[1]             # <<<<<<<<<<<<<<
  * 
  * def load_texture(file_name):
 */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_e0, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_e0, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E0_row, __pyx_t_2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E0_row, __pyx_t_2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_E0_row, __pyx_t_13);
     __pyx_t_13 = 0;
-    __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_e1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_e1, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_E1_row, __pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_2 = PyNumber_InPlaceAdd(__pyx_v_E1_row, __pyx_t_13); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __Pyx_DECREF_SET(__pyx_v_E1_row, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_e2, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_e2, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E2_row, __pyx_t_2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 184, __pyx_L1_error)
+    __pyx_t_13 = PyNumber_InPlaceAdd(__pyx_v_E2_row, __pyx_t_2); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 186, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_E2_row, __pyx_t_13);
     __pyx_t_13 = 0;
 
-    /* "RasterizerCython.pyx":170
+    /* "Rasterizer.pyx":172
  * 
  *     # checking every pixel in the bounding box
  *     for i in range(min_y, max_y):             # <<<<<<<<<<<<<<
@@ -8166,8 +8170,8 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   }
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "RasterizerCython.pyx":144
- *         buffer.write(pixel_write, buffer_offset)
+  /* "Rasterizer.pyx":146
+ *     return A*x + B*y + C
  * 
  * def draw_polygon_new(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
  *     buffer = screen.get_buffer()
@@ -8184,7 +8188,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_7);
   __Pyx_XDECREF(__pyx_t_13);
   __Pyx_XDECREF(__pyx_t_18);
-  __Pyx_AddTraceback("RasterizerCython.draw_polygon_new", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.draw_polygon_new", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_buffer);
@@ -8212,7 +8216,7 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":186
+/* "Rasterizer.pyx":188
  *         E0_row += e0[1]; E1_row += e1[1]; E2_row += e2[1]
  * 
  * def load_texture(file_name):             # <<<<<<<<<<<<<<
@@ -8221,15 +8225,15 @@ static PyObject *__pyx_pf_16RasterizerCython_20draw_polygon_new(CYTHON_UNUSED Py
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_23load_texture(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_23load_texture(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_23load_texture = {"load_texture", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_23load_texture, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_23load_texture(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_23load_texture = {"load_texture", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_23load_texture, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_23load_texture(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8259,43 +8263,43 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_file_name,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 186, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 188, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 186, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 188, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "load_texture", 0) < (0)) __PYX_ERR(0, 186, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "load_texture", 0) < (0)) __PYX_ERR(0, 188, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("load_texture", 1, 1, 1, i); __PYX_ERR(0, 186, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("load_texture", 1, 1, 1, i); __PYX_ERR(0, 188, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 186, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 188, __pyx_L3_error)
     }
     __pyx_v_file_name = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("load_texture", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 186, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("load_texture", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 188, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.load_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.load_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_22load_texture(__pyx_self, __pyx_v_file_name);
+  __pyx_r = __pyx_pf_10Rasterizer_22load_texture(__pyx_self, __pyx_v_file_name);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -8305,7 +8309,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_file_name) {
+static PyObject *__pyx_pf_10Rasterizer_22load_texture(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_file_name) {
   PyObject *__pyx_v_img = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -8319,7 +8323,7 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("load_texture", 0);
 
-  /* "RasterizerCython.pyx":187
+  /* "Rasterizer.pyx":189
  * 
  * def load_texture(file_name):
  *     img = Image.open(file_name)             # <<<<<<<<<<<<<<
@@ -8327,9 +8331,9 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
  * 
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_Image); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_Image); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_open); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_open); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_5 = 1;
@@ -8349,13 +8353,13 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_img = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":188
+  /* "Rasterizer.pyx":190
  * def load_texture(file_name):
  *     img = Image.open(file_name)
  *     return (img.size, img.load())             # <<<<<<<<<<<<<<
@@ -8363,7 +8367,7 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
  * # nearest neighbor
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_img, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_img, __pyx_mstate_global->__pyx_n_u_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_2 = __pyx_v_img;
   __Pyx_INCREF(__pyx_t_2);
@@ -8372,22 +8376,22 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
     PyObject *__pyx_callargs[2] = {__pyx_t_2, NULL};
     __pyx_t_4 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_load, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 190, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
   }
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1) != (0)) __PYX_ERR(0, 190, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_4);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 188, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4) != (0)) __PYX_ERR(0, 190, __pyx_L1_error);
   __pyx_t_1 = 0;
   __pyx_t_4 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":186
+  /* "Rasterizer.pyx":188
  *         E0_row += e0[1]; E1_row += e1[1]; E2_row += e2[1]
  * 
  * def load_texture(file_name):             # <<<<<<<<<<<<<<
@@ -8401,7 +8405,7 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("RasterizerCython.load_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.load_texture", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_img);
@@ -8410,7 +8414,7 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
   return __pyx_r;
 }
 
-/* "RasterizerCython.pyx":191
+/* "Rasterizer.pyx":193
  * 
  * # nearest neighbor
  * def get_color_NN(texture, u,v):             # <<<<<<<<<<<<<<
@@ -8419,15 +8423,15 @@ static PyObject *__pyx_pf_16RasterizerCython_22load_texture(CYTHON_UNUSED PyObje
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_16RasterizerCython_25get_color_NN(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10Rasterizer_25get_color_NN(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_16RasterizerCython_25get_color_NN = {"get_color_NN", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_16RasterizerCython_25get_color_NN, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_16RasterizerCython_25get_color_NN(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10Rasterizer_25get_color_NN = {"get_color_NN", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10Rasterizer_25get_color_NN, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10Rasterizer_25get_color_NN(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -8459,38 +8463,38 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_texture,&__pyx_mstate_global->__pyx_n_u_u,&__pyx_mstate_global->__pyx_n_u_v,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 191, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 193, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  3:
         values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 191, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 193, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 191, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 193, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 191, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 193, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_color_NN", 0) < (0)) __PYX_ERR(0, 191, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "get_color_NN", 0) < (0)) __PYX_ERR(0, 193, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_color_NN", 1, 3, 3, i); __PYX_ERR(0, 191, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("get_color_NN", 1, 3, 3, i); __PYX_ERR(0, 193, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 191, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 193, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 191, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 193, __pyx_L3_error)
       values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 191, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 193, __pyx_L3_error)
     }
     __pyx_v_texture = values[0];
     __pyx_v_u = values[1];
@@ -8498,18 +8502,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_color_NN", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 191, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_color_NN", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 193, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("RasterizerCython.get_color_NN", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.get_color_NN", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_16RasterizerCython_24get_color_NN(__pyx_self, __pyx_v_texture, __pyx_v_u, __pyx_v_v);
+  __pyx_r = __pyx_pf_10Rasterizer_24get_color_NN(__pyx_self, __pyx_v_texture, __pyx_v_u, __pyx_v_v);
 
   /* function exit code */
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
@@ -8519,7 +8523,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_texture, PyObject *__pyx_v_u, PyObject *__pyx_v_v) {
+static PyObject *__pyx_pf_10Rasterizer_24get_color_NN(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_texture, PyObject *__pyx_v_u, PyObject *__pyx_v_v) {
   PyObject *__pyx_v_img_size = NULL;
   PyObject *__pyx_v_pixel_x = NULL;
   PyObject *__pyx_v_pixel_y = NULL;
@@ -8537,19 +8541,19 @@ static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObje
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_color_NN", 0);
 
-  /* "RasterizerCython.pyx":192
+  /* "Rasterizer.pyx":194
  * # nearest neighbor
  * def get_color_NN(texture, u,v):
  *     img_size = texture[0]             # <<<<<<<<<<<<<<
  *     # subtraction needed for index error if uv = 1
  *     pixel_x = round(u * (img_size[0]-1))
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_texture, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_texture, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_img_size = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":194
+  /* "Rasterizer.pyx":196
  *     img_size = texture[0]
  *     # subtraction needed for index error if uv = 1
  *     pixel_x = round(u * (img_size[0]-1))             # <<<<<<<<<<<<<<
@@ -8557,12 +8561,12 @@ static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObje
  *     color_val = texture[1][pixel_x, pixel_y]
 */
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_img_size, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_img_size, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyLong_SubtractObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_SubtractObjC(__pyx_t_3, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Multiply(__pyx_v_u, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Multiply(__pyx_v_u, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_5 = 1;
@@ -8571,13 +8575,13 @@ static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObje
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin_round, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_pixel_x = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":195
+  /* "Rasterizer.pyx":197
  *     # subtraction needed for index error if uv = 1
  *     pixel_x = round(u * (img_size[0]-1))
  *     pixel_y = round((1-v) * (img_size[1]-1)) #bottom left origin             # <<<<<<<<<<<<<<
@@ -8585,14 +8589,14 @@ static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObje
  *     return color_val
 */
   __pyx_t_3 = NULL;
-  __pyx_t_2 = __Pyx_PyLong_SubtractCObj(__pyx_mstate_global->__pyx_int_1, __pyx_v_v, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_SubtractCObj(__pyx_mstate_global->__pyx_int_1, __pyx_v_v, 1, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_img_size, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_img_size, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyLong_SubtractObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_SubtractObjC(__pyx_t_4, __pyx_mstate_global->__pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 195, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Multiply(__pyx_t_2, __pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -8602,49 +8606,49 @@ static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObje
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin_round, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 195, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 197, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_v_pixel_y = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "RasterizerCython.pyx":196
+  /* "Rasterizer.pyx":198
  *     pixel_x = round(u * (img_size[0]-1))
  *     pixel_y = round((1-v) * (img_size[1]-1)) #bottom left origin
  *     color_val = texture[1][pixel_x, pixel_y]             # <<<<<<<<<<<<<<
  *     return color_val
  * 
 */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_texture, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_texture, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_FunctionArgument); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_pixel_x);
   __Pyx_GIVEREF(__pyx_v_pixel_x);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_pixel_x) != (0)) __PYX_ERR(0, 196, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_pixel_x) != (0)) __PYX_ERR(0, 198, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_pixel_y);
   __Pyx_GIVEREF(__pyx_v_pixel_y);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_pixel_y) != (0)) __PYX_ERR(0, 196, __pyx_L1_error);
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 196, __pyx_L1_error)
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_v_pixel_y) != (0)) __PYX_ERR(0, 198, __pyx_L1_error);
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_color_val = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "RasterizerCython.pyx":197
+  /* "Rasterizer.pyx":199
  *     pixel_y = round((1-v) * (img_size[1]-1)) #bottom left origin
  *     color_val = texture[1][pixel_x, pixel_y]
  *     return color_val             # <<<<<<<<<<<<<<
  * 
- * if __name__ == "__main__":
+ * if draw_type == "old":
 */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_color_val);
   __pyx_r = __pyx_v_color_val;
   goto __pyx_L0;
 
-  /* "RasterizerCython.pyx":191
+  /* "Rasterizer.pyx":193
  * 
  * # nearest neighbor
  * def get_color_NN(texture, u,v):             # <<<<<<<<<<<<<<
@@ -8659,7 +8663,7 @@ static PyObject *__pyx_pf_16RasterizerCython_24get_color_NN(CYTHON_UNUSED PyObje
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("RasterizerCython.get_color_NN", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("Rasterizer.get_color_NN", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_img_size);
@@ -8755,10 +8759,10 @@ static int __Pyx_modinit_function_import_code(__pyx_mstatetype *__pyx_mstate) {
 
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_RasterizerCython(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_Rasterizer(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_RasterizerCython},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_Rasterizer},
   #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
   {Py_mod_gil, __Pyx_FREETHREADING_COMPATIBLE},
   #endif
@@ -8777,7 +8781,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "RasterizerCython",
+      "Rasterizer",
       0, /* m_doc */
     #if CYTHON_USE_MODULE_STATE
       sizeof(__pyx_mstatetype), /* m_size */
@@ -8815,8 +8819,8 @@ namespace {
   #endif
 #endif
 
-__Pyx_PyMODINIT_FUNC PyInit_RasterizerCython(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_RasterizerCython(void)
+__Pyx_PyMODINIT_FUNC PyInit_Rasterizer(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_Rasterizer(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -8923,7 +8927,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_RasterizerCython(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_Rasterizer(PyObject *__pyx_pyinit_module)
 #endif
 {
   int stringtab_initialized = 0;
@@ -8948,7 +8952,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_RasterizerCython(PyObject *__pyx_p
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'RasterizerCython' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'Rasterizer' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #else
@@ -8964,7 +8968,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_RasterizerCython(PyObject *__pyx_p
   #if CYTHON_USE_MODULE_STATE
   {
     int add_module_result = __Pyx_State_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "RasterizerCython" pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to "Rasterizer" pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -8992,7 +8996,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_RasterizerCython(PyObject *__pyx_p
   }
   #endif
   
-__Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
+__Pyx_RefNannySetupContext("PyInit_Rasterizer", 0);
   __Pyx_init_runtime_version();
   if (__Pyx_check_binary_version(__PYX_LIMITED_VERSION_HEX, __Pyx_get_runtime_version(), CYTHON_COMPILING_IN_LIMITED_API) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_mstate->__pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_mstate->__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -9003,13 +9007,13 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
   if (__Pyx_InitConstants(__pyx_mstate) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   stringtab_initialized = 1;
   if (__Pyx_InitGlobals() < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__pyx_module_is_main_RasterizerCython) {
+  if (__pyx_module_is_main_Rasterizer) {
     if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_name, __pyx_mstate_global->__pyx_n_u_main) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "RasterizerCython")) {
-      if (unlikely((PyDict_SetItemString(modules, "RasterizerCython", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "Rasterizer")) {
+      if (unlikely((PyDict_SetItemString(modules, "Rasterizer", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   /*--- Builtin init code ---*/
@@ -9027,7 +9031,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "RasterizerCython.pyx":1
+  /* "Rasterizer.pyx":1
  * import math             # <<<<<<<<<<<<<<
  * import pygame
  * from PIL import Image
@@ -9038,7 +9042,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_math, __pyx_t_2) < (0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":2
+  /* "Rasterizer.pyx":2
  * import math
  * import pygame             # <<<<<<<<<<<<<<
  * from PIL import Image
@@ -9050,12 +9054,12 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_pygame, __pyx_t_2) < (0)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":3
+  /* "Rasterizer.pyx":3
  * import math
  * import pygame
  * from PIL import Image             # <<<<<<<<<<<<<<
  * 
- * # triangle functions
+ * draw_type = "old"
 */
   {
     PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_Image};
@@ -9074,228 +9078,307 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":6
+  /* "Rasterizer.pyx":5
+ * from PIL import Image
+ * 
+ * draw_type = "old"             # <<<<<<<<<<<<<<
+ * 
+ * # triangle functions
+*/
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_type, __pyx_mstate_global->__pyx_n_u_old) < (0)) __PYX_ERR(0, 5, __pyx_L1_error)
+
+  /* "Rasterizer.pyx":8
  * 
  * # triangle functions
  * def dp(vector_a, vector_b):             # <<<<<<<<<<<<<<
  *     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_1dp, 0, __pyx_mstate_global->__pyx_n_u_dp, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_1dp, 0, __pyx_mstate_global->__pyx_n_u_dp, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_dp, __pyx_t_2) < (0)) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_dp, __pyx_t_2) < (0)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":9
+  /* "Rasterizer.pyx":11
  *     return vector_a[0]*vector_b[0] + vector_a[1]*vector_b[1]
  * 
  * def right_angle(vector):             # <<<<<<<<<<<<<<
  *     return (-vector[1], vector[0])
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_3right_angle, 0, __pyx_mstate_global->__pyx_n_u_right_angle, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_3right_angle, 0, __pyx_mstate_global->__pyx_n_u_right_angle, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_right_angle, __pyx_t_2) < (0)) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_right_angle, __pyx_t_2) < (0)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":12
+  /* "Rasterizer.pyx":14
  *     return (-vector[1], vector[0])
  * 
  * def inside_triangle(a, b, c, p):             # <<<<<<<<<<<<<<
  *     # abc define a triangle, while p is a point
  *     ab = (b[0]-a[0], b[1]-a[1])
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_5inside_triangle, 0, __pyx_mstate_global->__pyx_n_u_inside_triangle, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_5inside_triangle, 0, __pyx_mstate_global->__pyx_n_u_inside_triangle, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_inside_triangle, __pyx_t_2) < (0)) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_inside_triangle, __pyx_t_2) < (0)) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":33
+  /* "Rasterizer.pyx":35
  *     return (right_ab, right_bc, right_ca, area)
  * 
  * def check_inside_triangle(inside_triangle_values):             # <<<<<<<<<<<<<<
  *     tri_vals = inside_triangle_values
  *     return tri_vals[0]>=0 and tri_vals[1]>=0 and tri_vals[2]>=0 and tri_vals[3] != 0
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_7check_inside_triangle, 0, __pyx_mstate_global->__pyx_n_u_check_inside_triangle, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_7check_inside_triangle, 0, __pyx_mstate_global->__pyx_n_u_check_inside_triangle, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_check_inside_triangle, __pyx_t_2) < (0)) __PYX_ERR(0, 33, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_check_inside_triangle, __pyx_t_2) < (0)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":38
+  /* "Rasterizer.pyx":40
  * 
  * # buffer based functions
  * def read_pixel_buffer(buffer, ss, pixel_pos):             # <<<<<<<<<<<<<<
  *     # this function is really slow for some reason. string manip?
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_9read_pixel_buffer, 0, __pyx_mstate_global->__pyx_n_u_read_pixel_buffer, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_9read_pixel_buffer, 0, __pyx_mstate_global->__pyx_n_u_read_pixel_buffer, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_read_pixel_buffer, __pyx_t_2) < (0)) __PYX_ERR(0, 38, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_read_pixel_buffer, __pyx_t_2) < (0)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":43
+  /* "Rasterizer.pyx":45
  *     return buffer.raw[buffer_offset:buffer_offset+4]
  * 
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):             # <<<<<<<<<<<<<<
  *     ss = screen_size
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_11write_pixel_buffer, 0, __pyx_mstate_global->__pyx_n_u_write_pixel_buffer, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_11write_pixel_buffer, 0, __pyx_mstate_global->__pyx_n_u_write_pixel_buffer, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[0]);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_write_pixel_buffer, __pyx_t_2) < (0)) __PYX_ERR(0, 43, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_write_pixel_buffer, __pyx_t_2) < (0)) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":54
+  /* "Rasterizer.pyx":56
  * 
  * # drawing functions
  * def find_edges(points, scanline_height):             # <<<<<<<<<<<<<<
  *     min_x, max_x = points[0][0], points[0][0]
  *     for point in points:
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_13find_edges, 0, __pyx_mstate_global->__pyx_n_u_find_edges, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_13find_edges, 0, __pyx_mstate_global->__pyx_n_u_find_edges, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_find_edges, __pyx_t_2) < (0)) __PYX_ERR(0, 54, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_find_edges, __pyx_t_2) < (0)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":79
+  /* "Rasterizer.pyx":81
  *     #return(left, right, tri_1, (tri_1[0]-tri_2[0], tri_1[1]-tri_2[1], tri_1[2]-tri_2[2]))
+ * 
+ * def draw_polygon_old(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
+ *     buffer = screen.get_buffer()
+ *     ss = screen.get_size()
+*/
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_15draw_polygon_old, 0, __pyx_mstate_global->__pyx_n_u_draw_polygon_old, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
+  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
+  #endif
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_polygon_old, __pyx_t_2) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "Rasterizer.pyx":134
+ *         buffer.write(pixel_write, buffer_offset)
  * 
  * def make_edge(point1, point2):             # <<<<<<<<<<<<<<
  *     x1, y1 = point1[0], point1[1]
  *     x2, y2 = point2[0], point2[1]
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_15make_edge, 0, __pyx_mstate_global->__pyx_n_u_make_edge, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_17make_edge, 0, __pyx_mstate_global->__pyx_n_u_make_edge, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_make_edge, __pyx_t_2) < (0)) __PYX_ERR(0, 79, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_make_edge, __pyx_t_2) < (0)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":87
+  /* "Rasterizer.pyx":142
  *     return A, B, C
  * 
  * def eval_edge(edge, x, y):             # <<<<<<<<<<<<<<
  *     A, B, C = edge
  *     return A*x + B*y + C
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_17eval_edge, 0, __pyx_mstate_global->__pyx_n_u_eval_edge, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_19eval_edge, 0, __pyx_mstate_global->__pyx_n_u_eval_edge, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_eval_edge, __pyx_t_2) < (0)) __PYX_ERR(0, 87, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_eval_edge, __pyx_t_2) < (0)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":91
+  /* "Rasterizer.pyx":146
  *     return A*x + B*y + C
- * 
- * def draw_polygon(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
- *     buffer = screen.get_buffer()
- *     ss = screen.get_size()
-*/
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_19draw_polygon, 0, __pyx_mstate_global->__pyx_n_u_draw_polygon, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
-  PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
-  #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_polygon, __pyx_t_2) < (0)) __PYX_ERR(0, 91, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-
-  /* "RasterizerCython.pyx":144
- *         buffer.write(pixel_write, buffer_offset)
  * 
  * def draw_polygon_new(screen, points, texture, light_val):             # <<<<<<<<<<<<<<
  *     buffer = screen.get_buffer()
  *     ss = screen.get_size()
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_21draw_polygon_new, 0, __pyx_mstate_global->__pyx_n_u_draw_polygon_new, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_21draw_polygon_new, 0, __pyx_mstate_global->__pyx_n_u_draw_polygon_new, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_polygon_new, __pyx_t_2) < (0)) __PYX_ERR(0, 144, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_polygon_new, __pyx_t_2) < (0)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":186
+  /* "Rasterizer.pyx":188
  *         E0_row += e0[1]; E1_row += e1[1]; E2_row += e2[1]
  * 
  * def load_texture(file_name):             # <<<<<<<<<<<<<<
  *     img = Image.open(file_name)
  *     return (img.size, img.load())
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_23load_texture, 0, __pyx_mstate_global->__pyx_n_u_load_texture, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 186, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_23load_texture, 0, __pyx_mstate_global->__pyx_n_u_load_texture, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_load_texture, __pyx_t_2) < (0)) __PYX_ERR(0, 186, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_load_texture, __pyx_t_2) < (0)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":191
+  /* "Rasterizer.pyx":193
  * 
  * # nearest neighbor
  * def get_color_NN(texture, u,v):             # <<<<<<<<<<<<<<
  *     img_size = texture[0]
  *     # subtraction needed for index error if uv = 1
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_16RasterizerCython_25get_color_NN, 0, __pyx_mstate_global->__pyx_n_u_get_color_NN, NULL, __pyx_mstate_global->__pyx_n_u_RasterizerCython, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10Rasterizer_25get_color_NN, 0, __pyx_mstate_global->__pyx_n_u_get_color_NN, NULL, __pyx_mstate_global->__pyx_n_u_Rasterizer, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_get_color_NN, __pyx_t_2) < (0)) __PYX_ERR(0, 191, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_get_color_NN, __pyx_t_2) < (0)) __PYX_ERR(0, 193, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "RasterizerCython.pyx":199
+  /* "Rasterizer.pyx":201
  *     return color_val
+ * 
+ * if draw_type == "old":             # <<<<<<<<<<<<<<
+ *     draw_polygon = draw_polygon_old
+ * elif draw_type == "new":
+*/
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_draw_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_old, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 201, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_5) {
+
+    /* "Rasterizer.pyx":202
+ * 
+ * if draw_type == "old":
+ *     draw_polygon = draw_polygon_old             # <<<<<<<<<<<<<<
+ * elif draw_type == "new":
+ *     draw_polygon = draw_polygon_new
+*/
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_draw_polygon_old); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_polygon, __pyx_t_2) < (0)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "Rasterizer.pyx":201
+ *     return color_val
+ * 
+ * if draw_type == "old":             # <<<<<<<<<<<<<<
+ *     draw_polygon = draw_polygon_old
+ * elif draw_type == "new":
+*/
+    goto __pyx_L2;
+  }
+
+  /* "Rasterizer.pyx":203
+ * if draw_type == "old":
+ *     draw_polygon = draw_polygon_old
+ * elif draw_type == "new":             # <<<<<<<<<<<<<<
+ *     draw_polygon = draw_polygon_new
+ * 
+*/
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_draw_type); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_new, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 203, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_5) {
+
+    /* "Rasterizer.pyx":204
+ *     draw_polygon = draw_polygon_old
+ * elif draw_type == "new":
+ *     draw_polygon = draw_polygon_new             # <<<<<<<<<<<<<<
+ * 
+ * if __name__ == "__main__":
+*/
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_draw_polygon_new); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_draw_polygon, __pyx_t_2) < (0)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "Rasterizer.pyx":203
+ * if draw_type == "old":
+ *     draw_polygon = draw_polygon_old
+ * elif draw_type == "new":             # <<<<<<<<<<<<<<
+ *     draw_polygon = draw_polygon_new
+ * 
+*/
+  }
+  __pyx_L2:;
+
+  /* "Rasterizer.pyx":206
+ *     draw_polygon = draw_polygon_new
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
  *     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")
 */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_main, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_main, Py_EQ)); if (unlikely((__pyx_t_5 < 0))) __PYX_ERR(0, 206, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (__pyx_t_5) {
 
-    /* "RasterizerCython.pyx":200
+    /* "Rasterizer.pyx":207
  * 
  * if __name__ == "__main__":
  *     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]             # <<<<<<<<<<<<<<
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")
  *     pygame.init()
 */
-    __pyx_t_2 = __Pyx_PyList_Pack(3, __pyx_mstate_global->__pyx_tuple[1], __pyx_mstate_global->__pyx_tuple[2], __pyx_mstate_global->__pyx_tuple[3]); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyList_Pack(3, __pyx_mstate_global->__pyx_tuple[1], __pyx_mstate_global->__pyx_tuple[2], __pyx_mstate_global->__pyx_tuple[3]); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_triangle, __pyx_t_2) < (0)) __PYX_ERR(0, 200, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_triangle, __pyx_t_2) < (0)) __PYX_ERR(0, 207, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":201
+    /* "Rasterizer.pyx":208
  * if __name__ == "__main__":
  *     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")             # <<<<<<<<<<<<<<
@@ -9303,7 +9386,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
  *     screen = pygame.display.set_mode((200, 200))
 */
     __pyx_t_4 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_load_texture); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_load_texture); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = 1;
     {
@@ -9311,13 +9394,13 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 208, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_texture, __pyx_t_2) < (0)) __PYX_ERR(0, 201, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_texture, __pyx_t_2) < (0)) __PYX_ERR(0, 208, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":202
+    /* "Rasterizer.pyx":209
  *     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")
  *     pygame.init()             # <<<<<<<<<<<<<<
@@ -9325,9 +9408,9 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
  *     draw_polygon(screen, triangle, texture, 1)
 */
     __pyx_t_6 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_pygame); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_init); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 202, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_init); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 209, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_7 = 1;
@@ -9336,21 +9419,21 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_8, __pyx_callargs+__pyx_t_7, (1-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 209, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":203
+    /* "Rasterizer.pyx":210
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")
  *     pygame.init()
  *     screen = pygame.display.set_mode((200, 200))             # <<<<<<<<<<<<<<
  *     draw_polygon(screen, triangle, texture, 1)
  *     print(find_edges(triangle, 40))
 */
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_pygame); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_pygame); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 210, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_display); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 203, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_display); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 210, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_8 = __pyx_t_4;
@@ -9361,13 +9444,13 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_set_mode, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 203, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_screen, __pyx_t_2) < (0)) __PYX_ERR(0, 203, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_screen, __pyx_t_2) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":204
+    /* "Rasterizer.pyx":211
  *     pygame.init()
  *     screen = pygame.display.set_mode((200, 200))
  *     draw_polygon(screen, triangle, texture, 1)             # <<<<<<<<<<<<<<
@@ -9375,13 +9458,13 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
  *     pygame.display.update()
 */
     __pyx_t_4 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_draw_polygon); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_draw_polygon); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_screen); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_screen); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_triangle); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_mstate_global->__pyx_n_u_triangle); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_texture); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 204, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_mstate_global->__pyx_n_u_texture); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 211, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_7 = 1;
     {
@@ -9392,12 +9475,12 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":205
+    /* "Rasterizer.pyx":212
  *     screen = pygame.display.set_mode((200, 200))
  *     draw_polygon(screen, triangle, texture, 1)
  *     print(find_edges(triangle, 40))             # <<<<<<<<<<<<<<
@@ -9406,9 +9489,9 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
 */
     __pyx_t_8 = NULL;
     __pyx_t_9 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_find_edges); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_find_edges); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_triangle); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 205, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_triangle); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 212, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = 1;
     {
@@ -9417,7 +9500,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 205, __pyx_L1_error)
+      if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
     }
     __pyx_t_7 = 1;
@@ -9426,21 +9509,21 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_builtin_print, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 205, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":206
+    /* "Rasterizer.pyx":213
  *     draw_polygon(screen, triangle, texture, 1)
  *     print(find_edges(triangle, 40))
  *     pygame.display.update()             # <<<<<<<<<<<<<<
  *     while True:
  *         continue
 */
-    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_pygame); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 206, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_pygame); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_display); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 206, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_mstate_global->__pyx_n_u_display); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_10 = __pyx_t_6;
@@ -9451,12 +9534,12 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_update, __pyx_callargs+__pyx_t_7, (1-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "RasterizerCython.pyx":207
+    /* "Rasterizer.pyx":214
  *     print(find_edges(triangle, 40))
  *     pygame.display.update()
  *     while True:             # <<<<<<<<<<<<<<
@@ -9464,17 +9547,17 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
 */
     while (1) {
 
-      /* "RasterizerCython.pyx":208
+      /* "Rasterizer.pyx":215
  *     pygame.display.update()
  *     while True:
  *         continue             # <<<<<<<<<<<<<<
 */
-      goto __pyx_L3_continue;
-      __pyx_L3_continue:;
+      goto __pyx_L4_continue;
+      __pyx_L4_continue:;
     }
 
-    /* "RasterizerCython.pyx":199
- *     return color_val
+    /* "Rasterizer.pyx":206
+ *     draw_polygon = draw_polygon_new
  * 
  * if __name__ == "__main__":             # <<<<<<<<<<<<<<
  *     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]
@@ -9482,7 +9565,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
 */
   }
 
-  /* "RasterizerCython.pyx":1
+  /* "Rasterizer.pyx":1
  * import math             # <<<<<<<<<<<<<<
  * import pygame
  * from PIL import Image
@@ -9504,7 +9587,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
   __Pyx_XDECREF(__pyx_t_10);
   if (__pyx_m) {
     if (__pyx_mstate->__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init RasterizerCython", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init Rasterizer", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -9518,7 +9601,7 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init RasterizerCython");
+    PyErr_SetString(PyExc_ImportError, "init Rasterizer");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -9533,10 +9616,10 @@ __Pyx_RefNannySetupContext("PyInit_RasterizerCython", 0);
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_print); if (!__pyx_builtin_print) __PYX_ERR(0, 205, __pyx_L1_error)
-  __pyx_builtin_min = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_min); if (!__pyx_builtin_min) __PYX_ERR(0, 73, __pyx_L1_error)
-  __pyx_builtin_max = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_max); if (!__pyx_builtin_max) __PYX_ERR(0, 73, __pyx_L1_error)
-  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_round); if (!__pyx_builtin_round) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_print); if (!__pyx_builtin_print) __PYX_ERR(0, 212, __pyx_L1_error)
+  __pyx_builtin_min = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_min); if (!__pyx_builtin_min) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_max = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_max); if (!__pyx_builtin_max) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_builtin_round = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_round); if (!__pyx_builtin_round) __PYX_ERR(0, 196, __pyx_L1_error)
 
   /* Cached unbound methods */
   __pyx_mstate->__pyx_umethod_PyDict_Type_items.type = (PyObject*)&PyDict_Type;
@@ -9556,42 +9639,42 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "RasterizerCython.pyx":43
+  /* "Rasterizer.pyx":45
  *     return buffer.raw[buffer_offset:buffer_offset+4]
  * 
  * def write_pixel_buffer(buffer, screen_size, pixel_pos, pixel_color, extra_byte=0):             # <<<<<<<<<<<<<<
  *     ss = screen_size
  *     buffer_offset = (pixel_pos[0] + pixel_pos[1] * ss[0]) * 4
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(1, ((PyObject*)__pyx_mstate_global->__pyx_int_0)); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(1, ((PyObject*)__pyx_mstate_global->__pyx_int_0)); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 45, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
-  /* "RasterizerCython.pyx":200
+  /* "Rasterizer.pyx":207
  * 
  * if __name__ == "__main__":
  *     triangle = [(20,20,0,0,0), (100, 25, 0,0,0), (50, 50,0,0,0)]             # <<<<<<<<<<<<<<
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")
  *     pygame.init()
 */
-  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_20, __pyx_mstate_global->__pyx_int_20, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_20, __pyx_mstate_global->__pyx_int_20, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_100, __pyx_mstate_global->__pyx_int_25, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_100, __pyx_mstate_global->__pyx_int_25, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
-  __pyx_mstate_global->__pyx_tuple[3] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_50, __pyx_mstate_global->__pyx_int_50, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[3])) __PYX_ERR(0, 200, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[3] = PyTuple_Pack(5, __pyx_mstate_global->__pyx_int_50, __pyx_mstate_global->__pyx_int_50, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0); if (unlikely(!__pyx_mstate_global->__pyx_tuple[3])) __PYX_ERR(0, 207, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[3]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[3]);
 
-  /* "RasterizerCython.pyx":203
+  /* "Rasterizer.pyx":210
  *     texture = load_texture("./Assets/Objects/cylinder/red_texture.bmp")
  *     pygame.init()
  *     screen = pygame.display.set_mode((200, 200))             # <<<<<<<<<<<<<<
  *     draw_polygon(screen, triangle, texture, 1)
  *     print(find_edges(triangle, 40))
 */
-  __pyx_mstate_global->__pyx_tuple[4] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_int_200, __pyx_mstate_global->__pyx_int_200); if (unlikely(!__pyx_mstate_global->__pyx_tuple[4])) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[4] = PyTuple_Pack(2, __pyx_mstate_global->__pyx_int_200, __pyx_mstate_global->__pyx_int_200); if (unlikely(!__pyx_mstate_global->__pyx_tuple[4])) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[4]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[4]);
   #if CYTHON_IMMORTAL_CONSTANTS
@@ -9624,31 +9707,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 10; } index[] = {{41},{36},{20},{1},{1},{16},{1},{1},{1},{2},{6},{2},{6},{2},{6},{5},{3},{20},{16},{1},{2},{4},{2},{4},{8},{13},{18},{1},{2},{4},{2},{6},{13},{10},{1},{2},{4},{21},{17},{18},{5},{9},{2},{6},{7},{2},{12},{16},{2},{2},{2},{2},{2},{4},{21},{9},{10},{4},{9},{10},{8},{10},{12},{8},{1},{2},{2},{2},{3},{8},{4},{15},{22},{13},{13},{5},{1},{1},{1},{4},{9},{7},{9},{4},{12},{8},{9},{4},{3},{5},{5},{3},{5},{5},{10},{8},{7},{4},{1},{4},{11},{9},{11},{7},{7},{5},{6},{6},{11},{6},{3},{5},{6},{12},{3},{17},{5},{8},{11},{8},{8},{10},{5},{15},{6},{11},{8},{12},{10},{4},{2},{1},{8},{7},{5},{8},{8},{1},{6},{7},{1},{6},{6},{8},{8},{5},{18},{1},{2},{2},{1},{2},{2},{2},{0},{296},{35},{316},{19},{130},{82},{760},{545},{48},{58},{32},{26},{77}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1892 bytes) */
-const char* const cstring = "BZh91AY&SY\2640'L\000\001K\177\377\377\377\377\376\177\177\377\371\377\377\377\347\277\377\377\370@@@@@@@@@@@@@\000@\000`\006\377z\007\275\203\335\335\t\025Ax<\001\333\2741D\2114\0327\252\000\014\232?$\236\231O\3644E\006\203\312i\352z@\323@\3202h\006\201\241\240\365\032z\215=A\241\000\200\312i\202h\232\247\262\247\352\237\252~\251\372(\365\003@\320\000\000\000\000\000\000\000\000\3205\r\006\252=!\240\000\000\017P\000\031\r\000\000\000\000\000\000\000\03244\004\2114\224\201\240\001\243A\241\241\243M\000\r\006\200\000\014\206j\001\352\006@\365\001\220\000 \323\023\000\000\000\000\000\000\000\000\000\000\000F\021\200\000\000\001$\206\204\324\323\"5=5G\251\264\365F\332\220\r\000\r\032\000\036\240\000d\000\320\006\200\006\231\251\351\032O\253\357\364\200?\260\351\235Ap\243\212]_\360C\224\2419Ln!\342\207&*\217Z\252\317\361\037\324\32061\240l\006\300l\032c`\333\034\307r\227`\341q1\366\272\321Ee'\270\021f\020\314\223\r\020U}\021\024S\001A\363D\3220\300\231\"\325\353Jvd)\305\230Lu\360\010#taA]\000\210D\206[V\251M<\347\030\301\023@dFC:\2746\366\245\215U9\rQ\357/k\332\201yI\224N\350R$\245\227\032\335j\210\262\264\344Lpq\362\r\014\210\311B\350\304\302Oy\222\345\311\263\226f\352\034\007G\203\306\351\327\034s\347\315\212Q\021\200-\307E\020\023\323\021\310\311F\020\214f\240-\270\242\345s\206\000\260\320\262@\252Y\241\301\216k\021 HZe\346\353^ne\270\303\374\356\213\027\0260\234\226\327\016\217b\202\265\316\306\021g\004\342!h\031\257+\356\265d\343 \030\324r!R)\247\205UTS\240\265\225\214\203\222L<\023\312\367H\224\247\031\201\t\3018I'\0366\222s\3216\271\233\372\270(PW# \027\350\320b\316\017(\023\211\005\037w\206\341M%<\341j\026\347j*h\270/V-kr\360\347\372\337\356\266\3660\003)y}\362\224\245l\244\341\365]2\263\371c]\343\351\325\257t\221\200+\225R\250`h\276D\361b\n0a\261\241)6\357\363\256A@\310\247\226*\025\335\267\334\345\000z\025$\252\221\227+\272:#\3740\300,\200\354\200\247\247\017\347\033\0268\006\242\336\213\365o6\264L#\014\322Vv\230\215\027\303o5mB\215\206\222$\233\003\026>\225""\035`\303\224\226\300#\202\360i6\244@w\312`\274\373\357\260=\032QT\203JI\202\243\275UE\250h\233\377\227\264\242\344\224\250\337{\236\336\275\375\250\312'\320\017\022\377Mc\245\226<UPl0\216\346\325\357\271\247\244Bx\361\256\262\210Sf\370\033\340(\001\260\355\206\236\02308\230\035\316\276/`\205\203-\331\371)\327\207\351\333[0\350\t\223\300\320v\332Q\002VM\252),\323.\226)$\353\030\302a\3601\233\031\204\323@\207c)\020\300HUX\332\2174\264\346+T\334\034ES\370\261\247\306m\324\214t\2130\335\307\216\374C6\226\343\273\222A\252a#Hk\337}%\3763\233a\014\253X1\302\232cQj\253\250\025.r)\237\004:5\032qd\002\001\005\207F\r\002\347\354\031\341\2418\3030\331\241W\265a\337\300\214V\303g#{\031\254R\301-a\226R\006[\226.Z\313v\206\256N\376\031\330V\321\267\r\200n\335D\\h\021\201\233Y\007\334X\000\033\024\250R`G\253\374/%\220\320u\014!\\+\2601\345Xz\330\212\304\2479\316e\314\035t\316d\020[\244\212p\240c\031%\272/\344\210\217+N\222Q\200\272\025\252\354\016N\314\242\331\247<\367m\240_\014\010*z\220(5}'\204\343\264Z\362\031\205K\255\340c\n\034\320\202\207\207\214\314k\222\205%\000u!A\232\256\320\021\251\252q\302\206-\270\215\010\030\225\306o\271p\274\0318\032+P)\322j\354\2240\314\321\001\246\313\222\235\373\357[\301\2366\315^\341\372\356V\261@\r\202\354\204v\360\345r\347\021\246<`\314m\206T\303^d\343\006\026\264;\306 ss\350\013t\010\262E\273+`L)\204\345\255\024\021\022D\005`\243\234v\025\206\207\343\212\263\243#\036\004\332\320\337c\311\213'\353\225\023.~\341\363\232\207+\224\257/8\3163\220\317\241\302@\366cH\334K3\271\0204\324\325\326\213\034\2613'\207\335%\241#\006\220\272\037B\023\304\320f\304)\351[\222\227\274\233 Q\217S'\214\210\222\310\350\263\022A!\230^*\027\271\214\003t\371Q\231\302\210m\331Q8PgDk\"\257+\267#\313I\021\274\240E'\223\357+\314\245w\365\033\322\322\331\217\024\235u\355\031\305\217\r\374\177\241|\014f\272^\367\0029\314\223\013\236,sK\007P\316\013\"\010h\026\247\262\304\326(\322\273\264\036}\325\014r\031(\346\013\274z\031\355\0324\342\347v\233C\031}\225r\211\324\237!\356""\021\254\025\356\316\32200{\215_( -\210lP{\357\310Yw\376bm'\220Q\\\300%S\344p;\253m\022B\333\301\223b$V\030\205\303\226[\334\231\241\261\021\n\"X\260Y\270\267\030R\206\345\223C\010\255\n\035R2\306\343\360\223\375\246N\355\355jQ\262\\1\037v;\224\253\217\210ND\206\245+\t\201\n\303WKF\340\233\324i\375KM2\200\220\027\020\344k\314e*\013LPA\\\031$W\236\366\006\322\005\241\3410\244\034\004\305\t\202/\316bZ\314\001\216\"RBx\265 \226c1\230\206}\264\201\023k\033L\2402\300\241\226\347(\341\004\374\3418\266\362\305\313V\020\246\225\247H\022@Q\247e\301\356\330l\302&\021\007\372G\007d\264`R\032F\223<\001;\255|m\205\341<\3559\203\020\254\211\257\274t\350\001a\017.\tB\261\245\257d\226\250\001\026C|\362\365^D(8HB\330{\336\365s5\n\024\344\335F\300\277\251(\240 .\215\t\010\270O\361\026\335\231\264\247l\356p\000g\261]l\265\317%\315\301\233\225\2522\253\005W*\253\n5b\321Q\215\010\243\212\245L\034|\370\315\260\205\274\210\342\2114s\342\313\215\202(\343\253P\343\2121\347\342\2041\244\341f\r\377\003\203\273\254\021\350\326\313\030\024<\330a\030\260\255|\230c\343M\217\361E\265'gP\351\344\336\226\373\350\355\366\341L\367t\372\256k\023\317\363\256`\350\032\277\357c\366\313\r;v\370:\274\317\312\261^\346F%\342\274\273, +\255\211\254M\323\241%\nXR\013\322\212,\035\3249+\243r\240\354\024fO\"\007\221N\205\t\026\245fVp\223=\245)<$\362\244\343\320\231\261JC\001\264\303H\021\006\022\334\323#W\370\273\222)\302\204\205\241\201:`";
-    PyObject *data = __Pyx_DecompressString(cstring, 1892, 2);
+    const struct { const unsigned int length: 10; } index[] = {{41},{36},{14},{1},{1},{16},{1},{1},{1},{2},{6},{2},{6},{2},{6},{5},{3},{20},{10},{1},{2},{4},{2},{4},{8},{13},{18},{1},{2},{4},{2},{6},{13},{10},{1},{2},{4},{21},{17},{18},{5},{9},{2},{6},{7},{2},{12},{16},{16},{9},{2},{2},{2},{2},{2},{4},{21},{9},{10},{4},{9},{10},{8},{10},{12},{8},{1},{2},{2},{2},{3},{8},{4},{15},{22},{13},{13},{5},{1},{1},{1},{4},{9},{7},{9},{4},{12},{8},{9},{4},{3},{5},{5},{3},{5},{5},{10},{8},{3},{7},{3},{4},{1},{4},{11},{9},{11},{7},{7},{5},{6},{6},{11},{6},{3},{5},{6},{12},{3},{17},{5},{8},{11},{8},{8},{10},{5},{15},{6},{11},{8},{12},{10},{4},{2},{1},{8},{7},{5},{8},{8},{1},{6},{7},{1},{6},{6},{8},{8},{5},{18},{1},{2},{2},{1},{2},{2},{2},{0},{296},{35},{316},{19},{130},{82},{760},{545},{48},{58},{32},{26},{77}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1914 bytes) */
+const char* const cstring = "BZh91AY&SY\234\261\201g\000\001K\177\377\377\377\377\376\177\177\377\371\377\377\377\347\277\377\377\370@@@@@@@@@@@@@\000@\000`\006\377z\016\250\036\300\350u\245\033z \013xb\212\022\006C\3244\036\210\364'\344\223\302\237\350h\222\017PyM4\362\200h\030\203@\320\003CA\243OI\247\2502\232\023\010\r\023\010&\232\247\231S\305?T\365\031\000d\320\000\000\000\000\000\000\0004\032\010\251\266$\365Q\351\r\032h\r\r\r4\332\200h\006@h\000\000\310\032\003F\200\006\203@h0\224\322\022i#O(~\251\246\324z\232=OS\324\362\215\246S@\000\320\365\0002\000\0004\0006\240\320\000\004\032b`\000\000\000\000\000\000\000\000\000\000\010\3020\000\000\000$\221\220B5S\332(\3656\240\365\r\032\032\000\0004\000=F\200\036D\000\000\320\000\3642i4\247\0277|\003\236\035\003\242.\004t\237\213\204D\025\251G\240\335\"&\210(+\021)4\243\374c\372\311\201!\t\201 \022\001 L\204\201$*\021\005o\246\002\345\010\325\324\232,\357\027\004`\302\031\222a\246\n\321\2611M0\025#\252\231\326\0140&H\302\335G\246\014\205I\263\t\215\251\004\221\327\014)+\310&\023%\243\013Y*(\245'9\"\210\014Q\211\254\262\r}O\235\225v\332\304dd\3315C\"\264*\242\020\234t\3723\265\360\260\214\026\024r\204\004\021\210\322\305\030\324\274\346ix\310\306\353\217\204\0303tM\303\235\271\345\364-\236r\225\225\222\260E@\034ZC\210\002l\026\032\026\302\264E\256b\200\334\262 `\322\001\312\0174r\036\312\244V\220\2574\355\257\263\311\306\234\277\014\364x\277^\177W\351p\022\326\335)\323\265az\342\326\223p.$f\002X\034/\314\302\345\020\03329\020\322)\247\226\252\2523\240\303\005\201\211\003\246\"J\037(Hw\244\350\004\251%\000\351A\023\301\324\036\251\253\310\343\354\372\325*+\243\0202\330\3303h\010y\024\231%?\203\202\342\242J\232\301\205L7jk\3301W/{\367\2327\275\236\236\333{z@\320de\223\273\276\032\nK\354\275\013S\346\235\273\003\353\331\333\332\034\322\n\352\311X4\233\0319L\330\222\234\230l\352;\266\327\367\266\341P\305SD\324\255\265\207\341\005@\212\226\035Y#F\210\204~Ds\256\nN\254\024\371\365o\366\372\334\207>\366\33189?\354\370{i\"\352\033\306\307L\316\022{\363l""\211X\321\201\026\020\300\310>\325\372@\200\312\230[\221GM\001,\227d\341\312|\260\351\246\333l\301\257\252\001\244))4\314*V,\256\307\"\2219:\257\230\311\022\333i\344\305\316\233\262\177n4\330\256\200Vs\376\250\335\212\215\177\333\312*\252\227\225\2647\034?`\223W|\"B\300v\355\240\r\240\002\200\r\303\260\032\271\242\320\342\320\356vo{D.\032wf\327O\016_\257s|G@&\227\201\241W\336l\002WG\202\304\225\261e-ZI\3275\245\252\346P\267<Dc\002:2\221\031\t\n\253\034h\365%\364\244\346\366;'\223\\!\276nW\354[\350\335X\321\300/\317\273~\376I\006\3555\253\rr\023-\245&#\207\223*O\370\336\307\210\214r\261\241C\232\252\245Y\340\257\254\027o91|\021T\322\244\337\t\220:)\304\245\007NS\225u'\241\244!!Uy\345\2118\373\227!\006\264Z\327\344T\231\253&\242v\001K\030\002\2161\020;\004yF\\{j\222\201\216k\223p\003L\034D\016`EB\315\202\017\303 \004\326%B\225\001f\337\307\022\3024*\241\224+\205w\006\274\326\036\306\242\363\231\325:\242\310\207a\0276\010/\324L\341aC<\222\375\030\353\260Y\327L\252J\324\003(]\243\203\014\225k\356Y\342\325}\030\361\3222\205D.z\220,\314\316\341\3417\361\213\336E\242\247\316\301\306\2752%%\343\347C;cB\317 \203\271h\024\331\257F\220\2163\\\354@\341b\262!X`B\316%\370\256\031\005\031\202\221z\301\235#^ka\033\255p\210\340\273\007\323\\\271N3\262U\261*\317vX\366\354\014\340l\306\2621\222\366\357M\001LJ\016\221\251jJ\202\250EOx\n\013b+\021\234\r\234\372\003\035\002t\243\035\246\370\026\230\211\316\264XDI\020+\006\314\303\263\254L\037\237:\363#l\263\230\315Z)\367<\265\205\3742\242,\237\273|\352\005\212P\206m\005\005\014Q\254\244i\305\261\255\212[h\245\214\356L\2414j<K\025Ri\303\360\223\020\246\240\272\037B\027\010\275\274HcK\034\224\275\346gH\033,\353i\200\322J[f\213\263\224\026\212F\"\241\213\232\320:\371\364\321k\205\020\343\342\250\270\n\002\225E\225\223^\2347#\316\242T\363\002d\3617E\375'?nG[0\275$&\177\r\242@\327\325\243W\304}\225\013 \315\335\304o2L.`\267\215\211\034\263\001s$I\220.\267\335a2\367\206KG4>\333\360;\003\242,`\033\270y\221\240&1\206\344uRa\010\316\364a\203)""\021\361\036\320\214pq\241\322\"\255\217\0029\005\201\200y\301\t\002\301\364\2000\376 \324\023\264\212\321\r:\273B-\r\023y\333m\253\304v\311s\3173\021\032c0\302`3\357\223\211\014;\263\274P\327Q\225\236\367\242\302QD`^%\002\006h\377!'\3743/\333\"9j\344\210$E:\030\373\275\375\352\3124\005}3\020K-\331\242\213\246\036\377{\224m\374\2556\213@\320(\010\201q\016F\304\2062\247[b\235:\3001D\265\336\366\006\317\005\241\3410\244\034\004\205\t\002/\274\304\265\230\003\034Dd\204\361n!\034\206C!\014\373\351\202$\3266\3310e\2213.JQ\302\t\375\241(\270\362\305\313VP\240\225\267D\022@M\346\314p{\266\233 \201\204N\377D\340\354\266\214\n#<\317f\210N\353_\030c\\K+Nh\304+&K\357\0359\200XC\313\2020\254\351\354f\022\3258\021\230\033\350\217\252\362(\240\341\021\013i\357{\326u\344&R\223u\033\"\377\26610@]\032\021\021\234N\312-\273#g\312\331\\\340\000\317b\272\330\354\036K\233\202\365mQZ\270UkUaF\254\036E\010\320\202\030*T\301\307\317\204\334\010\\\311\206\010\023G>\013P\260A\0145j\032bjr\344\0048\321cf\216\037\022\227\002\270G\243^\320\300\250\363h\321\033\332+c.\2149RS\324\336P\304c\361\005\252T,\324\340\356\271Y\\,=\316-\252u\367\314\317\355\342\317\021\014|\036\037\325,z\366l\340\327g|j\025-!\363+5lRa\302Y\017\031<i(\021 Bb\016W \245A\253&r5A`\206\n\263(rG\233_\252\243\230V\324-I;F\016Dj#&V2V\206\24580E\240,@D\014I\225\240\242\247\013\271\"\234(HNX\300\263\200";
+    PyObject *data = __Pyx_DecompressString(cstring, 1914, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1804 bytes) */
-const char* const cstring = "x\332\335VIs\333F\026\016%J\241-\332\022\264\332\263T\211ZRYfd\203\226\035OR5\031\322\244\022gqL\311r\222\252\231t5\200&\t\211\004H\000\244\310\314\305\307>\366\261\217}\304\021G\036y\344\021G\034\371\023\362\023\362\272!Y\216\3438NM\315%U@\367\353\005o\371\336\367\272\261w\253\344\373$\360o}m\234\020\023zs\330\262\035\213x\267<b\241\200\014\202\236G\366\214v\247\214\255M\243W\257\023o\323\255\327\341\223\217\316\207(\035n\376\375\237\233\207\330\017\210g\377@\274\007\303\240\351:{\235\341`\357\223\277m\266\361\340\205]\245\362\203\352\355\352m\344\271gU\275\252\253\276X-\312\376a\0337\310\343\207_\"\364x8\200\267b\233\001z\004N\034\222\372\313\31216\260\201<\334\301\036\301\362Em\327\272\350\221\003\037a\177\350\230\266\273g\272\236\333\013l\207\370\206a\032&\362\214N\352\372\317\0020\206\001A\246\333r=\323\304&F\236\331$\346)\262\035\337\266\010\n<\033;\215\026A\310la\337G\r\022\330\001i\313!(\206]\260\003\233\304\300\346i\252C6\250\217[f\307\"-p\305\262\375N\013\017\255\216\345\3413\324q[\303\206\353\274(\203\313gV\317\352\223\333D'Eb5\210|}\204\035\013\251\260\314&x@\010\350Dju\000\026\221\364\272\216\r\277n\203o\016n\223:d\017\245_\242z\3171\221t\025\245\221J)u\354\321#)\373\200\246mc\333\260M\273\335\200'\235q\354\340\245\250_\006\001|\350\021\337v !>\260\306v\035\037\331>z\016\264\204\306?9m\265H=\220\257rH\t\275~\313n4\003\251\241\345bK\276\027,C\250\215\001GhO\211\372\240\215\203&PG\262G5\303\266\355\300\003\003h\206H\346\271'3\202T\340H\345\034\014\270\035\342t:\330\366:\366\200\264\322\200S\261\343\372\251p\346\201\207\2518H\273a\307\205pT\243\253\266\250Z$\365\370J\204\266\323\361\344\246aC\231\353\366p+5\014Y\204\004Y(U\225b\355\3110U\203\260q\336K\354R\3210\323\336\304i/\303\005\354\034\3137\261\243\030\325$r\3017=B\234\264U\311\001\242\312\270\301\250\224R\363 Y@\202^+P;\374\000\001\244i\253\200\0057PQ6\000\272\177\221\303^\257c\341\200\364\372\250e\373A?\315h\037\222\351zi\213\360yo(\264T\363\263\010\007\003}P\034\016o\017\365a\361Yf\232\275J\013T""\247e\212i\227e\330*\2531\314<\256\361\002\327y)\371\237\226\247\331\005\3721Lt\223_\010\377g\273\213\324c\032{\207\317\246\273_7\224N\356\323\036+\261C\326\345Y\376\205\350\206sa-\304I6O?g'\342jXx\226\221\216\337g:+\203\235\001\357\212YQ\024\337\302.#\312D7F\332\350\371\226{\340\304\026/\361'b\035\024\315\204\205PO\2629z\205iIn\201\336\005gW@I\203\177+\216\325\332\253&\247\331U\006n.\263-v\000\021\355\363\276\250\211zx\020\025\242\375\250?\252\215\352\343\203Ia\262?\351\307\307O\343\247\337H\0039\226Ir\327h-\311\345iU\001b\360\014_\005?4\261%J\342\365\013\017\250\317vY\000\246|\261-\235H\362\327\222\2455v\304g\370\0167\305\212(\013<]\322\222\374\022\233eE\200\312\347\333\374\220w\223\274\004s\205UU\330\0251\003\237\177\023~5\332\030g\306\232L\323\273l\033L\232\260|+\324\302\355\360\010\000[\211J\021\032\227\3065\t\361\001S\330\345i\211>\005\200+|\236c\336\215\337\252\214\001\202+\024\224\254\261\357`\312\007o\037\002\342f\264\034\025\243Zd\215\266F\220<\215\255I>\361\005\241\213J\270\020\351Qe\2640\326\307\225\t(\235Kr\327i\035R\373o\241%\013y9:\341\231\370\346'\243n\374\257\357\343\357Q\214p\214\215\330\260b\213\304\244\0217\232q\363$>9\215O[\322\251\034\235{\321\251WN\314\322\"\240\016\302\014\335\246\207\264\233\212\005z\207\032l\206\025\230.yq\207\232L\223\032\257\301\347\037s,#[\247C\016\365w\235\342\3270\347\267(\265H\317T\370s\274\306-\261\013\353\2317\347\331\357ad\216f\201>\313\220{\010\026|Vv{\374S\200\275\032n@R\265\251B\347\030B\376\220\027\244\226\"\300\341)=&_\206R\253\010\360mS\326Sx?\222v\342\205\0020\353\000\330\226[\215W\337\003~\200\264\026\257\275\237\372\261\302\366!\262E\210i>\304a\020\335\203:\333\001\356\227\306\307\223\017\200\371\322\306~\274\270#I<\315_\233\346\226\330\"\224\346\274\300\"\010\357EZ\264\023\325G\245\321\361\370\275\211>)Op\222[f\357B=\025\001+\242\350\222\003\277\227\2012U\245\2719\306co\242Mv'\335\370qM\356.\250p/\005YA\212nI~C\035\0033\242 \356\207\305\260\226\344\377\nX\325\204\021f\302\365\260\033\315\202\326\317F\345""\021\226\0253\307\216\345\301\224,m@<\363\274q\276o%,\303)\363\312I\031\231B8\340\037\202\t=5\255\245\330B\225vEFl\300nm\232[g\370\322\261\377\212BZ\2212Q\262xU\221\212\254(%\371U`m\206\377\005\354\330\241\037\025.\035\273\243\250\014\325^cD\rz\200\350\221$Z\222\3773\277\013\2464\305\254lXU\240\222\221>\252\2143I^\203\343\004\024Ls7\371\237\340<<\024^\270\034\352a%\232\001\365\347\225\367\037Q\370\303\363\376\n\275\t\231\221\356\356\360\272:R\337hj\n\250|w\221\343\344W\007?\316\2775w\345\r*K\035\376\027\315\3649%\316\000\365_\243\304\"\034\373\333p\230\007\220vS,\213}\341\303\021]K\226n\\\\\021\311\322*\234\355k\352\374\225<\\\275\t\376\357\252\301\335K\no\2512\270\013y\337\211\300\232\274\270J\354\t_\347\036Pg\007\256.\330\025ve!\245\013\222-5a\205\357G\345\010G]\371\033\362\232C^\262\341\236\272\271\034\361\0250P\021j\221v/\357dC]SM(|\311\300b\370D\335\311[P\177\3068;\376lR\232\034\305\217\217\342\243'\362\313\267\237\371t'%\237\016\227\316\241\372\031(\250K\255+\327\257\322]\365;\240n\247\007\220oS\306\237\332<K\377]\256S\242\354\232\374\306\363[TM\026\325\217\210\274\033/\016\003\270\277\226\330\333\300\324\031\250\264\177\010\025\214\376\023\237!|\317";
-    PyObject *data = __Pyx_DecompressString(cstring, 1804, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1812 bytes) */
+const char* const cstring = "x\332\335V\313s\333\306\031\017%J\241-\332\022\364\264\373\230\021\365\350$i*\033\264\354\270\315LS\312\244\0327\211kJ\226\223\314\244\331Y\000K\022\022\010\202\000H\221\355\305\307=\356q\217{\304\021G\036y\344\021G\034\371'\344O\350\267\013\311\262S\307u'\223Kg\200\335o\037\370\036\277\357\367\355b\357N%\010H\030\334\371\273qJL\350\315\241c\273\026\361\357\370\304B!\031\204=\237\354\031m\357\000[\233F\257\321 \376f\247\321\200O\376t1D\331p\363\017\177\336<\302AH|\373\237\304\337\363\206\203\275\317>\336l\343\301+\353\225\203G\265\273\265\273\310\357\234\327\364\232\256\372r\255,\373\307m\334$O\037\177\211\320\323\341\000\336\252m\206\350\t\230?\"\215+\265\030\033\330@>\366\260O\260|Q\273c]\366\310\205\3558\030\272\246\335\3313;~\247\027\332.\t\014\3034L\344\033^\346\356kN\033\303\220 \263\343t|\323\304&F\276\331\"\346\031\262\335\300\266\010\n}\033\273M\207 d:8\010P\223\204vH\332r\010\212a\027\354\300&1\260y\226\351\220\r\352c\307\364,\342\200+\226\035x\016\036Z\236\345\343s\344u\234a\263\343\276*\203\313\347\257\215;\216\245\306\341\320#V\317\352\223\273D'eb5\211|\003\204]\013\251x\315\026\270F\010\030Cju\000\256 \031N\003\033A\303\006\247]\334&\rH%\312\276D\215\236k\"\031\003\312 \220R\346\361\223'R\016\000`\333\306\266a\233v\273\tO6\343\332\341\217\340\3701:\340C\217\004\266\0139\n\200Bv\307\r\220\035\240\227\031\220\230\005\247g\216C\032\241|\225CJ\350\365\035\273\331\n\245\006\247\203-\371^R\016\2416\006\200\241=#\352\2036\016[\300&I(\325\014\333\266\013\017\014\240\031\"I\200\236L\025R\201#\211\254\344\003\330\000L;\036q=\017\333\276g\017\210\223\205\235\211^'\310\204s\037\374\314\304A\326\r\275\016\004\245\032]\265e\325\"\251'P\"\264\236\347\313M\303\2462\332\355a'3\017I\2044Y(S\225!\356\313`U\203\260q\321K\0043\3210\263\336\304Y/\203\006\004]+0\261\253\010\327\"r!0}B\334\254U)\002\036\313\350\301\250\2242\363 Y@\205\236\023\252\035A\210\000\330\254U\360\202\033\250,\033\200>\270\314d\257\347Y8$\275>r\354 \354gy\355CJ;~\326\"|\321\033\n-\325\274\026\341`""\240\017\312\303\341\335\241>,\277\310M\363\327i\211\352\364\200b\332e9\266\312\352\0143\237k\274\304u^I\177\326\3624\277@?\205\211n\372\037\302/lw\221\372Lc\277\343\263\331\356\267\r\245\223\373\264\307*\354\210uy\236\177!\272\321\\T\217p\232/\322\277\261Sq=*\275\310I\307\0372\235\035\200\235\001\357\212YQ\026\337\300.#\316\305\267F\332\350\345\226\007\340\304\026\257\360gb\035\024\315D\245HO\363\005z\215iia\201\336\007gW@I\223\177#N\324\332\233&\247\371U\006n.\263-v\010\021\355\363\276\250\213Ft\030\227\342\375\270?\252\217\032\343\303Ii\262?\351''\317\223\347_K\003\005\226K\0137h=-\024iM\001b\360\034_\005?4\261%*\342\355\013\217h\300vY\010\246\002\261-\235H\2137\322\2455v\314g\370\0167\305\2128\020x\272\244\245\305%6\313\312\000U\300\267\371\021\357\246E\t\346\n\253\251\260\253b\006>\377:\372j\2641\316\2155\231\246\017\3306\2304a\371N\244E\333\3211\000\266\022Wb4\256\214\353\022\342C\246\260+\322\n}\016\000W\371<\307\274\233\274W\035\003\004\327((Yc\337\302T\000\336>\006\304\315x9.\307\365\330\032m\215 y\032[\223|\342\013B\027\325h!\326\343\352ha\254\217\253\023P:\227\026n\322\006\244\366;\241\245\013E9:\345\271\344\366g\243n\362\227\357\223\357Q\202p\202\215\304\260\022\213$\244\2314[I\35349=K\316\034\351T\201\316\275\352\324\033'fi\031P\007a\206n\323#\332\315\304\022\275G\r6\303JL\227\274\270GM\246I\2157\340\363O9\226\221\255\323!\207\372\273I\361[\230\363\337(\265H\317U\370s\274\316-\261\013\353\271w\347\331\377\302\310\002\315\003}\226!\367\020,\370\254\354\366\370_\001\366Z\264\001I\325\246\n\235\023\010\371\023^\222Z\312\000\207\257\364\230|\031J\255*\300\267MYO\321\303X\332I\026J\300\254C`[a5Y\375\020\370\001\322Z\262\366Q\346\307\n\333\207\310\026!\246\371\010Ga\374\000\352l\007\270_\031\237L~\017\314\2276\366\223\305\035I\342i\361\306\264\260\304\026\2414\347\005\026a\364 \326\342\235\2701\252\214N\306\037N\364\311\301\004\247\205e\366\001\324S\031\260\"\212.\005\360{\031(SS\232[c<\366'\332dw\322M\236\326\345\356\222\n\367J\220\025\244\350\226\0267\32410""#J\342aT\216\352i\361\267\200U]\030Q.Z\217\272\361,h\375|t0\302\262b\346\330\211<\230\322\245\r\210g\2367/\366\255D\007p\312\274qRF\246\020\016\371'`B\317Lk\031\266P\245]\221\023\033\260[\233\026\326\031\276r\354_\242\224U\244L\224,^U\244\"/*iq\025X\233\343\277\001;v\024\304\245+\307\356)*C\265\327\031Q\203\036 z,\211\226\026\177\315\357\203)M1+\037\325\024\250d\244\217\252\343\\Z\324\3408\001\005\323\302m\376+8\017\217\204\037-GzT\215g@\375E\345\375C\224\376\357y\177\215\336\206\314HwwxC\035\251\35745\005T\276\275\314q\372\223\203\037\346\337\233\273\366\016\225\245\016\377\313f\372\222\022\347\200\372OQb\021\216\375m8\314CH\273)\226\305\276\010\340\210\256\247K\267.\257\210ti\025\316\3665u\376J\036\256\336\006\377w\325\340\376\025\205\267T\031\334\207\274\357\304`M^\\\025\366\214\257s\037\250\263\003W\027\354\212\272\262\220\262\005\311\226\272\260\242\217\342\203\030\307]\371\033\362\226C^\262\341\201\272\271\\\361\0250P\021j\221v\257\356dC]S-(|\311\300r\364L\335\311[P\177\3068?\376|R\231\034'O\217\223\343g\362\313\367_\004t'#\237\016\227\316\221\372\031(\251K\255+\327\257\323]\365;\240n\247G\220oS\306\237\331<\317\376]nR\242\354\232\374\326\313[TM\226\325\217\210\274\033/\017\003\270\277\226\330\373\300\324\031\250\264?\n\025\214\376oXz\204\360";
+    PyObject *data = __Pyx_DecompressString(cstring, 1812, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (3519 bytes) */
-const char* const bytes = "./Assets/Objects/cylinder/red_texture.bmpBad buffer offset: buffer_offset -> RasterizerCython.pyx.?, max_offset -> ABCE0E0_rowE1E1_rowE2E2_rowImagePIL__Pyx_PyDict_NextRefRasterizerCythonaabab_rapareaarea_modarea_mod_nextasyncio.coroutinesbbcbc_rbpbufferbuffer_offsetbyte_colorccaca_rcheck_inside_triangle__class_getitem__cline_in_tracebackcolorcolor_valcpdeltasdisplaydpdraw_polygondraw_polygon_newdudve0e1e2edgeedges_and_area_changeeval_edgeextra_bytefabsfile_namefind_edges__func__get_bufferget_color_NNget_sizeiiaibicimgimg_sizeinitinside_triangleinside_triangle_valuesintersections_is_coroutineitemsjklleftleft_edgeleft_uvlight_valloadload_texture__main__make_edgemathmaxmax_xmax_yminmin_xmin_y__module____name__next_uvopenppairpixel_colorpixel_pospixel_writepixel_xpixel_ypointpoint1point2point_pairspointspopprintpygame__qualname__rawread_pixel_bufferrightright_abright_angleright_bcright_caright_edgeroundscanline_heightscreenscreen_sizeset_mode__set_name__setdefaultsizesst__test__texturetri_2tri_valstriangleuupdateuv_listvvaluesvectorvector_avector_bwritewrite_pixel_bufferxx1x2yy0y1y2\200\001\340\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\340\004\013\210;\220a\220q\330\004\013\210;\220a\220q\330\004\013\210;\220a\220q\340\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\340\004\017\210r\220\021\220&\230\003\2301\230A\330\004\017\210r\220\021\220&\230\003\2301\230A\330\004\017\210r\220\021\220&\230\003\2301\230A\340\004\013\2104\210u\220A\220R\220q\230\004\230K\240q\250\005\250Q\250a\330\004\014\210J\220j\240\n\250!\200\001\330\004\013\2108\2201""\220B\220a\220x\230q\240\003\2402\240X\250Q\250b\260\001\260\030\270\021\270!\200\001\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\010\210\t\220\021\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\340\004\024\220A\330\004\022\220\"\220F\230!\2304\230v\240Q\240f\250F\260!\2604\260v\270Q\270f\300F\310!\3104\310v\320UV\320VW\330\004\010\210\010\220\001\330\010\r\210Q\330\010\014\210E\220\024\220Q\220b\230\001\230\024\230T\240\021\240\"\240A\240Q\330\010\014\210E\220\024\220Q\220b\230\001\230\024\230T\240\021\240\"\240A\240Q\330\010\014\210C\210s\220%\220t\2304\230s\240#\240U\250!\330\014\r\330\020\025\220S\230\002\230$\230c\240\023\240B\240a\340\020\021\330\014\020\220\003\2202\220R\220s\230#\230R\230q\330\014\017\210r\220\023\220E\230\021\230\"\230D\240\002\240#\240W\250M\270\027\300\001\300\021\330\004\n\210(\220#\220Q\220c\230\021\230/\250\021\250#\250S\260\001\260\023\260A\260_\300A\300Q\330\004\014\210F\220!\200\001\330\004\014\210A\210V\2201\220D\230\006\230a\230q\320\000D\300A\330\004\t\210\021\330\004\025\220Y\230a\230s\240\"\240I\250Q\250c\260\022\2602\260Q\260d\270\"\270A\340\004\021\220\025\220a\220q\230\013\2401\240D\250\013\2601\260D\270\013\3001\300D\310\001\330\004\005\330\010\016\210f\220A\220\\\240\021\330\013\014\330\010\016\210j\230\001\320\031?\270q\320@^\320^_\320_a\320ab\320bd\320de\320eg\320gh\320hj\320jk\320kl\200\001\330\004\010\210\005\210V\2201\220D\230\006\230a\230q\330\004\010\210\005\210V\2201\220D\230\006\230a\230q\330\004\010\210\003\2102\210Q\330\004\010\210\002\210#\210R\210q\330\004\010\210\002\210!\2103\210b\220\002\220!\2201\330\004\013\2103\210c\220\021\200\001\330\004\r\210V\220;\230a\330\004\t\210\026\210y\230\001\340\004\016\210a\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\010\210\t\220\021\330""\010\017\210w\220a\220q\230\005\230Q\230d\240%\240q\250\001\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\340\004\010\210\004\210E\220\022\2202\220Q\330\004\016\210a\210w\220a\220u\230G\2401\240E\250\027\260\001\260\021\340\004\010\210\005\210U\220!\2207\230!\330\010\013\2102\210R\210r\220\023\220B\220c\230\022\2301\230D\240\001\330\010 \240\n\250!\2508\2601\330\010\013\320\013!\240\023\240F\250!\330\010\024\320\024)\250\021\250!\330\010\025\320\025*\250!\2501\330\010\023\2204\220q\230\017\240q\250\006\250a\250t\2606\270\021\270$\270f\300A\300U\310+\320UV\330\010\013\2104\320\017$\240A\240Q\340\014\r\340\010\020\220\017\230q\240\006\240a\240t\2506\260\021\260$\260f\270A\270U\300)\3101\310B\310a\330\010\022\220(\230!\2302\230Q\230e\2401\240D\250\010\260\001\260\022\2601\260E\270\021\270$\270h\300a\300r\310\021\310%\310q\320PQ\330\010\022\220!\2202\220Q\330\010\022\220!\2202\220Q\330\010\014\210E\220\025\220a\220q\330\014\027\220x\230q\240\002\240!\2408\2502\250Q\330\014\035\230X\240Q\240b\250\001\250\026\250q\260\003\2601\260H\270B\270a\330\014\020\220\005\220U\230!\2301\330\020\027\220q\230\006\230g\240Q\240b\250\001\250\023\250B\250a\330\020\027\220q\230\006\230g\240Q\240b\250\001\250\023\250B\250a\330\010\013\2104\210w\220a\220t\2307\240!\2401\330\010\014\210E\220\021\220!\2207\230!\2304\230q\240\001\240\027\250\001\250\021\340\010\026\220a\330\010\014\210E\220\025\220a\220{\240!\330\014\017\210r\220\022\2202\220S\230\002\230#\230R\230q\240\004\240A\330\014\024\220D\230\001\230\034\240Q\240i\250s\260!\330\014\020\220\005\220U\230!\2303\230a\230q\330\020\025\220Q\220e\2303\230a\230u\240A\240S\250\002\250!\330\014\033\2305\240\001\240\021\240%\240q\250\004\250E\260\021\260$\260e\2701\270D\300\001\330\014\021\220\024\220U\230!\340\010\031\230\032\2402\240R\240r""\250\022\2501\250D\260\002\260!\330\010\016\210f\220A\220]\240!\200\001\330\004\r\210V\220;\230a\330\004\t\210\026\210y\230\001\340\004\016\210a\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\010\210\t\220\021\330\010\017\210w\220a\220q\230\005\230Q\230d\240%\240q\250\001\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\340\004\010\210\004\210E\220\022\2202\220Q\330\004\016\210a\210w\220a\220u\230G\2401\240E\250\027\260\001\260\021\340\004\t\210\031\220!\2206\230\021\230$\230f\240A\240Q\330\004\t\210\031\220!\2206\230\021\230$\230f\240A\240Q\330\004\t\210\031\220!\2206\230\021\230$\230f\240A\240Q\340\004\r\210Y\220a\220t\2307\240!\330\004\r\210Y\220a\220t\2307\240!\330\004\r\210Y\220a\220t\2307\240!\360\006\000\005\t\210\005\210U\220!\2207\230!\330\010\013\2102\210R\210r\220\023\220B\220c\230\022\2301\230D\240\001\330\010\r\210Q\330\010\r\210Q\330\010\r\210Q\340\010\014\210E\220\025\220a\220w\230a\330\014\017\210r\220\022\2202\220S\230\002\230#\230R\230q\240\004\240A\330\014\017\210s\220#\220R\220t\2303\230c\240\022\2404\240s\250#\250Q\330\020\030\230\001\230\024\230T\240\021\330\020\024\220E\230\025\230a\230s\240!\2401\330\024\031\230\021\230%\230s\240!\2405\250\001\250\023\250B\250a\330\020\"\240!\2408\2505\260\002\260$\260a\330\014\022\220\"\220A\220T\230\026\230r\240\021\240$\240f\250B\250a\250q\330\010\022\220\"\220A\220T\230\032\2402\240Q\240d\250*\260B\260a\260q\200\001\340\004\025\220Y\230a\230s\240\"\240I\250Q\250c\260\022\2602\260Q\260d\270\"\270A\330\004\013\2106\220\024\220Q\220n\240M\260\021\260!\200\001\330\004\017\210q\330\004\013\2108\2201\220B\220b\230\002\230$\230h\240a\240r\250\022\2502\250T\260\030\270\021\270\"\270B\270b\300\004\300H""\310A\310S\320PS\320ST\200\001\330\004\007\200s\210$\210a\330\004\013\2101\210A\210R\210r\220\021\220!\2202\220R\220q\200\001\330\004\n\210%\210u\220A\220Q\330\004\014\210C\210w\220c\230\025\230a\200\001\330\004\017\210w\220a\220q\340\004\016\210e\2201\220B\220c\230\030\240\021\240\"\240A\240Q\330\004\016\210e\2202\220Q\220a\220s\230#\230X\240Q\240b\250\001\250\021\330\004\020\220\007\220q\230\002\230!\2309\240A\330\004\013\2101";
+    #else /* compression: none (3538 bytes) */
+const char* const bytes = "./Assets/Objects/cylinder/red_texture.bmpBad buffer offset: buffer_offset -> Rasterizer.pyx.?, max_offset -> ABCE0E0_rowE1E1_rowE2E2_rowImagePIL__Pyx_PyDict_NextRefRasterizeraabab_rapareaarea_modarea_mod_nextasyncio.coroutinesbbcbc_rbpbufferbuffer_offsetbyte_colorccaca_rcheck_inside_triangle__class_getitem__cline_in_tracebackcolorcolor_valcpdeltasdisplaydpdraw_polygondraw_polygon_newdraw_polygon_olddraw_typedudve0e1e2edgeedges_and_area_changeeval_edgeextra_bytefabsfile_namefind_edges__func__get_bufferget_color_NNget_sizeiiaibicimgimg_sizeinitinside_triangleinside_triangle_valuesintersections_is_coroutineitemsjklleftleft_edgeleft_uvlight_valloadload_texture__main__make_edgemathmaxmax_xmax_yminmin_xmin_y__module____name__newnext_uvoldopenppairpixel_colorpixel_pospixel_writepixel_xpixel_ypointpoint1point2point_pairspointspopprintpygame__qualname__rawread_pixel_bufferrightright_abright_angleright_bcright_caright_edgeroundscanline_heightscreenscreen_sizeset_mode__set_name__setdefaultsizesst__test__texturetri_2tri_valstriangleuupdateuv_listvvaluesvectorvector_avector_bwritewrite_pixel_bufferxx1x2yy0y1y2\200\001\340\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\340\004\013\210;\220a\220q\330\004\013\210;\220a\220q\330\004\013\210;\220a\220q\340\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\330\004\n\210!\2101\210B\210a\210q\220\001\220\024\220Q\220a\220r\230\021\230!\2301\230A\340\004\017\210r\220\021\220&\230\003\2301\230A\330\004\017\210r\220\021\220&\230\003\2301\230A\330\004\017\210r\220\021\220&\230\003\2301\230A\340\004\013\2104\210u\220A\220R\220q\230\004\230K\240q\250\005\250Q\250a\330\004\014\210J\220j\240\n\250!\200\001\330""\004\013\2108\2201\220B\220a\220x\230q\240\003\2402\240X\250Q\250b\260\001\260\030\270\021\270!\200\001\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\010\210\t\220\021\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\340\004\024\220A\330\004\022\220\"\220F\230!\2304\230v\240Q\240f\250F\260!\2604\260v\270Q\270f\300F\310!\3104\310v\320UV\320VW\330\004\010\210\010\220\001\330\010\r\210Q\330\010\014\210E\220\024\220Q\220b\230\001\230\024\230T\240\021\240\"\240A\240Q\330\010\014\210E\220\024\220Q\220b\230\001\230\024\230T\240\021\240\"\240A\240Q\330\010\014\210C\210s\220%\220t\2304\230s\240#\240U\250!\330\014\r\330\020\025\220S\230\002\230$\230c\240\023\240B\240a\340\020\021\330\014\020\220\003\2202\220R\220s\230#\230R\230q\330\014\017\210r\220\023\220E\230\021\230\"\230D\240\002\240#\240W\250M\270\027\300\001\300\021\330\004\n\210(\220#\220Q\220c\230\021\230/\250\021\250#\250S\260\001\260\023\260A\260_\300A\300Q\330\004\014\210F\220!\200\001\330\004\014\210A\210V\2201\220D\230\006\230a\230q\320\000D\300A\330\004\t\210\021\330\004\025\220Y\230a\230s\240\"\240I\250Q\250c\260\022\2602\260Q\260d\270\"\270A\340\004\021\220\025\220a\220q\230\013\2401\240D\250\013\2601\260D\270\013\3001\300D\310\001\330\004\005\330\010\016\210f\220A\220\\\240\021\330\013\014\330\010\016\210j\230\001\320\031?\270q\320@^\320^_\320_a\320ab\320bd\320de\320eg\320gh\320hj\320jk\320kl\200\001\330\004\010\210\005\210V\2201\220D\230\006\230a\230q\330\004\010\210\005\210V\2201\220D\230\006\230a\230q\330\004\010\210\003\2102\210Q\330\004\010\210\002\210#\210R\210q\330\004\010\210\002\210!\2103\210b\220\002\220!\2201\330\004\013\2103\210c\220\021\200\001\330\004\r\210V\220;\230a\330\004\t\210\026\210y\230\001\340\004\016\210a\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\010""\210\t\220\021\330\010\017\210w\220a\220q\230\005\230Q\230d\240%\240q\250\001\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\340\004\010\210\004\210E\220\022\2202\220Q\330\004\016\210a\210w\220a\220u\230G\2401\240E\250\027\260\001\260\021\340\004\010\210\005\210U\220!\2207\230!\330\010\013\2102\210R\210r\220\023\220B\220c\230\022\2301\230D\240\001\330\010 \240\n\250!\2508\2601\330\010\013\320\013!\240\023\240F\250!\330\010\024\320\024)\250\021\250!\330\010\025\320\025*\250!\2501\330\010\023\2204\220q\230\017\240q\250\006\250a\250t\2606\270\021\270$\270f\300A\300U\310+\320UV\330\010\013\2104\320\017$\240A\240Q\340\014\r\340\010\020\220\017\230q\240\006\240a\240t\2506\260\021\260$\260f\270A\270U\300)\3101\310B\310a\330\010\022\220(\230!\2302\230Q\230e\2401\240D\250\010\260\001\260\022\2601\260E\270\021\270$\270h\300a\300r\310\021\310%\310q\320PQ\330\010\022\220!\2202\220Q\330\010\022\220!\2202\220Q\330\010\014\210E\220\025\220a\220q\330\014\027\220x\230q\240\002\240!\2408\2502\250Q\330\014\035\230X\240Q\240b\250\001\250\026\250q\260\003\2601\260H\270B\270a\330\014\020\220\005\220U\230!\2301\330\020\027\220q\230\006\230g\240Q\240b\250\001\250\023\250B\250a\330\020\027\220q\230\006\230g\240Q\240b\250\001\250\023\250B\250a\330\010\013\2104\210w\220a\220t\2307\240!\2401\330\010\014\210E\220\021\220!\2207\230!\2304\230q\240\001\240\027\250\001\250\021\340\010\026\220a\330\010\014\210E\220\025\220a\220{\240!\330\014\017\210r\220\022\2202\220S\230\002\230#\230R\230q\240\004\240A\330\014\024\220D\230\001\230\034\240Q\240i\250s\260!\330\014\020\220\005\220U\230!\2303\230a\230q\330\020\025\220Q\220e\2303\230a\230u\240A\240S\250\002\250!\330\014\033\2305\240\001\240\021\240%\240q\250\004\250E\260\021\260$\260e\2701\270D\300\001\330\014\021\220\024\220U\230!\340\010\031\230\032""\2402\240R\240r\250\022\2501\250D\260\002\260!\330\010\016\210f\220A\220]\240!\200\001\330\004\r\210V\220;\230a\330\004\t\210\026\210y\230\001\340\004\016\210a\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\013\2108\2206\230\021\230\"\230A\230T\240\026\240q\250\002\250!\2501\330\004\010\210\t\220\021\330\010\017\210w\220a\220q\230\005\230Q\230d\240%\240q\250\001\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\330\010\013\2105\220\001\220\023\220B\220g\230X\240U\250!\2501\340\004\010\210\004\210E\220\022\2202\220Q\330\004\016\210a\210w\220a\220u\230G\2401\240E\250\027\260\001\260\021\340\004\t\210\031\220!\2206\230\021\230$\230f\240A\240Q\330\004\t\210\031\220!\2206\230\021\230$\230f\240A\240Q\330\004\t\210\031\220!\2206\230\021\230$\230f\240A\240Q\340\004\r\210Y\220a\220t\2307\240!\330\004\r\210Y\220a\220t\2307\240!\330\004\r\210Y\220a\220t\2307\240!\360\006\000\005\t\210\005\210U\220!\2207\230!\330\010\013\2102\210R\210r\220\023\220B\220c\230\022\2301\230D\240\001\330\010\r\210Q\330\010\r\210Q\330\010\r\210Q\340\010\014\210E\220\025\220a\220w\230a\330\014\017\210r\220\022\2202\220S\230\002\230#\230R\230q\240\004\240A\330\014\017\210s\220#\220R\220t\2303\230c\240\022\2404\240s\250#\250Q\330\020\030\230\001\230\024\230T\240\021\330\020\024\220E\230\025\230a\230s\240!\2401\330\024\031\230\021\230%\230s\240!\2405\250\001\250\023\250B\250a\330\020\"\240!\2408\2505\260\002\260$\260a\330\014\022\220\"\220A\220T\230\026\230r\240\021\240$\240f\250B\250a\250q\330\010\022\220\"\220A\220T\230\032\2402\240Q\240d\250*\260B\260a\260q\200\001\340\004\025\220Y\230a\230s\240\"\240I\250Q\250c\260\022\2602\260Q\260d\270\"\270A\330\004\013\2106\220\024\220Q\220n\240M\260\021\260!\200\001\330\004\017\210q\330\004\013\2108\2201\220B\220b\230\002\230$\230h\240a\240r\250\022\2502\250T\260\030\270\021\270\"\270B""\270b\300\004\300H\310A\310S\320PS\320ST\200\001\330\004\007\200s\210$\210a\330\004\013\2101\210A\210R\210r\220\021\220!\2202\220R\220q\200\001\330\004\n\210%\210u\220A\220Q\330\004\014\210C\210w\220c\230\025\230a\200\001\330\004\017\210w\220a\220q\340\004\016\210e\2201\220B\220c\230\030\240\021\240\"\240A\240Q\330\004\016\210e\2202\220Q\220a\220s\230#\230X\240Q\240b\250\001\250\021\330\004\020\220\007\220q\230\002\230!\2309\240A\330\004\013\2101";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 154; i++) {
+    for (int i = 0; i < 158; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 6) PyUnicode_InternInPlace(&string);
@@ -9659,7 +9742,7 @@ const char* const bytes = "./Assets/Objects/cylinder/red_texture.bmpBad buffer o
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 154; i < 168; i++) {
+    for (int i = 158; i < 172; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -9670,14 +9753,14 @@ const char* const bytes = "./Assets/Objects/cylinder/red_texture.bmpBad buffer o
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 168; i++) {
+    for (Py_ssize_t i = 0; i < 172; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 154;
+      PyObject **table = stringtab + 158;
       for (Py_ssize_t i=0; i<14; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         #if PY_VERSION_HEX < 0x030E0000
@@ -9751,69 +9834,69 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 6};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 8};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_vector_a, __pyx_mstate->__pyx_n_u_vector_b};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_dp, __pyx_mstate->__pyx_kp_b_iso88591_81Baxq_2XQb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_dp, __pyx_mstate->__pyx_kp_b_iso88591_81Baxq_2XQb, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 11};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_vector};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_right_angle, __pyx_mstate->__pyx_kp_b_iso88591_AV1D_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_right_angle, __pyx_mstate->__pyx_kp_b_iso88591_AV1D_aq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 17, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 12};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 17, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 14};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_a, __pyx_mstate->__pyx_n_u_b, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_p, __pyx_mstate->__pyx_n_u_ab, __pyx_mstate->__pyx_n_u_bc, __pyx_mstate->__pyx_n_u_ca, __pyx_mstate->__pyx_n_u_ab_r, __pyx_mstate->__pyx_n_u_bc_r, __pyx_mstate->__pyx_n_u_ca_r, __pyx_mstate->__pyx_n_u_ap, __pyx_mstate->__pyx_n_u_bp, __pyx_mstate->__pyx_n_u_cp, __pyx_mstate->__pyx_n_u_right_ab, __pyx_mstate->__pyx_n_u_right_bc, __pyx_mstate->__pyx_n_u_right_ca, __pyx_mstate->__pyx_n_u_area};
-    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_inside_triangle, __pyx_mstate->__pyx_kp_b_iso88591_1Baq_Qar_1A_1Baq_Qar_1A_1Baq_Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_inside_triangle, __pyx_mstate->__pyx_kp_b_iso88591_1Baq_Qar_1A_1Baq_Qar_1A_1Baq_Qa, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 33};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 35};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_inside_triangle_values, __pyx_mstate->__pyx_n_u_tri_vals};
-    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_check_inside_triangle, __pyx_mstate->__pyx_kp_b_iso88591_q_81Bb_har_2T_Bb_HASPSST, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_check_inside_triangle, __pyx_mstate->__pyx_kp_b_iso88591_q_81Bb_har_2T_Bb_HASPSST, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 38};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 40};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_ss, __pyx_mstate->__pyx_n_u_pixel_pos, __pyx_mstate->__pyx_n_u_buffer_offset};
-    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_read_pixel_buffer, __pyx_mstate->__pyx_kp_b_iso88591_Yas_IQc_2Qd_A_6_QnM, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_read_pixel_buffer, __pyx_mstate->__pyx_kp_b_iso88591_Yas_IQc_2Qd_A_6_QnM, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 43};
+    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 45};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_screen_size, __pyx_mstate->__pyx_n_u_pixel_pos, __pyx_mstate->__pyx_n_u_pixel_color, __pyx_mstate->__pyx_n_u_extra_byte, __pyx_mstate->__pyx_n_u_ss, __pyx_mstate->__pyx_n_u_buffer_offset, __pyx_mstate->__pyx_n_u_byte_color};
-    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_write_pixel_buffer, __pyx_mstate->__pyx_kp_b_iso88591_DA_Yas_IQc_2Qd_A_aq_1D_1D_1D_fA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_write_pixel_buffer, __pyx_mstate->__pyx_kp_b_iso88591_DA_Yas_IQc_2Qd_A_aq_1D_1D_1D_fA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 17, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 54};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 17, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 56};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_points, __pyx_mstate->__pyx_n_u_scanline_height, __pyx_mstate->__pyx_n_u_min_x, __pyx_mstate->__pyx_n_u_max_x, __pyx_mstate->__pyx_n_u_point, __pyx_mstate->__pyx_n_u_intersections, __pyx_mstate->__pyx_n_u_point_pairs, __pyx_mstate->__pyx_n_u_pair, __pyx_mstate->__pyx_n_u_y0, __pyx_mstate->__pyx_n_u_x1, __pyx_mstate->__pyx_n_u_y1, __pyx_mstate->__pyx_n_u_x2, __pyx_mstate->__pyx_n_u_y2, __pyx_mstate->__pyx_n_u_t, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_left, __pyx_mstate->__pyx_n_u_right};
-    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_find_edges, __pyx_mstate->__pyx_kp_b_iso88591_86_AT_q_1_5_BgXU_1_5_BgXU_1_A_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_find_edges, __pyx_mstate->__pyx_kp_b_iso88591_86_AT_q_1_5_BgXU_1_5_BgXU_1_A_F, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 79};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_point1, __pyx_mstate->__pyx_n_u_point2, __pyx_mstate->__pyx_n_u_x1, __pyx_mstate->__pyx_n_u_y1, __pyx_mstate->__pyx_n_u_x2, __pyx_mstate->__pyx_n_u_y2, __pyx_mstate->__pyx_n_u_A, __pyx_mstate->__pyx_n_u_B, __pyx_mstate->__pyx_n_u_C};
-    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_make_edge, __pyx_mstate->__pyx_kp_b_iso88591_V1D_aq_V1D_aq_2Q_Rq_3b_1_3c, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 87};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_edge, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_A, __pyx_mstate->__pyx_n_u_B, __pyx_mstate->__pyx_n_u_C};
-    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_eval_edge, __pyx_mstate->__pyx_kp_b_iso88591_s_a_1ARr_2Rq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 36, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 91};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 36, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 81};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_screen, __pyx_mstate->__pyx_n_u_points, __pyx_mstate->__pyx_n_u_texture, __pyx_mstate->__pyx_n_u_light_val, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_ss, __pyx_mstate->__pyx_n_u_uv_list, __pyx_mstate->__pyx_n_u_min_x, __pyx_mstate->__pyx_n_u_max_x, __pyx_mstate->__pyx_n_u_min_y, __pyx_mstate->__pyx_n_u_max_y, __pyx_mstate->__pyx_n_u_point, __pyx_mstate->__pyx_n_u_ia, __pyx_mstate->__pyx_n_u_ib, __pyx_mstate->__pyx_n_u_ic, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_edges_and_area_change, __pyx_mstate->__pyx_n_u_left_edge, __pyx_mstate->__pyx_n_u_right_edge, __pyx_mstate->__pyx_n_u_tri_vals, __pyx_mstate->__pyx_n_u_tri_2, __pyx_mstate->__pyx_n_u_deltas, __pyx_mstate->__pyx_n_u_left_uv, __pyx_mstate->__pyx_n_u_next_uv, __pyx_mstate->__pyx_n_u_k, __pyx_mstate->__pyx_n_u_area_mod, __pyx_mstate->__pyx_n_u_area_mod_next, __pyx_mstate->__pyx_n_u_l, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_du, __pyx_mstate->__pyx_n_u_dv, __pyx_mstate->__pyx_n_u_pixel_write, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_color, __pyx_mstate->__pyx_n_u_buffer_offset};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_draw_polygon, __pyx_mstate->__pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_draw_polygon_old, __pyx_mstate->__pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 28, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 144};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 9, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 134};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_point1, __pyx_mstate->__pyx_n_u_point2, __pyx_mstate->__pyx_n_u_x1, __pyx_mstate->__pyx_n_u_y1, __pyx_mstate->__pyx_n_u_x2, __pyx_mstate->__pyx_n_u_y2, __pyx_mstate->__pyx_n_u_A, __pyx_mstate->__pyx_n_u_B, __pyx_mstate->__pyx_n_u_C};
+    __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_make_edge, __pyx_mstate->__pyx_kp_b_iso88591_V1D_aq_V1D_aq_2Q_Rq_3b_1_3c, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 142};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_edge, __pyx_mstate->__pyx_n_u_x, __pyx_mstate->__pyx_n_u_y, __pyx_mstate->__pyx_n_u_A, __pyx_mstate->__pyx_n_u_B, __pyx_mstate->__pyx_n_u_C};
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_eval_edge, __pyx_mstate->__pyx_kp_b_iso88591_s_a_1ARr_2Rq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 28, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 146};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_screen, __pyx_mstate->__pyx_n_u_points, __pyx_mstate->__pyx_n_u_texture, __pyx_mstate->__pyx_n_u_light_val, __pyx_mstate->__pyx_n_u_buffer, __pyx_mstate->__pyx_n_u_ss, __pyx_mstate->__pyx_n_u_uv_list, __pyx_mstate->__pyx_n_u_min_x, __pyx_mstate->__pyx_n_u_max_x, __pyx_mstate->__pyx_n_u_min_y, __pyx_mstate->__pyx_n_u_max_y, __pyx_mstate->__pyx_n_u_point, __pyx_mstate->__pyx_n_u_ia, __pyx_mstate->__pyx_n_u_ib, __pyx_mstate->__pyx_n_u_ic, __pyx_mstate->__pyx_n_u_e0, __pyx_mstate->__pyx_n_u_e1, __pyx_mstate->__pyx_n_u_e2, __pyx_mstate->__pyx_n_u_E0_row, __pyx_mstate->__pyx_n_u_E1_row, __pyx_mstate->__pyx_n_u_E2_row, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_E0, __pyx_mstate->__pyx_n_u_E1, __pyx_mstate->__pyx_n_u_E2, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_color, __pyx_mstate->__pyx_n_u_k};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_draw_polygon_new, __pyx_mstate->__pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_draw_polygon_new, __pyx_mstate->__pyx_kp_b_iso88591_V_a_y_a_86_AT_q_1_86_AT_q_1_waq_2, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 186};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 188};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_file_name, __pyx_mstate->__pyx_n_u_img};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_load_texture, __pyx_mstate->__pyx_kp_b_iso88591_uAQ_Cwc_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_load_texture, __pyx_mstate->__pyx_kp_b_iso88591_uAQ_Cwc_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 191};
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 7, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 193};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_texture, __pyx_mstate->__pyx_n_u_u, __pyx_mstate->__pyx_n_u_v, __pyx_mstate->__pyx_n_u_img_size, __pyx_mstate->__pyx_n_u_pixel_x, __pyx_mstate->__pyx_n_u_pixel_y, __pyx_mstate->__pyx_n_u_color_val};
-    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_RasterizerCython_pyx, __pyx_mstate->__pyx_n_u_get_color_NN, __pyx_mstate->__pyx_kp_b_iso88591_waq_e1Bc_AQ_e2Qas_XQb_q_9A_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_Rasterizer_pyx, __pyx_mstate->__pyx_n_u_get_color_NN, __pyx_mstate->__pyx_kp_b_iso88591_waq_e1Bc_AQ_e2Qas_XQb_q_9A_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -12115,44 +12198,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyLong_SubtractObjC(PyObject *op1, PyObject
 }
 #endif
 
-/* RaiseTooManyValuesToUnpack */
-static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
-    PyErr_Format(PyExc_ValueError,
-                 "too many values to unpack (expected %" CYTHON_FORMAT_SSIZE_T "d)", expected);
-}
-
-/* RaiseNeedMoreValuesToUnpack */
-static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index) {
-    PyErr_Format(PyExc_ValueError,
-                 "need more than %" CYTHON_FORMAT_SSIZE_T "d value%.1s to unpack",
-                 index, (index == 1) ? "" : "s");
-}
-
-/* IterFinish */
-static CYTHON_INLINE int __Pyx_IterFinish(void) {
-    PyObject* exc_type;
-    __Pyx_PyThreadState_declare
-    __Pyx_PyThreadState_assign
-    exc_type = __Pyx_PyErr_CurrentExceptionType();
-    if (unlikely(exc_type)) {
-        if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)))
-            return -1;
-        __Pyx_PyErr_Clear();
-        return 0;
-    }
-    return 0;
-}
-
-/* UnpackItemEndCheck */
-static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected) {
-    if (unlikely(retval)) {
-        Py_DECREF(retval);
-        __Pyx_RaiseTooManyValuesError(expected);
-        return -1;
-    }
-    return __Pyx_IterFinish();
-}
-
 /* SetItemInt */
 static int __Pyx_SetItemInt_Generic(PyObject *o, PyObject *j, PyObject *v) {
     int r;
@@ -12214,6 +12259,44 @@ static CYTHON_INLINE int __Pyx_SetItemInt_Fast(PyObject *o, Py_ssize_t i, PyObje
     (void)wraparound;
     (void)boundscheck;
     return __Pyx_SetItemInt_Generic(o, PyLong_FromSsize_t(i), v);
+}
+
+/* RaiseTooManyValuesToUnpack */
+static CYTHON_INLINE void __Pyx_RaiseTooManyValuesError(Py_ssize_t expected) {
+    PyErr_Format(PyExc_ValueError,
+                 "too many values to unpack (expected %" CYTHON_FORMAT_SSIZE_T "d)", expected);
+}
+
+/* RaiseNeedMoreValuesToUnpack */
+static CYTHON_INLINE void __Pyx_RaiseNeedMoreValuesError(Py_ssize_t index) {
+    PyErr_Format(PyExc_ValueError,
+                 "need more than %" CYTHON_FORMAT_SSIZE_T "d value%.1s to unpack",
+                 index, (index == 1) ? "" : "s");
+}
+
+/* IterFinish */
+static CYTHON_INLINE int __Pyx_IterFinish(void) {
+    PyObject* exc_type;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    exc_type = __Pyx_PyErr_CurrentExceptionType();
+    if (unlikely(exc_type)) {
+        if (unlikely(!__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration)))
+            return -1;
+        __Pyx_PyErr_Clear();
+        return 0;
+    }
+    return 0;
+}
+
+/* UnpackItemEndCheck */
+static int __Pyx_IternextUnpackEndCheck(PyObject *retval, Py_ssize_t expected) {
+    if (unlikely(retval)) {
+        Py_DECREF(retval);
+        __Pyx_RaiseTooManyValuesError(expected);
+        return -1;
+    }
+    return __Pyx_IterFinish();
 }
 
 /* PyLongBinop */

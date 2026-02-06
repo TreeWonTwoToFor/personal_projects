@@ -1,9 +1,6 @@
-3D Renderer/Builder:
-    A program that allows you to manipulate 3D space using a custom 3D view
-
 Rollercoaster/Planet Orbit SIM:
     Simulations for a rollercaoster that calculate the physics, and maybe there's a game around it, and a 
-    Planet sim that calculates the orbits of planets with gravity. You could maybe add planets, and mess around.
+    Planet sim that calculates the orbits of planets with gravity.
 
 Nertz:
     The card game, where I could be able to setup like speedrun modes, and maybe connect to other people online. Chat system?
@@ -13,6 +10,7 @@ Golf/Sushi Go analasis:
 
 GreedScape:
     a mixture of the card system from Hunter x Hunter's Greed Island, as well as OSRS' RPG system to create a Card Based magic system in a RPG world.
+    chat is this Wizards101 lol
 
 Mathmatical document editor:
     A markdown langauge and viewer whose main job is to
@@ -20,5 +18,13 @@ Mathmatical document editor:
         graph points, functions, vectors, etc.
         make taking notes in a math class as easy as possbile.
 
-Virtual Computer w/ programming langauge:
-    A set of memory space to simulate memory of a computer, and a programming language to interface with the computer.
+Virtual Computer architecture w/ programming langauge
+Simple ML framework
+Markov Chain simulation
+Flowchart creator + editor
+Non-Linear IRC experience: 
+    Main messages can have branches, which leads to different sub conversations
+    In terms of something like Discord or Slack,
+        'Initial Messages' create 'Channels'
+        'Topic Messages'   create 'Threads'
+        'Plain Messagse'   create 'Messages'
