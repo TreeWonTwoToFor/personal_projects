@@ -18,11 +18,21 @@ struct Token* tokenize(char* src_text) {
 	int char_index = 0;
 	int token_index = 0;
 	while ((c = src_text[char_index]) != 0) {
+    int word_terminator = 0;
 		if (c == ';') {
 			struct Token semi = {"SEMI", 0};
 			token_list[token_index] = semi;
 			token_index++;
-		} else if ((c > 64 && c < 91) || (c > 96 && c < 123) || c == '-' || c == '_') {
+      word_terminator = 1;
+		} else if (c == '(' || c == ')') {
+      struct Token paren = {"PAREN", 0};
+      if (c == ')') {paren.value = 1;}
+      token_list[token_index] = paren;
+      token_index++;
+      word_terminator = 1;
+		} else if (c == ' ' || c == '\n') {
+      word_terminator = 1;
+    } else if ((c > 64 && c < 91) || (c > 96 && c < 123) || c == '-' || c == '_') {
 			// a character is a letter (uppercase, or lowercase), or a - _
 			buffer[buffer_index] = c;
 			buffer_index++;
@@ -43,13 +53,18 @@ struct Token* tokenize(char* src_text) {
       }
       token_list[token_index] = int_lit;
       token_index++;
-		} else if (c == ' ' || c == '\n') {
+		} 
+
+    if (word_terminator == 1 && buffer_index != 0) {
       // we know we have a new word, so we should check to see if it's a keyword, variable, or other
+      struct Token word_token = {"", 0};
       if (strcmp(buffer, "return") == 0) {
-        struct Token _return = {"RETURN", 0};
-        token_list[token_index] = _return;
-        token_index++;
+        word_token.type = "RETURN";
       }
+      // put the keyword into the string
+      token_list[token_index] = token_list[token_index-1];
+      token_list[token_index-1] = word_token;
+      token_index++;
 			// we want to flush the buffer
 			while (buffer_index >= 0) {
 				buffer[buffer_index] = 0;
@@ -81,9 +96,12 @@ void Lexer(struct Token token_array[], char* output_file_name) {
       buffer_index++;
     } else {
       // we need to 'flush' the buffer into a statement
-      if (strcmp(token_buffer[0].type, "RETURN") == 0 &&
-            strcmp(token_buffer[1].type, "INT") == 0) {
-        fprintf(source_file, "PRINT %d", token_buffer[1].value);
+      if (strcmp(token_buffer[0].type, "RETURN") == 0) {
+       if (strcmp(token_buffer[1].type, "PAREN") == 0 && token_buffer[1].value == 0 &&
+          strcmp(token_buffer[2].type, "INT") == 0  &&
+          strcmp(token_buffer[3].type, "PAREN") == 0 && token_buffer[3].value == 1) {
+          fprintf(source_file, "PRINT %d\n", token_buffer[2].value);
+        }
       }
       buffer_index = 0;
     }
