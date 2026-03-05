@@ -1,4 +1,4 @@
-command_list = ["PRINT", "ADD", "SUB", "MUL", "DIV", "POW", "VAR", "UPDATE", "JUMP", "JNZ", "INPUT"]
+command_list = ["PRINT", "ADD", "SUB", "MUL", "DIV", "POW", "VAR", "UPDATE", "JUMP", "JNZ", "INPUT", "POP", "PUSH", "SIZE", "LIST", "LEN", "WRITE", "READ"]
 
 def format_text(user_input):
     parser_array_output = []

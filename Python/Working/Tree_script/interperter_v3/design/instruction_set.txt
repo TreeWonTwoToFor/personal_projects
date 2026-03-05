@@ -1,32 +1,43 @@
 PRINT - returns the value to the console
-    format - PRINT #
+    format - PRINT value
 INPUT = allows the user to input a number or string
-    format - INPUT #
-
-ADD - returns the value of two inputs added together to the global answer variable
-    format - ADD # #
-SUB - returns the value of two inputs subtracted together to the global answer variable
-    format - SUB # #
-MUL - returns the value of two inputs multiplied together to the global answer variable
-    format - MUL # #
-DIV - returns the value of two inputs divided together to the global answer variable
-    format - DIV # #
-POW - takes the power of the first value by the second, then returns the value to the global answer variable
-    format - POW # #
+    format - INPUT variable
 
 JUMP - moves the program's reader to the line given
-    format - JUMP #
+    format - JUMP line_number
 JNZ (Jump if Not Zero) - will conditionally jump if the input given is not 0
-    format - JNZ # #, where the first value is compared and the second is the line that should be jumped to 
+    format - JNZ value line_number, where the first value is compared and the second is the line that should be jumped to 
 
 VAR - adds a variable object to the global variable list. 
-    format - VAR # #, where the first value is the name of the variable, and the second value is the information held by the variable
+    format - VAR name * not currently implemented
+    format - VAR name value
 UPDATE - sets the value of the variable given to what is held in the global variable answer
-    format - UPDATE #
+    format - UPDATE variable
+    format - UPDATE variable_a variable_b -> takes the value of variable_b, and puts it into variable_a
 
 PUSH - adds a value onto the stack
-    format - PUSH #
+    format - PUSH value
 POP - takes the top value off the stack, and puts it into the global answer variable
     format - POP
 SIZE - takes the size of the stack, and puts it into the global answer variable
     format - SIZE
+
+ADD - returns the value of two inputs added together to the global answer variable
+    format - ADD a b
+SUB - returns the value of two inputs subtracted together to the global answer variable
+    format - SUB a b 
+MUL - returns the value of two inputs multiplied together to the global answer variable
+    format - MUL a b
+DIV - returns the value of two inputs divided together to the global answer variable
+    format - DIV a b
+POW - takes the power of the first value by the second, then returns the value to the global answer variable
+    format - POW a b
+
+LIST - creates a list under the name of a given value
+    format - LIST name
+LEN - returns the number of items in a list, and puts it into the global answer variable
+    format - LEN name
+READ - takes in the name of a list, and the index, and returns the value into the global answer variable
+    format - READ name index, where the first value is the name, and the second is the index
+WRITE - places a value into a given list, at a specific index, under a given value.
+    format - WRITE name index value
