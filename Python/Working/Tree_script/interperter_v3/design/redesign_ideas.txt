@@ -1,0 +1,54 @@
+-------------------------
+ STRUCTURE OF TREESCRIPT
+-------------------------
+
+1. take in the file/text (if a file, format it into lines)
+2. make tokens of that text (var, text, num, command)
+3. replace the var with it's value
+4. do the operation (jump instruction, var assignment, mathmatic operation, etc.)
+5. return output to the user
+
+-------------------------
+TAKING IN TEXT FILE/INPUT
+-------------------------
+
+This is going to be written in the "main" file of the program
+1. Start off with determining which method of input we want to take
+2. Format it in a way that we can tokenize it (make it into single lines)
+3. send it to the parser to have it turned into tokens
+
+-------------------------
+        PARSER
+-------------------------
+
+1. Take in the text as a string
+2. format it into a list, where each token is seperated by spaces (unless it's a string, where we seperate by start and end characters)
+3. determine what kind of token it's going to be. is it
+    a. plain number
+    b. plain text (this includes strings)
+    c. a variable
+    d. a command keyword
+4. return in a list each token as an individual item. make it a format where we don't have to do more string manipulation
+5. hand it over to the interperter
+
+-------------------------
+       INTERPERTER
+-------------------------
+
+THIS DOESN'T PROPERLY ACCOUNT FOR VARIABLES
+
+1. take in that tokenized input and search for commands
+2. define a format for each command type
+3. use the tokenized input to run the command
+4. set what the command ran into an output. this can be a variable, or something else
+5. return that output
+    a. jump instructions just changes which line we are reading
+    b. mathmatic instructions are going to return to an output variable, which will be tied to a gloabl var like ANS
+    c. var instructions are going to either create a new variable, or update an already existing one using the value from ANS
+    d. print instruction just prints out our answer
+
+
+WAYS TO ACCOUNT FOR VARIABLES
+
+1. indivisually replace each var with it's value when it's found
+2. before you interpert the text, identify all variables, then fill them out file wide

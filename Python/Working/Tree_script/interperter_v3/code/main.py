@@ -13,11 +13,10 @@ def parse_text(user_input):
     return parser.return_tokens(parser.format_text(user_input))
 
 def run_trs():
-    print("Tree Script")
+    print("--Tree Script--")
     file = open(current_file)
     user_input = file.read()
     parsed_tokens = parse_text(user_input)
-    print(parsed_tokens)
     interperter.interpert(parsed_tokens)
     file.close()
 

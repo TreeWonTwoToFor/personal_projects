@@ -21,8 +21,12 @@ JNZ (Jump if Not Zero) - will conditionally jump if the input given is not 0
 
 VAR - adds a variable object to the global variable list. 
     format - VAR # #, where the first value is the name of the variable, and the second value is the information held by the variable
-UPDATE - sets the value of the variable given to what is held in either the gobal answer variable, or another given variable
+UPDATE - sets the value of the variable given to what is held in the global variable answer
     format - UPDATE #
-        This will simply update the variable given with the value in the answer variable
-    format - UPDATE # #
-        This will change the first variable's value to the value of the second variable
+
+PUSH - adds a value onto the stack
+    format - PUSH #
+POP - takes the top value off the stack, and puts it into the global answer variable
+    format - POP
+SIZE - takes the size of the stack, and puts it into the global answer variable
+    format - SIZE
