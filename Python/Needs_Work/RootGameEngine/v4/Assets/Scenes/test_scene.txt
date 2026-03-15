@@ -1,0 +1,13 @@
+camera 6 2 0 20 -90 0
+
+open red cylinder
+open checkered cylinder
+open blue cylinder
+
+translate red 0 0 -3
+translate blue 0 0 3
+
+# rotate testing
+rotate red 1 0 0 10
+rotate checkered 0 1 0 10
+rotate blue 0 0 1 10

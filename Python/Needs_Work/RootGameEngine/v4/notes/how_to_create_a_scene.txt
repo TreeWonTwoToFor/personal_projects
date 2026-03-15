@@ -1,0 +1,7 @@
+1. Create a scene file
+2. Import any objects in that scene into the objects folder
+    a. obj file for the model data
+    b. bmp file to be used for texturing. "[instance name]_texture.bmp"
+3. If you want scene specific logic,
+    a. create a logic file
+    b. modify the main file to include that option

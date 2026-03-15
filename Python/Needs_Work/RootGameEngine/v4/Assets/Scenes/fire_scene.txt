@@ -1,0 +1,11 @@
+camera 0 0 0 0 0 0
+
+open red cylinder
+open blue cylinder
+
+scale red 0.2 0.2 0.2
+scale blue 0.2 0.2 0.2
+
+translate red 0 0 3
+translate blue 0 0 4
+
