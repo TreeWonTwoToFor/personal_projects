@@ -99,6 +99,8 @@ def draw_polygon(screen, points, texture, light_val):
         if edges_and_area_change == None: continue
         left_edge = edges_and_area_change[0]
         right_edge = edges_and_area_change[1]
+        left_edge = max(0, left_edge)
+        right_edge = min(ss[0], right_edge)
         tri_vals = list(inside_triangle(points[0], points[1], points[2], (left_edge, i)))
         if not check_inside_triangle(tri_vals):
             # is a point inside the bb outside of the tri?
@@ -117,13 +119,23 @@ def draw_polygon(screen, points, texture, light_val):
         u, v = left_uv[0], left_uv[1]
         du, dv = u-next_uv[0], v-next_uv[1]
         # creating + filling the buffer for the scanline
-        pixel_write = b''
+        pixel_write = bytearray()
         for j in range(left_edge, right_edge):
-            if j < 0 or j >= ss[0]: continue # prevent buffer overflow
-            color = list(get_color_NN(texture, u, v))
-            for k in range(len(color)):
-                color[k] = int(color[k] * light_val)
-            pixel_write += bytes([color[2], color[1], color[0], 0])
+            #if j < 0 or j >= ss[0]: continue # prevent buffer overflow
+
+            # Inline - get_color_NN
+            #color = list(get_color_NN(texture, u, v))
+            img_size = texture[0]
+            # subtraction needed for index error if uv = 1
+            pixel_x = int(u * (img_size[0]-1))
+            pixel_y = int((1-v) * (img_size[1]-1)) #bottom left origin
+            color = list(texture[1][pixel_y * img_size[0] + pixel_x])
+
+            color[0] = int(color[0] * light_val)
+            color[1] = int(color[1] * light_val)
+            color[2] = int(color[2] * light_val)
+
+            pixel_write.extend([color[2], color[1], color[0], 0])
             u += du; v += dv
         # write that sanline to the buffer
         buffer_offset = (left_edge + i * ss[0]) * 4
@@ -138,8 +150,8 @@ def load_texture(file_name):
 def get_color_NN(texture, u,v):
     img_size = texture[0]
     # subtraction needed for index error if uv = 1
-    pixel_x = round(u * (img_size[0]-1))
-    pixel_y = round((1-v) * (img_size[1]-1)) #bottom left origin
+    pixel_x = int(u * (img_size[0]-1))
+    pixel_y = int((1-v) * (img_size[1]-1)) #bottom left origin
     color_val = texture[1][pixel_y * img_size[0] + pixel_x]
     return color_val
 

@@ -2,7 +2,7 @@ import math
 import pygame
 from PIL import Image
 
-draw_type = "old"
+draw_type = "triangle"
 
 # triangle functions
 def dp(vector_a, vector_b):
@@ -198,9 +198,9 @@ def get_color_NN(texture, u,v):
     color_val = texture[1][pixel_x, pixel_y]
     return color_val
 
-if draw_type == "old":
+if draw_type == "triangle":
     draw_polygon = draw_polygon_old
-elif draw_type == "new":
+elif draw_type == "edge":
     draw_polygon = draw_polygon_new
 
 if __name__ == "__main__":

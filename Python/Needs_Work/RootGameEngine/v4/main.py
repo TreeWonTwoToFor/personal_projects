@@ -34,7 +34,7 @@ clean_title = clean_title.strip()
 pygame.display.set_caption(clean_title)
 
 # initialize some key components
-screen = pygame.display.set_mode(resolution)
+screen = pygame.display.set_mode(resolution, pygame.RESIZABLE)
 clock = pygame.time.Clock()
 pygame.mouse.set_visible(not mouse_control)
 
