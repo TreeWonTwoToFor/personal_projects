@@ -3,7 +3,7 @@ import pygame
 
 from Engine import Helper
 from Engine import ViewFrustum
-from Engine import Rasterizer
+from Engine import RasterizerArithmetic as Rasterizer
 
 frustum_planes = None
 camera_pos = None
