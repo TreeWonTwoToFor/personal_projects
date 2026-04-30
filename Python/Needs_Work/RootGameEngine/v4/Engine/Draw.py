@@ -13,28 +13,7 @@ back_culling = True
 lighting = True
 homemade_rasterizer = True
 
-# sort the polygons from back to front to ensure no overlap
-def sort_polygons(camera, poly_list, offset=(0,0,0)):
-    output_list = []
-    for poly in poly_list:
-        centroid = [0,0,0]
-        for vertex in poly[0]:
-            for i in range(3): centroid[i] += vertex[i]
-        for i in range(len(centroid)):
-            centroid[i] = centroid[i] / len(poly[0])
-        distance = math.sqrt(
-            (camera.point[0] - centroid[0])**2
-            +(camera.point[1] - centroid[1])**2
-            +(camera.point[2] - centroid[2])**2)
-        output_list.append([poly, distance])
-    # sort based on how far the centroid is from the camera
-    sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
-    final_list = []
-    for poly in sorted_list:
-        final_list.append(poly[0])
-    return final_list
-
-def draw_polygons(screen, camera, obj_list, light_list):
+def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
     global frustum_planes
     culled_obj_list = []
     # sorting all of the objects into one list to ensure proper ordering
@@ -79,7 +58,7 @@ def draw_polygons(screen, camera, obj_list, light_list):
                     screen_pos = projected_point[0]
                     depth = projected_point[1]
                     perspective_poly.append([int(screen_pos[0]), int(screen_pos[1]), depth] + uv_values[i])
-                Rasterizer.draw_polygon(screen, perspective_poly, obj.texture, light_value)
+                Rasterizer.draw_polygon(screen, depth_buffer, perspective_poly, obj.texture, light_value)
             else:
                 base_color = [255, 255, 255]
                 lit_color = [x * light_value for x in base_color]
@@ -91,13 +70,13 @@ def draw_polygons(screen, camera, obj_list, light_list):
                 pygame.draw.polygon(screen, lit_color, perspective_poly)
 
 # 'main' function of Draw
-def draw_frame_poly(screen, camera, obj_list, light_list, debug, clock):
+def draw_frame_poly(screen, depth_buffer, camera, obj_list, light_list, debug, clock):
     global camera_pos, frustum_planes
     current_camera = ((camera.point[0], camera.point[1], camera.point[2]),
                         (camera.angle[0], camera.angle[1], camera.angle[2]))
     if camera_pos != current_camera:
         frustum_planes = ViewFrustum.get(screen, camera)
         camera_pos = current_camera
-    draw_polygons(screen, camera, obj_list[1:], light_list)
+    draw_polygons(screen, depth_buffer, camera, obj_list[1:], light_list)
     camera.fix_angles() # keeps the camera's angles in realistic boundaries.
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))

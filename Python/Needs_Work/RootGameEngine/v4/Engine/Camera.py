@@ -65,6 +65,7 @@ class Camera:
         dx = math.cos(direction)
         dz = math.sin(direction)
         # change the position based on that change times the length of our difference
+        self.point = list(self.point)
         self.point[0] += dx * delta_time * amount
         self.point[2] += dz * delta_time * amount
         self.bounding_box.translate([self.point[0] + dx*amount, 0, self.point[2] + dz*amount])
@@ -74,5 +75,6 @@ class Camera:
         match up_or_down:
             case "up":   dy = amount
             case "down": dy = -amount
+        self.point = list(self.point)
         self.point[1] += dy * delta_time
         self.bounding_box.translate([0, dy, 0])

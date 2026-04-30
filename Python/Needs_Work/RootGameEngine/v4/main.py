@@ -1,6 +1,7 @@
 # General libraries
 import pygame
 import os
+import math
 
 # Testing
 import cProfile
@@ -32,6 +33,7 @@ pygame.display.set_caption(clean_title)
 
 # initialize some key components
 screen = pygame.display.set_mode(resolution, pygame.RESIZABLE)
+depth_buffer = []
 clock = pygame.time.Clock()
 pygame.event.set_grab(mouse_control)
 pygame.mouse.set_visible(not mouse_control)
@@ -71,7 +73,8 @@ def iterate():
 
     # visual/game update
     screen.fill(background_color)
-    Draw.draw_frame_poly(screen, game_camera, object_list, light_sources, debug, clock)
+    depth_buffer = [math.inf] * (screen.get_width() * screen.get_height())
+    Draw.draw_frame_poly(screen, depth_buffer, game_camera, object_list, light_sources, debug, clock)
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT or game_function(event):
