@@ -1,7 +1,10 @@
 from PIL import Image
 
 def load_texture(file_name):
-    img = Image.open(file_name)
+    try:
+        img = Image.open(file_name)
+    except:
+        img = Image.open("./Assets/Objects/missing_texture.bmp")
     return (img.size, list(img.getdata()))
 
 def draw_polygon(screen, points, texture, light_val):

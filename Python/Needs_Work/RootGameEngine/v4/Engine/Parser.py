@@ -1,9 +1,3 @@
-import numpy
-
-# needed for winding ordering
-from Engine import Draw
-from Engine import Camera
-
 def read_blender_file(file_name):
     try:
         file = open(file_name)

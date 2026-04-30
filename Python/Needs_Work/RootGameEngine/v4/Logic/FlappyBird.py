@@ -1,11 +1,10 @@
 import pygame
-import math
 import random
 
 pressing_space = False
 flapped = False
 
-def player_movement(event, mouse_control):
+def player_movement(event):
     global pressing_space
     if event.type == pygame.KEYDOWN:
         match event.key:
@@ -16,7 +15,7 @@ def player_movement(event, mouse_control):
             pressing_space = False
     return False
 
-def player_movement_update(camera, m_control, m_sensitivity, object_list):
+def player_movement_update(camera, m_control, m_sensitivity, object_list, dt):
     global flapped
     if pressing_space and not flapped:
         flapped = True

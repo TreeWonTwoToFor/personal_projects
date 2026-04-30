@@ -45,8 +45,8 @@ def load_scene(scene_name):
                         case "open":
                             object_path = "./Assets/Objects/" + line_tokens[2] + "/"
                             model = Parser.get_model(object_path + line_tokens[2] + "_object.obj")
-                            file_path = object_path + line_tokens[1] + "_texture.bmp"
-                            this_obj = Object.Object(model, file_path)
+                            texture_file_path = object_path + line_tokens[1] + "_texture.bmp"
+                            this_obj = Object.Object(model, texture_file_path)
                             object_dict[line_tokens[1]] = this_obj
                         case "translate" | "scale":
                             object_name = line_tokens[1]

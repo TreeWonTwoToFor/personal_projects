@@ -10,9 +10,6 @@ import pstats
 from Engine import Draw
 from Engine import SceneManager
 from Engine import LaunchSettings
-from Logic import FlappyBird
-from Logic import RubiksCube
-from Logic import StandardMovement
 
 # pull the general settings
 settings = LaunchSettings.get_settings()
@@ -36,6 +33,7 @@ pygame.display.set_caption(clean_title)
 # initialize some key components
 screen = pygame.display.set_mode(resolution, pygame.RESIZABLE)
 clock = pygame.time.Clock()
+pygame.event.set_grab(mouse_control)
 pygame.mouse.set_visible(not mouse_control)
 
 # load in the scene
@@ -45,22 +43,18 @@ object_dict      = scene[1]
 scene_actions    = scene[2]
 background_color = scene[3]
 light_sources    = scene[4]
-dt = 0.016
+dt = 0.016 # presumes 60 FPS, but gets recalculated every frame
 
 # one time run operations
 if scene_name == "rubiks_cube.txt":
-    RubiksCube.scramble(list(object_dict.values()))
+    Draw.lighting = False # makes the colors more vibrant
+    LaunchSettings.GameFile.scramble(list(object_dict.values()))
 
 def iterate():
     global running, dt
 
     # scene specific code
-    GameFile = StandardMovement
-    if scene_name == "flappy_bird.txt":
-        GameFile = FlappyBird
-    elif scene_name == "rubiks_cube.txt":
-        GameFile = RubiksCube
-        Draw.lighting = False # makes the colors more vibrant
+    GameFile = LaunchSettings.GameFile
     game_logic      = GameFile.game_logic
     game_function   = GameFile.player_movement
     update_function = GameFile.player_movement_update
@@ -80,13 +74,13 @@ def iterate():
     Draw.draw_frame_poly(screen, game_camera, object_list, light_sources, debug, clock)
     pygame.display.update()
     for event in pygame.event.get():
-        if event.type == pygame.QUIT or game_function(event, mouse_control):
+        if event.type == pygame.QUIT or game_function(event):
             # this is a little unintuitive, but since game_function
             #   handles the escape key, it returns True when ESC
             #   is pressed. It updates the keyboard when called.
             running = False
     # the player movement needs to be checked every frame, and not just when a key changes.
-    update_function(game_camera, mouse_control, mouse_sensitivity, object_list)
+    update_function(game_camera, mouse_control, mouse_sensitivity, object_list, dt)
     # delay if necessary
     dt = round(clock.tick(FPS) * 0.001, 4)
 

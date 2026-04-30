@@ -16,7 +16,7 @@ current_scramble = None
 cube_mode = "manual"
 start_scramble = False
 
-def player_movement(event, using_mouse):
+def player_movement(event):
     global j_held,f_held,i_held,k_held,e_held,d_held,h_held,g_held,o_held,w_held,l_held,s_held, start_scramble
     if event.type == pygame.KEYDOWN:
         match event.key:
@@ -50,7 +50,7 @@ def player_movement(event, using_mouse):
             case pygame.K_s: s_held = False
     return False
 
-def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list):
+def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list, dt):
     return 0
 
 # j = U, f = U'

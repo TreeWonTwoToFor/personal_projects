@@ -1,28 +1,20 @@
 import math
-import numpy
 import pygame
 
 def array_dp(array_a, array_b):
-    #face_vector = numpy.array(array_a)
-    #camera_vector = numpy.array(array_b)
-    #dp = numpy.dot(array_a, array_b)
-    if len(array_a) != len(array_b): raise ValueError(f"cannot perform dp between {array_a} and {array_b}")
-    dp = 0
-    for i in range(len(array_a)):
-        dp += array_a[i] * array_b[i]
+    if len(array_a) != len(array_b): 
+        raise ValueError(f"cannot perform dp between {array_a} and {array_b}")
+    dp = sum([array_a[i] * array_b[i] for i in range(len(array_a))])
     return dp
 
 def vector_magnitude(vector):
-    value = math.sqrt(vector[0]**2+vector[1]**2+vector[2]**2)
+    value = math.sqrt(sum([x ** 2 for x in vector]))
     if value == 0:
         return 0.001
-    else:
-        return value
+    return value
 
 # General drawing functions
-# NOTE: none of these work/are here because there's no perspective proj
 def draw_pt(screen, coords, color):
-    # this is simply to help make it easier to quickly draw a point
     pygame.draw.circle(screen, color, coords, 2)
 
 def draw_3d_point(screen, point, color, camera):
