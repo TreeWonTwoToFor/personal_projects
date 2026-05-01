@@ -77,10 +77,11 @@ def iterate():
     Draw.draw_frame_poly(screen, depth_buffer, game_camera, object_list, light_sources, debug, clock)
     pygame.display.update()
     for event in pygame.event.get():
-        if event.type == pygame.QUIT or game_function(event):
+        if event.type == pygame.QUIT or game_function(screen, event):
             # this is a little unintuitive, but since game_function
             #   handles the escape key, it returns True when ESC
             #   is pressed. It updates the keyboard when called.
+            # also, we include screen for screenshot capabilities
             running = False
     # the player movement needs to be checked every frame, and not just when a key changes.
     update_function(game_camera, mouse_control, mouse_sensitivity, object_list, dt)

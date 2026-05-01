@@ -5,7 +5,7 @@ w_held, a_held, s_held, d_held = False, False, False, False
 left_held, right_held, up_held, down_held = False, False, False, False
 space_held, shift_held = False, False
 
-def player_movement(event):
+def player_movement(screen, event):
     global w_held, a_held, s_held, d_held, left_held, right_held, up_held, down_held, space_held, shift_held
     if event.type == pygame.KEYDOWN:
         match event.key:
@@ -20,6 +20,7 @@ def player_movement(event):
             case pygame.K_SPACE: space_held = True 
             case pygame.K_LSHIFT: shift_held = True 
             case pygame.K_ESCAPE: return True
+            case pygame.K_BACKSPACE: pygame.image.save(screen, "screenshot.png")
     if event.type == pygame.KEYUP:
         match event.key:
             case pygame.K_w: w_held = False

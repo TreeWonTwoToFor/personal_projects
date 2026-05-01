@@ -16,7 +16,7 @@ current_scramble = None
 cube_mode = "manual"
 start_scramble = False
 
-def player_movement(event):
+def player_movement(screen, event):
     global j_held,f_held,i_held,k_held,e_held,d_held,h_held,g_held,o_held,w_held,l_held,s_held, start_scramble
     if event.type == pygame.KEYDOWN:
         match event.key:

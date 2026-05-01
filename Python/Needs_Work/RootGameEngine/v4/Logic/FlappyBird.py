@@ -4,7 +4,7 @@ import random
 pressing_space = False
 flapped = False
 
-def player_movement(event):
+def player_movement(screen, event):
     global pressing_space
     if event.type == pygame.KEYDOWN:
         match event.key:

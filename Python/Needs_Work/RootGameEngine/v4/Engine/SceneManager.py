@@ -4,7 +4,12 @@ from Engine import Object
 from Engine import Camera
 from Engine import Parser
 
+texture_read_by_model = False
+
 def load_scene(scene_name):
+    global texture_read_by_model
+    if scene_name == "rubiks_cube.txt":
+        texture_read_by_model = True
     game_camera = None
     object_dict = {}
     game_actions = []
@@ -46,6 +51,8 @@ def load_scene(scene_name):
                             object_path = "./Assets/Objects/" + line_tokens[2] + "/"
                             model = Parser.get_model(object_path + line_tokens[2] + "_object.obj")
                             texture_file_path = object_path + line_tokens[1] + "_texture.bmp"
+                            if not texture_read_by_model:
+                                texture_file_path = object_path + line_tokens[2] + "_texture.bmp"
                             this_obj = Object.Object(model, texture_file_path)
                             object_dict[line_tokens[1]] = this_obj
                         case "translate" | "scale":

@@ -4,10 +4,10 @@ from Logic import StandardMovement
 
 FPS = 120
 resolution = (800, 600)
-debug = True
+debug = False
 # normal, render, testing
 mode = "normal"
-scene_name = "barrel_scene.txt"
+scene_name = "rubiks_cube.txt"
 frame_count = 100
 mouse_control = True
 mouse_sensitivity = 0.5
