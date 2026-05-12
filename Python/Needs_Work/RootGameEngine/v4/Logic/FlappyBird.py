@@ -19,12 +19,12 @@ def player_movement_update(camera, m_control, m_sensitivity, object_list, dt):
     global flapped
     if pressing_space and not flapped:
         flapped = True
-        object_list[1].translate((0,2,0))
+        object_list[0].translate((0,2,0))
     elif not pressing_space and flapped:
         flapped = False
 
 def game_logic(object_list):
-    pipes = object_list[2:]
+    pipes = object_list[1:]
     for i in range(len(pipes)-1):
         bottom = pipes[i]
         top = pipes[i+1]
@@ -38,9 +38,9 @@ def game_logic(object_list):
         print('you died')
 
 def object_collision(object_list):
-    player = object_list[1].collision_values
+    player = object_list[0].collision_values
     intersect_list = []
-    for obj in object_list[2:]:
+    for obj in object_list[1:]:
         object_values = obj.collision_values
         intersect_list.append(
             player[0] <= object_values[3] and # x low

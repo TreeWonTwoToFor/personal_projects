@@ -1,4 +1,4 @@
-def read_blender_file(file_name):
+def read_file(file_name):
     try:
         file = open(file_name)
         return file.read()
@@ -17,12 +17,9 @@ def get_data(file_dict, data_type):
     line_number = 1
     start_found = False
     while not start_found:
-        try:
-            if file_dict[line_number].split()[0] == data_type:
-                start_found = True
-            else:
-                line_number += 1
-        except:
+        if file_dict[line_number].split()[0] == data_type:
+            start_found = True
+        else:
             line_number += 1
     looking = True
     while looking:
@@ -59,7 +56,7 @@ def file_dict_to_list(file_dict):
 
 # each data point in the model has a list of vertices, as well as the face normal
 def get_model(file_name):
-    text = read_blender_file(file_name)
+    text = read_file(file_name)
     file_dict = get_file_dictionary(text)
     file_list = file_dict_to_list(file_dict)
     vertex_list = file_list[0]

@@ -2,13 +2,13 @@ from Logic import FlappyBird
 from Logic import RubiksCube
 from Logic import StandardMovement
 
-FPS = 120
+FPS = 60
 resolution = (800, 600)
-debug = False
+debug = True
 # normal, render, testing
 mode = "normal"
-scene_name = "rubiks_cube.txt"
-frame_count = 100
+scene_name = "test_scene.rsc"
+frame_count = 1000
 mouse_control = True
 mouse_sensitivity = 0.5
 
@@ -18,5 +18,5 @@ def get_settings():
 GameFile = StandardMovement
 
 match scene_name:
-    case "flappy_bird.txt": GameFile = FlappyBird
-    case "rubiks_cube.txt": GameFile = RubiksCube
+    case "flappy_bird.rsc": GameFile = FlappyBird
+    case "rubiks_cube.rsc": GameFile = RubiksCube

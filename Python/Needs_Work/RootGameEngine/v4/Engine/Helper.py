@@ -1,11 +1,15 @@
 import math
 import pygame
+import numpy
 
 def array_dp(array_a, array_b):
     if len(array_a) != len(array_b): 
         raise ValueError(f"cannot perform dp between {array_a} and {array_b}")
     dp = sum([array_a[i] * array_b[i] for i in range(len(array_a))])
     return dp
+
+def array_cp(array_a, array_b):
+    return numpy.cross(array_a, array_b)
 
 def vector_magnitude(vector):
     value = math.sqrt(sum([x ** 2 for x in vector]))

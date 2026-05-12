@@ -38,6 +38,7 @@ def player_movement(screen, event):
 
 def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list, dt):
     old_camera_position = (camera.point[0], camera.point[1], camera.point[2])
+    old_camera_hitbox = camera.bounding_box
     if w_held: camera.move_direction(0, dt)
     if s_held: camera.move_direction(math.pi, dt)
     if a_held: camera.move_direction(math.pi/2, dt)
@@ -47,6 +48,7 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list, 
     # if we are running into an object, undo that move
     if object_collision(camera, object_list):
         camera.point = old_camera_position
+        camera.bounding_box = old_camera_hitbox
 
     if not using_mouse:
         if up_held: camera.angle[0] -= 0.02
@@ -57,11 +59,21 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list, 
         mouse_x, mouse_y = pygame.mouse.get_rel()
         camera.angle[0] += mouse_sensitivity*(mouse_y/500)
         camera.angle[1] += mouse_sensitivity*(mouse_x/500)
+        # ensures that the camera is within vertical bounds
+        # NOTE: it wraps around the value 360 for the yaw,
+        #       which means that there's two angles that rerpesents any camera direction
+        nintey_degrees = math.pi/2
+        three_sixty_degrees = 2 * math.pi
+        if camera.angle[0] < -nintey_degrees: camera.angle[0] = -nintey_degrees
+        if camera.angle[0] > nintey_degrees: camera.angle[0] = nintey_degrees
+        if camera.angle[1] > three_sixty_degrees: camera.angle[1] = camera.angle[1]%three_sixty_degrees
+        if camera.angle[1] < -three_sixty_degrees: camera.angle[1] = camera.angle[1]%three_sixty_degrees
 
 def object_collision(camera, object_list):
+    # FIXME: the collision checking doesn't work well. double check interset_list.append values
     player = camera.bounding_box.collision_values
     intersect_list = []
-    for object in object_list[1:]:
+    for object in object_list:
         object_values = object.collision_values
         intersect_list.append(
             player[0] <= object_values[3] and # x low
@@ -71,9 +83,7 @@ def object_collision(camera, object_list):
             player[4] >= object_values[1] and # y max
             player[5] >= object_values[2]     # z max
         )
-    for intersect in intersect_list:
-        if intersect: return True
-    return False
+    # return True in intersect_list
     
 def game_logic(object_list):
     # nothing to do

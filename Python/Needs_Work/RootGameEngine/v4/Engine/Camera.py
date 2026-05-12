@@ -27,7 +27,7 @@ class Camera:
             self.bounding_box.scale([0.2, 0.7, 0.2])
 
     def __str__(self):
-        return f"Camera Info\n\tPos: {self.point}\n\tAngle: {self.angle}"
+        return f"Camera Info\n\tPos: {self.point}\n\tAngle: {self.angle}\n"
     
     def show_pos(self, screen, fps):
         # like cl_showpos from portal.
@@ -62,19 +62,20 @@ class Camera:
     def move_direction(self, theta, delta_time, amount=move_speed):
         direction = degrees_to_radians(90) - self.angle[1] + theta
         # calculate the triangle of movement based on our angle theta in radians
-        dx = math.cos(direction)
-        dz = math.sin(direction)
+        dx = math.cos(direction) * delta_time * amount
+        dz = math.sin(direction) * delta_time * amount
         # change the position based on that change times the length of our difference
         self.point = list(self.point)
-        self.point[0] += dx * delta_time * amount
-        self.point[2] += dz * delta_time * amount
-        self.bounding_box.translate([self.point[0] + dx*amount, 0, self.point[2] + dz*amount])
+        self.point[0] += dx
+        self.point[2] += dz
+        self.bounding_box.translate([dx, 0, dz])
 
     def move_vertically(self, up_or_down, delta_time, amount=move_speed):
         dy = 0
         match up_or_down:
             case "up":   dy = amount
             case "down": dy = -amount
+        dy *= delta_time
         self.point = list(self.point)
-        self.point[1] += dy * delta_time
+        self.point[1] += dy
         self.bounding_box.translate([0, dy, 0])

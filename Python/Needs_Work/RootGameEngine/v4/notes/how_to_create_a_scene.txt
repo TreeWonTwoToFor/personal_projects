@@ -5,3 +5,20 @@
 3. If you want scene specific logic,
     a. create a logic file
     b. modify the main file to include that option
+
+Version 2.
+1. Create a scene file (ending in .rsc for RootSCene)
+2. direct high-level scene options
+    a. 'camera' option to direct the initial position and angle
+    b. create 'light' sources, with xyz and strenght value
+    c. 'background' to change color (should maybe rename to skybox?)
+3. add and change objects
+    a. 'open' keyword to bring an object into the scene. 
+        - name the object, so that it can be referred to later
+        - model file path
+        - texture file path
+    b. 'translate', 'scale', 'rotate', and 'orbit' are modification keywords
+4. movement options
+    a. start it with a line that has a # (acts like a comment)
+    b. you can use any of the modification keywords here
+        - these function on a frame by frame basis

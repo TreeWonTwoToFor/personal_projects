@@ -13,6 +13,27 @@ back_culling = True
 lighting = True
 homemade_rasterizer = True
 
+# sort the polygons from back to front to ensure no overlap (Painter's Algorithm)
+def sort_polygons(camera, poly_list, offset=(0,0,0)):
+    output_list = []
+    for poly in poly_list:
+        centroid = [0,0,0]
+        for vertex in poly[0]:
+            for i in range(3): centroid[i] += vertex[i]
+        for i in range(len(centroid)):
+            centroid[i] = centroid[i] / len(poly[0])
+        distance = math.sqrt(
+            (camera.point[0] - centroid[0])**2
+            +(camera.point[1] - centroid[1])**2
+            +(camera.point[2] - centroid[2])**2)
+        output_list.append([poly, distance])
+    # sort based on how far the centroid is from the camera
+    sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
+    final_list = []
+    for poly in sorted_list:
+        final_list.append(poly[0])
+    return final_list
+
 def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
     global frustum_planes
     culled_obj_list = []
@@ -27,7 +48,10 @@ def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
         if not out_of_bounds:
             culled_obj_list.append(obj)
     for obj in culled_obj_list:
-        for poly in obj.model:
+        poly_list = obj.model
+        if not homemade_rasterizer:
+            poly_list = sort_polygons(camera, poly_list)
+        for poly in poly_list:
             direction_vector = [
                 camera.point[0] - poly[0][0][0],
                 camera.point[1] - poly[0][0][1],
@@ -43,7 +67,7 @@ def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
                     color_mod = Helper.array_dp(light_pos, poly[1])/Helper.vector_magnitude(light_pos)
                     if color_mod < 0: color_mod = 0
                     light_value += (color_mod*(light_str/100))
-                if light_value < 0.2: light_value = 0.2
+                if light_value < 0.1: light_value = 0.1
             else:
                 light_value = 1
             # rendering polygons
@@ -77,6 +101,5 @@ def draw_frame_poly(screen, depth_buffer, camera, obj_list, light_list, debug, c
     if camera_pos != current_camera:
         frustum_planes = ViewFrustum.get(screen, camera)
         camera_pos = current_camera
-    draw_polygons(screen, depth_buffer, camera, obj_list[1:], light_list)
-    camera.fix_angles() # keeps the camera's angles in realistic boundaries.
+    draw_polygons(screen, depth_buffer, camera, obj_list, light_list)
     if debug: camera.show_pos(screen, round(clock.get_fps(), 2))
