@@ -51,10 +51,10 @@ def player_movement_update(camera, using_mouse, mouse_sensitivity, object_list, 
         camera.bounding_box = old_camera_hitbox
 
     if not using_mouse:
-        if up_held: camera.angle[0] -= 0.02
-        if down_held: camera.angle[0] += 0.02
-        if left_held: camera.angle[1] -= 0.02
-        if right_held: camera.angle[1] += 0.02
+        if up_held: camera.angle[0] -= 2*dt
+        if down_held: camera.angle[0] += 2*dt
+        if left_held: camera.angle[1] -= 2*dt
+        if right_held: camera.angle[1] += 2*dt
     else:
         mouse_x, mouse_y = pygame.mouse.get_rel()
         camera.angle[0] += mouse_sensitivity*(mouse_y/500)

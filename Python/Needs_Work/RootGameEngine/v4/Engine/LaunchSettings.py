@@ -7,9 +7,9 @@ resolution = (800, 600)
 debug = True
 # normal, render, testing
 mode = "normal"
-scene_name = "test_scene.rsc"
+scene_name = "monkey.rsc"
 frame_count = 1000
-mouse_control = True
+mouse_control = False
 mouse_sensitivity = 0.5
 
 def get_settings():

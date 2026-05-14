@@ -7,10 +7,9 @@ def load_texture(file_name):
         img = Image.open("./Assets/Objects/missing_texture.bmp")
     return (img.size, list(img.getdata()))
 
-def draw_polygon(screen, depth_buffer, points, texture, light_val):
-    pygame_buffer = screen.get_buffer()
-    buffer = memoryview(pygame_buffer)
-    width, height = screen.get_size()
+# buffer refers to the memoryview object of the pygame surface buffer
+def draw_polygon(buffer, screen_size, depth_buffer, points, texture, light_val):
+    width, height = screen_size[0], screen_size[1]
     tex_size, tex_data = texture
     tex_w, tex_h = tex_size
     # unpack triangle

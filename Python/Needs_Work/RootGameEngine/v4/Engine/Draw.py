@@ -37,6 +37,8 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
 def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
     global frustum_planes
     culled_obj_list = []
+    screen_size = (screen.get_width(), screen.get_height())
+    screen_buffer = memoryview(screen.get_buffer())
     # sorting all of the objects into one list to ensure proper ordering
     for obj in obj_list:
         out_of_bounds = False
@@ -82,7 +84,7 @@ def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
                     screen_pos = projected_point[0]
                     depth = projected_point[1]
                     perspective_poly.append([int(screen_pos[0]), int(screen_pos[1]), depth] + uv_values[i])
-                Rasterizer.draw_polygon(screen, depth_buffer, perspective_poly, obj.texture, light_value)
+                Rasterizer.draw_polygon(screen_buffer, screen_size, depth_buffer, perspective_poly, obj.texture, light_value)
             else:
                 base_color = [255, 255, 255]
                 lit_color = [x * light_value for x in base_color]
