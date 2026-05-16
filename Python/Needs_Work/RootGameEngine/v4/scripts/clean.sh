@@ -6,6 +6,7 @@ rm test_texture.bmp
 cd Engine
 rm -rf __pycache__/ build/
 rm Rasterizer.c*
+rm Rasterizer.pyx
 # inside the Logic folder
 cd ../Logic
 rm -rf __pycache__/

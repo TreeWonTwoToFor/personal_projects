@@ -1,8 +1,7 @@
 optimizations
     currently using painter's algorithm, & back-face culling
-    obscured polygons are still being rendered.
+    obscured polygons are still taking up computational resources
          occlusion culling
-Textures
 lighting/shader stuff
     transparent objects
     light

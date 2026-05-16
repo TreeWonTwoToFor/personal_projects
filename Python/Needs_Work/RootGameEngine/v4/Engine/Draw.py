@@ -73,6 +73,7 @@ def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
             else:
                 light_value = 1
             # rendering polygons
+			# NOTE: when triangles go slightly off screen, implement triangle re-assembly
             if homemade_rasterizer:
                 perspective_poly = []
                 uv_values = poly[2]
