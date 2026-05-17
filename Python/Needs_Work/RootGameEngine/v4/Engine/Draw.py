@@ -10,7 +10,7 @@ from Engine import Rasterizer
 frustum_planes = None
 camera_pos = None
 
-culling_coloring = False
+culling_coloring = True
 frustum_culling = True
 back_culling = True
 lighting = True

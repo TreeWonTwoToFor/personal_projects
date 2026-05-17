@@ -87,4 +87,7 @@ def object_collision(camera, object_list):
     
 def game_logic(object_list):
     # nothing to do
-    return 0
+    pass
+
+def ui_logic(ui_layer, is_paused):
+    pygame.draw.circle(ui_layer, (0,255,0), (130, 60), 5)
