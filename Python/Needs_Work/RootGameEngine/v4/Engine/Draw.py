@@ -1,7 +1,7 @@
+import copy
 import math
 import numpy
 import pygame
-import copy
 
 from Engine import Helper
 from Engine import ViewFrustum
@@ -10,11 +10,11 @@ from Engine import Rasterizer
 frustum_planes = None
 camera_pos = None
 
-culling_coloring = True
+culling_coloring = False
 frustum_culling = True
 back_culling = True
 lighting = True
-homemade_rasterizer = False
+homemade_rasterizer = True
 
 # 'main' funtion of draw
 def draw_frame_poly(screen, depth_buffer, camera, obj_list, light_list, debug, clock):
@@ -35,19 +35,21 @@ def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
     screen_size = (screen.get_width(), screen.get_height())
     screen_buffer = memoryview(screen.get_buffer())
     # remove objects that are completely outside our view
-    culled_obj_list = frustum_culling(obj_list)
+    # FIXME something about the frustum culling isn't properly aligned with the camera view
+    #culled_obj_list = frustum_culling(obj_list)
+    culled_obj_list = obj_list
     for obj in culled_obj_list:
         poly_list = obj.model
         if not homemade_rasterizer:
             # Painter's Algorithm
-            poly_list = sort_polygons(camera, poly_list)
+            poly_list = sort_polygons(camera, poly_list, obj.is_local)
         for poly in poly_list:
             direction_vector = [
                 camera.point[0] - poly[0][0][0],
                 camera.point[1] - poly[0][0][1],
                 camera.point[2] - poly[0][0][2]]
             # back culling
-            if back_culling and Helper.array_dp(direction_vector, poly[1]) < 0:
+            if not obj.is_local and back_culling and Helper.array_dp(direction_vector, poly[1]) < 0:
                 continue
             # lighting
             if lighting:
@@ -59,10 +61,10 @@ def draw_polygons(screen, depth_buffer, camera, obj_list, light_list):
                 poly, 
                 camera, 
                 screen, screen_buffer, screen_size, depth_buffer, 
-                obj.texture, light_value
+                obj, light_value
             )
 
-def sort_polygons(camera, poly_list, offset=(0,0,0)):
+def sort_polygons(camera, poly_list, in_local_space, offset=(0,0,0)):
     output_list = []
     for poly in poly_list:
         centroid = [0,0,0]
@@ -70,10 +72,16 @@ def sort_polygons(camera, poly_list, offset=(0,0,0)):
             for i in range(3): centroid[i] += vertex[i]
         for i in range(len(centroid)):
             centroid[i] = centroid[i] / len(poly[0])
-        distance = math.sqrt(
-            (camera.point[0] - centroid[0])**2
-            +(camera.point[1] - centroid[1])**2
-            +(camera.point[2] - centroid[2])**2)
+        if not in_local_space:
+            distance = math.sqrt(
+                (camera.point[0] - centroid[0])**2
+                +(camera.point[1] - centroid[1])**2
+                +(camera.point[2] - centroid[2])**2)
+        else:
+            distance = math.sqrt(
+                (centroid[0])**2
+                +(centroid[1])**2
+                +(centroid[2])**2)
         output_list.append([poly, distance])
     # sort based on how far the centroid is from the camera
     sorted_list = sorted(output_list, key=lambda row: row[1], reverse=True)
@@ -92,7 +100,7 @@ def frustum_culling(obj_list):
                 if ViewFrustum.aabb_outside_plane(plane, obj.aabb_min, obj.aabb_max):
                     out_of_bounds = True
                     break
-        if not out_of_bounds:
+        if not out_of_bounds or obj.is_local:
             culled_obj_list.append(obj)
     return culled_obj_list
 
@@ -107,14 +115,20 @@ def calculate_lighting(poly, light_list):
     if light_value < 0.1: light_value = 0.1
     return light_value
 
-def rasterize(poly, camera, screen, screen_buffer, screen_size, depth_buffer, texture, light_value):
+def rasterize(poly, camera, screen, screen_buffer, screen_size, depth_buffer, obj, light_value):
+    texture = obj.texture
+    is_local = obj.is_local
     # perspective_poly format:
     # index 0 and 1 are for xy position, 2 is depth, 3 and 4 are uv values
     perspective_poly = []
     uv_values = poly[2]
     for i in range(len(poly[0])):
         point = poly[0][i]
-        projected_point = Helper.perspective_projection(screen, point, camera)
+        if is_local:
+            projected_point = Helper.local_space_projection(screen, point)
+        else:
+            # this is the normal case
+            projected_point = Helper.perspective_projection(screen, point, camera)
         screen_pos = projected_point[0]
         depth = projected_point[1]
         perspective_poly.append([int(screen_pos[0]), int(screen_pos[1]), depth] + uv_values[i])
@@ -127,7 +141,8 @@ def rasterize(poly, camera, screen, screen_buffer, screen_size, depth_buffer, te
             short_triangle = True
     clipped_points = copy.deepcopy(poly_points)
     # are there/how many vertices are outside of the screen?
-    clipped_points = triangle_clipping(clipped_points, screen_size)
+    if not is_local:
+        clipped_points = triangle_clipping(clipped_points, screen_size)
     poly_a, poly_b = None, None
     match len(clipped_points):
         case 0:
@@ -168,7 +183,6 @@ def rasterize(poly, camera, screen, screen_buffer, screen_size, depth_buffer, te
             pygame.draw.polygon(screen, lit_color_a, poly_a)
             pygame.draw.polygon(screen, lit_color_b, poly_b)
             
-
 def triangle_clipping(poly_points, screen_size):
     clipped_vertices = []
     for i in range(len(poly_points)):
@@ -235,12 +249,8 @@ def triangle_clipping(poly_points, screen_size):
                 new_poly.append((x,y))
                 if (x2, y2) not in new_poly:
                     new_poly.append((x2,y2))
-                #poly_points[first_index][0] = x
-                #poly_points[first_index][1] = y
             else:
                 new_poly.append((x,y))
                 if (x1, y1) not in new_poly:
                     new_poly.append((x1,y1))
-                #poly_points[second_index][0] = x
-                #poly_points[second_index][1] = y
     return new_poly

@@ -7,6 +7,7 @@ from Engine import Rasterizer
 class Object:
     def __init__(self, model, texture):
         self.model = remove_reference(model)
+        self.is_local = False
         if texture != None:
             self.texture = Rasterizer.load_texture(texture)
         self.update(True)

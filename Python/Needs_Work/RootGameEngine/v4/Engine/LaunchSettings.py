@@ -7,7 +7,7 @@ resolution = (800, 600)
 debug = True
 # normal, render, testing
 mode = "normal"
-scene_name = "monkey.rsc"
+scene_name = "test_scene.rsc"
 frame_count = 1000
 mouse_control = False
 mouse_sensitivity = 0.5

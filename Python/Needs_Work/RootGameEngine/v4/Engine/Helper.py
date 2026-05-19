@@ -1,6 +1,6 @@
 import math
-import pygame
 import numpy
+import pygame
 
 def array_dp(array_a, array_b):
     if len(array_a) != len(array_b): 
@@ -60,4 +60,14 @@ def perspective_projection(screen, projected_point, camera):
     by = (dy*size_y)/(dz*recording_y)*recording_z
     # bx and by need to be centered to the screen instead of 0,0
     # dz included for depth buffering
+    return ((bx+size_x,size_y-by), dz)
+
+def local_space_projection(screen, projected_point):
+    # this function is exactly the same as perspective_projection, but without the camera matrix
+    screen_resolution = screen.get_size()
+    dx, dy, dz = projected_point
+    size_x, size_y = screen_resolution[0]//2, screen_resolution[1]//2
+    recording_x, recording_y, recording_z = screen_resolution[0]//100, screen_resolution[1]//100, 10
+    bx = (dx*size_x)/(dz*recording_x)*recording_z
+    by = (dy*size_y)/(dz*recording_y)*recording_z
     return ((bx+size_x,size_y-by), dz)

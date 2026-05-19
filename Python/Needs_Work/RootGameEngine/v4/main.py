@@ -49,7 +49,7 @@ light_sources    = scene[4]
 dt = 0.016 # presumes 60 FPS, but gets recalculated every frame
 
 # one time run operations
-if scene_name == "rubiks_cube.txt":
+if scene_name == "rubiks_cube.rsc":
     Draw.lighting = False # makes the colors more vibrant
     LaunchSettings.GameFile.scramble(list(object_dict.values()))
 
