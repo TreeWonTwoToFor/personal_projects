@@ -1,0 +1,37 @@
+network structure: 
+    network_input (13 nodes):
+        number of cards left in deck
+        player health
+        1 if can avoid, otherwise 0
+        weapon's strength
+        15 if weapon hasn't hit anything, otherwise the strength of the last enemy it hit
+        first card level
+        second card level
+        third card level
+        fourth card level
+        first card type
+        second card type
+        third card type
+        fourth card type
+    hidden layers:
+        one middle layer (10 nodes)
+    output layer (5 nodes):
+        does it want to avoid the room
+        preference for first card
+        preference for second card
+        preference for third card
+        preference for fourth card
+
+population_size: 1000
+games per generation: 50
+total number of generations ran: 1000
+number_of_parents = 50?
+growth_rate = 0.05
+mutation_strength = 0.2
+
+fitness function (100 total):
+    win guarentees a score of 100
+    number of cards remaining: inversly related to the score, which is 75 points
+    health remaining: inversly related, 15 points
+    weapon state: the higher that the weapon can hit, the more points it can get, scaled to 10 points
+    avoidance: if it has the option to avoid the room, then it gets 5 points.
