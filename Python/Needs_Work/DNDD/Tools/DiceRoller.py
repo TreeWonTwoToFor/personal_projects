@@ -1,6 +1,8 @@
 import random
 import pygame
 
+application_name = "DiceRoller"
+
 pygame.font.init()
 
 font = pygame.font.Font(".../../../Comfortaa.ttf", 50)
@@ -12,7 +14,8 @@ class Dice:
     def roll(self):
         return random.randint(1, self.num_sides)
 
-def run(canvas):
+def run(canvas_dict):
+    canvas = canvas_dict[application_name].surface
     logic_output = logic()
     draw(canvas, logic_output)
 

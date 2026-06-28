@@ -1,4 +1,4 @@
-application_name = "DefaultTool"
+application_name = "InitiativeTracker"
 
 def run(canvas_dict):
     canvas = canvas_dict[application_name].surface
@@ -6,7 +6,7 @@ def run(canvas_dict):
     draw(canvas, logic_output)
 
 def draw(canvas, logic_output):
-    canvas.fill([255,255,255])
+    canvas.fill([255,0,0])
 
 def logic():
     pass
