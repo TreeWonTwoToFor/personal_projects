@@ -1,0 +1,7 @@
+Dungeons and Dragons Desktop (DnDD) is a collection of various dnd related tools that will help me plan and run the game.
+
+Here's a list of ideas for what features I want to have as options.
+1. a dice roller for large damage numbers
+2. initiative tracker
+3. grid builder for battle maps
+4. NPC information holder/tracker
