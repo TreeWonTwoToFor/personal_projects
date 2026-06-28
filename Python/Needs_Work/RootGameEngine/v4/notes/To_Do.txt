@@ -1,17 +1,23 @@
-optimizations
-    currently using painter's algorithm, & back-face culling
-    obscured polygons are still being rendered.
-         occlusion culling
-Textures
-lighting/shader stuff
+Optimizations:
+    occlusion culling
+    triangle clipping
+        still needs to be made for homemade rasterization
+Visual options:
     transparent objects
-    light
-        light emitting objects
-        directional lighting (flashlight kinda thing)
-more game engine-y stuff
+    light emitting objects
+    direction lighting (like a flashlight)
+    having more pixelate 3d graphics would be cool (like ultrakill)
+        pygame canvas that gets upscaled to full screen size?
+Game engine-y stuff
+    collision
     objects
-        collision
+        parent objects
         assignable attributes
-    player interactivity
-        collision
-        more movement options
+    player ray tracing
+
+Stuff for game jam:
+1. collisions
+    should probably study up on how they work in other engines before giving it a shot
+2. localized 3d object space (like phasmophobia hands in front of you) - kinda working
+    this is a great idea, but for the GameJam, I think it should just be a ui element instead
+3. ui layer for title screen and pause menu - DONE

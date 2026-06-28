@@ -87,4 +87,8 @@ def object_collision(camera, object_list):
     
 def game_logic(object_list):
     # nothing to do
-    return 0
+    pass
+
+def ui_logic(ui_layer, is_paused):
+    # nothing to show
+    pass

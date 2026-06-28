@@ -32,7 +32,8 @@ clean_title = clean_title.strip()
 pygame.display.set_caption(clean_title)
 
 # initialize some key components
-screen = pygame.display.set_mode(resolution, pygame.RESIZABLE)
+screen = pygame.display.set_mode(resolution)
+ui_layer = pygame.display.set_mode(resolution, pygame.RLEACCEL)
 depth_buffer = []
 clock = pygame.time.Clock()
 pygame.event.set_grab(mouse_control)
@@ -48,7 +49,7 @@ light_sources    = scene[4]
 dt = 0.016 # presumes 60 FPS, but gets recalculated every frame
 
 # one time run operations
-if scene_name == "rubiks_cube.txt":
+if scene_name == "rubiks_cube.rsc":
     Draw.lighting = False # makes the colors more vibrant
     LaunchSettings.GameFile.scramble(list(object_dict.values()))
 
@@ -60,6 +61,7 @@ def iterate():
     game_logic      = GameFile.game_logic
     game_function   = GameFile.player_movement
     update_function = GameFile.player_movement_update
+    ui_logic        = GameFile.ui_logic
 
     # object update
     for action in scene_actions:
@@ -71,11 +73,14 @@ def iterate():
     object_list = list(object_dict.values())
     game_logic(object_list)
 
-    # visual/game update
+    # visual update
     screen.fill(background_color)
     depth_buffer = [math.inf] * (screen.get_width() * screen.get_height())
     Draw.draw_frame_poly(screen, depth_buffer, game_camera, object_list, light_sources, debug, clock)
+    ui_logic(ui_layer, False)
     pygame.display.update()
+
+    # game update
     for event in pygame.event.get():
         if event.type == pygame.QUIT or game_function(screen, event):
             # this is a little unintuitive, but since game_function
@@ -85,6 +90,7 @@ def iterate():
             running = False
     # the player movement needs to be checked every frame, and not just when a key changes.
     update_function(game_camera, mouse_control, mouse_sensitivity, object_list, dt)
+
     # delay if necessary
     dt = round(clock.tick(FPS) * 0.001, 4)
 
