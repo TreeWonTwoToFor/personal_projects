@@ -1,0 +1,4 @@
+bytes are stored BGR
+t's using 32 bit numbers, so the first 24 bits are the BGR value
+    the last 8 are not used? it doesn't seem like they have any effect on the final image
+the format is b'\x00' for a single byte
