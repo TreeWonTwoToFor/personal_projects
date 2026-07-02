@@ -11,7 +11,7 @@ outline_width = 2
 border = 25
 start_location = (border,border)
 
-def run(canvas_dict):
+def run(canvas_dict, desktop_instruction):
     canvas = canvas_dict[application_name].surface
     logic_output = logic(canvas.get_size())
     draw(canvas, logic_output)
