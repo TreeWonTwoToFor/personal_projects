@@ -3,16 +3,20 @@ import csv
 from copy import deepcopy as copy
 import GameSimulation as Scoundrel
 from EvolutionAlgo import *
-
+import math
+import multiprocessing
+import time
 
 # parameters for the NN and evolution algorithm
 network_structure = [13, 10, 10, 5]
 population_size = 1000
 games_per_generation = 50
-number_of_generations = 1000
+number_of_generations = 2500
 number_of_parents = population_size//20
 growth_rate = 0.05
 mutation_strength = 0.2
+
+num_threads = 4
 
 
 # Fitness Function
@@ -23,7 +27,9 @@ mutation_strength = 0.2
 def fitness_function(game_state, card_deck):
     # the score works on a range from 1 to 100
     # inverse relationship, so less cards in the deck is good
-    dungeon_score = 50 - 50 * (len(card_deck) / 40)
+    return 100 * (game_state.health / game_state.max_hp)
+
+    dungeon_score = 50 * (1 - (len(card_deck) / card_deck.deck_size))
 
     health_score = 25 * (game_state.health / 20)
 
@@ -47,18 +53,9 @@ def ai_plays_scoundrel(deck, state, network, current_generation_number=-1, print
         "weapon": 1,
         "potion": 2
     }
-    hands_left = 1000
-    # if current_generation_number <= 300:
-    #     hands_left = 5
-    # elif current_generation_number <= 500:
-    #     hands_left = 7
-    # elif current_generation_number != -1:
-    #     hands_left = 10
-    # else:
-    #     # the bot is allowed to play until it dies
-    #     hands_left = 10000
     playing = True
-    while state.health > 0 and playing and hands_left > 0:
+    # while state.health > 0 and playing:
+    while playing:
         # feed the NN input data
         network_input = np.array([len(deck),
                                     state.health, 
@@ -98,96 +95,140 @@ def ai_plays_scoundrel(deck, state, network, current_generation_number=-1, print
         logic_output = Scoundrel.game_logic(player_action, decision_list, state, deck)
         match logic_output:
             case "died":
-                # ai ran out of health
+                # they ran out of health, but because our fitness function is based on hp,
+                #   we want all of the bots to be rankedo even footing, rather than
+                #   which one died by the least amount in any specific room
                 pass
             case "escaped":
                 if printing:
                     print("escaped")
-                return 1 # we won, so count this game as a win!
+                if state.health > 0:
+                    return 1 # we won, so count this game as a win!
+                else:
+                    return 0 
             case "cannot avoid":
                 # ai tries to avoid when it can't. handled by output mapping into scoundrel
                 pass
         # if printing and state.health > 0: 
         #     print()
-        hands_left -= 1
     return 0
 
 def visual_ai_play(network):
     deck_instance = Scoundrel.DungeonDeck()
     state_instance = Scoundrel.GameState()
+    state_instance.negative_health = True
     state_instance.room = deck_instance.draw_room(4)
     state_instance.is_tabbed = True
     ai_plays_scoundrel(deck_instance, state_instance, network, printing=True)
 
-def run_generation(population, games_per_generation, generation):
+def run_thread(decks, networks, games_per_generation, generation):
     number_of_winners = 0
-    for game in range(games_per_generation):
-        initial_deck = Scoundrel.DungeonDeck()
-        initial_state = Scoundrel.GameState()
-        # for player, player_fitness in population:
-        for i in range(len(population)):
-            player, player_fitness = population[i]
+    # losing 30 health over 500 generations equates to being at 20 hp at generation 500.
+    health = 20
+    if generation <= 500:
+        health = int(50 - 30/500 * generation)
+    for i in range(games_per_generation):
+        initial_deck = decks[i]
+        initial_state = Scoundrel.GameState(health=health)
+        initial_state.negative_health = True # we want all bots to be ranked equally
+        for j in range(len(networks)):
+            player, player_fitness = networks[j]
             deck_instance = copy(initial_deck)
             state_instance = copy(initial_state)
             state_instance.room = deck_instance.draw_room(4)
             number_of_winners += ai_plays_scoundrel(deck_instance, state_instance, player, generation)
             # step 2: give them a fitness score
             ai_score = fitness_function(state_instance, deck_instance)
-            population[i][1] = player_fitness + ai_score
-    return number_of_winners
+            networks[j][1] = player_fitness + ai_score
+    return number_of_winners, networks
 
+def run_generation(population, games_per_generation, generation):
+    global number_of_winners
+    number_of_winners = 0
+    decks = [Scoundrel.DungeonDeck() for game in range(games_per_generation)]
+    # here we create our threads to split the games across multiple threads
+    #   so, each thread receives all of the decks, and gets pop/threads number of networks
+    networks_per_thread = len(population)//num_threads # assume that it's evenly divisible
+    thread_args = []
+    for i in range(num_threads):
+        start = i*networks_per_thread
+        end = (i+1)*networks_per_thread
+        networks = population[start:end]
+        thread_args.append([copy(decks), networks, games_per_generation, generation])
+    # now that we've constructed all of our arguments for each thread, we run them, and tally up the scores
+    population = []
+    with multiprocessing.Pool(num_threads) as p:
+        output = p.starmap(run_thread, thread_args)
+        for x in output:
+            number_of_winners += x[0]
+            population = population + x[1]
+    return number_of_winners, population
 
-# here is the start of the actual running of the AI!
-training_data = []
-grand_champion = [None, 0]
-generation_champion = None
-population = create_initial_population(population_size, network_structure)
-for generation in range(1, number_of_generations+1):
-    number_of_wins = run_generation(population, games_per_generation, generation)
-    max_fitness = games_per_generation*100
-    generation_champion = pick_parents(population, 1)[0]
-    if generation_champion[1] > grand_champion[1]:
-        grand_champion_network = generation_champion[0]
-        grand_champion_fitness = generation_champion[1]
-        grand_champion = [grand_champion_network, grand_champion_fitness]
-    champion_fitness = round(generation_champion[1], 2)
-    grand_champion_fitness = round(grand_champion[1], 2)
-    total_fitness = 0
-    for player in population:
-        total_fitness += player[1]
-    average_fitness = round(total_fitness/population_size, 2)
-    print(f"""Generation {generation} ({round(generation/number_of_generations*100, 2)}%):
-    \tGrand Champion: {grand_champion_fitness}
-    \tChampion: {champion_fitness}
-    \tAverage: {average_fitness}
-    \tWins: {number_of_wins} ({round(100*number_of_wins/(games_per_generation*population_size), 2)}%)""")
-    print('\t' + '-'*15)
-    data_point = [generation, champion_fitness, average_fitness, number_of_wins]
-    visual_ai_play(generation_champion[0])
-    training_data.append(data_point)
-    parents = pick_parents(population, number_of_parents)
-    population = create_next_population(parents, population_size, growth_rate, mutation_strength)
+def training_time(start_time, end_time):
+    reported_time = round(time.time()-training_started, 2)
+    reported_time_type = "seconds"
+    if reported_time / 360 > 1:
+        reported_time = reported_time / 360
+        reported_time_type = "hours"
+    elif reported_time / 60 > 1:
+        reported_time = reported_time / 60
+        reported_time_type = "minutes"
+    print(f"Finished training. Time elapsed: {reported_time} {reported_time_type}")
 
-# write out the resulting data to a csv file, s.t. it can be viewed later + analyzed
-with open('result_data.csv', 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerows(training_data)
+if __name__ == "__main__":
+    # here is the start of the actual running of the AI!
+    training_started = time.time()
+    training_data = []
+    grand_champion = [None, -math.inf]
+    generation_champion = None
+    population = create_initial_population(population_size, network_structure)
+    for generation in range(1, number_of_generations+1):
+        number_of_wins, population = run_generation(population, games_per_generation, generation)
+        max_fitness = games_per_generation*100
+        generation_champion = pick_parents(population, 1)[0]
+        if generation_champion[1] > grand_champion[1]:
+            grand_champion_network = generation_champion[0]
+            grand_champion_fitness = generation_champion[1]
+            grand_champion = [grand_champion_network, grand_champion_fitness]
+        champion_fitness = round(generation_champion[1], 2)
+        grand_champion_fitness = round(grand_champion[1], 2)
+        total_fitness = 0
+        for player in population:
+            total_fitness += player[1]
+        average_fitness = round(total_fitness/population_size, 2)
+        print(f"""Generation {generation} ({round(generation/number_of_generations*100, 2)}%):
+        \tGrand Champion: {grand_champion_fitness}
+        \tChampion: {champion_fitness}
+        \tAverage: {average_fitness}
+        \tWins: {number_of_wins} ({round(100*number_of_wins/(games_per_generation*population_size), 2)}%)""")
+        print('\t' + '-'*15)
+        data_point = [generation, champion_fitness, average_fitness, number_of_wins]
+        # visual_ai_play(generation_champion[0])
+        training_data.append(data_point)
+        parents = pick_parents(population, number_of_parents)
+        population = create_next_population(parents, population_size, growth_rate, mutation_strength)
+    training_time(training_started, time.time())
 
-with open('result_config.txt', 'w', newline='') as file:
-    config_dict = {
-        "population_size": population_size,
-        "games per generation": games_per_generation,
-        "total number of generations": number_of_generations,
-        "parents taken per generation": number_of_parents,
-        "growth rate": growth_rate,
-        "mutation strength": mutation_strength
-    }
-    config = f"Network layer structure: {network_structure}\nConfig:\n"
-    for key in config_dict.keys():
-        config = config + '\t' + key + ": " + str(config_dict[key]) + '\n'
-    file.write(config)
+    # write out the resulting data to a csv file, s.t. it can be viewed later + analyzed
+    with open('result_data.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(training_data)
 
-# now that we've finished our training, we want to see a player in action!
-print(f'\nChampion Fitness: {grand_champion[1]}')
-visual_ai_play(grand_champion[0])
-grand_champion[0].write_to_file()
+    with open('result_config.txt', 'w', newline='') as file:
+        config_dict = {
+            "population_size": population_size,
+            "games per generation": games_per_generation,
+            "total number of generations": number_of_generations,
+            "parents taken per generation": number_of_parents,
+            "growth rate": growth_rate,
+            "mutation strength": mutation_strength
+        }
+        config = f"Network layer structure: {network_structure}\nConfig:\n"
+        for key in config_dict.keys():
+            config = config + '\t' + key + ": " + str(config_dict[key]) + '\n'
+        file.write(config)
+
+    # now that we've finished our training, we want to see a player in action!
+    # print(f'\nChampion Fitness: {grand_champion[1]}')
+    # visual_ai_play(grand_champion[0])
+    grand_champion[0].write_to_file()

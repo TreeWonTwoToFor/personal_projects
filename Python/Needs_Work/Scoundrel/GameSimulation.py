@@ -1,15 +1,18 @@
 import random
 
 class GameState:
-    def __init__(self):
+    def __init__(self, health=20):
         self.room = []
         self.weapon = {
             "strength": 0,
             "last hit": None
         }
-        self.health = 20
+        self.health = health
+        self.max_hp = health
         self.can_avoid = True
+
         self.is_tabbed = False
+        self.negative_health = False
 
     def __str__(self):
         if self.is_tabbed:
@@ -42,7 +45,7 @@ class GameState:
                             else:
                                 # either we picked to not use our weapon, it wasn't strong enough, or we didn't have one.
                                 self.health -= card[0]
-                            if self.health <= 0:
+                            if self.health <= 0 and not self.negative_health:
                                 return -1 # i.e. the player died
                         case "weapon":
                             self.weapon = {
@@ -50,7 +53,7 @@ class GameState:
                                 "last hit": None
                             }
                         case "potion":
-                            self.health = min(20, self.health + card[0])
+                            self.health = min(self.max_hp, self.health + card[0])
                 # if we made it out of the loop, the player is still alive, and needs to get new cards
                 turn_array.sort(reverse=True)
                 for i in turn_array:
@@ -82,10 +85,12 @@ class GameState:
 
 
 class DungeonDeck:
-    def __init__(self):
+    def __init__(self, deck_size=44):
         self.deck = []
+        self.deck_size = deck_size
         self.generate_deck()
         random.shuffle(self.deck)
+        self.deck = self.deck[:self.deck_size]
 
     def __len__(self):
         return len(self.deck)

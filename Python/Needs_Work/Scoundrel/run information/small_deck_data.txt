@@ -1,0 +1,8 @@
+Network layer structure: [13, 10, 10, 5]
+Config:
+	population_size: 300
+	games per generation: 50
+	total number of generations: 1000
+	parents taken per generation: 15
+	growth rate: 0.05
+	mutation strength: 0.2
