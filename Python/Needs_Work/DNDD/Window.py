@@ -6,6 +6,11 @@ class Window:
         self.surface = surface
         self.location = location
         self.size = list(surface.get_size())
+        
+        # dragging/resizing logic
+        self.min_size = (50,50)
+        self.old_size = surface.get_size()
+        self.old_location = (self.location[0], self.location[1])
 
         self.border_px = 5
         self.border_color = (200, 200, 200)
@@ -24,15 +29,21 @@ class Window:
         bars = self.get_window_bars()
         title_bar, border, corners, long_bars = bars[0], bars[1], bars[2], bars[3]
         
-        pygame.draw.rect(screen, self.border_color, border)
-        pygame.draw.rect(screen, self.title_bar_color, title_bar)
-        screen.blit(self.surface, self.location)
-        if self.debug:
+        # drawing the border
+        if not self.debug:
+            pygame.draw.rect(screen, self.border_color, border)
+            pygame.draw.rect(screen, self.title_bar_color, title_bar)
+            # not 100% sure that I love this, but it's gonna stay for now lol
+            pygame.draw.rect(screen, self.title_bar_color, corners[0])
+            pygame.draw.rect(screen, self.title_bar_color, corners[1])
+        else:
             pygame.draw.rect(screen, [0,0,255], title_bar)
             for corner in corners:
                 pygame.draw.rect(screen, [255,0,0], corner)
             for bar in long_bars:
                 pygame.draw.rect(screen, [0,255,0], bar)
+        # draw canvas
+        screen.blit(self.surface, self.location)
 
     def check_mouse_interaction(self, mouse_buttons, mouse_pos):
         title_bar, border, corners, long_bars = self.get_window_bars()
@@ -42,70 +53,76 @@ class Window:
         if mouse_buttons[0]: # left click
             canvas_rect = pygame.rect.Rect(*self.location, *self.surface.get_size())
             if self.inside_rect(canvas_rect, mouse_pos):
-                print("inside canvas")
+                # inside the canvas
+                pass
             elif self.inside_rect(tr, mouse_pos) and not self.resizing:
-                print("top right corner")
                 self.resizing = True
                 self.resizing_type = "tr"
             elif self.inside_rect(tl, mouse_pos) and not self.resizing:
-                print("top left corner")
                 self.resizing = True
                 self.resizing_type = "tl"
             elif self.inside_rect(br, mouse_pos) and not self.resizing:
-                print("bottom right corner")
                 self.resizing = True
                 self.resizing_type = "br"
             elif self.inside_rect(bl, mouse_pos) and not self.resizing:
-                print("bottom left corner")
                 self.resizing = True
                 self.resizing_type = "bl"
             elif self.inside_rect(left, mouse_pos) and not self.resizing:
-                print("left long bar")
                 self.resizing = True
                 self.resizing_type = "left"
             elif self.inside_rect(right, mouse_pos) and not self.resizing:
-                print("right long bar")
                 self.resizing = True
                 self.resizing_type = "right"
             elif self.inside_rect(bottom, mouse_pos) and not self.resizing:
-                print("bottom long bar")
                 self.resizing = True
                 self.resizing_type = "bottom"
             elif self.inside_rect(title_bar, mouse_pos) and not self.dragging:
-                print("title")
                 self.dragging = True
                 self.relative_drag_position = (self.location[0]-mouse_pos[0], self.location[1]-mouse_pos[1])
 
             if self.dragging:
                 self.location = (mouse_pos[0]+self.relative_drag_position[0], mouse_pos[1]+self.relative_drag_position[1])
-            if self.resizing:
+            elif self.resizing:
                 match self.resizing_type:
                     case "bl":
                         # change the width and height of the window to be location + relative_mouse_position
                         #   and make the position track the mouse
-                        pass
+                        self.location = [mouse_pos[0]-self.border_px//2, self.location[1]]
+                        self.size = [self.old_size[0]+self.old_location[0]-mouse_pos[0], 
+                                     mouse_pos[1]-self.old_location[1]]
                     case "tr":
                         # change the width and height of the window to be location + relative_mouse_position
                         #   and make the position track the mouse
-                        pass
+                        self.location = [self.old_location[0]-self.border_px*2, mouse_pos[1]+self.title_bar_px]
+                        self.size = [mouse_pos[0]-self.old_location[0], 
+                                     self.old_size[1]+self.old_location[1]-mouse_pos[1]]
                     case "tl":
                         # change the width and height of the window to be location + relative_mouse_position
                         #   and make the position track the mouse
-                        pass
+                        self.location = [mouse_pos[0]+self.border_px*2, mouse_pos[1]+self.title_bar_px]
+                        self.size = [self.old_size[0]+self.old_location[0]-mouse_pos[0],
+                                     self.old_size[0]+self.old_location[1]-mouse_pos[1]]
                     case "br":
                         # change the width and height of the window to be location + relative_mouse_position
-                        pass
+                        self.size = [mouse_pos[0]-self.location[0]-self.border_px//2,
+                                     mouse_pos[1]-self.location[1]-self.border_px//2]
                     case "left":
                         # change the width of the window to be location + relative_mouse_position,
                         #   and make the position track the mouse
-                        pass
+                        self.size = [self.old_size[0]+self.old_location[0]-mouse_pos[0], self.size[1]]
+                        self.location = [mouse_pos[0]-self.border_px//2, self.location[1]]
                     case "right":
                         # change the width of the window to be location + relative_mouse_position
-                        pass
+                        self.size = [mouse_pos[0]-self.location[0]-self.border_px//2, self.size[1]]
                     case "bottom":
                         # change the height of the window to be location + relative_mouse_position
-                        self.size = (self.size[0], mouse_pos[1]-self.location[1])
+                        self.size = [self.size[0], mouse_pos[1]-self.location[1]-self.border_px//2]
+            else:
+                self.old_size = self.size
+                self.old_location = self.location
         if self.size != list(self.surface.get_size()):
+            self.size[0] = max(self.size[0], self.min_size[0])
+            self.size[1] = max(self.size[1], self.min_size[1])
             return self.size
 
 
@@ -114,8 +131,8 @@ class Window:
         scaler = 2
 
         # one title bar along the whole top
-        title_bar_size = (canvas_size[0]+self.border_px*2, self.title_bar_px)
-        title_bar_rect = pygame.rect.Rect(self.location[0]-self.border_px, self.location[1]-self.title_bar_px, *title_bar_size)
+        title_bar_size = (canvas_size[0], self.title_bar_px)
+        title_bar_rect = pygame.rect.Rect(self.location[0], self.location[1]-self.title_bar_px, *title_bar_size)
         # 4 corners for diagonal scaling
         corner_size = (self.border_px*scaler, self.border_px*scaler)
         tl_corner_rect = pygame.rect.Rect(self.location[0]-corner_size[0], 

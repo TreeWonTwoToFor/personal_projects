@@ -5,7 +5,7 @@ application_name = "DiceRoller"
 
 pygame.font.init()
 
-font = pygame.font.Font(".../../../Comfortaa.ttf", 50)
+font = pygame.font.Font("../Comfortaa.ttf", 50)
 
 background_color = (100, 100, 100)
 text_color = (255,255,255)

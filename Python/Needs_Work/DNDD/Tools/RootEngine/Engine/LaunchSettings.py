@@ -2,7 +2,7 @@ from ..Logic import FlappyBird
 from ..Logic import RubiksCube
 from ..Logic import StandardMovement
 
-FPS = 60
+FPS = 5
 resolution = (800, 600)
 debug = True
 # normal, render, testing

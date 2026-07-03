@@ -36,17 +36,18 @@ class Desktop:
         self.window_dict[application_name] = Window(application_name, pygame.Surface(canvas_size), screen_location)
 
     def resize_window(self, application_name):
-        print(self.window_dict)
         old_window = self.window_dict[application_name]
         new_window = Window(application_name, pygame.Surface(old_window.size), old_window.location)
+        # restore old window state
         new_window.dragging = old_window.dragging
         new_window.relative_drag_position = old_window.relative_drag_position
         new_window.resizing = old_window.resizing
         new_window.resizing_type = old_window.resizing_type
         new_window.relative_mouse_position = old_window.relative_mouse_position
+        new_window.old_size = old_window.old_size
+        new_window.old_location = old_window.old_location
+        # replace old window in dict
         self.window_dict[application_name] = new_window
-        print(self.window_dict)
-        self.draw()
     
     def draw(self):
         self.screen.fill(self.bg_color)

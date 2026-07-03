@@ -6,8 +6,8 @@ from Tools.RootEngine import *
 from Desktop import Desktop
 
 desktop = Desktop((1000, 1000))
-tools = ["RootEngine"]
-# tools = ["DefaultTool", "BattleMap", "InitiativeTracker", "DiceRoller"]
+# tools = ["RootEngine"]
+tools = ["DefaultTool", "BattleMap", "InitiativeTracker", "DiceRoller"]
 # initialize each tool individually, so that it can properly manage canvases
 for tool in tools:
     desktop.request_window(tool)
@@ -29,6 +29,6 @@ while running:
         running = False
     elif instruction != None:
         print(instruction)
-        update_tools(instruction)
+    update_tools(instruction)
     desktop.draw()
     desktop.clock.tick(desktop.fps)
