@@ -11,6 +11,7 @@ class Window:
         self.min_size = (50,50)
         self.old_size = surface.get_size()
         self.old_location = (self.location[0], self.location[1])
+        self.selected = False
 
         self.border_px = 5
         self.border_color = (200, 200, 200)
@@ -52,9 +53,8 @@ class Window:
 
         if mouse_buttons[0]: # left click
             canvas_rect = pygame.rect.Rect(*self.location, *self.surface.get_size())
-            if self.inside_rect(canvas_rect, mouse_pos):
-                # inside the canvas
-                pass
+            if self.inside_rect(canvas_rect, mouse_pos) and not self.resizing and not self.dragging:
+                return ["canvas"]
             elif self.inside_rect(tr, mouse_pos) and not self.resizing:
                 self.resizing = True
                 self.resizing_type = "tr"
@@ -81,7 +81,9 @@ class Window:
                 self.relative_drag_position = (self.location[0]-mouse_pos[0], self.location[1]-mouse_pos[1])
 
             if self.dragging:
-                self.location = (mouse_pos[0]+self.relative_drag_position[0], mouse_pos[1]+self.relative_drag_position[1])
+                self.location = (mouse_pos[0]+self.relative_drag_position[0], 
+                                 mouse_pos[1]+self.relative_drag_position[1])
+                return ["dragging"]
             elif self.resizing:
                 match self.resizing_type:
                     case "bl":
@@ -123,8 +125,14 @@ class Window:
         if self.size != list(self.surface.get_size()):
             self.size[0] = max(self.size[0], self.min_size[0])
             self.size[1] = max(self.size[1], self.min_size[1])
-            return self.size
+            return ['resize', self.size]
 
+    def normalize(self):
+        self.old_size = self.size
+        self.old_location = self.location
+        self.dragging = False
+        self.resizing = False
+        self.selected = False
 
     def get_window_bars(self):
         canvas_size = self.surface.get_size()
@@ -154,7 +162,7 @@ class Window:
         bars = [left_bar, right_bar, bottom_bar]
 
         border_size = (canvas_size[0]+self.border_px*2, canvas_size[1]+self.border_px)
-        border_rect = pygame.rect.Rect(self.location[0]-self.border_px, self.location[1], border_size[0], border_size[1])
+        border_rect = pygame.rect.Rect(self.location[0]-self.border_px, self.location[1], *border_size)
 
         return [title_bar_rect, border_rect, corners, bars]
     

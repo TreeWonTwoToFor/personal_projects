@@ -5,12 +5,13 @@ from Tools import InitiativeTracker
 from Tools.RootEngine import *
 from Desktop import Desktop
 
-desktop = Desktop((1000, 1000))
+desktop = Desktop((750, 750))
 # tools = ["RootEngine"]
 tools = ["DefaultTool", "BattleMap", "InitiativeTracker", "DiceRoller"]
 # initialize each tool individually, so that it can properly manage canvases
 for tool in tools:
     desktop.request_window(tool)
+desktop.application_order.reverse()
 
 def update_tools(desktop_logic=None):
     for tool in tools:

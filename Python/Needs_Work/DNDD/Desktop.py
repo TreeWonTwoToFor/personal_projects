@@ -10,6 +10,7 @@ pygame.display.set_caption("D&D Desktop")
 
 debug = False
 clicking = False
+selected_window = None
 
 class Desktop:
     def __init__(self, screen_size, is_debug=False):
@@ -51,14 +52,16 @@ class Desktop:
     
     def draw(self):
         self.screen.fill(self.bg_color)
+        self.application_order.reverse()
         for window_name in self.application_order:
             window = self.window_dict[window_name]
             window.debug = debug
             window.draw(self.screen)
+        self.application_order.reverse()
         pygame.display.flip()
 
     def logic(self):
-        global debug, clicking
+        global debug, clicking, selected_window
         for event in pygame.event.get():
             match event.type:
                 case pygame.QUIT:
@@ -77,21 +80,39 @@ class Desktop:
         if clicking:
             self.clicking_logic()
         else:
+            selected_window = None
             for app in self.application_order:
                 window = self.window_dict[app]
-                window.dragging = False
-                window.resizing = False
+                window.normalize()
     
     def clicking_logic(self):
+        global selected_window
         mouse_buttons = pygame.mouse.get_pressed()
         cursor_position = pygame.mouse.get_pos()
-        for app in self.application_order:
-            window = self.window_dict[app]
-            new_size = window.check_mouse_interaction(mouse_buttons, cursor_position)
-            if new_size is not None:
-                # should resize
-                self.resize_window(window.name)
-                pass
+        if selected_window is not None:
+            window = self.window_dict[selected_window]
+            x = window.check_mouse_interaction(mouse_buttons, cursor_position)
+            if x != None:
+                if x[0] == "resize":
+                    self.resize_window(window.name)
+                self.application_order.remove(window.name)
+                self.application_order.insert(0, window.name)
+        else:
+            for app in self.application_order:
+                window = self.window_dict[app]
+                if window.selected and selected_window is None:
+                    selected_window = app
+                    x = window.check_mouse_interaction(mouse_buttons, cursor_position)
+                    if x != None:
+                        if x[0] == "resize":
+                            self.resize_window(window.name)
+                        self.application_order.remove(window.name)
+                        self.application_order.insert(0, window.name)
+                        break
+                elif not window.selected and selected_window is None:
+                    x = window.check_mouse_interaction(mouse_buttons, cursor_position)
+                    if x != None:
+                        window.selected = True
         relative_locations = []
         for app in self.application_order:
             app_location = self.window_dict[app].location
