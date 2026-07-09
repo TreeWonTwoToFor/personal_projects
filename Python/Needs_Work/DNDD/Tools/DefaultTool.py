@@ -1,4 +1,5 @@
 application_name = "DefaultTool"
+application_icon = "./icons/default_icon.png"
 
 background_color = (255,255,255)
 canvas = None

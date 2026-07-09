@@ -1,6 +1,7 @@
 import pygame
 
 application_name = "BattleMap"
+application_icon = "./icons/compass_icon.png"
 
 tile_size = (50, 50)
 grid_size = ()

@@ -6,6 +6,7 @@ class Dropdown:
         self.font = font
         self.screen = desktop_screen
         self.initial_pos = initial_pos
+        self.type = dropdown_type
 
         self.dropdown_items = dropdown_items
         self.size = (0,0)

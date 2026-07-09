@@ -32,6 +32,7 @@ class Desktop:
         self.icons = {}
         self.dropdown_list = []
         self.main_dropdown = Dropdown("main", self.screen, font, (0, self.task_bar_height_px), ["Open App >", "Exit"])
+        self.app_dropdown = Dropdown("app", self.screen, font, [0, self.task_bar_height_px], ["Close App"])
 
         # backend window management
         self.window_dict = {}
@@ -39,11 +40,24 @@ class Desktop:
         self.selected_window = None
         self.focused_window = None
 
-    def request_window(self, application_name):
-        offset = 1 + len(list(self.window_dict))
-        screen_location = (40 * offset, 40 * offset)
-        canvas_size = (400, 300)
+    def open_app(self, application_name):
+        self.request_window(application_name)
         self.application_order.append(application_name)
+        
+    def close_app(self, application_name):
+        self.application_order.remove(application_name)
+        self.icons.pop(application_name)
+        self.window_dict.pop(application_name)
+        num_icons = 0
+        for app in self.application_order:
+            icon_location = [self.main_dropdown.button_rect.width+10 + (self.task_bar_height_px + 2) * num_icons, 2]
+            self.icons[app] = (self.icons[app][0], icon_location)
+            num_icons += 1
+
+    def request_window(self, application_name):
+        offset = 1 + len(self.application_order)
+        screen_location = (50 * offset, 50 * offset)
+        canvas_size = (400, 300)
         self.window_dict[application_name] = Window(application_name, pygame.Surface(canvas_size), screen_location)
 
     def resize_window(self, application_name):
@@ -60,6 +74,11 @@ class Desktop:
         # replace old window in dict
         self.window_dict[application_name] = new_window
     
+    def load_icon(self, app_name, icon_path="./icons/default_icon.png"):
+        icon = pygame.transform.scale(pygame.image.load(icon_path), (self.task_bar_height_px-3, self.task_bar_height_px-3))
+        icon_location = [self.main_dropdown.button_rect.width+10 + (self.task_bar_height_px + 2) * len(self.icons), 2]
+        self.icons[app_name] = (icon, icon_location)
+
     def draw(self):
         # fill background
         self.screen.fill(self.bg_color)
@@ -77,7 +96,7 @@ class Desktop:
         # task bar clock
         current_time = time.localtime()
         minutes = str(current_time.tm_min) if current_time.tm_min > 10 else "0" + str(current_time.tm_min)
-        hours = str(current_time.tm_hour) if current_time.tm_hour != 12 else "12"
+        hours = str(current_time.tm_hour%12) if current_time.tm_hour % 12 != 0 else "12"
         time_string = f"{hours}:{minutes}"
         test_text = font.render(time_string, True, (0,0,0), None)
         self.screen.blit(test_text, (self.width-test_text.get_width()-2, 2))
@@ -90,12 +109,8 @@ class Desktop:
         for dropdown in self.dropdown_list:
             dropdown.draw()
         # app icons
-        icon_location = [self.main_dropdown.button_rect.width+10,2]
         for app in self.application_order:
-            icon_name = self.icons[app]
-            scaled_icon = pygame.transform.scale(pygame.image.load(icon_name), (self.task_bar_height_px-3, self.task_bar_height_px-3))
-            self.screen.blit(scaled_icon, icon_location)
-            icon_location[0] += self.task_bar_height_px + 2
+            self.screen.blit(*self.icons[app])
         # refresh screen
         pygame.display.flip()
 
@@ -124,29 +139,48 @@ class Desktop:
             # taskbar
             if self.inside_taskbar(cursor_position):
                 if self.inside_rect(self.main_dropdown.button_rect, cursor_position):
+                    clicking = False
                     if self.main_dropdown in self.dropdown_list:
                         self.dropdown_list = []
                     else:
+                        self.dropdown_list = []
                         self.dropdown_list.append(self.main_dropdown)
-                    clicking = False
+                for icon in list(self.icons.values()):
+                    icon_image, icon_location = icon
+                    icon_rect = pygame.rect.Rect(*icon_location, icon_image.get_rect().width, icon_image.get_rect().height)
+                    if self.inside_rect(icon_rect, cursor_position):
+                        clicking = False
+                        self.dropdown_list = []
+                        self.app_dropdown.initial_pos[0] = icon_location[0]
+                        self.dropdown_list.append(self.app_dropdown)
             # main dropdown menu
-            elif self.main_dropdown in self.dropdown_list and self.inside_rect(self.main_dropdown.rect, cursor_position):
-                clicking = False
-                x = self.main_dropdown.clicking_logic(mouse_buttons, cursor_position)
-                match x:
-                    case "disable": self.dropdown_list = []
-                    case "stop": return "stop"
-                    case "draw submenu": self.dropdown_list.append(self.main_dropdown.sub_dropdowns[0])
-            # secondary dropdown menu
-            elif self.main_dropdown.sub_dropdowns[0] in self.dropdown_list and self.inside_rect(self.main_dropdown.sub_dropdowns[0].rect, cursor_position):
-                clicking = False
-                app = self.main_dropdown.sub_dropdowns[0].clicking_logic(mouse_buttons, cursor_position)
-                if app is not None:
-                    self.dropdown_list = []
-                if app not in self.application_order:
-                    return app
+            for dropdown in self.dropdown_list:
+                if self.inside_rect(dropdown.rect, cursor_position):
+                    clicking = False
+                    x = dropdown.clicking_logic(mouse_buttons, cursor_position)
+                    if dropdown.type == "main":
+                        instruction = x
+                        match instruction:
+                            case "disable": self.dropdown_list = []
+                            case "stop": return "stop"
+                            case "draw submenu": self.dropdown_list.append(self.main_dropdown.sub_dropdowns[0])
+                    elif dropdown.type == "app":
+                        instruction = x
+                        if instruction == "Close App":
+                            icon_list = list(self.icons)
+                            for app in icon_list: 
+                                if self.icons[app][1][0] == dropdown.initial_pos[0]:
+                                    self.dropdown_list = []
+                                    self.close_app(app)
+                                    return f"Close {app}"
+                    else: # used for the main submenu
+                        app = x
+                        if app is not None:
+                            self.dropdown_list = []
+                        if app not in self.application_order:
+                            return f"Open {app}"
             # general sceen space
-            elif self.inside_screen(cursor_position):
+            if self.inside_screen(cursor_position) and clicking:
                 self.dropdown_list = []
                 return self.window_clicking_logic(mouse_buttons, cursor_position)
         else:
