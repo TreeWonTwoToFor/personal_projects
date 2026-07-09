@@ -4,7 +4,7 @@ from ..Logic import StandardMovement
 
 FPS = 5
 resolution = (800, 600)
-debug = True
+debug = False
 # normal, render, testing
 mode = "normal"
 scene_name = "test_scene.rsc"

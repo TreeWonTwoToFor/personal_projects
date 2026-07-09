@@ -9,7 +9,8 @@ def run(window_dict, desktop_instruction):
     if desktop_instruction is not None:
         event_type, event_details = desktop_instruction[0], desktop_instruction[1]
     else:
-        event_type, event_details = None, None
+        event_type = None
+        event_details = [None]
     logic_output = logic(event_type, event_details)
     draw(logic_output)
 
@@ -17,18 +18,17 @@ def draw(logic_output):
     canvas.fill(background_color)
 
 def logic(event_type, event_details):
+    if event_details[-1] != application_name:
+        return
     match event_type:
         case "mouse":
             buttons_pressed = event_details[0]
-            mouse_pos = None
-            locations = event_details[1]
-            for location in locations:
-                if location[0] == application_name:
-                    mouse_pos = location[1]
+            mouse_pos = event_details[1]
+            print("Default tool event details:", event_details)
             if not mouse_in_window(mouse_pos):
                 return None
             # otherwise, perform mouse logic
-            print(buttons_pressed, mouse_pos)
+            print("Buttons and pos:", buttons_pressed, mouse_pos)
         case "keyboard":
             pass
 
