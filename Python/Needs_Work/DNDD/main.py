@@ -5,18 +5,22 @@ from Tools import InitiativeTracker
 from Tools.RootEngine import *
 from Desktop import Desktop
 
+possible_tools = ["BattleMap", "DefaultTool", "DiceRoller", "InitiativeTracker", "RootEngine"]
+
 def init():
     global desktop, tools, tool_icons
-    desktop = Desktop((750, 750))
+    desktop = Desktop((1000, 750))
     # tools = ["RootEngine"]
-    tools = ["DefaultTool", "BattleMap", "InitiativeTracker", "DiceRoller"]
+    initial_tools = []
     # initialize each tool individually, so that it can properly manage canvases
-    for tool in tools:
+    for tool in initial_tools:
         desktop.icons[tool] = "./icons/default_icon.png"
         desktop.request_window(tool)
     desktop.application_order.reverse()
+    tools = initial_tools
 
 def main():
+    global tools
     update_tools()
     running = True
     while running:
@@ -24,6 +28,11 @@ def main():
         if instruction == "stop":
             running = False
             continue
+        elif instruction in possible_tools:
+            tool = instruction
+            tools.append(tool)
+            desktop.icons[tool] = "./icons/default_icon.png"
+            desktop.request_window(tool)
         elif instruction != None:
             # print("main func print", instruction)
             pass
