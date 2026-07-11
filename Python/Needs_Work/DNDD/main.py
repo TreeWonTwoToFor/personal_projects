@@ -6,23 +6,39 @@ from Tools.RootEngine import Launcher as RootEngine
 from Desktop import Desktop
 
 possible_tools = {
-    "BattleMap": BattleMap, 
-    "DefaultTool": DefaultTool, 
-    "DiceRoller": DiceRoller, 
-    "InitiativeTracker": InitiativeTracker, 
-    "RootEngine": RootEngine
+    "BattleMap": {
+        "module": BattleMap,
+        "dropdown": [["Shape >", "Rectangle", "Circle"], ["Palette >", "Stone", "Paper"], "Close BattleMap"]
+    }, 
+    "DefaultTool": {
+        "module": DefaultTool,
+        "dropdown": ["Close DefaultTool"]
+    }, 
+    "InitiativeTracker": {
+        "module": InitiativeTracker,
+        "dropdown": ["Close InitiativeTracker"]
+    }, 
+    "DiceRoller": {
+        "module": DiceRoller,
+        "dropdown": ["Close DiceRoller"]
+    }, 
+    "RootEngine": {
+        "module": RootEngine,
+        "dropdown": ["Close RootEngine"]
+    }
 }
 
 tools = []
 
 def init():
     global desktop
-    desktop = Desktop((1000, 750))
+    desktop = Desktop((1000,750))
     initial_tools = []
     # initialize each tool individually, so that it can properly manage canvases
     for tool in initial_tools:
         load_tool(tool)
     desktop.application_order.reverse()
+    desktop.tool_reference_table = possible_tools
 
 def main():
     update_tools()
@@ -32,16 +48,24 @@ def main():
         if instruction == "stop":
             running = False
             continue
-        elif instruction != None:
-            if type(instruction) == str:
-                if instruction.split(' ')[0] == "Open":
-                    tool = instruction.split(' ')[1]
-                    load_tool(tool)
-                if instruction.split(' ')[0] == "Close":
-                    close_tool(instruction.split(' ')[1])
-            # print("main func print", instruction)
-            pass
-        update_tools(instruction)
+        elif instruction is not None:
+            if instruction[0] == "mouse" or instruction[0] == "keyboard":
+                # give the mouse input over to update
+                update_tools(instruction)
+            else:
+                parent_app, app_instruction = instruction
+                if type(app_instruction) == str and app_instruction.split(' ')[0] == "Close":
+                    close_tool(parent_app)
+                else:
+                    match parent_app:
+                        case "Desktop":
+                            # we know that it's always going to be an open, until we decide to add more desktop options
+                            load_tool(app_instruction)
+                        case _:
+                            possible_tools[parent_app]["module"].run(desktop.window_dict, app_instruction)
+        else:
+            # just do a nomral rerun of all tools for their frames
+            update_tools()
         desktop.draw()
         desktop.clock.tick(desktop.fps)
 
@@ -50,7 +74,7 @@ def load_tool(tool_name):
     tools.append(tool_name)
     # the try will fail if no application icon is properly initialized
     try:
-        desktop.load_icon(tool_name, possible_tools[tool_name].application_icon)
+        desktop.load_icon(tool_name, possible_tools[tool_name]["module"].application_icon)
     except:
         desktop.load_icon(tool_name)
     desktop.open_app(tool_name)
@@ -58,10 +82,11 @@ def load_tool(tool_name):
 def close_tool(tool_name):
     global tools
     tools.remove(tool_name)
+    desktop.close_app(tool_name)
 
 def update_tools(desktop_logic=None):
-    for tool in tools:
-        possible_tools[tool].run(desktop.window_dict, desktop_logic)
+    for tool_name in tools:
+        possible_tools[tool_name]["module"].run(desktop.window_dict, desktop_logic)
 
 if __name__ == "__main__":
     init()

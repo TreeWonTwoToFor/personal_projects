@@ -1,12 +1,13 @@
 import pygame
 
 class Dropdown:
+    # parent initialization option
     def __init__(self, dropdown_type, desktop_screen, font, initial_pos, dropdown_items):
         # general initialization
         self.font = font
         self.screen = desktop_screen
         self.initial_pos = initial_pos
-        self.type = dropdown_type
+        self.label = dropdown_type
 
         self.dropdown_items = dropdown_items
         self.size = (0,0)
@@ -16,16 +17,35 @@ class Dropdown:
 
         self.draw()
 
+        self.sub_dropdowns = []
         if dropdown_type == "main":
-            # 0th index of the dropdown is where this submenu lives
-            submenu_start_height = initial_pos[1]+self.size[1]/len(self.dropdown_items) * 0 
-            self.sub_dropdowns = [Dropdown("apps", desktop_screen, font, (self.size[0], submenu_start_height), 
-                ["BattleMap", "DefaultTool", "DiceRoller", "InitiativeTracker"])]
+            for item in dropdown_items:
+                if type(item) == str:
+                    # it's just a regular option, so we let it stay
+                    pass
+                elif type(item) == list:
+                    # it's a submenu. idx 0 is the label for the dropdown, with 1-n being the options
+                    submenu_start_height = initial_pos[1] + self.size[1] / len(self.dropdown_items) * 0 
+                    self.sub_dropdowns.append(Dropdown("apps", desktop_screen, font, (self.size[0], submenu_start_height), item[1:]))
+
+    # submenu initialization option
+    def create_submenu(self, submenu_items):
+        submenu = Dropdown("submenu", self.screen, self.font, self.initial_pos, submenu_items[1:])
+        initial_x = self.initial_pos[0]+self.size[0]
+        initial_y = 0
+        offset = 0
+        for item in self.dropdown_items:
+            if item == submenu_items:
+                initial_y = self.initial_pos[1]+self.size[1]/len(self.dropdown_items) * offset
+            offset += 1
+        submenu.initial_pos = (initial_x, initial_y)
+        return submenu
 
     def draw(self):
         self.size = [0,0]
         item_text_list = []
         for item in self.dropdown_items:
+            if type(item) == list: item = item[0] # gets the name for the submenu header
             text_surface = self.font.render(item, True, (0,0,0), self.color)
             self.size[0] = max(text_surface.get_width(), self.size[0])
             item_text_list.append(text_surface)
@@ -44,15 +64,13 @@ class Dropdown:
                                 for i in range(len(self.dropdown_items))]
             for item in item_rect_list:
                 if self.inside_rect(item[1], cursor_position):
-                    match item[0]:
-                        case "Close":
-                            return "disable"
-                        case "Exit":
-                            return "stop"
-                        case "Open App >":
-                            return "draw submenu"
-                        case _:
-                            return item[0] # in this case, it should be the name of the program that we want to open
+                    if type(item[0]) == list:
+                        # go into the list at index 0, then grab the first element for the submenu header
+                        menu_option = item[0][0]
+                    else:
+                        # simply grab the string at index 0
+                        menu_option = item[0]
+                    return menu_option
 
     def inside_rect(self, rectangle, xy):
             x, y = xy[0], xy[1]
