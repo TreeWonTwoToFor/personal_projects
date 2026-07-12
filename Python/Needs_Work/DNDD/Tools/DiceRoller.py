@@ -9,8 +9,10 @@ canvas = None
 clicking = False
 
 pygame.font.init()
-font = pygame.font.Font("../Comfortaa.ttf", 50)
+font_size = 50
+font = pygame.font.Font("../Comfortaa.ttf", font_size)
 text_color = (255,255,255)
+button_color = (50,50,50)
 
 class Dice:
     def __init__(self, num_sides):
@@ -23,9 +25,10 @@ class Dice:
         return random.randint(1, self.num_sides)
 
 def run_once():
-    global total, dice_to_roll
+    global total, dice_to_roll, button_dict
     total = 0
-    dice_to_roll = [Dice(20)]  
+    dice_to_roll = []
+    button_dict = {}
 
 def run(window_dict, desktop_instruction):
     global canvas
@@ -50,11 +53,29 @@ def draw():
     for die in dice_to_roll:
         # defaults to 0 if the key isn't currently in use
         dice_dict[die.num_sides] = dice_dict.get(die.num_sides, 0) + 1
-    text_location = [10, 10]
+    # setting up some parameters
+    gap = 20
+    button_size = 50
+    line_height = 10
+    text_x = 10
+    button_x = 100
     for die in list(dice_dict):
+        # text
         text = font.render(f"D{str(die)}s: {dice_dict[die]}", True, text_color)
-        canvas.blit(text, text_location)
-        text_location[1] += 55
+        canvas.blit(text, (text_x, line_height))
+        # buttons
+        plus_location = (button_x+text.get_width()+gap, line_height)
+        minus_location = (button_x+text.get_width()+gap*2+button_size, line_height)
+        button_dict[die] = (pygame.rect.Rect(*plus_location, button_size, button_size),
+                                      pygame.rect.Rect(*minus_location, button_size, button_size))
+        pygame.draw.rect(canvas, button_color, button_dict[die][0])
+        pygame.draw.rect(canvas, button_color, button_dict[die][1])
+        text = font.render('+', True, text_color)
+        canvas.blit(text, (plus_location[0]+button_size//4, plus_location[1]))
+        text = font.render('-', True, text_color)
+        canvas.blit(text, (minus_location[0]+button_size//4, minus_location[1]))
+        # move down a row
+        line_height += font_size + 5
 
 def logic(event_type, event_details):
     global total, dice_to_roll, clicking
@@ -70,12 +91,29 @@ def logic(event_type, event_details):
                 if not mouse_in_window(mouse_pos):
                     return None
                 if not clicking: 
-                    # roll the dice!
-                    total = 0
-                    for die in dice_to_roll:
-                        value = die.roll()
-                        total += value
-                clicking = True
+                    clicking = True
+                    for button_sides in list(button_dict):
+                        buttons = button_dict[button_sides]
+                        plus, minus = buttons[0], buttons[1]
+                        if inside_rect(plus, mouse_pos):
+                            dice_to_roll.append(Dice(button_sides))
+                            return
+                        elif inside_rect(minus, mouse_pos):
+                            for die in dice_to_roll:
+                                if die.num_sides == button_sides:
+                                    dice_to_roll.remove(die)
+                                    if die not in dice_to_roll:
+                                        button_dict.pop(die.num_sides)
+                                    return
+                            return
+                        else:
+                            # roll the dice!
+                            total = 0
+                            for die in dice_to_roll:
+                                value = die.roll()
+                                total += value
+                    if len(list(button_dict)) == 0:
+                        total = 0
         case "keyboard":
             key_pressed = event_details[0]
         case _:
@@ -91,9 +129,11 @@ def logic(event_type, event_details):
                     for die in dice_to_roll:
                         if die.num_sides == number_of_sides:
                             dice_to_roll.remove(die)
-                        continue
+                            return
                 case _:
                     print("Event called:", event_type)
+
+# general utility functions
 
 def mouse_in_window(mouse_position):
     canvas_size = canvas.get_size()
@@ -101,3 +141,10 @@ def mouse_in_window(mouse_position):
         if mouse_position[1] > 0 and mouse_position[1] <= canvas_size[1]:
             return True
     return False
+
+def inside_rect(rectangle, xy):
+        x, y = xy[0], xy[1]
+        if x >= rectangle.left and x <= rectangle.right:
+            if y >= rectangle.top and y <= rectangle.bottom:
+                return True
+        return False

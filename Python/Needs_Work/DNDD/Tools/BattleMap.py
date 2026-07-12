@@ -70,10 +70,14 @@ def logic(event_type, event_details):
             pass
         case _:
             # here can be a list of the specific submenu options inside the dropdown for this app.
-            if event_type in ["Stone", "Paper"]:
-                color_palette = event_type.lower()
-            elif event_type in ["Rectangle", "Circle"]:
-                shape_option = event_type.lower()
+            submenu_path = [x.strip() for x in event_type.split(">")]
+            match submenu_path[0]:
+                case "Shape":
+                    if submenu_path[1] in ["Rectangle", "Circle"]:
+                        shape_option = submenu_path[1].lower()
+                case "Palette":
+                    if submenu_path[1] in ["Stone", "Paper"]:
+                        color_palette = submenu_path[1].lower()
 
 def draw_rectanlge(canvas, logic_output):
     map_outline = pygame.rect.Rect(start_location[0]-outline_width, start_location[1]-outline_width,

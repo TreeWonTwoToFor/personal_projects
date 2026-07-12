@@ -15,10 +15,10 @@ possible_tools = {
         "dropdown": [["Add Dice >", "d4", "d6", "d8", "d10", "d12", "d20"], 
                      ["Remove Dice >", "d4", "d6", "d8", "d10", "d12", "d20"], "Close DiceRoller"]
     }, 
-    "DefaultTool": {
-        "module": DefaultTool,
-        "dropdown": [["Hello, >", "World!"], "Close DefaultTool"]
-    }, 
+    # "DefaultTool": {
+    #     "module": DefaultTool,
+    #     "dropdown": [["Hello, >", "World!"], "Close DefaultTool"]
+    # }, 
     # "InitiativeTracker": {
     #     "module": InitiativeTracker,
     #     "dropdown": ["Close InitiativeTracker"]

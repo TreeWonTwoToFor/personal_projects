@@ -61,3 +61,10 @@ def mouse_in_window(mouse_position):
         if mouse_position[1] > 0 and mouse_position[1] <= canvas_size[1]:
             return True
     return False
+
+def inside_rect(rectangle, xy):
+        x, y = xy[0], xy[1]
+        if x >= rectangle.left and x <= rectangle.right:
+            if y >= rectangle.top and y <= rectangle.bottom:
+                return True
+        return False
