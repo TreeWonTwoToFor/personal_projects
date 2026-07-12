@@ -10,29 +10,30 @@ possible_tools = {
         "module": BattleMap,
         "dropdown": [["Shape >", "Rectangle", "Circle"], ["Palette >", "Stone", "Paper"], "Close BattleMap"]
     }, 
-    "DefaultTool": {
-        "module": DefaultTool,
-        "dropdown": ["Close DefaultTool"]
-    }, 
-    "InitiativeTracker": {
-        "module": InitiativeTracker,
-        "dropdown": ["Close InitiativeTracker"]
-    }, 
     "DiceRoller": {
         "module": DiceRoller,
-        "dropdown": ["Close DiceRoller"]
+        "dropdown": [["Add Dice >", "d4", "d6", "d8", "d10", "d12", "d20"], 
+                     ["Remove Dice >", "d4", "d6", "d8", "d10", "d12", "d20"], "Close DiceRoller"]
     }, 
-    "RootEngine": {
-        "module": RootEngine,
-        "dropdown": ["Close RootEngine"]
-    }
+    "DefaultTool": {
+        "module": DefaultTool,
+        "dropdown": [["Hello, >", "World!"], "Close DefaultTool"]
+    }, 
+    # "InitiativeTracker": {
+    #     "module": InitiativeTracker,
+    #     "dropdown": ["Close InitiativeTracker"]
+    # }, 
+    # "RootEngine": {
+    #     "module": RootEngine,
+    #     "dropdown": ["Close RootEngine"]
+    # }
 }
 
 tools = []
 
 def init():
     global desktop
-    desktop = Desktop((1000,750))
+    desktop = Desktop((1000,750), possible_tools)
     initial_tools = []
     # initialize each tool individually, so that it can properly manage canvases
     for tool in initial_tools:
@@ -60,9 +61,11 @@ def main():
                     match parent_app:
                         case "Desktop":
                             # we know that it's always going to be an open, until we decide to add more desktop options
-                            load_tool(app_instruction)
+                            app_name = app_instruction.split(" ")[-1]
+                            load_tool(app_name)
                         case _:
-                            possible_tools[parent_app]["module"].run(desktop.window_dict, app_instruction)
+                            # we can just feed the app the dropdown option that's been selected
+                            run_tool(parent_app, [app_instruction, [parent_app]])
         else:
             # just do a nomral rerun of all tools for their frames
             update_tools()
@@ -78,15 +81,21 @@ def load_tool(tool_name):
     except:
         desktop.load_icon(tool_name)
     desktop.open_app(tool_name)
+    # run initialization for that tool
+    possible_tools[tool_name]["module"].run_once()
 
 def close_tool(tool_name):
     global tools
     tools.remove(tool_name)
     desktop.close_app(tool_name)
 
+def run_tool(app, instruction):
+    possible_tools[app]["module"].run(desktop.window_dict, instruction)
+
 def update_tools(desktop_logic=None):
-    for tool_name in tools:
-        possible_tools[tool_name]["module"].run(desktop.window_dict, desktop_logic)
+    for tool_name in tools: 
+        # maybe this could be changed s.t. it only feeds a non-None instruction to the specfic tool?
+        run_tool(tool_name, desktop_logic)
 
 if __name__ == "__main__":
     init()

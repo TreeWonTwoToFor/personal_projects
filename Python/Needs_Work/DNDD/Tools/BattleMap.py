@@ -3,23 +3,31 @@ import pygame
 
 application_name = "BattleMap"
 application_icon = "./icons/compass_icon.png"
+canvas = None
 
 tile_size = (50, 50)
-grid_size = ()
-
-shape_option = "rectangle"
-color_palette = "stone"
+grid_size = (0,0)
 outline_width = 2
-
 border = 25
 start_location = (border,border)
 
-def run(canvas_dict, desktop_instruction):
-    canvas = canvas_dict[application_name].surface
-    logic_output = logic(canvas.get_size(), desktop_instruction)
-    draw(canvas, logic_output)
+def run_once():
+    global background_color, shape_option, color_palette
+    shape_option = "rectangle"
+    color_palette = "stone"
 
-def draw(canvas, logic_output):
+def run(window_dict, desktop_instruction):
+    global canvas
+    canvas = window_dict[application_name].surface
+    if desktop_instruction is not None:
+        event_type, event_details = desktop_instruction[0], desktop_instruction[1]
+    else:
+        event_type = None
+        event_details = [None]
+    logic_output = logic(event_type, event_details)
+    draw(logic_output)
+
+def draw(logic_output):
     canvas.fill(background_color)
     if grid_size[0] == 0 or grid_size[1] == 0:
         # we don't have the grid size, so don't draw anything
@@ -28,12 +36,8 @@ def draw(canvas, logic_output):
         case "rectangle": draw_rectanlge(canvas, logic_output)
         case "circle": draw_circle(canvas, logic_output)
 
-def logic(canvas_size, desktop_instruction):
-    global background_color, outline_color, tile_color, grid_size, color_palette, shape_option
-    if desktop_instruction in ["Stone", "Paper"]:
-        color_palette = desktop_instruction.lower()
-    elif desktop_instruction in ["Rectangle", "Circle"]:
-        shape_option = desktop_instruction.lower()
+def logic(event_type, event_details):
+    global background_color, outline_color, tile_color, grid_size, color_palette, shape_option, clicking
     match color_palette:
         case "paper":
             background_color = (255,255,255)
@@ -43,7 +47,33 @@ def logic(canvas_size, desktop_instruction):
             background_color = (50, 50, 50)
             outline_color = (0,0,0)
             tile_color = (100, 100, 100)
-    grid_size = (canvas_size[0]-border)//tile_size[0], (canvas_size[1]-border)//tile_size[1]
+    grid_size = (canvas.get_width()-border)//tile_size[0], (canvas.get_height()-border)//tile_size[1]
+    if event_details[-1] != application_name:
+        return
+    match event_type:
+        case "mouse":
+            if event_details[0] == "not clicking":
+                clicking = False
+            else:
+                buttons_pressed = event_details[0]
+                mouse_pos = event_details[1]
+                # print("Default tool event details:", event_details)
+                if not mouse_in_window(mouse_pos):
+                    return None
+                # otherwise, perform mouse logic
+                if not clicking: # is this the initial click?
+                    print("Buttons and pos:", buttons_pressed, mouse_pos)
+                clicking = True
+        case "keyboard":
+            key_pressed = event_details[0]
+            print("Key pressed:", key_pressed)
+            pass
+        case _:
+            # here can be a list of the specific submenu options inside the dropdown for this app.
+            if event_type in ["Stone", "Paper"]:
+                color_palette = event_type.lower()
+            elif event_type in ["Rectangle", "Circle"]:
+                shape_option = event_type.lower()
 
 def draw_rectanlge(canvas, logic_output):
     map_outline = pygame.rect.Rect(start_location[0]-outline_width, start_location[1]-outline_width,
@@ -81,3 +111,10 @@ def draw_circle(canvas, logic_output):
         draw_location[1] -= tile_size[1] * grid_size[1]
     # pygame.draw.circle(canvas, outline_color, (canvas.get_width()//2, canvas.get_height()//2), 
     #                    min(canvas.get_width()//2-border, canvas.get_height()//2-border))
+
+def mouse_in_window(mouse_position):
+    canvas_size = canvas.get_size()
+    if mouse_position[0] > 0 and mouse_position[0] <= canvas_size[0]:
+        if mouse_position[1] > 0 and mouse_position[1] <= canvas_size[1]:
+            return True
+    return False

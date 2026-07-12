@@ -14,7 +14,7 @@ debug = False
 clicking = False
 
 class Desktop:
-    def __init__(self, screen_size, in_debug_mode=False):
+    def __init__(self, screen_size, tool_reference_table, in_debug_mode=False):
         global debug
         debug = in_debug_mode
 
@@ -31,10 +31,9 @@ class Desktop:
         self.task_bar_color = (220,220,220)
         self.icons = {}
         self.dropdown_list = []
-        self.main_dropdown = Dropdown("main", self.screen, font, (0, self.task_bar_height_px), [["Open App >", "BattleMap", "DefaultTool", "DiceRoller", "InitiativeTracker", "RootEngine"], "Exit"])
-        self.app_dropdown = Dropdown("app", self.screen, font, [0, self.task_bar_height_px], ["Close App"])
-        # for handling dropdown options
-        self.tool_reference_table = None
+        self.tool_reference_table = tool_reference_table # for handling dropdown options
+        self.main_dropdown = Dropdown("main", self.screen, font, (0, self.task_bar_height_px), [["Open App >"] + list(tool_reference_table), "Exit"])
+        self.dropdown_path = ""
 
         # backend window management
         self.window_dict = {}
@@ -129,76 +128,87 @@ class Desktop:
                     elif event.key == pygame.K_SPACE:
                         debug = not debug
                     else:
-                        return ["keyboard", (event.key, self.focused_window)]
+                        return ["keyboard", (pygame.key.name(event.key), self.focused_window)]
                 case pygame.MOUSEBUTTONDOWN:
                     clicking = True
                 case pygame.MOUSEBUTTONUP:
                     clicking = False
+                    self.selected_window = None
+                    for app in self.application_order:
+                        window = self.window_dict[app]
+                        window.normalize()
+                    return ["mouse", ("not clicking", self.focused_window)]
         # handling mouse interactions
         if clicking:
             mouse_buttons = pygame.mouse.get_pressed()
             cursor_position = pygame.mouse.get_pos()
-            # taskbar
-            if self.inside_taskbar(cursor_position):
-                if self.inside_rect(self.main_dropdown.button_rect, cursor_position):
-                    clicking = False
-                    if self.main_dropdown in self.dropdown_list:
-                        self.dropdown_list = []
-                    else:
-                        self.dropdown_list = [("Desktop", self.main_dropdown)]
-                for icon_name in list(self.icons):
-                    icon = self.icons[icon_name]
-                    icon_image, icon_location = icon
-                    icon_rect = pygame.rect.Rect(*icon_location, icon_image.get_rect().width, icon_image.get_rect().height)
-                    if self.inside_rect(icon_rect, cursor_position):
-                        clicking = False
-                        app = icon_name
-                        self.app_dropdown.label = app
-                        self.dropdown_list = [(app, self.app_dropdown)]
-                        self.app_dropdown.initial_pos[0] = icon_location[0]
-                        self.app_dropdown.dropdown_items = self.tool_reference_table[app]["dropdown"]
-            # handling dropdowns
-            for dropdown_info in self.dropdown_list:
-                parent_app, dropdown = dropdown_info
-                if self.inside_rect(dropdown.rect, cursor_position):
-                    clicking = False
-                    x = dropdown.clicking_logic(mouse_buttons, cursor_position)
-                    if x is not None:
-                        if '>' in x:
-                            # FIXME: when clicking to another submenu in the same dropdown, it keeps the other one on screen.
-                            #   I either have to make it s.t. it clears the dropdown list every time, but keeps track of the full path,
-                            #   or I have a recursive function to go through and remove the full depth of submenus in a specific path
-                            option = x
-                            # open a submenu
-                            for dropdown_option in dropdown.dropdown_items:
-                                if type(dropdown_option) == list and dropdown_option[0] == option:
-                                    # we now need to make a new submenu based on the parent's information,
-                                    # along with which menu options it has
-                                    submenu = dropdown.create_submenu(dropdown_option)
-                                    # then we can add it to the list
-                                    self.dropdown_list.append((parent_app, submenu))
-                        else:
-                            # it's some final option that we need to execute
-                            self.dropdown_list = []
-                            instruction = x
-                            match parent_app:
-                                case "Desktop":
-                                    if instruction == "Exit": 
-                                        return "stop"
-                                    else:
-                                        return (parent_app, instruction)
-                                case _:
-                                    return (parent_app, instruction)
+            clicking = self.taskbar_clicking_logic(mouse_buttons, cursor_position, clicking)
+            clicking, instruction = self.dropdown_clicking_logic(mouse_buttons, cursor_position, clicking)
+            if instruction is not None:
+                return instruction
             # general sceen space
             if self.inside_screen(cursor_position) and clicking:
                 self.dropdown_list = []
                 return self.window_clicking_logic(mouse_buttons, cursor_position)
-        else:
-            self.selected_window = None
-            for app in self.application_order:
-                window = self.window_dict[app]
-                window.normalize()
+
+    def taskbar_clicking_logic(self, mouse_buttons, cursor_position, clicking):
+        if self.inside_taskbar(cursor_position):
+            if self.inside_rect(self.main_dropdown.button_rect, cursor_position):
+                clicking = False
+                if self.main_dropdown in self.dropdown_list:
+                    self.dropdown_list = []
+                else:
+                    self.dropdown_list = [("Desktop", self.main_dropdown)]
+            for icon_name in list(self.icons):
+                icon = self.icons[icon_name]
+                icon_image, icon_location = icon
+                icon_rect = pygame.rect.Rect(*icon_location, icon_image.get_rect().width, icon_image.get_rect().height)
+                if self.inside_rect(icon_rect, cursor_position):
+                    clicking = False
+                    app = icon_name
+                    self.dropdown_list = [(app, Dropdown(app, self.screen, font, [icon_location[0], self.task_bar_height_px], self.tool_reference_table[app]["dropdown"]))]
+        return clicking
     
+    def dropdown_clicking_logic(self, mouse_buttons, cursor_position, clicking):
+        output = None
+        for dropdown_info in self.dropdown_list:
+            parent_app, dropdown = dropdown_info
+            if self.inside_rect(dropdown.rect, cursor_position):
+                clicking = False
+                x = dropdown.clicking_logic(mouse_buttons, cursor_position)
+                if x is not None:
+                    if '>' in x:
+                        # FIXME: when clicking to another submenu in the same dropdown, it keeps the other one on screen.
+                        #   I either have to make it s.t. it clears the dropdown list every time, but keeps track of the full path,
+                        #   or I have a recursive function to go through and remove the full depth of submenus in a specific path
+                        option = x
+                        # open a submenu
+                        for dropdown_option in dropdown.dropdown_items:
+                            if type(dropdown_option) == list and dropdown_option[0] == option:
+                                # we now need to make a new submenu based on the parent's information,
+                                # along with which menu options it has
+                                submenu = dropdown.create_submenu(dropdown_option)
+                                # then we can add it to the list
+                                self.dropdown_list.append((parent_app, submenu))
+                                if len(self.dropdown_path) == 0:
+                                    self.dropdown_path = dropdown_option[0]
+                                else:
+                                    self.dropdown_path = self.dropdown_path + " " + dropdown_option[0]
+                    else:
+                        # it's some final option that we need to execute
+                        self.dropdown_list = []
+                        instruction = x
+                        if len(self.dropdown_path) != 0:
+                            output = (parent_app, self.dropdown_path + " " + instruction)
+                            self.dropdown_path = ""
+                        else:
+                            output = (parent_app, instruction)
+                        match parent_app:
+                            case "Desktop":
+                                if instruction == "Exit": 
+                                    output = "stop"
+        return (clicking, output)
+
     def window_clicking_logic(self, mouse_buttons, cursor_position):
         if self.selected_window is not None:
             window = self.window_dict[self.selected_window]
@@ -233,7 +243,7 @@ class Desktop:
                 x = (cursor_position[0]-app_location[0], cursor_position[1]-app_location[1])
                 relative_location = x
         return ["mouse", (mouse_buttons, relative_location, self.focused_window)]
-    
+
     def inside_rect(self, rectangle, xy):
         x, y = xy[0], xy[1]
         if x >= rectangle.left and x <= rectangle.right:

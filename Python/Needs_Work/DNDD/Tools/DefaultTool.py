@@ -4,6 +4,12 @@ application_icon = "./icons/default_icon.png"
 background_color = (255,255,255)
 canvas = None
 
+clicking = False
+
+def run_once():
+    # any initialization should go in there, in order to keep the state fresh every time the tool is opened.
+    pass
+
 def run(window_dict, desktop_instruction):
     global canvas
     canvas = window_dict[application_name].surface
@@ -19,19 +25,35 @@ def draw(logic_output):
     canvas.fill(background_color)
 
 def logic(event_type, event_details):
+    global clicking
     if event_details[-1] != application_name:
         return
     match event_type:
         case "mouse":
-            buttons_pressed = event_details[0]
-            mouse_pos = event_details[1]
-            # print("Default tool event details:", event_details)
-            if not mouse_in_window(mouse_pos):
-                return None
-            # otherwise, perform mouse logic
-            print("Buttons and pos:", buttons_pressed, mouse_pos)
+            if event_details[0] == "not clicking":
+                clicking = False
+            else:
+                buttons_pressed = event_details[0]
+                mouse_pos = event_details[1]
+                # print("Default tool event details:", event_details)
+                if not mouse_in_window(mouse_pos):
+                    return None
+                # otherwise, perform mouse logic
+                if not clicking: # is this the initial click?
+                    print("Buttons and pos:", buttons_pressed, mouse_pos)
+                clicking = True
         case "keyboard":
-            pass
+            key_pressed = event_details[0]
+            match key_pressed:
+                case _:
+                    print("Key pressed:", key_pressed)
+        case _:
+            # here can be a list of the specific submenu options inside the dropdown for this app.
+            submenu_path = [x.strip() for x in event_type.split(">")]
+            print(submenu_path)
+            match event_type:
+                case _:
+                    print("Event called:", event_type)
 
 def mouse_in_window(mouse_position):
     canvas_size = canvas.get_size()
