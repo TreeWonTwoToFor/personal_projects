@@ -54,7 +54,7 @@ def draw():
         # defaults to 0 if the key isn't currently in use
         dice_dict[die.num_sides] = dice_dict.get(die.num_sides, 0) + 1
     # setting up some parameters
-    gap = 20
+    gap = 10
     button_size = 50
     line_height = 10
     text_x = 10
@@ -64,8 +64,8 @@ def draw():
         text = font.render(f"D{str(die)}s: {dice_dict[die]}", True, text_color)
         canvas.blit(text, (text_x, line_height))
         # buttons
-        plus_location = (button_x+text.get_width()+gap, line_height)
-        minus_location = (button_x+text.get_width()+gap*2+button_size, line_height)
+        plus_location = (max(text.get_width()+gap, canvas_size[0]-gap*2-button_size*2), line_height)
+        minus_location = (max(text.get_width()+gap*2+button_size, canvas_size[0]-gap-button_size), line_height)
         button_dict[die] = (pygame.rect.Rect(*plus_location, button_size, button_size),
                                       pygame.rect.Rect(*minus_location, button_size, button_size))
         pygame.draw.rect(canvas, button_color, button_dict[die][0])
@@ -92,13 +92,16 @@ def logic(event_type, event_details):
                     return None
                 if not clicking: 
                     clicking = True
+                    button_clicked = False
                     for button_sides in list(button_dict):
                         buttons = button_dict[button_sides]
                         plus, minus = buttons[0], buttons[1]
                         if inside_rect(plus, mouse_pos):
+                            button_clicked = True
                             dice_to_roll.append(Dice(button_sides))
                             return
                         elif inside_rect(minus, mouse_pos):
+                            button_clicked = True
                             for die in dice_to_roll:
                                 if die.num_sides == button_sides:
                                     dice_to_roll.remove(die)
@@ -106,14 +109,12 @@ def logic(event_type, event_details):
                                         button_dict.pop(die.num_sides)
                                     return
                             return
-                        else:
-                            # roll the dice!
-                            total = 0
-                            for die in dice_to_roll:
-                                value = die.roll()
-                                total += value
-                    if len(list(button_dict)) == 0:
-                        total = 0
+                    total = 0
+                    if not button_clicked:
+                        # roll the dice!
+                        for die in dice_to_roll:
+                            value = die.roll()
+                            total += value
         case "keyboard":
             key_pressed = event_details[0]
         case _:

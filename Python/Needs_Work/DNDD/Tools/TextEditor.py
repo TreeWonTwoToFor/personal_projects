@@ -1,14 +1,23 @@
-application_name = "DefaultTool"
-application_icon = "./icons/default_icon.png"
+import pygame
+
+application_name = "TextEditor"
+application_icon = "./icons/notepad_icon.png"
 
 background_color = (255,255,255)
 canvas = None
 
 clicking = False
 
+pygame.font.init()
+font_size = 24
+line_gap = 3
+font = pygame.font.Font("../Comfortaa.ttf", font_size)
+text_color = (0,0,0)
+
 def run_once():
     # any initialization should go in there, in order to keep the state fresh every time the tool is opened.
-    pass
+    global text_list
+    text_list = [""]
 
 def run(window_dict, desktop_instruction):
     global canvas
@@ -23,9 +32,22 @@ def run(window_dict, desktop_instruction):
 
 def draw(logic_output):
     canvas.fill(background_color)
+    line_height = 10
+    text = None
+    for line in text_list:
+        text = font.render(line, True, text_color)
+        canvas.blit(text, (10, line_height))
+        line_height += text.get_height() + line_gap
+    # draw the cursor
+    cursor = font.render("_", True, text_color)
+    if text != None:
+        canvas.blit(cursor, (text.get_width()+10, line_height-text.get_height()-line_gap))
+    else:
+        canvas.blit(cursor, (10, 10))
+        
 
 def logic(event_type, event_details):
-    global clicking
+    global clicking, text_list
     if event_details[-1] != application_name:
         return
     match event_type:
@@ -40,13 +62,30 @@ def logic(event_type, event_details):
                     return None
                 # otherwise, perform mouse logic
                 if not clicking: # is this the initial click?
-                    print("Buttons and pos:", buttons_pressed, mouse_pos)
+                    pass
                 clicking = True
         case "keyboard":
             key_pressed = event_details[0]
             match key_pressed:
+                case "return":
+                    text_list.append("")
+                case "backspace":
+                    if len(text_list) == 1 and len(text_list[0]) == 0:
+                        return
+                    if len(text_list[-1]) == 0:
+                        text_list.pop()
+                    else:
+                        text_list[-1] = text_list[-1][:-1]
+                case "space":
+                    text_list[-1] = text_list[-1] + " "
+                case "tab":
+                    # tab default length is 4 characters
+                    text_list[-1] = text_list[-1] + "    "
                 case _:
-                    print("Key pressed:", key_pressed)
+                    if len(key_pressed) == 1:
+                        text_list[-1] = text_list[-1] + key_pressed
+                    else:
+                        print("Key pressed:", key_pressed)
         case _:
             # here can be a list of the specific submenu options inside the dropdown for this app.
             submenu_path = [x.strip() for x in event_type.split(">")]

@@ -3,6 +3,7 @@ from Tools import BattleMap
 from Tools import DefaultTool
 from Tools import InitiativeTracker
 from Tools.RootEngine import Launcher as RootEngine
+from Tools import TextEditor
 from Desktop import Desktop
 
 possible_tools = {
@@ -15,6 +16,10 @@ possible_tools = {
         "dropdown": [["Add Dice >", "d4", "d6", "d8", "d10", "d12", "d20"], 
                      ["Remove Dice >", "d4", "d6", "d8", "d10", "d12", "d20"], "Close DiceRoller"]
     }, 
+    "TextEditor": {
+        "module": TextEditor,
+        "dropdown": ["Close TextEditor"]
+    },
     # "DefaultTool": {
     #     "module": DefaultTool,
     #     "dropdown": [["Hello, >", "World!"], "Close DefaultTool"]

@@ -125,8 +125,8 @@ class Desktop:
                 case pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         return "stop"
-                    elif event.key == pygame.K_SPACE:
-                        debug = not debug
+                    #elif event.key == pygame.K_SPACE:
+                    #    debug = not debug
                     else:
                         return ["keyboard", (pygame.key.name(event.key), self.focused_window)]
                 case pygame.MOUSEBUTTONDOWN:
