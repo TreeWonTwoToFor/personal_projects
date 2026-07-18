@@ -124,8 +124,8 @@ def game_logic(player_action, decision_list, state, deck):
             case 3:
                 state.room = state.room + deck.draw_room(3)
             case 4:
-                state.room = deck.draw_room(4)
                 deck.deck = state.avoided_room + deck.deck
+                state.room = deck.draw_room(4)
     except:
         output = "escaped"
     return output

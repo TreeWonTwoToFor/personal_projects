@@ -11,7 +11,7 @@ import time
 network_structure = [13, 10, 10, 5]
 population_size = 1000
 games_per_generation = 50
-number_of_generations = 2500
+number_of_generations = 5000
 number_of_parents = population_size//20
 growth_rate = 0.05
 mutation_strength = 0.2
@@ -203,7 +203,7 @@ if __name__ == "__main__":
         \tWins: {number_of_wins} ({round(100*number_of_wins/(games_per_generation*population_size), 2)}%)""")
         print('\t' + '-'*15)
         data_point = [generation, champion_fitness, average_fitness, number_of_wins]
-        # visual_ai_play(generation_champion[0])
+        visual_ai_play(generation_champion[0])
         training_data.append(data_point)
         parents = pick_parents(population, number_of_parents)
         population = create_next_population(parents, population_size, growth_rate, mutation_strength)
@@ -229,6 +229,6 @@ if __name__ == "__main__":
         file.write(config)
 
     # now that we've finished our training, we want to see a player in action!
-    # print(f'\nChampion Fitness: {grand_champion[1]}')
-    # visual_ai_play(grand_champion[0])
+    print(f'\nChampion Fitness: {grand_champion[1]}')
+    visual_ai_play(grand_champion[0])
     grand_champion[0].write_to_file()
