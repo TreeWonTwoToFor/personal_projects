@@ -5,6 +5,8 @@ application_name = "BattleMap"
 application_icon = "./icons/compass_icon.png"
 canvas = None
 
+clicking = False
+
 tile_size = (50, 50)
 grid_size = (0,0)
 outline_width = 2
@@ -64,9 +66,10 @@ def logic(event_type, event_details):
                 if not clicking: # is this the initial click?
                     print("Buttons and pos:", buttons_pressed, mouse_pos)
                 clicking = True
-        case "keyboard":
+        case "keyboard down":
             key_pressed = event_details[0]
             print("Key pressed:", key_pressed)
+        case "keyboard up":
             pass
         case _:
             # here can be a list of the specific submenu options inside the dropdown for this app.

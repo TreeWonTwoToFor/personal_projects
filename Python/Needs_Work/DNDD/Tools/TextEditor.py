@@ -7,12 +7,38 @@ background_color = (255,255,255)
 canvas = None
 
 clicking = False
+holding_ctrl = False
+holding_shift = False
+space_delayed_auto_type = 0
 
 pygame.font.init()
 font_size = 24
 line_gap = 3
 font = pygame.font.Font("../Comfortaa.ttf", font_size)
 text_color = (0,0,0)
+
+symbol_key_dict = {
+    '1': '!',
+    '2': '@',
+    '3': '#',
+    '4': '$',
+    '5': '%',
+    '6': '^',
+    '7': '&',
+    '8': '*',
+    '9': '(',
+    '0': ')',
+    '-': '_',
+    '=': '+',
+    '[': '{',
+    ']': '}',
+    ';': ':',
+    "'": '"',
+    ',': "<",
+    ".": ">",
+    '/': '?',
+    '\\': '|'
+}
 
 def run_once():
     # any initialization should go in there, in order to keep the state fresh every time the tool is opened.
@@ -47,7 +73,11 @@ def draw(logic_output):
         
 
 def logic(event_type, event_details):
-    global clicking, text_list
+    global clicking, text_list, holding_shift, holding_ctrl, space_delayed_auto_type
+    if space_delayed_auto_type % 25 == 1:
+        text_list[-1] = text_list[-1] + " "
+    if space_delayed_auto_type > 0:
+        space_delayed_auto_type += 1
     if event_details[-1] != application_name:
         return
     match event_type:
@@ -64,7 +94,7 @@ def logic(event_type, event_details):
                 if not clicking: # is this the initial click?
                     pass
                 clicking = True
-        case "keyboard":
+        case "keyboard down":
             key_pressed = event_details[0]
             match key_pressed:
                 case "return":
@@ -77,15 +107,34 @@ def logic(event_type, event_details):
                     else:
                         text_list[-1] = text_list[-1][:-1]
                 case "space":
-                    text_list[-1] = text_list[-1] + " "
+                    space_delayed_auto_type += 1
                 case "tab":
                     # tab default length is 4 characters
                     text_list[-1] = text_list[-1] + "    "
+                case "left shift" | "right shift":
+                    holding_shift = True
+                case "left ctrl" | "right ctrl":
+                    holding_ctrl = True
                 case _:
                     if len(key_pressed) == 1:
-                        text_list[-1] = text_list[-1] + key_pressed
+                        if not holding_shift:
+                            text_list[-1] = text_list[-1] + key_pressed
+                        else:
+                            if key_pressed.isalpha():
+                                text_list[-1] = text_list[-1] + key_pressed.upper()
+                            else:
+                                text_list[-1] = text_list[-1] + symbol_key_dict[key_pressed]
                     else:
                         print("Key pressed:", key_pressed)
+        case "keyboard up":
+            key_pressed = event_details[0]
+            match key_pressed:
+                case "left shift" | "right shift":
+                    holding_shift = False
+                case "left ctrl" | "right ctrl":
+                    holding_ctrl = False
+                case "space":
+                    space_delayed_auto_type = 0
         case _:
             # here can be a list of the specific submenu options inside the dropdown for this app.
             submenu_path = [x.strip() for x in event_type.split(">")]

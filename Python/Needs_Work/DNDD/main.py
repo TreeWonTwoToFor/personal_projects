@@ -55,8 +55,8 @@ def main():
             running = False
             continue
         elif instruction is not None:
-            if instruction[0] == "mouse" or instruction[0] == "keyboard":
-                # give the mouse input over to update
+            if instruction[0].split(" ")[0] in ["mouse", "keyboard"]:
+                # give user input over to update
                 update_tools(instruction)
             else:
                 parent_app, app_instruction = instruction

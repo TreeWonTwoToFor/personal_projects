@@ -115,8 +115,10 @@ def logic(event_type, event_details):
                         for die in dice_to_roll:
                             value = die.roll()
                             total += value
-        case "keyboard":
-            key_pressed = event_details[0]
+        case "keyboard down":
+            pass
+        case "keyboard up":
+            pass
         case _:
             submenu_path = [x.strip() for x in event_type.split(">")]
             match submenu_path[0]:

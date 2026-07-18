@@ -128,7 +128,9 @@ class Desktop:
                     #elif event.key == pygame.K_SPACE:
                     #    debug = not debug
                     else:
-                        return ["keyboard", (pygame.key.name(event.key), self.focused_window)]
+                        return ["keyboard down", (pygame.key.name(event.key), self.focused_window)]
+                case pygame.KEYUP:
+                    return ["keyboard up", (pygame.key.name(event.key), self.focused_window)]
                 case pygame.MOUSEBUTTONDOWN:
                     clicking = True
                 case pygame.MOUSEBUTTONUP:

@@ -42,11 +42,16 @@ def logic(event_type, event_details):
                 if not clicking: # is this the initial click?
                     print("Buttons and pos:", buttons_pressed, mouse_pos)
                 clicking = True
-        case "keyboard":
+        case "keyboard down":
             key_pressed = event_details[0]
             match key_pressed:
                 case _:
                     print("Key pressed:", key_pressed)
+        case "keyboard up":
+            key_pressed = event_details[0]
+            match key_pressed:
+                case _:
+                    print("Key released:", key_pressed)
         case _:
             # here can be a list of the specific submenu options inside the dropdown for this app.
             submenu_path = [x.strip() for x in event_type.split(">")]
