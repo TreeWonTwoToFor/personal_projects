@@ -49,6 +49,10 @@ def logic(event_type, event_details):
             background_color = (50, 50, 50)
             outline_color = (0,0,0)
             tile_color = (100, 100, 100)
+        case "forest":
+            background_color = (56, 39, 36)
+            outline_color = (9, 84, 30)
+            tile_color = (10, 115, 40)
     grid_size = (canvas.get_width()-border)//tile_size[0], (canvas.get_height()-border)//tile_size[1]
     if event_details[-1] != application_name:
         return
@@ -79,7 +83,7 @@ def logic(event_type, event_details):
                     if submenu_path[1] in ["Rectangle", "Circle"]:
                         shape_option = submenu_path[1].lower()
                 case "Palette":
-                    if submenu_path[1] in ["Stone", "Paper"]:
+                    if submenu_path[1] in ["Stone", "Paper", "Forest"]:
                         color_palette = submenu_path[1].lower()
 
 def draw_rectanlge(canvas, logic_output):

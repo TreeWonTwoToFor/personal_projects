@@ -117,7 +117,8 @@ class Desktop:
 
     def logic(self):
         global debug, clicking
-        # handling the pygame events
+        # handling the pygame events 
+        # FIXME: only will handle the first of the seen events, as it'll just return out
         for event in pygame.event.get():
             match event.type:
                 case pygame.QUIT:

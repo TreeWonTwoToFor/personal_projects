@@ -1,5 +1,0 @@
-camera 7 5 7 25 -135 0
-light 100 80 90 100
-light -100 -80 -90 100
-
-open boat

@@ -2,14 +2,13 @@ from Tools import DiceRoller
 from Tools import BattleMap
 from Tools import DefaultTool
 from Tools import InitiativeTracker
-from Tools.RootEngine import Launcher as RootEngine
 from Tools import TextEditor
 from Desktop import Desktop
 
 possible_tools = {
     "BattleMap": {
         "module": BattleMap,
-        "dropdown": [["Shape >", "Rectangle", "Circle"], ["Palette >", "Stone", "Paper"], "Close BattleMap"]
+        "dropdown": [["Shape >", "Rectangle", "Circle"], ["Palette >", "Stone", "Paper", "Forest"], "Close BattleMap"]
     }, 
     "DiceRoller": {
         "module": DiceRoller,
@@ -27,10 +26,6 @@ possible_tools = {
     # "InitiativeTracker": {
     #     "module": InitiativeTracker,
     #     "dropdown": ["Close InitiativeTracker"]
-    # }, 
-    # "RootEngine": {
-    #     "module": RootEngine,
-    #     "dropdown": ["Close RootEngine"]
     # }
 }
 

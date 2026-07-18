@@ -1,4 +1,5 @@
 import pygame
+import copy
 
 application_name = "TextEditor"
 application_icon = "./icons/notepad_icon.png"
@@ -7,9 +8,6 @@ background_color = (255,255,255)
 canvas = None
 
 clicking = False
-holding_ctrl = False
-holding_shift = False
-space_delayed_auto_type = 0
 
 pygame.font.init()
 font_size = 24
@@ -42,8 +40,10 @@ symbol_key_dict = {
 
 def run_once():
     # any initialization should go in there, in order to keep the state fresh every time the tool is opened.
-    global text_list
+    global text_list, held_keys, delayed_auto_type
     text_list = [""]
+    held_keys = []
+    delayed_auto_type = 0
 
 def run(window_dict, desktop_instruction):
     global canvas
@@ -70,78 +70,90 @@ def draw(logic_output):
         canvas.blit(cursor, (text.get_width()+10, line_height-text.get_height()-line_gap))
     else:
         canvas.blit(cursor, (10, 10))
-        
 
 def logic(event_type, event_details):
-    global clicking, text_list, holding_shift, holding_ctrl, space_delayed_auto_type
-    if space_delayed_auto_type % 25 == 1:
-        text_list[-1] = text_list[-1] + " "
-    if space_delayed_auto_type > 0:
-        space_delayed_auto_type += 1
-    if event_details[-1] != application_name:
-        return
-    match event_type:
-        case "mouse":
-            if event_details[0] == "not clicking":
-                clicking = False
-            else:
-                buttons_pressed = event_details[0]
-                mouse_pos = event_details[1]
-                # print("Default tool event details:", event_details)
-                if not mouse_in_window(mouse_pos):
-                    return None
-                # otherwise, perform mouse logic
-                if not clicking: # is this the initial click?
-                    pass
-                clicking = True
-        case "keyboard down":
-            key_pressed = event_details[0]
-            match key_pressed:
-                case "return":
-                    text_list.append("")
-                case "backspace":
-                    if len(text_list) == 1 and len(text_list[0]) == 0:
-                        return
-                    if len(text_list[-1]) == 0:
-                        text_list.pop()
+    global clicking, text_list, held_keys, old_held_keys, delayed_auto_type
+    old_held_keys = copy.deepcopy(held_keys)
+    if event_details[-1] == application_name:
+        match event_type:
+            case "mouse":
+                if event_details[0] == "not clicking":
+                    clicking = False
+                else:
+                    buttons_pressed = event_details[0]
+                    mouse_pos = event_details[1]
+                    # print("Default tool event details:", event_details)
+                    if not mouse_in_window(mouse_pos):
+                        return None
+                    # otherwise, perform mouse logic
+                    if not clicking: # is this the initial click?
+                        pass
+                    clicking = True
+            case "keyboard down":
+                key_pressed = event_details[0]
+                if key_pressed not in held_keys:
+                    held_keys.append(key_pressed)
+            case "keyboard up":
+                key_pressed = event_details[0]
+                if key_pressed in held_keys:
+                    held_keys.remove(key_pressed)
+            case _:
+                # here can be a list of the specific submenu options inside the dropdown for this app.
+                submenu_path = [x.strip() for x in event_type.split(">")]
+                print(submenu_path)
+                match event_type:
+                    case _:
+                        # currently has no other options, so it goes unusued
+                        print("Event called:", event_type)
+    # handling held keys
+    pressed_new_key = False
+    if len(old_held_keys) > 0 and len(held_keys) > 0:
+        if old_held_keys[-1] == held_keys[-1]:
+            # the last key to be pressed is the same as the last one
+            pass
+        else:
+            pressed_new_key = True
+    else:
+        if len(held_keys) > 0:
+            pressed_new_key = True
+        else:
+            # we're not holding any keys
+            delayed_auto_type = 0
+    if pressed_new_key:
+        delayed_auto_type = 1
+    elif delayed_auto_type > 0:
+        delayed_auto_type += 1
+
+    if delayed_auto_type > 0 and delayed_auto_type % 25 == 1:
+        key_pressed = held_keys[-1]
+        match key_pressed:
+            case "return":
+                text_list.append("")
+            case "backspace":
+                if len(text_list) == 1 and len(text_list[0]) == 0:
+                    return
+                if len(text_list[-1]) == 0:
+                    text_list.pop()
+                else:
+                    if "left ctrl" in held_keys or "right ctrl" in held_keys:
+                        num_chars = len(text_list[-1].split(" ")[-1]) + 1
+                        text_list[-1] = text_list[-1][:-num_chars]
                     else:
                         text_list[-1] = text_list[-1][:-1]
-                case "space":
-                    space_delayed_auto_type += 1
-                case "tab":
-                    # tab default length is 4 characters
-                    text_list[-1] = text_list[-1] + "    "
-                case "left shift" | "right shift":
-                    holding_shift = True
-                case "left ctrl" | "right ctrl":
-                    holding_ctrl = True
-                case _:
-                    if len(key_pressed) == 1:
-                        if not holding_shift:
-                            text_list[-1] = text_list[-1] + key_pressed
-                        else:
-                            if key_pressed.isalpha():
-                                text_list[-1] = text_list[-1] + key_pressed.upper()
-                            else:
-                                text_list[-1] = text_list[-1] + symbol_key_dict[key_pressed]
+            case "space":
+                text_list[-1] = text_list[-1] + " "
+            case "tab":
+                # tab default length is 4 characters
+                text_list[-1] = text_list[-1] + "    "
+            case _:
+                if len(key_pressed) == 1:
+                    if "left shift" not in held_keys and "right shift" not in held_keys:
+                        text_list[-1] = text_list[-1] + key_pressed
                     else:
-                        print("Key pressed:", key_pressed)
-        case "keyboard up":
-            key_pressed = event_details[0]
-            match key_pressed:
-                case "left shift" | "right shift":
-                    holding_shift = False
-                case "left ctrl" | "right ctrl":
-                    holding_ctrl = False
-                case "space":
-                    space_delayed_auto_type = 0
-        case _:
-            # here can be a list of the specific submenu options inside the dropdown for this app.
-            submenu_path = [x.strip() for x in event_type.split(">")]
-            print(submenu_path)
-            match event_type:
-                case _:
-                    print("Event called:", event_type)
+                        if key_pressed.isalpha():
+                            text_list[-1] = text_list[-1] + key_pressed.upper()
+                        else:
+                            text_list[-1] = text_list[-1] + symbol_key_dict[key_pressed]
 
 def mouse_in_window(mouse_position):
     canvas_size = canvas.get_size()
